@@ -1,0 +1,401 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+          color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Add Carton</h2>
+          </header>
+          <div class="widget-body">
+            <section *ngIf="loadAddSuccess" class="text-success text-center"> {{loadAddSuccess}} </section>
+            <section *ngIf="loadAddFailure" class="icon-color-bad text-center"> {{loadAddFailure}} </section>
+            <br>
+            <fieldset>
+              <form class="form truckAddForm" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)" name="truckAddForm"
+                id="truckAddForm" action="javascript:void(0)" method="post">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="loadNum">
+                        Load Number
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <select class="form-control" id="loadNum" name="loadNum" [formControl]="this.loadNum" [(ngModel)]="load.loadNumber.loadNumber"
+                          (change)="getskidsByloadNum()">
+                          <!--(change)="getDetailsByloadNum(load.loadNumber.apptNbr)"-->
+                          <option value='' disabled>Select Load</option>
+                          <option *ngFor="let lad of loadsList" [value]="lad.loadNumber">{{lad.loadNumber}}</option>
+                        </select>
+                        <span *ngIf="this.loadNum.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please select load number</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="loadNum">
+                        Skid Drops
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <select class="form-control" id="skidDrop" name="skidDrop" [formControl]="this.skidDrop" [(ngModel)]="load.destinationLocation.locNbr"
+                          (change)="getAddedCartons()">
+                          <option value='' disabled>Select Skid Drop</option>
+                          <option class="test" *ngFor="let skid of skidDropList" [value]="skid.destLocNbr.locNbr" [disabled]="getSkidStatus(skid)">{{skid.destLocNbr.locAddrName.toUpperCase()}}</option>
+                        </select>
+                        <span *ngIf="this.skidDrop.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please select skid drop </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="pickupAddress">
+                        Pickup Address
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="pickupAddress" name="pickupAddress" placeholder="Pickup Address" [(ngModel)]="load.pickupAddress"
+                          [formControl]="this.pickupAddress" readonly>
+                        <span *ngIf=" this.pickupAddress.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please enter pickup address </span>
+                      </div>
+                    </div>
+                  </div>-->
+                </div>
+                <br>
+                <div class="row">
+
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="totalCartons">
+                        Total Cartons
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="totalCartons" name="totalCartons" placeholder="totalCartons" [(ngModel)]="totalCartons"
+                          readonly [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="pendingCartons">
+                        Added Cartons
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="pendingCartons" name="pendingCartons" placeholder="Cartons" [(ngModel)]="load.addedCartons"
+                          readonly [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="pendingCartons">
+                        Pending Cartons
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="pendingCartons" name="pendingCartons" placeholder="Cartons" [(ngModel)]="pendingCartons"
+                          readonly [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+
+
+                <div class="row">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-8">
+
+                    <div class="table-responsive">
+                      <button (click)="addRow()" class="btn btn-warning" type="button" *ngIf="pendingCartons!=complexForm.get('dimensions').length"
+                        style="float:right">ADD</button>
+                      <!--<button (click)="addRow()" class="btn btn-warning" style="float:right">ADD</button>-->
+                      <table class="table table-bordered" *ngIf="complexForm.get('dimensions').length" style="width: 100%">
+                        <thead>
+                          <tr class="text-center">
+                            <th style="width: 10%">Carton Id</th>
+                            <th style="width: 20%">Height (inches)</th>
+                            <th style="width: 20%">Length (inches)</th>
+                            <th style="width: 20%">Width (inches)</th>
+                            <th style="width:20%">Weight ({{weightUnits}})</th>
+                          </tr>
+                        </thead>
+                        <tbody formArrayName="dimensions" *ngFor="let skid of complexForm.controls['dimensions'].controls; let i = index">
+                          <tr [formGroupName]="i" class="text-center">
+                            <td>{{i+1}}</td>
+                            <td> <input placeholder="Cartons" (focus)="myFunction(skid.get('height'),i)" class="form-control" type="number" id="cartons" name="cartons" formControlName='height'>
+                              <span *ngIf="skid.get('height').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please enter height</span>
+                              <span *ngIf="skid.get('height').hasError('pattern') &&  this.formValidate" class=" icon-color-bad ">Please enter valid digit 1-50 only </span></td>
+                            <td>
+                              <input placeholder="Cartons" (focus)="myFunction(skid.get('length'),i)" class="form-control" type="number" id="cartons" name="cartons" formControlName='length'>
+                              <span *ngIf="skid.get('length').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please enter length</span>
+                              <span *ngIf="skid.get('length').hasError('pattern') &&  this.formValidate" class=" icon-color-bad ">Please enter valid digit 1-50 only </span>
+                            </td>
+                            <td>
+                              <input placeholder="Cartons" class="form-control" (focus)="myFunction(skid.get('width'),i)" type="number" id="cartons" name="cartons" formControlName='width'>
+                              <span *ngIf="skid.get('width').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please enter width</span>
+                              <span *ngIf="skid.get('width').hasError('pattern') &&  this.formValidate" class=" icon-color-bad ">Please enter valid digit 1-50 only </span>
+                            </td>
+                            <td> <input placeholder="Cartons" class="form-control" (focus)="myFunction(skid.get('weight'),i)" type="number" id="cartons" name="cartons" formControlName='weight'>
+                              <span *ngIf="skid.get('weight').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please enter weight</span>
+                              <span *ngIf="skid.get('weight').hasError('pattern') &&  this.formValidate" class=" icon-color-bad ">Please enter valid digit 1-50 only </span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="smart-form">
+                  <footer>
+                    <div class="row">
+                      <div class="control-group col-sm-6 col-sm-offset-4">
+                        <button (click)="goBack()" class="btn btn-warning">Cancel</button>
+                        <button *ngIf='!show' type="submit" id="vin_submit" class="btn btn-success"> Submit
+                        </button>
+                      </div>
+                    </div>
+                  </footer>
+                </div>
+              </form>
+            </fieldset>
+          </div>
+        </sa-widget>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+
+
+
+
+<!-- 
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <sa-widget [editbutton]="false" color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Add Carton</h2>
+          </header>
+          <div class="widget-body">
+            <section *ngIf="loadAddSuccess" class="text-success text-center"> {{loadAddSuccess}} </section>
+            <section *ngIf="loadAddFailure" class="icon-color-bad text-center"> {{loadAddFailure}} </section>
+            <br>
+            <fieldset>
+              <form class="form truckAddForm" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)"
+                name="truckAddForm" id="truckAddForm" action="javascript:void(0)" method="post">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="loadNum">
+                        Load Number
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <select class="form-control" id="loadNum" name="loadNum" [formControl]="this.loadNum"
+                          [(ngModel)]="load.loadNumber.apptNbr" (change)="getDetailsByloadNum(load.loadNumber.apptNbr)">
+                          <option value='' disabled>Select Load</option>
+                          <option *ngFor="let lad of loadsList" [value]="lad.apptNbr">{{lad.apptNbr}}</option>
+                        </select>
+                        <span *ngIf="this.loadNum.errors.required  &&  this.formValidate" class="icon-color-bad ">Please
+                          select load number</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="pickupAddress">
+                        Pickup Address
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="pickupAddress" name="pickupAddress"
+                          placeholder="Pickup Address" [(ngModel)]="load.pickupAddress"
+                          [formControl]="this.pickupAddress" readonly>
+                        <span *ngIf=" this.pickupAddress.errors.required &&  this.formValidate"
+                          class="icon-color-bad ">Please enter pickup address </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="destAddress">
+                        Destination Address
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="destAddress" name="destAddress"
+                          placeholder="Destination Address" [(ngModel)]="load.destAddress"
+                          [formControl]=" this.destAddress" readonly>
+                        <span *ngIf=" this.destAddress.errors.required  &&  this.formValidate"
+                          class="icon-color-bad ">Please enter destination address </span>
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="length">
+                        Length (inches)
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="number" id="length" name="length" placeholder="Length"
+                          [(ngModel)]="load.length" [formControl]=" this.length">
+                        <span *ngIf=" this.length.errors('required')  &&  this.formValidate"
+                          class="icon-color-bad ">Please enter length </span>
+                        <span *ngIf="this.length.errors('pattern')" class=" icon-color-bad ">Not allows more than 99
+                          and
+                          negative values</span>
+
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="width">
+                        Width (inches)
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="number" id="width" name="destAddress" placeholder="Width"
+                          [(ngModel)]="load.width" [formControl]=" this.width">
+                        <span *ngIf=" this.width.errors('required')  &&  this.formValidate"
+                          class="icon-color-bad ">Please enter width </span>
+                        <span *ngIf="this.width.errors('pattern')" class=" icon-color-bad ">Not allows more than 99
+                          and
+                          negative values</span>
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="height">
+                        Height (inches)
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="number" id="height" name="height" placeholder="Height"
+                          [(ngModel)]="load.height" [formControl]=" this.height">
+                        <span *ngIf=" this.height.errors('required')  &&  this.formValidate"
+                          class="icon-color-bad ">Please enter height </span>
+                        <span *ngIf="this.height.errors('pattern')" class=" icon-color-bad ">Not allows more than 99
+                          and
+                          negative values</span>
+
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <div formGroupName="dimensions">
+                        <label class="col-sm-4 control-label" for="height">
+                          Dimensions (LxWxH inches)
+                          <font class="icon-color-bad">*</font>
+                        </label>
+                        <div class="controls col-sm-6">
+                          <div class="controls col-sm-4">
+                            <input class="form-control" type="number" id="height" name="height" placeholder="Height"
+                              [(ngModel)]="load.height" formControlName=" this.height">
+                          </div>
+                          <span *ngIf=" this.height.errors.required  &&  this.formValidate"
+                            class="icon-color-bad ">Please enter height </span>
+                          <span *ngIf="this.height.errors.pattern" class=" icon-color-bad ">Not allows more than 99
+                            and
+                            negative values</span>
+                          <div class="controls col-sm-4"> <input class="form-control" type="number" id="width"
+                              name="destAddress" placeholder="Width" [(ngModel)]="load.width"
+                              [formControl]=" this.width">
+                          </div>
+                          <span *ngIf=" this.width.errors.required  &&  this.formValidate"
+                            class="icon-color-bad ">Please enter width </span>
+                          <span *ngIf="this.width.errors.pattern" class=" icon-color-bad ">Not allows more than 99
+                            and
+                            negative values</span>
+                          <div class="controls col-sm-4"> <input class="form-control" type="number" id="length"
+                              name="length" placeholder="Length" [(ngModel)]="load.length" [formControl]=" this.length">
+                          </div>
+                          <span *ngIf=" this.length.errors.required  &&  this.formValidate"
+                            class="icon-color-bad ">Please enter length </span>
+                          <span *ngIf="this.length.errors.pattern" class=" icon-color-bad ">Not allows more than 99
+                            and
+                            negative values</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="weight">
+                        Weight (pounds)
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="number" id="weight" name="weight" placeholder="Weight"
+                          [(ngModel)]="load.weight" [formControl]=" this.weight">
+                        <span *ngIf=" this.weight.errors.required  &&  this.formValidate" class="icon-color-bad ">Please
+                          enter weight </span>
+                        <span *ngIf="this.weight.errors.pattern" class=" icon-color-bad ">Not allows more than 99
+                          and
+                          negative values</span>
+                      </div>
+                    </div>
+                  </div>
+                </div><br>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row" *ngIf="show">
+                      <div class="controls col-sm-6">
+                        <img src="assets/img/qrcode.png" width="70%" style='margin-left: 195px;'>
+                        <h6 style='margin-left: 210px;margin-top: -13px;'>{{cartonId}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="smart-form">
+                  <footer>
+                    <div class="row">
+                      <div class="control-group col-sm-8 col-sm-offset-6">
+                        <button (click)="goBack()" class="btn btn-success">Back</button>
+                        <button *ngIf='!show' type="submit" id="vin_submit" class="btn btn-warning"> ADD
+                        </button>
+                      </div>
+                    </div>
+                  </footer>
+                </div>
+              </form>
+            </fieldset>
+          </div>
+        </sa-widget>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div> -->

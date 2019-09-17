@@ -1,0 +1,123 @@
+<app-error500 [errorname]="getLoadserrorResponse" *ngIf="loadErrorData"></app-error500>
+
+<div [hidden]="loadErrorData" id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                                <i class="fa fa-table"></i>
+                            </span>
+                        <h2>Expenses Details </h2>
+                    </header>
+
+                    <!--<div class="widget-body" style="min-height:48px;">
+                        <div class="smart-form  col-sm-4">
+                            <label class="select">
+                                    <select name="view" class="input-sm" [(ngModel)]="loadQueryData.loadNumber" placeholder="'Select Load'"  (ngModelChange)="getExpensesDetailsbyLoadnum()">
+                                        <option value="" disabled>
+                                            <strong> Select load</strong>
+                                        </option>
+                                        <option *ngFor="let loadValue of loadsList" [value]="loadValue.apptNbr">{{loadValue.apptNbr}}</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                        </div>
+                    </div>-->
+                    <div class="widget-body  ">
+                        <section *ngIf="driverDeleteSuccess" class="text-success text-center"> {{driverDeleteSuccess}} </section>
+                        <section *ngIf="driverDeleteFailure" class="icon-color-bad text-center"> {{driverDeleteFailure}} </section>
+
+                        <sa-datatable id="DataTable" [options]="options" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                            width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Load Number</th>
+                                    <th>Driver</th>
+                                    <th>No. of Expenses</th>
+                                    <th>Total Amount (USD)</th>
+                                    <th>View </th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+
+        <!--<div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                                <i class="fa fa-table"></i>
+                            </span>
+                        <h2>Current Drop Load Details </h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding ">
+                            <table id="LoadDetails" class="table text-center table-striped table-bordered table-hover dataTables-example dataTable dtr-inline display custom-font"
+                                cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Driver Name</th>
+                                        <th>Pickup Location</th>
+                                        <th>Destination</th>
+                                        <th>Estimated Distance</th>
+                                        <th>Estimated Time</th>
+                                        <th>Estimated Arrival Time</th>
+                                        <th>Weather Report</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" *ngIf="!loaddetails" class="text-center">No loads selected</td>
+                                    </tr>
+                                    <tr *ngIf="loaddetails">
+                                        <td>{{loaddetails.driver.firstName}} &nbsp; {{loaddetails.driver.lastName}}</td>
+                                        <td>{{loaddetails.originLocNbr.locAddrName}}</td>
+                                        <td>{{loaddetails.destLocNbr.locAddrName}}</td>
+                                        <td>{{loaddetails.setEstimateDest}}</td>
+                                        <td>{{loaddetails.setEstimateTime}} </td>
+                                        <td>
+                                            <span *ngIf="loaddetails.setEstimateTime">{{loaddetails.setEstimateArrivalTime|moment:"ddd, MMM Do YYYY, h:mm a" }}</span>
+                                        </td>
+                                        <td>
+                                            <div id="imageDiv" style="cursor:pointer">
+                                                <img src='../../../../assets/img/map/weather.png' class='view_weather_details' (click)="viewWeather(loaddetails.driver.latitude,loaddetails.driver.longitude)"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                                <i class="fa fa-table"></i>
+                            </span>
+                        <h2>Load Routing </h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding ">
+                            <div id="map" style="width:100%;height:700px"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>-->
+    </sa-widgets-grid>
+</div>
+
+

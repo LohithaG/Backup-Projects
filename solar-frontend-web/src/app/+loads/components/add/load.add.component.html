@@ -1,0 +1,238 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+          color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Add Load</h2>
+          </header>
+          <div class="widget-body  ">
+
+            <section *ngIf="loadAddSuccess" class="text-success text-center"> {{loadAddSuccess}} </section>
+            <section *ngIf="loadAddFailure" class="icon-color-bad text-center"> {{loadAddFailure}} </section>
+            <br>
+            <fieldset>
+              <form class="form truckAddForm" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)" name="truckAddForm"
+                id="truckAddForm" action="javascript:void(0)" method="post">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="loadNum">
+                        Load Number
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="text" id="loadNum" name="loadNum" placeholder="Load number" [(ngModel)]="load.loadNum"
+                          [formControl]=" this.loadNum" readonly>
+                        <span *ngIf=" this.loadNum.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please
+                          enter load number </span>
+                        <span *ngIf="this.loadNum.hasError('maxlength') ||this.loadNum.hasError('pattern') " class="icon-color-bad">Please
+                          enter valid load number with 10 digits only</span>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="col-sm-2 control-label" for="vendorNum">
+                    Vendor
+                  </label>
+                  <div class="controls col-sm-4">
+                    <select class="form-control" id="vendorNum" name="vendorNum" (change)="getDriversByVendorNum(load.vendorNum)" [(ngModel)]="load.vendorNum"
+                      [ngModelOptions]="{standalone: true}">
+                      <option value='' disabled>Select vendor</option>
+                      <option *ngFor="let vendor of vendorsList" [value]="vendor.vendorNbr">{{vendor.vendorName}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="originNum" [ngClass]="{'has-error':! this.originNum.valid &&  this.originNum}">
+                        Pickup Location
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <!-- [attr.disabled]="complexForm.get('originNum').value!='' ? true:null" -->
+                        <select class="form-control" id="originNum" name="originNum" [formControl]="this.originNum" [(ngModel)]="load.originNum"
+                          (change)="getPickuplocations($event.target.value)">
+                          <option value='' disabled>Select pickup location</option>
+                          <option *ngFor="let location of pickUpLocationList" [value]="location.locNbr" [disabled]="getList(location)">
+                            {{location.locAddrName.toUpperCase()}}</option>
+                        </select>
+                        <span *ngIf="this.originNum.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please
+                          select pickup location</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="appointmentye" [ngClass]="{'has-error':! this.appointmentye.valid &&  this.appointmentye}">
+                        Appointment Type
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <select class="form-control" (change)="getAppointmentType(load.appointmentye)" id="appointmentye" name="appointmentye" [formControl]="this.appointmentye"
+                          [(ngModel)]="load.appointmentye">
+                          <option value='' disabled>Select appointment type</option>
+                          <option *ngFor="let appointment of appointmentTypesList" [value]="appointment.type">
+                            {{appointment.type}}</option>
+                        </select>
+                        <span *ngIf="this.appointmentye.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please select appointment type</span>
+                      </div>
+                    </div>
+                  </div>-->
+                  <label class="col-sm-2 control-label" for="driverId">
+                    Driver
+                  </label>
+                  <div class="controls col-sm-4">
+                    <select class="form-control" id="driverId" name="driverId" [(ngModel)]="load.driverId" [ngModelOptions]="{standalone: true}">
+                      <option value='' disabled>Select driver</option>
+                      <option *ngFor="let driver of driverNameListData" [value]="driver.id">{{driver.firstName}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="geomile" [ngClass]="{'has-error':! this.geomile.valid &&  this.geomile}">
+                        Geofence Miles
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input placeholder="Geofence Miles" class="form-control" type="number" id="geomile" name="geomile" [(ngModel)]="geomiles"
+                          [formControl]=" this.geomile">
+                        <span *ngIf=" this.geomile.hasError('pattern')" class="icon-color-bad">Please enter valid
+                          number
+                          between 1 to 150 only</span>
+                        <span *ngIf=" this.geomile.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please
+                          enter geofence miles </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="highValue">
+                        High Value
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input id="load_high_value" type="checkbox" class="i-checks" [(ngModel)]="load.highValueLoad" [ngModelOptions]="{standalone: true}"
+                          name='highValueLoad' (ngModelChange)="load.highValueLoad=$event?'1':'0'">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="skids">
+                        Skid Drops <font class="icon-color-bad">*</font>
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input class="form-control" type="number" id="skids" name="skids" placeholder="Skid Drops" [(ngModel)]="load.skids" [formControl]="this.skids"
+                          (change)="getSkidsCount($event)">
+                        <span *ngIf=" this.skids.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please
+                          enter number of skid drops </span>
+                        <span *ngIf=" this.skids.hasError('pattern') " class="icon-color-bad">Please enter valid number
+                          between 1 and 10 only</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label" for="highValue">
+                        High Priority
+                      </label>
+                      <div class="controls col-sm-6">
+                        <input id="load_high_priority" type="checkbox" class="i-checks" [(ngModel)]="load.highPriorityLoad" [ngModelOptions]="{standalone: true}"
+                          name='highPriorityLoad' (ngModelChange)="load.highPriorityLoad=$event?'1':'0'">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row" *ngIf="!this.skids.hasError('pattern')">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-8">
+                    <div class="table-responsive">
+                      <table class="table table-bordered" *ngIf="complexForm.get('skidList').length" style="width: 100%">
+                        <thead>
+                          <tr class="text-center">
+                            <th style="width: 10%">Skid Id</th>
+                            <th style="width:20%">Load Type</th>
+                            <th style="width: 30%">Destination</th>
+                            <th style="width: 10%">Cartons</th>
+                            <th style="width: 20%">Total Miles</th>
+                            <th style="width: 10%">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody formArrayName="skidList" *ngFor="let skid of complexForm.controls['skidList'].controls; let i = index">
+                          <tr [formGroupName]="i" class="text-center">
+                            <td>{{i+1}}</td>
+                            <td>
+                              <select class="form-control" (change)="getAppointmentType(i)" id="appointmentye" name="appointmentye" formControlName="loadType">
+                                <option value=null disabled>Load type</option>
+                                <option *ngFor="let appointment of appointmentTypesList" [value]="appointment.id">
+                                  {{appointment.type}}</option>
+                              </select>
+                              <span *ngIf="skid.get('loadType').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please
+                                Select Load type</span>
+                            </td>
+                            <td>
+                              <select class="form-control" id="destinNum" name="destinNum" formControlName='skidDestination' (change)="getSkidLocations($event.target.value, i)">
+                                <option value=null disabled>Select skid drop location</option>
+                                <option *ngFor="let location of loadTypedestinations[i]" [value]="location.locNbr"
+                                  [disabled]="getList(location)">
+                                  {{location.locAddrName.toUpperCase()}}</option>
+                              </select>
+                              <span *ngIf="skid.get('skidDestination').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please Select Destination</span>
+                            </td>
+                            <td>
+                              <input placeholder="Cartons" class="form-control" type="number" id="cartons" name="cartons" formControlName='skidDropcartons'>
+                              <span *ngIf="skid.get('skidDropcartons').hasError('required') &&  this.formValidate" class=" icon-color-bad ">Please enter no.of cartons</span>
+                              <span *ngIf="skid.get('skidDropcartons').hasError('pattern') &&  this.formValidate" class=" icon-color-bad ">Allows
+                                only 5-150 Cartons only </span>
+                            </td>
+
+                            <td>
+                              <input readonly miles class="form-control" type="number" id="cartons" name="cartons" formControlName='miles_ui'>
+                            </td>
+
+                            <td (click)="skidDelete(i,skid.get('skidDestination').value)" type="button">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="smart-form">
+                  <footer>
+                    <div class="row">
+                      <div class="control-group col-sm-6 col-sm-offset-6">
+                        <button (click)="goBack()" class="btn btn-warning">Cancel</button>
+                        <button type="submit" id="vin_submit" class="btn btn-success"> Add
+                        </button>
+                      </div>
+                      <input type="button" (click)="showMap()" style="float:left" class="btn btn-primary" value="View Route Map">
+                    </div>
+                  </footer>
+                </div>
+              </form>
+            </fieldset>
+            <div id="map" style="width:100%;height:500px"></div>
+          </div>
+        </sa-widget>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div>

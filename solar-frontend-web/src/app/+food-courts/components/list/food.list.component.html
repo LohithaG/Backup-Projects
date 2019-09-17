@@ -1,0 +1,115 @@
+<!-- <app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500> -->
+
+<div [hidden]="serviceErrorData" id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+          color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Food Court Details </h2>
+            <div class="widget-toolbar" role="menu">
+              <a class="btn btn-primary" routerLink="/food/addFood"> Add Food Court</a>
+            </div>
+          </header>
+          <div>
+
+            <div class="widget-body  ">
+              <section *ngIf="foodDeleteSuccess" class="text-success text-center"> {{foodDeleteSuccess}} </section>
+              <section *ngIf="foodDeleteFailure" class="icon-color-bad text-center"> {{foodDeleteFailure}} </section>
+
+              <sa-datatable id="DataTable" [options]="options" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                width="100%">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Edit/Delete </th>
+                  </tr>
+                </thead>
+              </sa-datatable>
+            </div>
+          </div>
+        </sa-widget>
+
+      </div>
+    </div>
+
+  </sa-widgets-grid>
+</div>
+
+<div bsModal #foodviewPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="foodviewPopup.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Food Courts Details</h4>
+      </div>
+      <div class="modal-body" *ngIf="foodListView">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="row">
+              <div class=" col-xs-4 col-sm-4 padding-5 ">
+                <b> Name </b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-7 col-sm-7 padding-5">
+                {{foodListView?.name}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class=" col-xs-4 col-sm-4 padding-5  ">
+                <b>Address </b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class=" col-xs-7 col-sm-7 padding-5">
+                {{foodListView?.address}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="row">
+              <div class=" col-xs-4 col-sm-4 padding-5 ">
+                <b>Latitude </b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-7 col-sm-7 padding-5" style="word-wrap: break-word;">
+                {{foodListView?.latitude}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class=" col-xs-4 col-sm-4 padding-5  ">
+                <b>Longitude </b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class=" col-xs-7 col-sm-7 padding-5">
+                {{foodListView?.longitude}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="foodviewPopup.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,220 @@
+<div id="ribbon" style="background:none">
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-10 col-xs-10" style="padding-right:0px">
+        <div class="row" style="padding:14px;border-bottom:1px solid #ddd;background-color:#DBEAF9">
+            <div class="col-sm-4 col-xs-4" style="padding-right:0px;">
+                <b class="load-subtitle"> Delivery Inspection</b><br> {{skidName}}
+                <!--<br>{{loadInformation.loadNumber}}-->
+            </div>
+            <!--<div class="col-sm-3 col-xs-3" style="padding:0px;">
+                <b class="load-subtitle"> Load Number </b> <br>{{loadInformation.loadNumber}}
+            </div>-->
+            <div class="col-sm-2 col-xs-2" style="padding:0px;">
+                <b class="load-subtitle"> Driver</b> <br>{{loadInformation.driver.firstName}}
+            </div>
+            <div class="col-sm-4 col-xs-4" style="padding:0px;">
+                <b class="load-subtitle"> Date & Time</b> <br>{{CurrentTime|date:'yyyy/MM/dd; hh:mm:ss a'}}
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="row ">
+                <div class="col-sm-12 col-xs-12">
+                    <input class="form-control" [(ngModel)]="cartonId" (keyup)="getCartonSearch()" placeholder="Search by Carton QR Code / Skid Drop ">
+                </div>
+            </div>
+            <div class="panel panel-default" style="margin-bottom:0px;background-color:#DBEAF9">
+                <div class="panel-body" style="padding:14px 0px">
+                    <div class="row load-view" style="margin-left:0px">
+                        <div class="col-sm-3 col-xs-3">
+                            <span class="value-color" style="color:#009999">Carton QR Code</span>
+                        </div>
+                        <div class="col-sm-2 col-xs-2" style="text-align:center">
+                            <span class="value-color" style="color:#009999">Weight(lbs)</span>
+                        </div>
+                        <div class="col-sm-4 col-xs-4" style="text-align:center">
+                            <span class="value-color" style="color:#009999">Dimensions(W*L*H)</span>
+                        </div>
+                        <div class="col-sm-3 col-xs-3" style="text-align:center">
+                            <span class="value-color" style="color:#009999">Insp. Status</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="inspectionData.length==0" class="panel panel-default">
+                <div class="panel-body" style="text-align:center"> No matching cartons found</div>
+            </div>
+            <div *ngFor="let inspect of inspectionData;let i=index">
+                <div class="panel panel-default" style="margin-bottom:0px">
+                    <div class="panel-body">
+                        <div class="row load-view">
+                            <div class="col-sm-3 col-xs-3" style="padding:0px;text-align:center">
+                                <span class="value-color">{{inspect?.cartons.cartonId}}                               </span>
+                            </div>
+                            <div class="col-sm-2 col-xs-2" style="padding:0px;text-align:center">
+                                <span class="value-color">{{inspect?.cartons.weight}}</span>
+                            </div>
+                            <div class="col-sm-4 col-xs-4" style="padding:0px;text-align:center">
+                                <span class="value-color">
+                                    {{inspect.cartons.width}}*{{inspect.cartons.length}}*{{inspect.cartons.height}}</span>
+                            </div>
+                            <div class="col-sm-3 col-xs-3" style="padding:0px;text-align:center">
+                                <img src="./assets/img/grey_c.png" width="30%" *ngIf="inspect.status=='Validate'">
+                                <img src="./assets/img/green_.png" width="30%" *ngIf="inspect.status=='Good'">
+                                <img src="./assets/img/warning.png" width="30%" *ngIf="inspect.status=='Bad'">&nbsp;
+                                <img src="./assets/img/down_.png" width="30%" (click)="showInspectionDetails(i)" *ngIf="dropdownData.index!=i">
+                                <img src="./assets/img/up_.png" width="30%" (click)="showInspectionDetails(i)" *ngIf="dropdownData.index==i">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div *ngIf="dropdownData.index==i" style="background-color:darkgrey">
+                    <div class="row" style="margin-left:2px" *ngFor="let exp of exceptionsObj">
+                        <div class="col-sm-12 col-xs-12" style="margin-top:5px"></div>
+                        <div class="col-sm-2 col-xs-4">
+                            <b>Area</b><br>
+                            <span class="expand-value">{{exp.exceptionDetails.exceptionArea.exceptionArea}}</span>
+                        </div>
+                        <div class="col-sm-2 col-xs-4">
+                            <b>Type</b><br>
+                            <span class="expand-value">{{exp.exceptionDetails.exceptionType.exceptionType}}</span>
+                        </div>
+                        <div class="col-sm-2 col-xs-4">
+                            <b>Severity</b><br>
+                            <span class="expand-value">{{exp.exceptionDetails.exceptionSeverity.exceptionSeverity}}</span>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-3" *ngFor="let img of exp.damageImages">
+                                    <img [src]="'data:image/jpg;base64,'+img.damageImages" width="100%" height="100px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom: 5px;border-bottom: 1px solid white;margin-top: 6px;"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div *ngIf="signatureStatus" style="margin-left:20px;margin-top:2px">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <b style="margin-bottom:2px">Driver Signature <font class="icon-color-bad">*</font></b>
+                        <signature-pad #sing1 [options]="signaturePadOptions" (onBeginEvent)="driverSign()" (onEndEvent)="driverSign()" id="sign1">
+                        </signature-pad><br>
+                        <b (click)="driverSignClear()" style="text-decoration:underline;margin-top:2px;margin-bottom:2px">Clear</b><br>
+                        <b *ngIf="driverSignStatus" class="icon-color-bad">Driver Signature is required</b><br>
+                        <textarea type="text" class="form-control" value='' placeholder="comments" [(ngModel)]="driverComment" [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <b style="margin-bottom:2px">Manager Signature <font class="icon-color-bad">*</font></b>
+                        <signature-pad #sing2 [options]="signaturePadOptions" (onBeginEvent)="insepetorSign()" (onEndEvent)="insepetorSign()" id="sign2">
+                        </signature-pad><br>
+                        <b (click)="dcSignClear()" style="text-decoration:underline;margin-top:2px;margin-bottom:2px">Clear</b><br>
+                        <b *ngIf="insptrSignStatus" class="icon-color-bad">Manager Signature is required</b><br>
+                        <textarea type="text" class="form-control" value='' placeholder="comments" [(ngModel)]="inspectorComment" [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-4"></div>
+                    <div class="col-sm-4 col-xs-4">
+                        <footer>
+                            <section *ngIf="insepectionSuccessMsg" class="text-success text-center"> {{insepectionSuccessMsg}}
+                            </section>
+                            <section *ngIf="insepectionErrorMsg" class="icon-color-bad text-center"> {{insepectionErrorMsg}}
+                            </section>
+                            <div class="row">
+                                <div class="control-group col-sm-8 col-sm-offset-4">
+                                    <button class="btn  btn-warning btn-sm" (click)="goBack()">Cancel</button>
+                                    <button class="btn  btn-success btn-sm" (click)="addInsepctionWithSignature()">
+                                Submit </button>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                    <div class="col-sm-4 col-xs-4"></div>
+                </div>
+
+            </div>
+            <br><br><br>
+        </div>
+    </div>
+    <div class="col-sm-2 col-xs-2" style="padding-left:0px" (click)="!signatureStatus && validateCarton()">
+        <img src="./assets/img/qrCode.jpg" width="100%" style="position:fixed">
+    </div>
+    <!--<div class="footer">
+        <img src="./assets/img/qr-code.png" (click)="validateCarton()">
+    </div>-->
+</div>
+
+<div>
+    <div *ngIf="loaderBtn">
+        <div class="ui-overlay-c">
+            <div class="loading" style=" margin: 0;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);">
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--<div bsModal #cartonInfoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">-->
+
+<div bsModal #cartonInfoModal="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+    role="dialog" aria-labelledby="myLargeModalLabel" style="top:5%">
+    <div class="row">
+        <div class="col-sm-2 col-xs-2"></div>
+        <div class="col-sm-8 col-xs-8">
+            <div class="modal-dialog">
+                <div class="modal-content status">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="modalClose()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                        <b>Carton Information</b>
+                    </div>
+                    <div class="modal-body">
+                        <!--{{ScannedCartonInfo|json}}-->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4"><b>Dimensions(W*L*H)</b></div>
+                                    <div class="col-sm-2 col-xs-2">:</div>
+                                    <div class="col-sm-6 col-xs-6">
+                                        {{ScannedCartonInfo.width}}*{{ScannedCartonInfo.length}}*{{ScannedCartonInfo.height}}
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-4"><b>Weight (lbs)</b></div>
+                                    <div class="col-sm-2 col-xs-2">:</div>
+                                    <div class="col-sm-6 col-xs-6">{{ScannedCartonInfo.weight}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" (click)="setDamageCondition()">Damage</button>
+                        <button type="button" class="btn btn-success" (click)="setGoodCondition()">Good</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 col-xs-2"></div>
+    </div>
+
+</div>
+<popup [popupMessage]="popupMessage" [popupRoute]="popupRoute" [title]="title"></popup>

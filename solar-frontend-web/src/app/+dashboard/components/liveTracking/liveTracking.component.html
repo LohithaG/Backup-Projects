@@ -1,0 +1,235 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+	<sa-widgets-grid>
+		<div class="row">
+			<div class="col-sm-12">
+				<sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+					color="blueDark">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+						</span>
+						<h2>Live Tracking - Driver Current Locations </h2>
+					</header>
+
+					<div class="widget-body" style="min-height:48px;">
+						<div class="smart-form  col-sm-4">
+							<label class="select">
+								<select name="view" class="input-sm" [(ngModel)]="loadQueryData.loadNumber"
+									 placeholder="'Select Load'">
+									<option value="" disabled>
+										<strong> Select driver</strong>
+									</option>
+									<option *ngFor="let loadValue of loadData" [value]="loadValue.loadNumber" (click)="onChange(loadValue)">
+										{{loadValue.driver.firstName}}</option>
+								</select>
+								<i></i>
+							</label>
+						</div>
+						<div>
+							<input type="button" title="Submit" class="btn btn-success" id="filter-submit" value="Reset" (click)="reset()">
+
+						</div>
+					</div>
+
+
+
+					<div class="widget-body-toolbar markers" style="padding-left:8%">
+						<div class="row">
+							<div class="col-sm-4 col-xs-6">
+								<div class="highPriorityLoadMarker"></div>&nbsp;
+								<input type="checkbox" id="chkHighPriorityLoad" [(ngModel)]="highprioritySelected" (change)="LoadFilter(highprioritySelected,1)">
+								<label for="chkHighPriorityLoad">{{highprioritySelected?'✔ High Priority Load':'X High Priority Load'}}</label>
+							</div>
+							<div class="col-sm-4 col-xs-6">
+								<div class="highValueLoadMarker"></div>&nbsp;
+								<input type="checkbox" id="chkHighValueLoad" [(ngModel)]="highvalueSelected" (change)="LoadFilter(highvalueSelected,2)">
+								<label for="chkHighValueLoad">{{highvalueSelected?'✔ High Value Load':'X High Value Load'}}</label>
+							</div>
+							<div class="col-sm-4 col-xs-6">
+								<div class="normalLoadMarker"></div>&nbsp;
+								<input type="checkbox" id="chkNormalLoad" [(ngModel)]="normalloadSelected" (change)="LoadFilter(normalloadSelected,3)">
+								<label for="chkNormalLoad">{{normalloadSelected?'✔ Normal Load':'X Normal Load'}}</label>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="widget-body no-padding ">
+							<div class="map" id="map">
+							</div>
+						</div>
+					</div>
+				</sa-widget>
+			</div>
+		</div>
+
+
+
+		<!--popup-->
+		<div bsModal #loadviewPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" (click)="loadviewPopup.hide()" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">Load Details</h4>
+					</div>
+					<div class="modal-body" *ngIf="loadViewData">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>Load Number </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										{{loadViewData?.loadDetails.loadNumber}}
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>Pickup Location </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class=" col-xs-6 col-sm-5">
+										{{loadViewData?.loadDetails.originLocNbr.locAddrName}}
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>No.of Skiddrops </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										{{loadViewData?.completedSkidDropsCount+loadViewData?.skidDropDetails.length}}
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>Completed Skiddrops </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										{{loadViewData?.completedSkidDropsCount}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>Next Skiddrop</b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										{{nextSkidInfo?.skidDrop.destLocNbr.locAddrName}}
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>Destination Location</b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class=" col-xs-6 col-sm-5">
+										{{lastskidDropInfo?.skidDrop.destLocNbr.locAddrName}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>ETA to next Skiddrop</b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										{{nextSkidInfo.time}}
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>ETA to Destination</b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										{{lastskidDropInfo.time}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>Driver Name </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class=" col-xs-6 col-sm-5">
+										{{loadViewData?.loadDetails.driver?.firstName}}
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>High Value </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class=" col-xs-6 col-sm-5">
+										<label>
+											<input type="checkbox" [(ngModel)]="loadViewData.loadDetails.highValueLoad"
+												onclick="return false;" />
+										</label>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-xs-12 col-sm-6 padding-10">
+								<div class="row">
+									<div class=" col-xs-5 col-sm-5">
+										<b>High Priority </b>
+									</div>
+									<div class="col-xs-1 col-sm-1">:</div>
+									<div class="col-xs-6 col-sm-5">
+										<label>
+											<input type="checkbox"
+												[(ngModel)]="loadViewData.loadDetails.highPriorityLoad"
+												onclick="return false;" />
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" (click)="loadviewPopup.hide()">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</sa-widgets-grid>
+</div>

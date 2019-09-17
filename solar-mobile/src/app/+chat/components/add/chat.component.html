@@ -1,0 +1,51 @@
+<div class="content-top clearfix">
+    <h1 class="al-title">{{ activePageTitle }}</h1>
+    <ul class="breadcrumb al-breadcrumb">
+        <li class="breadcrumb-item active">{{ activePageTitle }}</li>
+    </ul>
+</div>
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div id="expenses-page">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="animated fadeIn card">
+                            <div class="card-body">
+                                <div class="scroll">
+                                    <div *ngFor="let message of this.chatMessages">
+                                        <div *ngIf="message.toComponentName === 'driver'">
+                                            <div class="container">
+                                                <p class="time-left">{{message.data}}<br>{{message.dateNotified| date :'short'}}</p>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="message.toComponentName !== 'driver'">
+                                            <div class="container">
+                                                <p class="time-right">{{message.data}}<br>{{message.dateReceived| date :'short'}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        <textarea rows="4" cols="56" class="notification-msg" [(ngModel)]="notificationMessage" style='color: black;' id="notification-msg"
+                                            [value]='notificationMessage'></textarea>
+                                        <div class="redFont">
+                                            {{chatErrorMsg}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <input type="button" class="btn btn-sm btn-primary" id="notification-send" value="Send" (click)="sendMessagesToDriver(notificationMessage)">
+                                        <button class="btn btn-default" type="button" id="filter-reset" (click)="reset()">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

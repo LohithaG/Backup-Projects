@@ -1,0 +1,170 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Update Carton</h2>
+                    </header>
+                    <div class="widget-body  ">
+                        <fieldset>
+                            <section *ngIf="loadUpdateSuccess" class="text-success text-center"> {{loadUpdateSuccess}}
+                            </section>
+                            <section *ngIf="loadUpdateFailure" class="icon-color-bad text-center"> {{loadUpdateFailure}}
+                            </section>
+                            <br>
+
+                            <form class="form truckUpdateForm" [formGroup]="complexForm" (ngSubmit)="updateCarData()" name="truckUpdateForm" id="truckUpdateForm"
+                                method="post">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="loadNum">
+                                                Load Number
+                                                <font class="icon-color-bad">*</font>
+                                            </label>
+
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="text" id="loadNumber" name="loadNumber" placeholder="loadNumber" [(ngModel)]="updateCarObj?.loadNumber.loadNumber"
+                                                    [formControl]=" this.loadNum" readonly>
+                                                <span *ngIf=" this.loadNum.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please enter Load number </span>                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="loadNum">
+                                                Carton QR Code
+                                                <font class="icon-color-bad">*</font>
+                                            </label>
+
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="text" id="loadNumber" name="loadNumber" placeholder="Carton QR Code" [(ngModel)]="updateCarObj.cartonId"
+                                                    readonly [ngModelOptions]="{standalone: true}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="loadNum">
+                                                Destination
+                                                <font class="icon-color-bad">*</font>
+                                            </label>
+
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="text" id="loadNumber" name="loadNumber" placeholder="loadNumber" [(ngModel)]="updateCarObj.destinationLocation.locAddrName"
+                                                    readonly [ngModelOptions]="{standalone: true}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="loadNum">
+                        Skid Drops
+                        <font class="icon-color-bad">*</font>
+                      </label>
+                                            <div class="controls col-sm-6">
+                                                <select class="form-control" id="skidDrop" name="skidDrop" [formControl]="this.skidDrop" [(ngModel)]="updateCarObj?.destinationLocation.locNbr">
+                          <option value='' disabled>Select Skid Drop</option>
+                          <option *ngFor="let skid of skidDropList" [value]="skid.destLocNbr.locNbr" >{{skid.destLocNbr.locNbr}}</option>
+                        </select>
+                                                <span *ngIf="this.skidDrop.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please select skid drop </span>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="length">
+                                                Length (inches)
+                                                <font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="number" id="length" name="length" placeholder="Length" [(ngModel)]="updateCarObj.length"
+                                                    [formControl]=" this.length">
+                                                <span *ngIf=" this.length.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please enter length </span>
+                                                <span *ngIf="this.length.hasError('pattern')" class=" icon-color-bad ">Not allows more than 49 and
+                                                    negative values</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="width">
+                                                Width (inches)
+                                                <font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="number" id="width" name="destAddress" placeholder="Width" [(ngModel)]="updateCarObj.width"
+                                                    [formControl]=" this.width">
+                                                <span *ngIf=" this.width.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please enter width </span>
+                                                <span *ngIf="this.width.hasError('pattern')" class=" icon-color-bad ">Not allows more than 49 and
+                                                    negative values</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="height">
+                                                Height (inches)
+                                                <font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="number" id="height" name="height" placeholder="Height" [(ngModel)]="updateCarObj.height"
+                                                    [formControl]=" this.height">
+                                                <span *ngIf=" this.height.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please enter height </span>
+                                                <span *ngIf="this.height.hasError('pattern')" class=" icon-color-bad ">Not allows more than 49 and
+                                                    negative values</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" for="weight">
+                                          Weight (lbs)
+                                          <font class="icon-color-bad">*</font>
+                                        </label>
+                                            <div class="controls col-sm-6">
+                                                <input class="form-control" type="number" id="weight" name="weight" placeholder="Weight" [(ngModel)]="updateCarObj.weight"
+                                                    [formControl]=" this.weight">
+                                                <span *ngIf=" this.weight.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please enter weight </span>
+                                                <span *ngIf="this.weight.hasError('pattern')" class=" icon-color-bad ">Not allows more than 499 and
+                                                negative values</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <div class="smart-form">
+                                    <footer>
+                                        <div class="row">
+
+                                            <div class="control-group col-sm-5 col-sm-offset-5">
+                                                <button (click)="goBack()" class="btn btn-warning">Cancel</button>
+                                                <button type="submit" class="btn btn-success">
+                                                    Update</button>
+
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

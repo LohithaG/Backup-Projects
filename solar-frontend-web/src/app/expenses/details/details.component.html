@@ -1,0 +1,70 @@
+<app-error500 [errorname]="getLoadserrorResponse" *ngIf="loadErrorData"></app-error500>
+
+<div [hidden]="loadErrorData" id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                                <i class="fa fa-table"></i>
+                            </span>
+                        <h2>Expenses List </h2>
+                    </header>
+                    <div class="widget-body  ">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Amount (USD)</th>
+                                        <th>Date</th>
+                                        <th>Receipt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let expense of expensesList">
+                                        <td>{{expense.expenseType.expenseType}}</td>
+                                        <td>{{expense.amount}}</td>
+                                        <td>{{expense.billDate| date: 'yyyy/MM/dd'}}</td>
+                                        <td (click)="viewImage(expense)"><i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+
+<div bsModal #weatherDetailsModal="bs-modal" top='10%' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content status">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="weatherDetailsModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                <b>{{expensesObj?.expenseTypeId.expenseType}} Receipt</b>
+            </div>
+
+            <div class="modal-body loader" *ngIf="weatherLoader" align="center">
+            </div>
+
+            <div class="modal-body">
+                <img [src]="receiptImage" width="100%" />
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="weatherDetailsModal.hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

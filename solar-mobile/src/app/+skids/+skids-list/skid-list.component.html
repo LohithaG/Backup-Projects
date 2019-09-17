@@ -1,0 +1,92 @@
+<div class="headerRibbon" id="ribbon">
+    <!--<span class="ribbon-button-alignment breadcrumb">
+        <b style="color:#009999;font-weight:bold"> Load Details{{pickupInspectionLoc}}</b>
+    </span>-->
+</div>
+
+<div class="panel panel-default" style="margin-bottom:0px">
+    <div class="panel-body" style="padding:7px 0px;background:#afd1f2">
+        <div class="row load-view" style="color:#009999">
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b>Load Number</b>
+            </div>
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b>Trip Miles  </b>
+            </div>
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b>Cartons</b>
+            </div>
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b>Skid Drops</b>
+            </div>
+        </div>
+        <div class="row load-view" style="color:white">
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b class="load-subtitle">{{loadObj.loadNumber}}</b>
+            </div>
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b class="load-subtitle">{{pendingInfo?.remainingMiles.toFixed(2)}}/{{loadObj.totalMiles.toFixed(2)}} </b>
+            </div>
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b class="load-subtitle">{{pendingInfo?.remainingCartons}}/{{loadObj.totalCartons}} </b>
+            </div>
+            <div class="col-sm-3 col-xs-3" style="text-align:center">
+                <b class="load-subtitle">{{pendingInfo?.remainingSkids}}/{{loadObj.skidDrops.length}} </b>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default" style="margin-bottom:0px" *ngFor="let skid of skidDrops">
+    <div class="panel-body" style="padding:7px 0px">
+        <div class="row load-view" *ngIf="skidDrops">
+            <div class="row load-view" *ngIf="loadObj">
+                <div class="col-sm-3 col-xs-3" style="text-align:center;padding-right:0px">
+                    <b>Dealer</b>
+                </div>
+                <div class="col-sm-3 col-xs-3" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b>Contact Person</b>
+                </div>
+                <div class="col-sm-3 col-xs-3" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b>Phone </b>
+                </div>
+                <div class="col-sm-1 col-xs-1" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b>State</b>
+                </div>
+                <div class="col-sm-2 col-xs-2" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b>ZIP</b>
+                </div>
+            </div>
+
+            <div class="row load-view" *ngIf="loadObj">
+                <div class="col-sm-3 col-xs-3" style="text-align:center;padding-right:0px">
+                    <b class="load-subtitle"> {{skid.destLocNbr.locAddrName}}</b> <i class="fa fa-check-circle" *ngIf="skid.postInspectionStatus"
+                        style="color:green"></i>
+                </div>
+                <div class="col-sm-3 col-xs-3" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b class="load-subtitle"> {{skid.destLocNbr.contactPerson}}</b>
+                </div>
+                <div class="col-sm-3 col-xs-3" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b class="load-subtitle">{{skid.destLocNbr.phoneNumber}}</b>
+                </div>
+                <div class="col-sm-1 col-xs-1" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b class="load-subtitle"> {{skid.destLocNbr.state}} </b>
+                </div>
+                <div class="col-sm-2 col-xs-2" style="text-align:center;padding-left:0px;padding-right:0px">
+                    <b class="load-subtitle">{{skid.destLocNbr.zipCode}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6 col-xs-6" style="text-align:center">
+        <button type="button" class="btn btn-success" (click)="acceptLoad()" *ngIf="acceptBtnStatus" style="float:right" [disabled]="btnStaus">Accept</button>
+        <button type="button" class="btn btn-primary" (click)="goToSkids()" *ngIf="inspectionStatus" style="float:right">Pickup Inspection</button>
+        <button type="button" class="btn btn-warning" (click)="gotoMaps()" *ngIf="navigateMaps" style="float:right">Navigate To Maps</button>
+    </div>
+    <div class="col-sm-6 col-xs-6" style="text-align:center">
+        <button type="button" class="btn btn-primary" (click)="goBack()" style="float:left">Cancel</button>
+    </div>
+</div>

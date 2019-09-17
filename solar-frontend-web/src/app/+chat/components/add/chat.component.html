@@ -1,0 +1,146 @@
+<sa-widget color="blueDark">
+
+    <div class="content-top clearfix">
+        <h1 class="al-title">{{ activePageTitle }}</h1>
+
+    </div>
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg">
+            <div id="expenses-page">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-sm-3">
+                                            <label class="control-label">Driver</label>
+                                            <ng-select [options]="driverNamesList" [multiple]="false" placeholder="Select one" [allowClear]="false" [placeholder]="'Select Driver'"
+                                                [(ngModel)]="driver.id" name="driverNamesList" (ngModelChange)="getDriverChatMessages($event)">
+                                            </ng-select>
+                                            <div class="redFont">
+                                                {{driverErrorMsg}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="chat-list-body custom-scroll">
+                                <div class='message' *ngFor="let message of this.chatMessages">
+                                    <div *ngIf="message.toComponentName === 'driver'">
+                                        <div class="container">
+                                            <p class="time-right">
+                                                <b>{{message.userName}}:</b><br>{{message.data}}<br>{{message.dateNotified|
+                                                date :'short'}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="message.toComponentName !== 'driver'">
+                                        <div class="container">
+                                            <p class="time-left">
+                                                <b>{{message.userName}}:</b><br>{{message.data}}
+                                                <br>{{message.dateReceived| date :'short'}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="chat-footer">
+                                <div class="textarea-div">
+                                    <div class="typearea">
+                                        <textarea rows="4" cols="56" class="pull-left notification-msg" [(ngModel)]="notificationMessage" style='color: black;' id="notification-msg"
+                                            [value]='notificationMessage'></textarea>
+                                    </div>
+                                    <div class="redFont">
+                                        {{chatErrorMsg}}
+                                    </div>
+                                </div>
+
+                                <span class="textarea-controls">
+                                            <input type="button" class="btn btn-sm btn-primary pull-right"
+                                                id="notification-send" value="Send"
+                                                (click)="sendMessagesToDriver(driver.id,notificationMessage)">
+                                            <span class="pull-right smart-form"
+                                                style="margin-top: 3px; margin-right: 10px;"> <label
+                                                    class="checkbox pull-right">
+                                                </label>
+                                            </span>
+                                <a></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widget>
+<sa-widget>
+    <div class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable" id="wid-id-1" data-widget-editbutton="false"
+        data-widget-fullscreenbutton="false" role="widget">
+
+        <header role="heading" class="ui-sortable-handle">
+            <div class="jarviswidget-ctrls" role="menu"> <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom"
+                    data-original-title="Collapse"><i class="fa fa-minus"></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn"
+                    rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
+            <span class="widget-icon"> <i class="fa fa-comments txt-color-white"></i> </span>
+            <h2> SmartMessage </h2>
+        </header>
+
+        <!-- widget div-->
+        <div role="content" style="">
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <div>
+                    <label>Title:</label>
+                    <input type="text">
+                </div>
+            </div>
+            <!-- end widget edit box -->
+
+            <div class="widget-body widget-hide-overflow no-padding">
+                <!-- content goes here -->
+
+                <!-- CHAT BODY -->
+                <div id="chat-body" class="chat-body custom-scroll">
+                    <ul>
+                        <li class="message">
+                            <div class="message-text" style="margin-left:0px">
+                                <a href="javascript:void(0);" class="username">John Doe</a> Haha! Yeah I know what you mean.
+                                Thanks for the file Sadi!
+                            </div>
+                        </li>
+                        <li class="message">
+                            <div class="message-text" style="margin-left:0px">
+                                <a href="javascript:void(0);" class="username"></a>skldjfnhskdfjnsdkgdsnkg sdibnsk gdifgbd f
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CHAT FOOTER -->
+                <div class="chat-footer">
+                    <!-- CHAT TEXTAREA -->
+                    <div class="textarea-div">
+                        <div class="typearea">
+                            <textarea placeholder="Write a reply..." id="textarea-expand" class="custom-scroll"></textarea>
+                        </div>
+                    </div>
+                    <!-- CHAT REPLY/SEND -->
+                    <span class="textarea-controls">
+								<button class="btn btn-sm btn-primary pull-right">
+									Reply
+								</button> <span class="pull-right smart-form" style="margin-top: 3px; margin-right: 10px;"> <label class="checkbox pull-right">
+										<input type="checkbox" name="subscription" id="subscription">
+										<i></i>Press <strong> ENTER </strong> to send </label> </span>
+                    <a href="javascript:void(0);" class="pull-left"><i class="fa fa-camera fa-fw fa-lg"></i></a>
+                    </span>
+                </div>
+                <!-- end content -->
+            </div>
+        </div>
+        <!-- end widget div -->
+    </div>
+</sa-widget>

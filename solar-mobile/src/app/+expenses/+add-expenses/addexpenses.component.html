@@ -1,0 +1,139 @@
+<!--<div class="headerRibbon" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <span class="btn btn-ribbon" placement="bottom">
+            <i class="fa fa-truck"></i>
+        </span> Expenses
+    </span>
+</div>-->
+
+<div class="headerRibbon ribbonForceColr" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <b style="color:#009999;font-weight:bold">  Expenses </b>
+    </span>
+</div>
+<div>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <div class="widget-body">
+                        <form class="form" [formGroup]="complexForm" method="post">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-8">
+                                        <div class="row">
+                                            <label class="col-sm-4  col-xs-4 control-label " for="loadNumber">
+                                                <b>Load Number</b><font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6 col-xs-6">
+                                                <select class="form-control" id="LoadId" name="LoadId" formControlName="loadNumbers" [(ngModel)]="addExpenseObj.loadNumber.apptNbr">
+                                                    <option value='' disabled>Select Load</option>
+                                                    <option *ngFor="let load of loadNumbersList" [value]="load.loadNumber">{{load.loadNumber}}</option>
+                                                </select>
+                                                <span *ngIf=" complexForm.controls['loadNumbers'].hasError('required') &&formValidate" class=" icon-color-bad ">Please
+                                                        select load number</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-4">
+                                        <label><b>Bill Image</b> <font class="icon-color-bad">*</font></label>
+                                        <span *ngIf="receiptImg" (click)="deleteReceiptImg()" class="close-tag"></span>
+                                        <span *ngIf="!receiptImg">&nbsp;</span>
+                                        <img [src]="receiptImg" width="50%" height="100px" *ngIf="receiptImg"><br>
+                                        <span *ngIf="receiptImg" (click)="deleteReceiptImg()" class="close-tag">Remove</span>
+                                        <img src="./assets/img/bill_1.png" width="50%" height="100px" *ngIf="!receiptImg" (click)="takePicture()"><br><br>
+                                        <a><span ><i  class="glyphicon"></i></span></a>
+                                        <span *ngIf="receiptImg=='' &&formValidate" class=" icon-color-bad ">Please
+                                                upload bill image</span>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-8" style="margin-top: -132px;">
+                                        <div class="row">
+                                            <label class="col-sm-4 col-xs-4 control-label split-input">
+                                                <b> Amount(USD)</b> <font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6 col-xs-6">
+                                                <input type="number" class="form-control" formControlName="amount" id="amount" name="amount" [(ngModel)]="addExpenseObj.amount"
+                                                    placeholder="amount">
+                                                <span *ngIf=" complexForm.controls['amount'].hasError('required') &&formValidate" class=" icon-color-bad ">Please
+                                                        enter amount</span>
+                                                <span *ngIf=" complexForm.controls['amount'].hasError('pattern') " class=" icon-color-bad ">Allows only 1 to 1000 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-8" style="margin-top: -95px;">
+                                        <div class="row">
+                                            <label class="col-sm-4 col-xs-4 control-label split-input">
+                                                <b> Expense type</b> <font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6 col-xs-6">
+                                                <select class="form-control" id="LoadId" formControlName="expenseType" name="LoadId" [(ngModel)]="addExpenseObj.expenseTypeId.id">
+                                                    <option value='' disabled>Select Type</option>
+                                                    <option *ngFor="let list of expensesTypes" [value]="list.id">{{list.expenseType}}</option>
+                                                </select>
+                                                <span *ngIf=" complexForm.controls['expenseType'].hasError('required') &&formValidate" class=" icon-color-bad ">Please
+                                                        select expense type</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-8" style="margin-top: -60px;">
+                                        <div class="row">
+                                            <label class="col-sm-4 col-xs-4 control-label split-input">
+                                                <b>Bill Date</b> <font class="icon-color-bad">*</font>
+                                            </label>
+                                            <div class="controls col-sm-6 col-xs-6">
+                                                <my-date-picker [options]="myDatePickerOptions" formControlName="billDate" name="startDate" placeholder="YYYY-MM-DD">
+                                                </my-date-picker>
+                                                <span *ngIf=" complexForm.controls['billDate'].hasError('required') &&formValidate" class=" icon-color-bad ">Please
+                                                        select bill date</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <section *ngIf="addExpenceDetailsSuccessMsg" class="text-success text-center">
+                                        {{addExpenceDetailsSuccessMsg}} </section>
+                                    <section *ngIf="addExpenceDetailsErrorMsg" class="icon-color-bad text-center">
+                                        {{addExpenceDetailsErrorMsg}} </section>
+                                    <div class="col-sm-4 col-xs-4">
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <button (click)="addExpensesDetails()" class="btn btn-primary">
+                                            SUBMIT
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+        <div>
+            <div *ngIf="loaderBtn">
+                <div class="ui-overlay-c">
+                    <div class="loading" style=" margin: 0;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);">
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

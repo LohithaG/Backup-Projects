@@ -1,0 +1,261 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+          color="blueDark">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Loads Details </h2>
+            <div class="widget-toolbar" role="menu">
+              <a class="btn btn-primary" routerLink="/loads/addLoad"> Add Load</a>
+            </div>
+          </header>
+          <div>
+
+            <div class="widget-body  ">
+              <section *ngIf="loadDeleteSuccess" class="text-success text-center"> {{loadDeleteSuccess}} </section>
+              <section *ngIf="loadDeleteFailure" class="icon-color-bad text-center"> {{loadDeleteFailure}} </section>
+
+              <sa-datatable id="DataTable" [options]="options" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                width="100%">
+                <thead>
+                  <tr>
+                    <th>Load Number</th>
+                    <th>Pickup Location</th>
+                    <th>Destination Location</th>
+                    <th>Driver Name</th>
+                    <th>Skid Drops</th>
+                    <th>Total Cartons </th>
+                    <th>Added Cartons</th>
+                    <!--<th>Vendor Name</th> -->
+                    <th>Load Status</th>
+                    <th> Edit / View/ Delete/ Push</th>
+                  </tr>
+                </thead>
+              </sa-datatable>
+            </div>
+          </div>
+        </sa-widget>
+      </div>
+    </div>
+
+  </sa-widgets-grid>
+</div>
+
+<div bsModal #loadviewPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" *ngIf="loadListView">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="loadviewPopup.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Load Details</h4>
+      </div>
+      <div class="modal-body ">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="row">
+              <div class=" col-xs-5 col-sm-5 padding-5 ">
+                <b>Load Number</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{loadListView?.loadNumber}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class=" col-xs-5 col-sm-5 padding-5  ">
+                <b>Pickup Location</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class=" col-xs-6 col-sm-5 padding-5">
+                {{loadListView?.originLocNbr.locAddrName}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--<div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>Destination Location</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{loadListView?.destLocNbr.locAddrName}}
+              </div>
+            </div>
+          </div>-->
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>Vendor Name</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{loadListView?.vndNbr?.vendorName}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>Driver Name</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{loadListView?.driver?.firstName}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>High Value</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                <label><input type="checkbox" [(ngModel)]="loadListView.highValueLoad"
+                    onclick="return false;" /></label>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>High Priority</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                <label><input type="checkbox" [(ngModel)]="loadListView.highPriorityLoad"
+                    onclick="return false;" /></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>Geofence Miles</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{loadListView?.geomiles}}
+              </div>
+            </div>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 ">
+            <b>List of Skid Drops</b>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Destination</th>
+                <th>Total Cartons</th>
+                <th>Added Cartons</th>
+
+                <th>Total Miles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skid of loadListView?.skidDrops;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{skid.destLocNbr.locAddrName}} - {{skid.skidOrderPerLoad}}</td>
+                <!--{{skid.skidOrderPerLoad}}-->
+                <td>{{skid.totalCartons}}</td>
+                <td>{{skid.addedCartons}}</td>
+                <td>{{skid.totalMiles.toFixed(2)}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div id="map" style="width:100%;height:400px"></div>
+        <button type="button" class="btn btn-default" (click)="loadviewPopup.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div bsModal #pushLoad="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="pushLoad.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Assign Driver</h4>
+      </div>
+      <div class="modal-body ">
+        <form class="form truckAddForm" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)" name="truckAddForm"
+          id="truckAddForm" action="javascript:void(0)" method="post">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row">
+                <label class="col-sm-4 control-label" for="vendorNum" [ngClass]="{'has-error':! this.vendorNum.valid &&  this.vendorNum}">
+                  Vendor
+                  <font class="icon-color-bad">*</font>
+                </label>
+                <div class="controls col-sm-6">
+                  <select class="form-control" id="vendorNum" name="vendorNum" (change)="getDriversByVendorNum(assignVendorId)" [formControl]="this.vendorNum"
+                    [(ngModel)]="assignVendorId">
+                    <option value='' disabled>Select vendor</option>
+                    <option *ngFor="let vendor of vendorsList" [value]="vendor.vendorNbr">{{vendor.vendorName}}</option>
+                  </select>
+                  <span *ngIf="this.vendorNum.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please select vendor name</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row">
+                <label class="col-sm-4 control-label" for="driverId" [ngClass]="{'has-error':! this.driverId.valid &&  this.driverId}">
+                  Driver
+                  <font class="icon-color-bad">*</font>
+                </label>
+                <div class="controls col-sm-6">
+                  <select class="form-control" id="driverId" name="driverId" [formControl]="this.driverId" [(ngModel)]="assignDriverId">
+                    <option value='' disabled>Select driver</option>
+                    <option *ngFor="let driver of driverNameListData" [value]="driver.id">{{driver.firstName}}</option>
+                  </select>
+                  <span *ngIf="this.driverId.hasError('required')  &&  this.formValidate" class="icon-color-bad ">Please
+                    select driver name</span>
+                </div>
+              </div>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-3">
+              <div class="row">
+                <button type="button" class="btn btn-default" (click)="pushLoadHide()">Close</button>
+                <button style='margin-left: 15px;' type="submit" id="vin_submit" class="btn btn-warning"> Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

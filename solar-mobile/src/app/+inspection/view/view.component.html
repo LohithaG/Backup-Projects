@@ -1,0 +1,102 @@
+<div class="headerRibbon" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <span class="btn btn-ribbon" placement="bottom">
+            <i class="fa fa-truck"></i>
+        </span> Inspection View
+    </span>
+</div>
+<div style="margin:1%">
+    <div class="panel panel-default">
+        <div class="panel-heading load-header">
+            <b>Carton QR Code</b> :{{inspectionData?.cartonId}}
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <label class="col-sm-4 control-label" for="condition">
+                                                <b>Dimensions</b>
+                                            </label>
+                            <div class="controls col-sm-6">
+                                {{inspectionData?.length}}*{{inspectionData?.width}}*{{inspectionData?.height}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-4 control-label" for="condition">
+                                                <b>Condition</b>
+                                            </label>
+                        <div class="controls col-sm-6">
+                            <select class="form-control" id="condition" name="condition" [(ngModel)]="cartonStatus" [ngModelOptions]="{standalone: true}">
+                                                    <option *ngFor="let data of conditionList" [value]="data.id">{{data.status}}</option>
+                                                </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="cartonStatus==2">
+                <div *ngFor="let data of imagesList;let i=index">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="controls col-sm-12 sku">
+                                <span (click)="deleteImage(i)" class="close-tag" *ngIf="data.image">X</span>
+                                <span *ngIf="data.image==''">&nbsp;</span>
+                                <img [src]="data.convertedImg" height="200" width="100%" *ngIf="data.image">
+                                <img src="assets/img/photo.png" height="200" width="60%" *ngIf="data.image==''" (click)="pickImage(i)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="cartonStatus==2">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <label class="col-sm-4 control-label" for="comments">
+                                                <b>Comments</b>
+                                            </label>
+                        <div class="controls col-sm-12">
+                            <textarea type="text" class="form-control" value='' placeholder="comments" [(ngModel)]="cartonComments" [ngModelOptions]="{standalone: true}"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section *ngIf="insepectionSuccessMsg" class="text-success text-center"> {{insepectionSuccessMsg}} </section>
+        <section *ngIf="insepectionErrorMsg" class="icon-color-bad text-center"> {{insepectionErrorMsg}} </section>
+
+        <!--<button (click)="addInspectionDeatails()" class="btn btn-primary">Submit</button>-->
+
+        <div class="row">
+            <div class="control-group col-sm-6 col-sm-offset-6">
+                <button class="btn  btn-warning btn-sm" (click)="goBack()">Cancel</button>
+                <button class="btn  btn-success btn-sm" (click)="addInspectionDeatails()">
+                                                Submit </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="loaderBtn">
+    <div class="ui-overlay-c">
+        <div class="loading" style=" margin: 0;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+</div>

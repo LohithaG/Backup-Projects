@@ -1,0 +1,74 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>{{loadNumber}} Load Documents</h2>
+                    </header>
+                    <div class="widget-body  ">
+                        <fieldset>
+                            <section *ngIf="loadUpdateSuccess" class="text-success text-center"> {{loadUpdateSuccess}} </section>
+                            <section *ngIf="loadUpdateFailure" class="icon-color-bad text-center"> {{loadUpdateFailure}} </section>
+                            <br>
+                            <div *ngFor="let documents of documentsList">
+                                <!--<p>VIN:{{documents.vin.vinId}}</p>
+                                <p>COLOR:{{documents.vin.color}}</p>
+                                <p>STATUS:{{documents.carStatus.status}}</p>-->
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Carton QR Code</th>
+                                                    <th>Load Number</th>
+                                                    <th>Dimensions(L*W*H)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{documents.cartonId}}</td>
+                                                    <td>{{documents.loadNumber}}</td>
+                                                    <td>{{documents.length}}*{{documents.width}}*{{documents.height}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="documents.damage.length">
+                                    <div class="col-sm-12"><b>Damage Images:</b></div><br>
+                                    <div class="col-sm-4" *ngFor="let img of documents.damage">
+                                        <img [src]="'data:image/jpg;base64,'+img.damageImages" *ngIf="img.damageImages" width="100%" />
+                                    </div>
+                                </div>
+                               
+                               
+                                <hr>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p>Driver Signature</p>
+                                    <img [src]="documentsList[0]?.driverSignature" width="100%" style="border:1px dashed white"/>
+                                    <h3>{{documentsList[0]?.driverComment}}</h3>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4">
+                                    <p>Inspector Signature</p>
+                                    <img [src]="documentsList[0]?.inspectorSignature" width="100%" style="border:1px dashed white" />
+                                    <h3>{{documentsList[0]?.inspectorComment}}</h3>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

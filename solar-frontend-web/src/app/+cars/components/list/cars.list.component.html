@@ -1,0 +1,168 @@
+<app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500>
+<div [hidden]="serviceErrorData" id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+          color="blueDark">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Cartons Details </h2>
+            <div class="widget-toolbar" role="menu">
+              <a class="btn btn-primary" routerLink="/cartons/addCarton"> Add Carton</a>
+            </div>
+          </header>
+          <div>
+
+            <div class="widget-body  ">
+              <section *ngIf="loadDeleteSuccess" class="text-success text-center"> {{loadDeleteSuccess}} </section>
+              <section *ngIf="loadDeleteFailure" class="icon-color-bad text-center"> {{loadDeleteFailure}} </section>
+
+              <sa-datatable id="DataTable" [options]="options" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                width="100%">
+                <thead>
+                  <tr>
+                    <th>QR Code </th>
+                    <th>Load Number</th>
+                    <th>Pickup Location </th>
+                    <th>Destination Location </th>
+                    <th>Weight (lbs)</th>
+                    <th>Dimensions<br>W*L*H (inches)</th>
+                    <th> Edit / View/ Delete/QR</th>
+                  </tr>
+                </thead>
+              </sa-datatable>
+            </div>
+          </div>
+        </sa-widget>
+
+      </div>
+    </div>
+
+  </sa-widgets-grid>
+</div>
+
+<div bsModal #loadviewPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" *ngIf="carListView">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="loadviewPopup.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Carton Details</h4>
+      </div>
+      <div class="modal-body ">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="row">
+              <div class=" col-xs-5 col-sm-5 padding-5 ">
+                <b>Load Number</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{carListView?.loadNumber.loadNumber}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class=" col-xs-5 col-sm-5 padding-5  ">
+                <b>QR Code</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class=" col-xs-6 col-sm-5 padding-5">
+                {{carListView?.cartonId}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class=" col-xs-5 col-sm-5 padding-5  ">
+                <b>Pickup Location</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class=" col-xs-6 col-sm-5 padding-5">
+                {{carListView?.pickupLocation.address}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>Destination Location</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{carListView?.destinationLocation.address}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>Colour</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{carListView?.color}}
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 ">
+            <div class="row">
+              <div class="col-xs-5 col-sm-5 padding-5 ">
+                <b>VIN Description</b>
+              </div>
+              <div class="col-xs-1 col-sm-1 padding-5">:</div>
+              <div class="col-xs-6 col-sm-5 padding-5">
+                {{carListView?.vinDescription}}
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="loadviewPopup.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #viewPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="viewPopup.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title"><b>{{qrCodeValue}}</b></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <img class="zoom" [src]="this.img" width="100%" />
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-6" style="margin-top:40px;">
+            <p><b>Dimensions(W*L*H)</b><br> {{displayQrObj?.width}}*{{displayQrObj?.length}}*{{displayQrObj?.height}} inches</p>
+            <p><b>Weight</b><br> {{displayQrObj?.weight}} lbs</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="viewPopup.hide()">Print</button>
+        <button type="button" class="btn btn-default" (click)="viewPopup.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

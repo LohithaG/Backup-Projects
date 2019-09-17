@@ -1,0 +1,242 @@
+<div class="headerRibbon ribbonForceColr" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <b style="color:#009999;font-weight:bold">Damage Inspection</b>
+    </span>
+</div>
+
+
+
+
+<div class="col-sm-12">
+    <div class="row">
+        <div class="row" style=" color:#009999;text-align: center">
+
+            <div class="col-sm-3 col-xs-3">
+                <b style="display: block;
+margin:10px">QR Code <br><b style="color:black">{{cartonQr.toUpperCase()}}
+</b></b>
+            </div>
+
+            <div class="col-sm-3 col-xs-3" *ngIf="status">
+
+                <b style="display: block;margin:10px" (click)="expetionList()"> Exceptions<br><font style="color:red">{{exceptionsLength}}</font></b>
+            </div>
+
+            <div class="col-sm-3 col-xs-3" *ngIf="!status">
+                <b style="display: block;margin:10px" (click)="hide()"> Exceptions<br><font style="color:red">{{exceptionsLength}}</font></b>
+            </div>
+            <div class="col-sm-4 col-xs-4">
+                <b style="display: block;
+margin:10px">Load Number<br><font style="color:black">{{loadNumber}}</font></b>
+            </div>
+            <!-- <a class="col-sm-6" *ngIf="!status" style="margin-top: 40px;display:block;padding: 1px;text-decoration: underline"
+>Hide</a> -->
+
+            <div class="col-sm-2 col-xs-2 btn btn-success btn-sm" style="margin-top: 11px; 
+margin-left: -18px;" (click)="validateException()">SAVE
+            </div>
+        </div> 
+        <!-- <br> -->
+        <div>
+            <div class="inspectionDropDown">
+                <form [formGroup]="complexForm" class="form">
+                    <br>
+                    <div *ngIf="status">
+                        <div formArrayName="items" *ngFor="let item of complexForm.controls['items'].controls; let i = index">
+                            <div class="row">
+                                <div [formGroupName]="i" style="margin:10px">
+                                    <div style="margin-bottom:10px;color:white">
+                                        <div class="col-sm-4 col-xs-3">
+                                            <label><b>Area</b>
+                                            </label>
+                                            <select class="form-control" name="area" formControlName='exceptionArea' placeholder="SELECT" class="form-control">
+                                                <option disabled value='null'>Select Area</option>
+                                                <option *ngFor="let list of AreaList" [value]="list.id">{{list.exceptionArea}}</option>
+                                            </select>
+                                            <div *ngIf=" item.get('exceptionArea').hasError('required') &&formValidate" class=" icon-color-bad ">Please Select Area</div>
+
+                                        </div>
+
+                                        <div class="col-sm-3 col-xs-3">
+                                            <label><b>Type</b>
+                                            </label>
+                                            <select class="form-control" name="type" formControlName='exceptionType' placeholder="SELECT" class="form-control ">
+                                                <option disabled value='null'>Select Type</option>
+                                                <option *ngFor="let list of TypeList" [value]="list.id">{{list.exceptionType}}</option>
+                                            </select>
+                                            <div *ngIf=" item.get('exceptionType').hasError('required') &&formValidate  " class=" icon-color-bad ">Please Select Type</div>
+                                            <br>
+                                        </div>
+
+                                        <div class="col-sm-3 col-xs-3">
+                                            <label><b>Severity</b>
+                                            </label>
+                                            <select class="form-control" name="severity" formControlName='exceptionSeverity' placeholder="SELECT" class="form-control">
+                                                <option disabled value='null' disabled>Select Severity</option>
+
+                                                <option *ngFor="let list of SeverityList" [value]="list.id">{{list.exceptionSeverity}}</option>
+                                            </select>
+                                            <div *ngIf="item.get('exceptionSeverity').hasError('required') &&formValidate  " class=" icon-color-bad ">Please Select Severity</div>
+                                            <br>
+                                        </div>
+
+
+                                        <div class="row col-sm-2 col-xs-3" style="margin-top:22px;display: inline-block;
+                                margin-left: auto;
+                                margin-right: auto">
+                                            <img src=" assets/img/plus-add.png" style="padding:2px" (click)="onAddItem()">
+                                            <img src=" assets/img/minus-sign.png" style="padding:2px" (click)="onDeleteItem(i)">
+                                            <img src="assets/img/camera24px.png" style="padding:2px" (click)="addImage(item.controls.damageImages)">
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-10 col-xs-12" style="margin:0px">
+                                        <textarea type="text" class="form-control" placeholder="comments" name="comments" formControlName="comments"></textarea>
+                                        <div *ngIf="item.get('comments').hasError('required') &&formValidate " class=" icon-color-bad ">Please enter Comments</div>
+                                    </div>
+                                    <div class="row"></div>
+
+
+
+                                    <div class="row dropDownBackgroungColor">
+                                        <div class="col-sm-5 col-xs-12" style="margin-top: 39px;text-align: center">
+                                            <div class="row">
+                                                <p>Error Code: {{item.get('exceptionArea').value}}-{{item.get('exceptionType').value}}-{{item.get('exceptionSeverity').value}}
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                Description:
+                                                <span *ngIf="item.get('exceptionArea').value==1">Top</span>
+                                                <span *ngIf="item.get('exceptionArea').value==2">Bottom</span>
+                                                <span *ngIf="item.get('exceptionArea').value==3">corners</span>-
+                                                <span *ngIf="item.get('exceptionType').value==1">Bent</span>
+                                                <span *ngIf="item.get('exceptionType').value==2">Crush</span>
+                                                <span *ngIf="item.get('exceptionType').value==3">Seal Opened</span>-
+                                                <span *ngIf="item.get('exceptionSeverity').value==1">Less Damage</span>
+                                                <span *ngIf="item.get('exceptionSeverity').value==2">Medium Damage</span>
+                                                <span *ngIf="item.get('exceptionSeverity').value==3">High Damage</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div formArrayName="damageImages">
+                                                    <div *ngFor="let data of item.get('damageImages').controls; let j=index">
+                                                        <div [formGroupName]="j">
+                                                            <div class="col-xs-4 col-md-4 col-sm-4">
+                                                                <br>
+                                                                <span (click)="deleteImage(item.controls.damageImages, j)" class="close-tag" *ngIf="data.get('base64').value !=null">X</span>
+                                                                <span *ngIf="data.get('base64').value==null">&nbsp;</span>
+                                                                <img [src]="data.get('base64').value" height="100" width="100%" *ngIf="data.get('base64').value!=null" style="margin-bottom:10px">
+                                                                <img src="assets/img/photo.png" height="100" width="60%" (click)="pickImage(item.controls.damageImages,j)" *ngIf="data.get('base64').value==null">
+                                                                <div *ngIf=" data.get('base64').hasError('required') &&formValidate  " class=" icon-color-bad ">Please Select Image</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                    </div>
+
+                                </div>
+
+                                <br>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div *ngIf="!status && exptionObjectData.length>0">
+                        <div *ngFor="let item of exptionObjectData,let i=index">
+                            <div class="row dropDownBackground">
+                                <div class="col-sm-5" style="margin-top: 39px;text-align: center">
+                                    <div class="row">
+                                        <p>Error Code:{{item.exceptionArea}}-{{item.exceptionType}}-{{item.exceptionSeverity}}
+                                        </p>
+                                    </div>
+                                    <div class="row">
+                                        Description:
+                                        <span *ngIf="item.exceptionArea==1">Top</span>
+                                        <span *ngIf="item.exceptionArea==2">Bottom</span>
+                                        <span *ngIf="item.exceptionArea==3">corners</span>-
+                                        <span *ngIf="item.exceptionType==1">Bent</span>
+                                        <span *ngIf="item.exceptionType==2">Crush</span>
+                                        <span *ngIf="item.exceptionType==3">Seal Opened</span>-
+                                        <span *ngIf="item.exceptionSeverity==1">Less Damage</span>
+                                        <span *ngIf="item.exceptionSeverity==2">Medium Damage</span>
+                                        <span *ngIf="item.exceptionSeverity==3">High Damage</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div *ngFor="let data of item.damageImages">
+                                            <div class="col-xs-4 col-md-4 col-sm-4">
+                                                <img [src]="data.base64" style="padding: 10px" height="100" width="100%">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 row">
+                                    <a class="col-sm-12" (click)="deleteException(i)" style="margin-top: 40px;display: block;padding: 1px;text-decoration: underline">remove</a>
+
+
+
+                                </div>
+
+                                <!-- <div class="col-sm-1"></div> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6">
+                            <!-- <span *ngIf="complexForm.hasError('equal')&&formValidate" class=" icon-color-bad ">Please select different values</span> -->
+                            <span *ngIf="errorMessage" class="icon-color-bad">{{errorMessage}}</span>
+                            <span *ngIf="successMsg" style="color:green">{{successMsg}}</span>
+                        </div>
+                    </div>
+                    <br>
+                    <footer>
+                        <div class="row" *ngIf="status">
+                            <div class="control-group col-sm-6 col-sm-offset-6 col-xs-6 col-xs-offset-6" style="margin-bottom:10px">
+                                <button class="btn  btn-success btn-sm" type="submit" (click)="submit(complexForm.value)">
+                                    Done </button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+                <br><br><br><br><br><br>
+
+
+            </div>
+        </div>
+        <!-- </sa-widget> -->
+    </div>
+</div>
+
+
+
+
+<div>
+    <div *ngIf="loaderBtn">
+        <div class="ui-overlay-c">
+            <div class="loading" style=" margin: 0;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);">
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<popup [popupMessage]="popupMessage" [popupRoute]="popupRoute" [title]="title"></popup>

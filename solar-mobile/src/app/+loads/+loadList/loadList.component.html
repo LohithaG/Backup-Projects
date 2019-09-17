@@ -1,0 +1,48 @@
+<div class="headerRibbon ribbonForceColr" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <b style="color:#009999;font-weight:bold"> Load Board</b>
+    </span>
+    <span class="ribbon-button-alignment breadcrumb" style="float:right" (click)="refreshLoads()">
+        <i class="fa fa-lg fa-fw fa-refresh" style="color:#009999;font-weight:bold" *ngIf="refreshBtn"></i>
+        <i class="fa fa-lg fa-fw fa-refresh fa-spin" style="color:#009999;font-weight:bold" *ngIf="!refreshBtn"></i>
+        
+        </span>
+</div>
+<div>
+
+    <div *ngIf="loadList?.length===0" class="panel panel-default">
+        <div class="panel-body" style="text-align:center">No loads are assigned to you</div>
+        <!--<div class="panel-body" style="text-align:center" *ngIf="loadList?.length===0&&!refreshBtn">Refreshing Loads</div>-->
+    </div>
+    <div class="panel panel-default" *ngFor="let load of loadList" style="margin-bottom:0px">
+        <div class="panel-body padding-5" (click)="loadDetails(load)">
+            <div class="row" style="margin-left: 12px;margin-top: 8px;">
+                <div class="col-sm-8 col-md-8 col-xs-8" style="padding:0px;padding-top:4px">
+                    <span class="load-subtitle" style="font-weight:bold"> {{load.originLocNbr.locAddrName.toUpperCase()}} - {{load.destLocNbr.locAddrName.toUpperCase()}}</span>
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3" style="padding:0px;padding-top:4px">
+                    <span *ngIf="load.loadStatNbr.id === 4" style="color:green;float:right;font-weight:bold"> Load Accepted</span>
+                </div>
+            </div>
+
+            <div class="row" style="margin-left: 12px;margin-top: 8px;">
+                <div class="col-sm-3 col-md-3 col-xs-3" style="padding:0px;padding-top:4px">
+                    <b>Load Number:</b><span class="load-subtitle"> {{load.loadNumber}} </span>
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3" style="padding:0px;padding-top:4px">
+                    <b>Skid Drops:</b><span class="load-subtitle"> {{load.skidDrops.length}} </span>
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3" style="padding:0px;padding-top:4px">
+                    <b>Trip Miles:</b><span class="load-subtitle"> {{load.totalMiles?load.totalMiles.toFixed(2):0}}</span>
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3" style="padding:0px;padding-top:4px">
+                    <b>Cartons:</b><span class="load-subtitle"> {{load.totalCartons}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!loadList">
+    <div class="panel-body" style="text-align:center"> {{loadListdataError}} </div>
+</div>

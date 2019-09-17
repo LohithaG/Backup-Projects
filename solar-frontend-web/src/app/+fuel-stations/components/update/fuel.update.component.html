@@ -1,0 +1,151 @@
+<!-- <app-error500 [errorname]="serviceErrorResponse" *ngIf="serviceErrorData"></app-error500> -->
+<div [hidden]="serviceErrorData" id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!-- MAIN CONTENT -->
+                <sa-widget [editbutton]="false" [fullscreenbutton]="false" [collapsed]="false" [colorbutton]="false" [togglebutton]="false"
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Update Fuel Station</h2>
+                    </header>
+                    <div class="widget-body">
+                        <section *ngIf="fuelAddSuccess" class="text-success text-center"> {{fuelAddSuccess}} </section>
+                        <section *ngIf="fuelAddFailure" class="icon-color-bad text-center"> {{fuelAddFailure}}
+                        </section>
+                        <br>
+                        <form [formGroup]="complexForm" class="form" (ngSubmit)="submitForm(complexForm.value)" method="post">
+                            <div class="row">
+                                <div class="col-sm-6">
+
+                                    <div class="row">
+                                        <label class="col-sm-4 control-label">
+                                            Name
+                                            <font class="icon-color-bad">*</font>
+                                        </label>
+                                        <div class="controls col-sm-6">
+                                            <input type="text" class="form-control" value='' placeholder="Name" [formControl]="this.name" [(ngModel)]="fuel.name">
+                                            <span *ngIf=" this.name.hasError('required') &&  this.formValidate" class="icon-color-bad ">Please
+                                                enter Name</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <label class="col-sm-4 control-label  split-input" for="latitude">
+                                            Latitude
+                                            <font class="icon-color-bad">*</font>
+                                        </label>
+                                        <div class="controls col-sm-6">
+                                            <input readonly type="text" class="form-control" id="latitude" minlength="10" maxlength="16" size="30" placeholder="Latitude"
+                                                [formControl]="this.latitude" [(ngModel)]="fuel.latitude">
+                                            <!-- <span *ngIf=" this.latitude.hasError('required') &&  this.formValidate"
+                                                class="icon-color-bad ">Please enter Latitude</span> -->
+                                            <!---<span *ngIf="this.latitude.hasError('minlength') && !this.latitude.hasError('pattern')" class="icon-color-bad">Phone number should be min 10 digits</span>
+                                            <span *ngIf="this.latitude.hasError('pattern')" class="icon-color-bad">Please enter only digits</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <label class="col-sm-4 control-label " for="address">
+                                            Address   <font class="icon-color-bad">*</font>
+                                        </label>
+                                        <div class="controls col-sm-6">
+                                            <input type="text" class="form-control" id="address" placeholder="Address" [formControl]="this.address" value="{{fuel.address}}"
+                                                [(ngModel)]="fuel.address" placeholder="Address" (keyup)="onchange(this.address,fuel)">
+                                            <span *ngIf="  this.address.hasError('required') &&  this.formValidate " class="icon-color-bad">Please enter Address</span>
+
+                                            <span *ngIf="fuelAddressList ">
+                                                <div>
+                                                    <div class="mapbox_address" *ngFor="let fuelItem of fuelAddressList">
+                                                        <p (click)="fuelItemSelected(fuelItem)">{{fuelItem.value}}</p>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <label class="col-sm-4 control-label split-input" for="longitude">
+                                            Longitude
+                                            <font class="icon-color-bad">*</font>
+                                        </label>
+                                        <div class="controls col-sm-6">
+                                            <input readonly type="longitude" class="form-control" id="longitude" name="Longitude" placeholder="Longitude" size="30" value=''
+                                                [formControl]="this.longitude" [(ngModel)]="fuel.longitude">
+                                            <!-- <span *ngIf=" this.longitude.hasError('required') &&  this.formValidate"
+                                                class="icon-color-bad ">Please enter longitude address</span> -->
+                                            <!-- <span *ngIf=" this.longitude.hasError('pattern') " class="icon-color-bad">Please enter a valid longitude address</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="smart-form">
+                                <footer>
+                                    <div class="row">
+                                        <div class="control-group col-sm-6 col-sm-offset-6" style="float: right;
+                                        margin-right: 10px;">
+                                            <button class="btn  btn-warning btn-sm" (click)="goBack()">Cancel</button>
+                                            <button class="btn  btn-success btn-sm" type="submit"> Update </button>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                        </form>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="modal modal-fullscreen fade" id="add_fuelstation_Modal" role="dialog">
+                <div class="modal-dialog confirm_model">
+                    <div class="modal-content confirmDialogueBox">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Update FuelStation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>You are about to add this location to service.</p>
+                            <p>Do you want to proceed..?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn add_fuelstation">Yes</button>
+                            <button type="button" class="btn btn-primary btn" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [editbutton]="false" color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Load Routing </h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding ">
+                            <div class="map" id="update_addressMap"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
