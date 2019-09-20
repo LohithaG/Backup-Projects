@@ -1,0 +1,119 @@
+<aside id="left-panel">
+  <sa-login-info></sa-login-info>
+  <nav>
+    <ul saSmartMenu>
+      <li routerLinkActive="active">
+        <a routerLink="/admin/dashboard">
+          <i class="fa fa-lg fa-fw fa-user"></i>
+          <span class="menu-item-parent">CMD</span></a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/target-actual">
+          <i class="fa fa-lg fa-fw fa-pie-chart"></i>
+          <span class="menu-item-parent">Target vs Actual Sales</span></a>
+      </li>
+      <li>
+        <a routerLink="/performance-analysis/location-wise-store"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span
+          class="menu-item-parent">Performance Analysis</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/performance-analysis/location-wise-store">Location Wise (Store)</a>
+          </li>
+
+          <li routerLinkActive="active">
+            <a routerLink="/performance-analysis/location-wise-d2h">Location Wise (D2H)</a>
+          </li>
+
+          <li routerLinkActive="active">
+            <a routerLink="/performance-analysis/channel-wise">Channel Wise</a>
+          </li>
+
+          <li routerLinkActive="active">
+            <a routerLink="/performance-analysis/class-wise">Class Wise</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a routerLink="/growth/totalsales"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span
+          class="menu-item-parent">Growth Calculations</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/growth/totalsales">Total Sales</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/growth/location-store">Location Wise (SHW)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/growth/location-d2h">Location Wise (D2H)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/growth/channel-wise-growth">Channel Wise</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/growth/salesperson">Salesperson</a>
+          </li>
+
+        </ul>
+      </li>
+      <li>
+        <a routerLink="/margins/tag-price-to-sales"><i class="fa fa-lg fa-fw fa-line-chart"></i> <span
+          class="menu-item-parent">Margins</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/margins/tag-price-to-sales">Tag Price to Sales(SHW)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/margins/tag-price-to-salesd2h">Tag Price to Sales(D2H)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/margins/cost-to-sales">Cost to Sales(SHW)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/margins/cost-to-salesd2h">Cost to Sales(D2H)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/margins/cost-to-tag-price">Cost to Tag Price</a>
+          </li>
+        </ul>
+
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/salesperson"><i class="fa fa-lg fa-fw fa-user"></i> <span
+            class="menu-item-parent">Salesperson</span></a>
+
+      </li>
+      <li>
+        <a routerLink="/ticket-size/location-wise-shw"><i class="fa fa-lg fa-fw fa-ticket"></i> <span
+          class="menu-item-parent">Ticket Size</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/ticket-size/location-wise-shw">Location Wise (SHW)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/ticket-size/location-wise-d2h">Location Wise (D2H)</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a routerLink="/conversion-factors/conversion-location-wise-shw"><i class="fa fa-lg fa-fw fa-filter"></i>
+<span class="menu-item-parent">Conversion-Factors</span></a>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/conversion-factors/conversion-location-wise-shw">Location Wise (SHW)</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/conversion-factors/conversion-location-wise-d2h">Location Wise (D2H)</a>
+          </li>
+        </ul>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/admin/users">
+          <i class="fa fa-lg fa-fw fa-user"></i>
+          <span class="menu-item-parent">Users</span></a>
+      </li>
+
+    </ul>
+  </nav>
+  <sa-minify-menu></sa-minify-menu>
+</aside>

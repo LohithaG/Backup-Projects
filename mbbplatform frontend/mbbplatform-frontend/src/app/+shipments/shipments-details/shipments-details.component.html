@@ -1,0 +1,33 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/shipments" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Shipments</span> <span> / Shipments Details</span>        </div>
+    <sa-widgets-grid>
+        <br>
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+            <header>
+                <span class="widget-icon">
+                    <i class="fa fa-bar-chart-o"></i>
+                </span>
+                <h2 style="margin-right:2%;">Shipments-Details</h2>
+            </header>
+
+            <div class="well padding-10 ">
+                <sa-datatable id="DataTable" [options]="shipments" tableClass="table table-striped table-bordered table-hover" paginationLength="false"
+                    width="100%">
+                    <thead>
+                        <tr>
+
+                            <th>ORDER DATE</th>
+                            <th>STATUS</th>
+                            <th>ORDER ID</th>
+                            <th>PAYMENT MODE</th>
+                            <th>DISPATCH DATE</th>
+
+
+                        </tr>
+                    </thead>
+                </sa-datatable>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

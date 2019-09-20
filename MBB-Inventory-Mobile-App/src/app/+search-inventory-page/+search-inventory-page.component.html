@@ -1,0 +1,40 @@
+<div class="headerRibbon" id="ribbon">
+  <span class="ribbon-button-alignment breadcrumb">
+    <span class="btn btn-ribbon" placement="bottom">
+      <i class="fa fa-truck"></i>
+    </span> Dispatcher Module
+  </span>
+</div>
+
+<div style="margin:1%">
+  <div class="widget-body no-padding text-align">
+
+    <form #productForm="ngForm" class="smart-form customForm form-group" novalidate="novalidate">
+      <fieldset>
+        <section>
+          <label class="input">
+            <input type="text" name="product" minlength="2" maxlength="15" #barcodeIdValue="ngModel" [(ngModel)]="BarcodeId" placeholder="Barcode Id"
+              required>
+          </label>
+          <div *ngIf="!barcodeIdValue.valid">
+          <div *ngIf="barcodeIdValue.hasError('required')" class="text-danger">
+            barcode id is required.
+          </div>
+
+          <div *ngIf="!barcodeIdValue.hasError('required')&& !barcodeIdValue.valid " class="text-danger">
+              Please enter valid barcode id with min of 2 digits to maximunm of 15 digits
+            </div>
+            </div>
+        </section>
+
+      </fieldset>
+
+      <footer>
+        <button class="btn btn-primary"  type="button" (click)="onSearch(BarcodeId)">
+          Search
+        </button>
+      </footer>
+    </form>
+
+  </div>
+</div>

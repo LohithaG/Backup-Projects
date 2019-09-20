@@ -1,0 +1,252 @@
+<div style="padding:0px 7px 0px 14px;margin-bottom:3px;">
+    <div class="row" *ngIf="growthInfoChannel">
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthInfoChannel?.shw.growthr1r2!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">SHW Growth(R1 - R2)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthInfoChannel?.shw.growthr1r2.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthInfoChannel?.shw.growthr1r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom box-bottom">
+                        <span class="box-title">SHW Growth(R1 - R3)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthInfoChannel?.shw.growthr1r3.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthInfoChannel?.shw.growthr2r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">SHW Growth(R2 - R3)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthInfoChannel?.shw.growthr2r3.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthInfoChannel?.d2h.growthr1r2!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">D2H Growth(R1 - R2)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthInfoChannel?.d2h.growthr1r2.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthInfoChannel?.d2h.growthr1r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">D2H Growth(R1 - R3)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthInfoChannel?.d2h.growthr1r3.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthInfoChannel?.d2h.growthr2r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">D2H Growth(R2 - R3)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthInfoChannel?.d2h.growthr2r3.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="growthTotalSales">
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthTotalSales?.info.range_1!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">RANGE - 1</span>
+                        <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthTotalSales?.info.range_1.toFixed(2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthTotalSales?.info.range_2!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">RANGE - 2</span>
+                        <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="box-value">{{growthTotalSales?.info.range_2.toFixed(2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthTotalSales?.info.range_3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">RANGE - 3</span>
+                        <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthTotalSales?.info.range_3.toFixed(2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthTotalSales?.info.growthr1r2!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">Growth(R1 - R2)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthTotalSales?.info.growthr1r2.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthTotalSales?.info.growthr2r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">Growth(R2 - R3)</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="box-value">{{growthTotalSales?.info.growthr2r3.toFixed(2)}}</span><span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" style="text-align:center;padding:0px 6px 6px 0px" *ngIf="growthTotalSales?.info.growthr1r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">Growth(R1 - R3)</span>
+
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="box-value">{{growthTotalSales?.info.growthr1r3.toFixed(2)}}</span><span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="growthLocationStore">
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthLocationStore?.info.range_1!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">RANGE - 1</span>
+                        <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthLocationStore?.info.range_1.toFixed(2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthLocationStore?.info.range_2!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">RANGE - 2</span>
+                        <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="box-value">{{growthLocationStore?.info.range_2.toFixed(2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthLocationStore?.info.range_3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">RANGE - 3</span>
+                        <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthLocationStore?.info.range_3.toFixed(2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthLocationStore?.info?.growthr1_r2!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">Growth(R1 - R2)</span>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <span class="box-value">{{growthLocationStore?.info?.growthr1_r2.toFixed(2)}}</span> <span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthLocationStore?.info?.growthr2_r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">Growth(R2 - R3)</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="box-value">{{growthLocationStore?.info.growthr2_r3.toFixed(2)}}</span><span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 abc" *ngIf="growthLocationStore?.info?.growthr1_r3!==null">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" style="margin-bottom:1px">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10 box-bottom">
+                        <span class="box-title">Growth(R1 - R3)</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="box-value">{{growthLocationStore?.info.growthr1_r3.toFixed(2)}}</span><span style="color:black;font-size:16px">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

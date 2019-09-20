@@ -1,0 +1,330 @@
+{
+    "data": [
+        {
+            "channelName": "AMAZON_IN",
+            "totalSettlementAmount": 165438.05,
+            "settlementId": "10672638642",
+            "marketDeduction": 16037.87
+        },
+        {
+            "channelName": "AMAZON_IN",
+            "totalSettlementAmount": 8295.19,
+            "settlementId": "10672294202",
+            "marketDeduction": 1454.81
+        },
+        {
+            "channelName": "AMAZON_IN",
+            "totalSettlementAmount": 0,
+            "settlementId": "6959966512",
+            "marketDeduction": 0
+        },
+        {
+            "channelName": "AMAZON_IN",
+            "totalSettlementAmount": 48929.78,
+            "settlementId": "10650205412",
+            "marketDeduction": 6290.22
+        },
+        {
+            "channelName": "AMAZON_IN",
+            "totalSettlementAmount": 136020.34,
+            "settlementId": "10650197362",
+            "marketDeduction": 15197.65
+        },
+        {
+            "channelName": "AMAZON_FBA",
+            "totalSettlementAmount": 10792.16,
+            "settlementId": "10672638642",
+            "marketDeduction": 3102.17
+        },
+        {
+            "channelName": "AMAZON_FBA",
+            "totalSettlementAmount": 0,
+            "settlementId": "6959966512",
+            "marketDeduction": 0
+        },
+        {
+            "channelName": "AMAZON_FBA",
+            "totalSettlementAmount": -15754.09,
+            "settlementId": "10650197362",
+            "marketDeduction": 1064.09
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 22997.39,
+            "settlementId": "NFT-181019097GN00152XXXXXXX",
+            "marketDeduction": 5162.61
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1039.08,
+            "settlementId": "NFT-181017082GN00172XXXXXXX",
+            "marketDeduction": 445.92
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 6155.14,
+            "settlementId": "NFT-181017115GN00157XXXXXXX",
+            "marketDeduction": 2199.86
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 768.44,
+            "settlementId": "NFT-181008121GN00008XXXXXXX",
+            "marketDeduction": 561.56
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 678.1,
+            "settlementId": "NFT-181008094GN00184XXXXXXX",
+            "marketDeduction": 416.9
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 729.77,
+            "settlementId": "NFT-181010103GN00154XXXXXXX",
+            "marketDeduction": 335.23
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1467.92,
+            "settlementId": "NFT-181010096GN00210XXXXXXX",
+            "marketDeduction": 517.08
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 458.74,
+            "settlementId": "NFT-181012103GN00102XXXXXXX",
+            "marketDeduction": 206.26
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 611.01,
+            "settlementId": "NFT-181012099GN00284XXXXXXX",
+            "marketDeduction": 233.99
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 95.44,
+            "settlementId": "NFT-181015150GN00149XXXXXXX",
+            "marketDeduction": 89.56
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1244.28,
+            "settlementId": "NFT-181015200GN00043XXXXXXX",
+            "marketDeduction": 495.72
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 475.99,
+            "settlementId": "NFT-181005098GN00075XXXXXXX",
+            "marketDeduction": 179.01
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 3122.54,
+            "settlementId": "NFT-181005104GN00105XXXXXXX",
+            "marketDeduction": 1292.46
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 2765.52,
+            "settlementId": "NFT-181003234GN00009XXXXXXX",
+            "marketDeduction": 1104.48
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 32532.54,
+            "settlementId": "NFT-181003212GN00137XXXXXXX",
+            "marketDeduction": 7017.46
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 2381.14,
+            "settlementId": "NFT-180914542GN00115XXXXXXX",
+            "marketDeduction": 758.86
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1588.6,
+            "settlementId": "NFT-180928091GN00174XXXXXXX",
+            "marketDeduction": 741.4
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 185.54,
+            "settlementId": "NFT-180928098GN00137XXXXXXX",
+            "marketDeduction": 114.46
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 2770.67,
+            "settlementId": "NFT-180926098GN00066XXXXXXX",
+            "marketDeduction": 974.33
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 475.99,
+            "settlementId": "NFT-180926087GN00184XXXXXXX",
+            "marketDeduction": 179.01
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 3647.68,
+            "settlementId": "NFT-180924A5EGN00007XXXXXXX",
+            "marketDeduction": 1092.32
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1355.74,
+            "settlementId": "NFT-180924A4RGN00083XXXXXXX",
+            "marketDeduction": 579.26
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 988.8,
+            "settlementId": "NFT-180827573GN00202XXXXXXX",
+            "marketDeduction": 321.2
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1458.83,
+            "settlementId": "NFT-180921571GN00097XXXXXXX",
+            "marketDeduction": 646.17
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 3249.58,
+            "settlementId": "NFT-180718532GN00015XXXXXXX",
+            "marketDeduction": 985.42
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1940.21,
+            "settlementId": "NFT-180720541GN00113XXXXXXX",
+            "marketDeduction": 639.79
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 351.48,
+            "settlementId": "NFT-180720580GN00012XXXXXXX",
+            "marketDeduction": 353.52
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 2992.66,
+            "settlementId": "NFT-180726A10GN00199XXXXXXX",
+            "marketDeduction": 983.34
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 225.72,
+            "settlementId": "NFT-180725566GN00083XXXXXXX",
+            "marketDeduction": 214.28
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 1651.4,
+            "settlementId": "NFT-180727546GN00044XXXXXXX",
+            "marketDeduction": 559.6
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 486.79,
+            "settlementId": "NFT-180727554GN00181XXXXXXX",
+            "marketDeduction": 188.21
+        },
+        {
+            "channelName": "FLIPKART",
+            "totalSettlementAmount": 0,
+            "settlementId": "ZERO_PAYMENT_ADVICE",
+            "marketDeduction": 0
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 1331.0,
+            "settlementId": "20-OCT-2018",
+            "marketDeduction": 193.29
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 3039.0,
+            "settlementId": "17-OCT-2018",
+            "marketDeduction": 429.39
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 3621.0,
+            "settlementId": "16-OCT-2018",
+            "marketDeduction": 245.04
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 16581.0,
+            "settlementId": "12-OCT-2018",
+            "marketDeduction": 717.54
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 703.0,
+            "settlementId": "11-OCT-2018",
+            "marketDeduction": 193.29
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 3674.0,
+            "settlementId": "10-OCT-2018",
+            "marketDeduction": 553.14
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 1417.0,
+            "settlementId": "04-OCT-2018",
+            "marketDeduction": 441.06
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 14256.0,
+            "settlementId": "03-OCT-2018",
+            "marketDeduction": 759.37
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 15033.0,
+            "settlementId": "28-SEP-2018",
+            "marketDeduction": 2212.29
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 1113.0,
+            "settlementId": "27-SEP-2018",
+            "marketDeduction": 210.0
+        },
+        {
+            "channelName": "SNAPDEAL",
+            "totalSettlementAmount": 3702.0,
+            "settlementId": "24-SEP-2018",
+            "marketDeduction": 245.04
+        }
+    ],
+    "title": "Channel Settlement Summary",
+    "type": "TABLE",
+    "columns": [
+        {
+            "name": "channelName",
+            "displayName": "Channel"
+        },
+        {
+            "name": "settlementId",
+            "displayName": "Settlement ID"
+        },
+        {
+            "name": "totalSettlementAmount",
+            "displayName": "Value (₹)"
+        },
+        {
+            "name": "marketDeduction",
+            "displayName": "Marketplace Deduction (₹)"
+        }
+    ]
+}

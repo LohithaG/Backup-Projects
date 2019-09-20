@@ -1,0 +1,145 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title" style="text-align:center">Dispatch Product</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="dispatchForm" method="post" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="QR Code" name="barcode" [(ngModel)]="productData.barcode"
+                                            type="text" readonly [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="SKU Code" type="text" name="skucode" [(ngModel)]="productData.inventoryId.skuCode"
+                                            readonly [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Product Name" type="text" name="productName"
+                                            [(ngModel)]="productData.inventoryId.productName" readonly [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Facility" type="text" name="facility" [(ngModel)]="productData.facilityId.facility"
+                                            readonly [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field>
+                                        <label>Invoice Id *</label>
+                                        <mat-select matInput name="mySelect" [formControl]="this.invoice" [(ngModel)]="productData.invoiceId" >
+                                            <mat-option selected="true" [disabled]="true" value="null">Please select SKU code
+                                            </mat-option>
+                                            <mat-option *ngFor="let item of inVoiceDetails " [value]=item>{{item}}</mat-option>
+                                        </mat-select>
+        
+        
+                                    </mat-form-field>
+                                    <span *ngIf="this.invoice.hasError('required') &&formValidate " class=" text-danger ">Please
+                                        enter Invoice Id</span>
+                                </div>
+                            </div> -->
+
+                            <div class="row">
+                                <div class="col-sm-10 col-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="text" name="invoiceId" [formControl]="this.invoice"
+                                            [(ngModel)]="productData.invoiceId">
+                                        <mat-placeholder class="placeholder">Invoice Id *</mat-placeholder>
+                                    </mat-form-field>
+
+                                    <span *ngIf="this.invoice.hasError('required') &&formValidate " class="text-danger ">Please
+                                        enter Invoice Id</span>
+                                    <span *ngIf="this.invoice.hasError('maxlength')" class="text-danger">Please
+                                        enter 30 letters only</span>
+                                </div>
+                                <div class="col-sm-2 col-2" (click)="getInvoiceBybarcode()" style="margin: auto"><img
+                                        src="assets/img/qr-code.png">
+                                </div>
+                            </div>
+                            <div *ngIf="checkList.length>0">
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12" formArrayName="items" *ngFor="let item of dispatchForm.get('items').controls ; let i = index;">
+                                        <div class="row" [formGroupName]="i">
+                                            <mat-checkbox class="primary col-sm-6 col-xs-12" formControlName="conditionCheck"
+                                                name="checkbox" value="{{dispatchForm.controls.items.controls[i].controls.conditionCheck.value}}"
+                                                (ngModelChange)="onChange(i)">
+                                                <input matInput type="number" [attr.disabled]="dispatchForm.controls.items.controls[i].controls.conditionCheck.value ? null :true"
+                                                    [value]="dispatchForm.controls.items.controls[i].controls.conditionCheck.value ?  
+                                            dispatchForm.controls.items.controls[i].controls.quantity.value : 0"
+                                                    formControlName="quantity" style="border:1px solid #AAAAAA;text-align:center;width:31px">
+                                                {{dispatchForm.controls.items.controls[i].controls.accessory.value}}
+                                            </mat-checkbox>
+
+                                            <div *ngIf="dispatchForm.controls.items.controls[i].controls.conditionCheck.value">
+                                                <span *ngIf="item.get('quantity').hasError('required') && formValidate "
+                                                    class=" text-danger">Please enter quantity</span>
+                                                <span *ngIf="item.get('quantity').hasError('pattern') " class=" text-danger">
+                                                    Please enter only 1-10 numbers</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <textarea matInput [(ngModel)]="productData.comment" [formControl]="this.comment"></textarea>
+                                        <mat-placeholder class="placeholder">Please enter some comments *</mat-placeholder>
+
+                                    </mat-form-field>
+                                    <span *ngIf="this.comment.hasError('required') &&formValidate " class="text-danger ">Please
+                                        enter comments</span>
+                                    <span *ngIf="this.comment.hasError('maxlength')" class="text-danger">Please
+                                        enter only 200 letters only</span>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="doDispatch()">Submit<i
+                                   *ngIf="loaderBtn"></i>
+                            </button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="gotoPreviousPage()">Cancel</button>
+                            <div class="clearfix"></div>
+                        </form>
+                        <div>
+                            <div *ngIf="loaderBtn">
+
+                                <div class="ui-overlay-c">
+                                    <div class="loading" style=" margin: 0;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);">
+                                        <div class="loading-bar"></div>
+                                        <div class="loading-bar"></div>
+                                        <div class="loading-bar"></div>
+                                        <div class="loading-bar"></div>
+                                        <h4 style="color: #e0dcd4">Loading....</h4>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

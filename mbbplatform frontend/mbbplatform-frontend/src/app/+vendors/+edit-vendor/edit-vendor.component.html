@@ -1,0 +1,64 @@
+<div id="content">
+  <div style="font-weight:bold"><span routerLink="/vendors" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Vendors List</span> <span> / Update Vendor</span>    </div><br>
+  <sa-widgets-grid>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- MAIN CONTENT -->
+        <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+          [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Edit Vendor</h2>
+          </header>
+          <div class="widget-body">
+
+            <form [formGroup]="complexForm" method="post" *ngIf="vendorDetails" id="checkout-form" class="smart-form">
+
+              <fieldset>
+                <section *ngIf="vendorEditMessage" class="text-success"> {{vendorEditMessage}} </section>
+                <section *ngIf="vendorEditerrorMessage" class="icon-color-bad"> {{vendorEditerrorMessage}} </section>
+
+
+                <div class="row">
+                  <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                    <label class="label" for="vendorname" [ngClass]="{'has-error':! this.vendorname.valid &&  this.vendorname}" style="font-weight: 600;">Vendor Name
+                      <font class="icon-color-bad">*</font>
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <!-- <i class="icon-prepend fa fa-user">  </i>-->
+                    <label class="input form-control">
+                      <input type="text" name="vendorname" [formControl]="this.vendorname" [(ngModel)]="vendorDetails.name"
+                        placeholder="Vendorname">
+                      <span *ngIf=" this.vendorname.hasError('required') &&submitted  " class=" icon-color-bad ">Please
+                        enter vendorname</span>
+
+                      <span *ngIf="this.vendorname.hasError('minlength')||  this.vendorname.hasError('maxlength')||this.vendorname.hasError('pattern') "
+                        class=" icon-color-bad ">Please enter valid name between 3 to 64 characters only</span>
+                    </label>
+                  </section>
+                </div>
+
+              </fieldset>
+
+              <footer>
+                <section class="col col-6">
+                  <button class="btn  btn-success btn-sm" type="submit" [disabled]="!complexForm.valid" (click)="updateUser(vendorDetails)">
+                    Update
+                  </button>
+                  <button class="btn  btn-warning btn-sm" type="submit" (click)="cancelEditVendor();">Cancel</button>
+                </section>
+              </footer>
+            </form>
+
+          </div>
+        </sa-widget>
+      </div>
+
+    </div>
+  </sa-widgets-grid>
+</div>

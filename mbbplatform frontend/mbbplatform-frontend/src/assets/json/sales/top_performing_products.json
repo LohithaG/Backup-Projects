@@ -1,0 +1,79 @@
+{
+    "data": [
+        {
+            "productName": "5465 - Standing Powered  Wheelchair",
+            "revenue": 784000,
+            "percentage": 17.68
+        },
+        {
+            "productName": "4628 - Electrical Wheelchair G01",
+            "revenue": 669360,
+            "percentage": 15.1
+        },
+        {
+            "productName": "5160 - Stair Climbing Power Wheelchair",
+            "revenue": 422840,
+            "percentage": 9.54
+        },
+        {
+            "productName": "5530 - Aluminum Electrical wheel Chair With Excellent Travel Companion",
+            "revenue": 395000,
+            "percentage": 8.91
+        },
+        {
+            "productName": "5721 - GVS 5L Oxy-Pure Ultra Silence Oxygen Concentrator",
+            "revenue": 394280,
+            "percentage": 8.89
+        },
+        {
+            "productName": "04895 - RESmart GII Auto CPAP With 3 Years Warranty",
+            "revenue": 266545,
+            "percentage": 6.01
+        },
+        {
+            "productName": "1971 - 5L Oxygen Concentrator",
+            "revenue": 258196,
+            "percentage": 5.82
+        },
+        {
+            "productName": "5698 - Ultra Lightweight Powered Traveling Wheelchair",
+            "revenue": 253000,
+            "percentage": 5.71
+        },
+        {
+            "productName": "3346 - Reclining Electrical Wheelchair",
+            "revenue": 224000,
+            "percentage": 5.05
+        },
+        {
+            "productName": "0914 - Philips Respironics Remstar Auto A Flex CPAP",
+            "revenue": 110600,
+            "percentage": 2.49
+        },
+        {
+            "productName": "0567 - RESmart GII Auto BiPAP With 3 Years Warranty",
+            "revenue": 70800,
+            "percentage": 1.6
+        },
+        {
+            "productName": "5023-6719-M - iVolve Cpap Nasal Mask(NM)",
+            "revenue": 55883,
+            "percentage": 1.26
+        },
+        {
+            "productName": "8439 - Electrical Wheelchair With Electromagnetic Breaks",
+            "revenue": 53400,
+            "percentage": 1.2
+        },
+        {
+            "productName": "5011-6716-M - iVolve Cpap Full Face Mask(F2)",
+            "revenue": 48455,
+            "percentage": 1.09
+        },
+        {
+            "productName": "7672 - Head Gear For Cpap/Bipap Mask(Universal)",
+            "revenue": 45791,
+            "percentage": 1.03
+        }
+    ]
+}

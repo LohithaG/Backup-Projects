@@ -1,0 +1,139 @@
+<div class="headerRibbon" id="ribbon">
+  <!--<span class="ribbon-button-alignment breadcrumb">
+    <span class="btn btn-ribbon" placement="bottom">
+      <i class="fa fa-truck"></i>
+    </span> Add Sku
+  </span>-->
+</div>
+
+<div style="margin:1%">
+
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading load-header">
+      <div class="row">
+        <div>
+          <b class="load-title"> &nbsp; Update SKU</b>
+        </div>
+      </div>
+    </div>
+
+    <div id="checkout-form" class="smart-form" *ngIf="!skuDetails">
+      <fieldset>
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">SKU Code
+                <font class="text-danger">*</font>
+             </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+               <input type="text"  [(ngModel)]="skuValue" placeholder="Please enter SKU code">
+            </label>
+            <span *ngIf="submitted" class=" icon-color-bad ">Please enter SKU code</span>
+          </section>
+        </div>
+        <footer>
+          <section class="col col-9">
+            <button class="btn  btn-success btn-sm" type="submit" (click)="getSkuDetails()"> Submit</button>
+            <button class="btn  btn-warning btn-sm" type="submit" (click)="Cancel()"> Cancel</button>
+          </section>
+        </footer>
+      </fieldset>
+    </div>
+
+
+    <form [formGroup]="updateSKUForm" method="post" id="checkout-form" class="smart-form" *ngIf="skuDetails">
+      <fieldset>
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">SKU Code
+                <font class="text-danger">*</font>
+             </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+               <input type="text" name="barcode"  [formControl]="this.skucode" [(ngModel)]="skuObj.skuCode" placeholder="Please enter SKU code" readonly>
+            </label>
+            <span *ngIf="this.skucode.hasError('required') &&formValidate " class=" icon-color-bad ">Please enter SKU code</span>
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">Product Name 
+                            <font class="text-danger">*</font>
+                        </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+                        <input type="text" name="status" class="form-control" [formControl]="this.productName" [(ngModel)]="skuObj.productName" placeholder="Please enter product name">
+            </label>
+            <span *ngIf="this.productName.hasError('required') &&formValidate " class=" icon-color-bad ">Please enter product name</span>
+
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" style="font-weight: 600;">Threshold level
+                            <font class="text-danger">*</font>
+                        </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+                           <input type="text" name="status" class="form-control" [formControl]="this.threshold" [(ngModel)]="skuObj.thresholdLevel"
+                placeholder="Please enter Threshold level">
+            </label>
+            <span *ngIf="this.threshold.hasError('required') &&formValidate " class=" icon-color-bad ">Please enter
+              threshold level</span>
+            <span *ngIf="this.threshold.hasError('pattern')" class=" icon-color-bad ">Allows only numbers</span>
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" style="font-weight: 600;">Description
+                            <font class="text-danger">*</font>
+                        </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+                          <textarea rows="2" class="form-control"  [formControl]="this.descrption" [(ngModel)]="skuObj.description" placeholder="Please enter some descrption"></textarea>
+            </label>
+            <div style="padding:3px;"></div>
+            <span *ngIf="this.descrption.hasError('required') &&formValidate " class="icon-color-bad ">Please enter descrption</span>
+          </section>
+        </div>
+      </fieldset> 
+
+      <footer>
+        <section class="col col-9">
+          <button class="btn  btn-success btn-sm" type="submit" (click)="updateSkuDetails()"> Update</button>
+          <button class="btn  btn-warning btn-sm" type="submit" (click)="Cancel()"> Cancel</button>
+        </section>
+      </footer> 
+    </form>
+  </div>
+
+</div>
+
+
+<div bsModal #skuAlert="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+  role="dialog" aria-labelledby="myLargeModalLabel" style="top:35%">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>SKU</strong></h4>
+      </div>
+      <div class="modal-body ">
+        {{successResponse}}
+      </div>
+      <div class="modal-footer padding-10" style="text-align:center">
+        <button class="btn btn-primary" type="button" (click)="Okay()"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>

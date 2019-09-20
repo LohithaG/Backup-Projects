@@ -1,0 +1,189 @@
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2>FLIPKART Remittance Report </h2>
+                    </header>
+                    <div class="widget-body" style="min-height: 121px">
+                        <fieldset style="padding:0px;padding-top:11px;margin-bottom:-30px;">
+                            <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                                <label class="control-label"><b>Start Date</b></label>
+                                <my-date-picker [options]="myDatePickerOptions" [(ngModel)]="QueryData.startDate"
+                                    name="startDate"></my-date-picker>
+                            </section>
+
+                            <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                                <label class="control-label"><b>End Date</b></label>
+                                <my-date-picker [options]="myDatePickerOptions" [(ngModel)]="QueryData.endDate"
+                                    name="endDate"></my-date-picker>
+                                <div class="icon-color-bad">{{errorMessage}}</div>
+                            </section>
+                            <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                <label class="control-label"> <b>Settlement Type</b> </label>
+                                <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="returnType"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option *ngFor="let ret of returnTypes" [value]="ret.return_name">
+                                        {{ret.name}}</option>
+                                </select>
+                            </section>
+
+                            <section style='margin-top: 24px;' class="form-group col-sm-1 padding-5">
+
+                                <button type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit"
+                                    (click)="QuerySubmit()">Submit</button>
+                            </section>
+                        </fieldset>
+
+                    </div>
+
+                    <div class="well padding-10 ">
+                        <sa-datatable id="DataTable" [options]="flipkartDetails"
+                            tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                            width="100%">
+                            <thead>
+                                <tr>
+                                    <th>NEFT ID</th>
+                                    <th>SETTLEMENT DATE </th>
+                                    <th>SETTLED AMOUNT (In Rs)</th>
+                                    <th>ORDER ID </th>
+                                    <th>SALE AMOUNT (In Rs)</th>
+                                    <th>REFUND AMOUNT (In Rs)</th>
+                                    <th>ORDER DATE </th>
+                                    <th>DISPATCH DATE</th>
+                                    <th>SELLER SKU CODE </th>
+                                    <th>QUANTITY</th>
+                                    <th>SETTLEMENT TYPE</th>
+                                    <th>TAX COLLECTED AT SOURCE</th>
+                                    <th>RETURN STATUS</th>
+                                    <th>SHIPPING CHARGES</th>
+                                    <th>MARKET PLACE FEE</th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+<div>
+    <loader [loading]="loading"></loader>
+</div>
+<div bsModal #transportModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="transportModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">Marketplace fee and taxes for <b>{{order_id_for_market}}</b>
+                </h3>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan='1'></th>
+                            <th>Fee</th>
+                            <th>CGST</th>
+                            <th>SGST</th>
+                            <th>IGST</th>
+                            <th>Total Taxes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Shipping Fee</th>
+                            <td>{{shipping_fee}}</td>
+                            <td>{{taxDetails?.cgstAmount}}</td>
+                            <td>{{taxDetails?.sgstAmount}}</td>
+                            <td>{{taxDetails?.igstAmount}}</td>
+                            <td>{{taxDetails?.totalTaxes}}</td>
+                        </tr>
+                        <tr>
+                            <th>Commission</th>
+                            <td>{{commission}}</td>
+                            <td>{{taxDetails1?.cgstAmount}}</td>
+                            <td>{{taxDetails1?.sgstAmount}}</td>
+                            <td>{{taxDetails1?.igstAmount}}</td>
+                            <td>{{taxDetails1?.totalTaxes}}</td>
+                        </tr>
+                        <tr>
+                            <th>Collection Fee</th>
+                            <td>{{collection_fee}}</td>
+                            <td>{{taxDetails2?.cgstAmount}}</td>
+                            <td>{{taxDetails2?.sgstAmount}}</td>
+                            <td>{{taxDetails2?.igstAmount}}</td>
+                            <td>{{taxDetails2?.totalTaxes}}</td>
+                        </tr>
+                        <tr>
+                            <th>Fixed Fee</th>
+                            <td>{{fixed_fee}}</td>
+                            <td>{{taxDetails3?.cgstAmount}}</td>
+                            <td>{{taxDetails3?.sgstAmount}}</td>
+                            <td>{{taxDetails3?.igstAmount}}</td>
+                            <td>{{taxDetails3?.totalTaxes}}</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td><b>{{taxDetails?.marketPlaceFee}}</b></td>
+                            <td colspan="3"></td>
+                            <td><b>{{taxDetails?.totalTaxesForOrder}}</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" [ngStyle]="{'display':this.loaderbtn ? 'none': 'inline'}" class="btn btn-primary"
+                    (click)="transportModal.hide()">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #taxModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="taxModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" style="text-align: center"><strong>TAX DETAILS FOR ORDER ID :
+                        {{order_id}}</strong></h2>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">TAX COLLECTED AT SOURCE</th>
+                            <th scope="col">ALL TAXES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">{{tax_at_source}}</td>
+                            <td>{{all_taxes}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" [ngStyle]="{'display':this.loaderbtn ? 'none': 'inline'}" class="btn btn-primary"
+                    (click)="taxModal.hide()">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

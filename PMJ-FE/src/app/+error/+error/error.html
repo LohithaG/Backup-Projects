@@ -1,0 +1,121 @@
+<div class="animated fadeInDown">
+    <div id="content">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+
+                    <div class="col-sm-12">
+
+                        <div class="text-center error-box" *ngIf="errorStatus.length>4">
+                            <h6 class="error-text bounceInDown animated" style="font-size:500%"><i class="fa fa-fw fa-warning fa-lg text-warning"></i> Data Unavailable
+                            </h6>
+                            <h6 class="font-xl">
+                                <strong>
+                                   {{errorStatus}}
+                                </strong>
+                            </h6>
+                            <br>
+
+                            <p class="lead">
+                                Unable to get data from selected date range, Please
+                                <a onclick='window.history.back()'>Refresh</a> the button to navigate to the page you have
+                                previously come from.
+                            </p>
+                        </div>
+                        <!--<div class="text-center error-box" *ngIf="errorStatus==111">
+                            <h6 class="error-text bounceInDown animated" style="font-size:500%"><i class="fa fa-fw fa-warning fa-lg text-warning"></i> Token Expired !
+                            </h6>
+                            <h6 class="font-xl">
+                                <strong>
+                                    Please re-login 
+                                </strong>
+                            </h6>
+                            <br>
+
+                            <p class="lead">
+                               <a routerLink="/auth/login">Click Here </a> to Login page
+                            </p>
+                        </div>-->
+                        <div class="text-center error-box" *ngIf="errorStatus==111">
+                            <h6 class="error-text bounceInDown animated" style="font-size:500%"><i class="fa fa-fw fa-warning fa-lg text-warning"></i> Service Unavailable
+                            </h6>
+                            <h6 class="font-xl">
+                                <strong>
+                                    Ooops, Something went wrong!
+                                </strong>
+                            </h6>
+                            <br>
+
+                            <p class="lead">
+                                the server does not recognize the request method, either contact your webmaster or try again. Use your browsers
+                                <a onclick='window.history.back()'>Refresh</a> button to navigate to the page you have previously
+                                come from.
+                            </p>
+                        </div>
+
+
+
+                        <div class="text-center error-box" *ngIf="errorStatus==501 || errorStatus==503">
+                            <h6 class="error-text bounceInDown animated" style="font-size:500%"><i class="fa fa-fw fa-warning fa-lg text-warning"></i> Error 501
+                            </h6>
+                            <h6 class="font-xl">
+                                <strong>
+                                    Not Implemented
+                                </strong>
+                            </h6>
+                            <br>
+
+                            <p class="lead">
+                                the server does not recognize the request method, either contact your webmaster or try again. Use your browsers
+                                <a onclick='window.history.back()'>Refresh</a> button to navigate to the page you have previously
+                                come from.
+                            </p>
+                        </div>
+
+                        <div class="text-center error-box" *ngIf="errorStatus==401 || errorStatus==403">
+                            <h6 class="error-text bounceInDown animated" style="font-size:500%"><i class="fa fa-fw fa-warning fa-lg text-warning"></i> Error 401
+                            </h6>
+                            <h6 class="font-xl">
+                                <strong>
+                                    Unauthorized
+                                </strong>
+                            </h6>
+                            <br>
+                            <p class="lead">
+                                The page you requested could not be found, either contact your webmaster or try again. Use your browsers
+                                <a onclick='window.history.back()'>Back</a>button to navigate to the page you have previously
+                                come from.
+                            </p>
+                        </div>
+
+                        <div class="text-center error-box" *ngIf="errorStatus == 404 ">
+                            <h6 class="error-text bounceInDown animated" style="font-size:500%"><i class="fa fa-fw fa-warning fa-lg text-warning"></i> Error 404
+
+                            </h6>
+
+                            <h6 class="font-xl">
+                                <strong>
+                                    Not Found
+                                </strong>
+                            </h6>
+                            <br>
+
+                            <p class="lead">
+                                Server can't find the requested page, either contact your webmaster or try again. Use your browsers
+                                <a onclick='window.history.back()'>Refresh</a> button to navigate to the page you have previously
+                                come from.
+                            </p>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

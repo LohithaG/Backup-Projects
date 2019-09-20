@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "channel": "CUSTOM",
+            "totalReturnedUnits": 1,
+            "soldUnitsValue": 2138528.0,
+            "totalReturnedUnitsValue": 20000.0,
+            "totalSoldUnit": 423
+        },
+        {
+            "channel": "AMAZON_FBA",
+            "totalReturnedUnits": 1,
+            "soldUnitsValue": 403045.0,
+            "totalReturnedUnitsValue": 27850.0,
+            "totalSoldUnit": 209
+        },
+        {
+            "channel": "WOOCOMMERCE",
+            "totalReturnedUnits": 0,
+            "soldUnitsValue": 937419.0,
+            "totalReturnedUnitsValue": 0.0,
+            "totalSoldUnit": 69
+        }
+    ]
+}

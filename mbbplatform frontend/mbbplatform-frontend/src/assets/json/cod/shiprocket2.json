@@ -1,0 +1,12 @@
+{
+    "cod_payble": {
+        "company_id": 26742,
+        "cod_payble": "24609.00",
+        "last_cod_remitted": "33219.00",
+        "total_COD_remitted": "983224.00",
+        "in_process": "0.00",
+        "dnp": "0.00",
+        "credit_limit": "0.00",
+        "cod_amount_onhold": "20000.00"
+    }
+}

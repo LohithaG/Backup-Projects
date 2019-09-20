@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title" style="text-align:center">Dispatch Product</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="invoiceForm">
+                            <div class="row">
+                                <div class="col-sm-10 col-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput name="invoiceId" formControlName="invoice" [(ngModel)]="invoiceId"
+                                            type="text">
+                                        <mat-placeholder class="placeholder">Invoice Id</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="invoiceForm.controls['invoice'].hasError('required') &&formValidate "
+                                        class="text-danger">Please
+                                        enter InvoiceId</span>
+                                </div>
+                                <div class="col-sm-2 col-2" (click)="getInvoiceBybarcode()" style="margin: auto"><img
+                                        src="assets/img/qr-code.png">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-10 col-10">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="noofProducts" type="number" [(ngModel)]="noofProducts">
+                                        <mat-placeholder class="placeholder">No.of Products</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="invoiceForm.controls['noofProducts'].hasError('required') &&formValidate "
+                                        class=" text-danger ">
+                                        Please enter no.of products</span>
+                                  
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="navigatetoInvoice()">Submit</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="navigatetoHomePage()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

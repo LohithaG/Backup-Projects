@@ -1,0 +1,101 @@
+<date-filter (dateData)="QueryDate($event)" [status]="'1'">
+</date-filter>
+<sa-widgets-grid *ngIf="hideThePage">
+    <div class="row" style="padding:10px">
+        <info-boxes [infoData]="goldDiaInfo"></info-boxes>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>TOTAL SALES </h2>
+                </header>
+
+                <div class="widget-body text-center">
+                    <h3>There is no data in selected time range</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+
+<sa-widgets-grid *ngIf="!hideThePage">
+    <div class="row" style="padding:10px">
+        <info-boxes [infoData]="goldDiaInfo"></info-boxes>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>TOTAL SALES </h2>
+                </header>
+                <div class="row">
+                    <div class="col-sm-6 widget-body border-r-1">
+                        <div id="targetSalesPieContainer" style="height:400px"></div>
+                    </div>
+                    <div class="col-sm-6 widget-body">
+                        <div id="actualSalesPieContainer" style="height:400px"></div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div [ngClass]="dynamicUi?'col-sm-12 ':'col-sm-6 col-xs-12 padding-r-0'" *ngIf="clickType=='Diamond'||clickType==''">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2 (click)="viewChart()">DIAMOND QTY- TARGET vs ACTUAL</h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('diaQtygroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="diaQtygroupContainer" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+
+        <div [ngClass]="dynamicUi?'col-sm-12 ':'col-sm-6 col-xs-12 padding-r-10'" *ngIf="clickType=='Diamond'||clickType==''">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>DIAMOND VALUE- TARGET vs ACTUAL</h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('diaValuegroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="diaValuegroupContainer" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="dynamicUi?'col-sm-12 ':'col-sm-6 col-xs-12 padding-r-0'" *ngIf="clickType=='gold'||clickType==''">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>GOLD QTY- TARGET vs ACTUAL</h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('goldQtygroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="goldQtygroupContainer" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="dynamicUi?'col-sm-12 ':'col-sm-6 col-xs-12 padding-r-10'" *ngIf="clickType=='gold'||clickType==''">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>GOLD VALUE- TARGET vs ACTUAL</h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('goldValuegroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="goldValuegroupContainer" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+
+<loader [loading]=loaderStatus></loader>

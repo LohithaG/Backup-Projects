@@ -1,0 +1,690 @@
+<div id="content">
+    <div style="font-weight:bold"><span style="cursor: pointer;color: #335CA7;text-decoration: underline;" routerLink="/purchaseorder">Purchase
+            Orders</span> <span> / Purchase Order
+            Details</span> </div>
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Transaction Details</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form [formGroup]="poForm">
+                                    <div formGroupName="poInfo">
+                                        <div class="row" style="margin-left: 0px;  margin-right: 0px;">
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label for="purchageNumber"><b>P.O Number : </b></label>
+                                                    <input type="text" class="form-control" id="vendorName"
+                                                        formControlName="purchageNumber" readonly>
+                                                    <span *ngIf="poForm.get('poInfo.purchageNumber').hasError('required') && submitted"
+                                                        class=" icon-color-bad ">P.O
+                                                        number is required</span>
+                                                    <span *ngIf="poForm.get('poInfo.purchageNumber').hasError('maxlength')"
+                                                        class=" icon-color-bad ">Please
+                                                        enter valid p.o number between 3 to 32 characters only</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive" style="margin-top:2px">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+
+                                                    <th style="width:25%"><a class="btn btn-primary" style="padding: 1px 6px"
+                                                            (click)="onAddItem()"><i class="fa fa-plus"></i> </a>
+                                                        &nbsp; Bank Name</th>
+                                                    <th style="width:25%">Transaction Number</th>
+                                                    <th style="width:25%">Date</th>
+                                                    <th style="width:15%">Amount(INR)</th>
+                                                    <th style="width:10%">Actions</th>
+
+
+                                                </tr>
+                                                <tr style="padding:10px;text-align:center;background-color:white;"
+                                                    *ngIf="!this.poForm.get('items').length">
+                                                    <th style="background-color:white;border-right:none"></th>
+                                                    <th style="background-color:white;border-left:none;border-right:none">PLEASE
+                                                        TRANSACTION DETAILS</th>
+                                                    <th style="background-color:white;border-right:none;border-left:none"></th>
+                                                    <th style="background-color:white;border-left:none;border-right:none"></th>
+                                                    <th style="background-color:white;border-left:none;border-right:none"></th>
+
+                                                </tr>
+                                            </thead>
+                                            <!-- <div formArrayName="items"> -->
+                                            <tbody formArrayName="items" *ngFor="let item of poForm.controls['items'].controls; let i = index">
+                                                <tr [formGroupName]="i">
+                                                    <td>
+                                                        <!-- {{item.get('comments')}} -->
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <input formControlName='bankName' class="form-control" type="text"
+                                                                placeholder="Bank Name">
+                                                            <span *ngIf="item.get('bankName').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                enter Bank Name</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <input formControlName='transactionNumber' class="form-control"
+                                                                type="text" placeholder="Transaction Number">
+                                                            <span *ngIf="item.get('transactionNumber').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                enter Transaction Number</span>
+                                                            <span *ngIf="item.get('transactionNumber').hasError('maxlength') "
+                                                                class=" icon-color-bad ">
+                                                                Transaction Number between 1-50 chars only</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <my-date-picker [options]="datePickerOptions" [selDate]="dateData[i] | date: 'dd-MM-yyyy'"
+                                                                placeholder="Select Date" formControlName="enteredDate"
+                                                                required></my-date-picker>
+                                                            <span *ngIf="item.get('enteredDate').hasError('required') && submitted"
+                                                                class="icon-color-bad ">Please
+                                                                enter Date</span>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <input formControlName='amount' class="form-control" type="number"
+                                                                placeholder="Amount">
+                                                            <span *ngIf="item.get('amount').hasError('required') && submitted "
+                                                                class=" icon-color-bad ">Please
+                                                                enter Amount</span>
+                                                            <span *ngIf="item.get('amount').hasError('pattern') " class=" icon-color-bad ">Not
+                                                                allows letters and negative values
+                                                            </span>
+                                                        </div>
+                                                    </td>
+
+                                                    <td (click)="onDeleteItem(i)" style="text-align:center;padding: 14px;">
+                                                        <a class="editor_remove"><i class="fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                               
+                                                
+
+                                            </tbody>
+                                            <tbody>
+                                                    <tr>
+                                                            <td colspan="3" style="text-align: right;    padding: 14px;
+                                                                font-weight: bold;">Total</td>
+                                                            <td>
+                                                                <div class="form-group" style="margin-bottom:0px">
+                                                                    <input class="form-control" style="font-weight: bold"
+                                                                        [ngModel]="getTotalValue()" [ngModelOptions]="{standalone: true}"
+                                                                        required type="text" readonly>
+                                                                </div>
+                                                            </td>
+                                                            <th colspan="1"></th>
+                                                        </tr>
+                                            </tbody>
+                                            <!-- <div class="form-group" >
+                                                        <label for="comments"><b>Comments : </b></label>
+                                                        <textarea type="textarea" id="comments" formControlName="pcomments"
+                                                            class="form-control" style=" resize: none;" placeholder="please enter comments"
+                                                            rows="5"></textarea>
+                                                </div> -->
+                                            <!-- <tbody>
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: right;    padding: 14px;
+                                                    font-weight: bold;">Total</td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input class="form-control" style="font-weight: bold"
+                                                                    [ngModel]="getTotalValue()" [ngModelOptions]="{standalone: true}"
+                                                                    required type="text" readonly>
+                                                            </div>
+                                                        </td>
+                                                        <th colspan="1"></th>
+                                                    </tr>
+                                                </tbody> -->
+
+                                            <!-- </div> -->
+                                        </table>
+
+
+                                        <div class="form-group">
+                                                <label for="comments"><b>Comments : </b></label>
+                                                <textarea type="textarea" id="comments"  [(ngModel)]='comments' [ngModelOptions]="{standalone: true}"
+                                                    class="form-control" style=" resize: none;" placeholder="please enter comments"
+                                                    rows="5"></textarea>
+                                              
+                                            </div>
+
+                                        <!-- <div>
+                              <br><br>
+                              <br><br>
+                              <br><br>
+                              <br><br>
+                              <br><br>
+                              <br><br>
+                            </div> -->
+                                    </div>
+
+
+
+                                    <span style="text-align:center;font-weight:bold;color:green">{{successAlertMessages}}</span>
+                                    <span style="text-align:center;font-weight:bold;color:red">{{errorAlertMessages}}</span>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-success"
+                                                (click)="addBankDetails()" style="font-weight:bold" [ngStyle]="{'display':this.showOtherCharges ? 'none': 'inline'}">Next</button></div>
+                                        <!-- <div class="col-sm-6"><button class="btn btn-success" (click)="addBankDetails()"
+                                            *ngIf="!this.loader">
+                                                Next </button></div> -->
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Other Expenses Details
+                        </h2>
+                    </header>
+                    <div class="widget-body" *ngIf="this.showOtherCharges">
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <form [formGroup]="OtherChargesForm">
+                                    <div class="row" style="margin-left: 0px;  margin-right: 0px;">
+
+                                        <div class="table-responsive" style="margin-top:2px">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:13%"><a class="btn btn-primary" style="padding: 1px 6px"
+                                                                (click)="onAddSkuItem()"><i class="fa fa-plus"></i> </a>
+                                                            &nbsp; Bank Charges</th>
+                                                        <th style="width:13%">Custom Duty</th>
+                                                        <th style="width:13%">Clearing Charges</th>
+                                                        <th style="width:13%">Transportation
+                                                        </th>
+                                                        <th style="width:13%">Carriage Inward/Outward</th>
+                                                        <th style="width:13%">Other Charges</th>
+                                                        <th style="width:13%">Total</th>
+                                                        <th style="width:9%">Actions</th>
+                                                    </tr>
+                                                    <tr style="padding:10px;text-align:center;background-color:white;"
+                                                        *ngIf="!this.OtherChargesForm.get('items').length">
+                                                        <th style="background-color:white;border-right:none"></th>
+                                                        <th style="background-color:white;border-left:none;border-right:none"></th>
+                                                        <th style="background-color:white;border-right:none;border-left:none">PLEASE
+                                                            ADD OTHER CHARGES</th>
+                                                        <th style="background-color:white;border-left:none;border-right:none;"></th>
+                                                        <th style="background-color:white;border-left:none;border-right:none;"></th>
+                                                        <th style="background-color:white;border-left:none;border-right:none;"></th>
+                                                        <th style="background-color:white;border-left:none;border-right:none;"></th>
+                                                        <th style="background-color:white;border-left:none;border-right:none;"></th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody formArrayName="items" *ngFor="let item of OtherChargesForm.controls['items'].controls; let i = index">
+                                                    <tr [formGroupName]="i">
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='bankCharges' class="form-control"
+                                                                    type="number" placeholder="In Rs" (input)="getTotal(i)">
+                                                                <span *ngIf="item.get('bankCharges').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Bank Charges</span>
+                                                                <span *ngIf="item.get('bankCharges').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values
+                                                                </span>
+
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='customDuty' class="form-control"
+                                                                    type="number" placeholder="In Rs" (input)="getTotal(i)">
+                                                                <span *ngIf="item.get('customDuty').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Custom Duty</span>
+                                                                <span *ngIf="item.get('customDuty').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='clearingCharges' class="form-control"
+                                                                    type="number" placeholder="In Rs" (input)="getTotal(i)">
+                                                                <span *ngIf="item.get('clearingCharges').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Clearing Charges</span>
+                                                                <span *ngIf="item.get('clearingCharges').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values </span>
+                                                            </div>
+                                                        </td>
+
+
+
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='transportation' class="form-control"
+                                                                    type="number" placeholder="In Rs" (input)="getTotal(i)">
+                                                                <span *ngIf="item.get('transportation').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Transportation Charges</span>
+                                                                <span *ngIf="item.get('transportation').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='carriage' class="form-control"
+                                                                    type="number" placeholder="In Rs" (input)="getTotal(i)">
+                                                                <span *ngIf="item.get('carriage').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Carriage Inward/Outward</span>
+
+                                                                <span *ngIf="item.get('carriage').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='otherCharges' class="form-control"
+                                                                    type="number" placeholder="In Rs" (input)="getTotal(i)">
+                                                                <span *ngIf="item.get('otherCharges').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Other Charges</span>
+                                                                <span *ngIf="item.get('otherCharges').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values </span>
+                                                            </div>
+                                                        </td>
+                                                        <!-- [(ngModel)]="getTotal(i)" [ngModelOptions]="{standalone: true}" -->
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='totalAmount' class="form-control"
+                                                                    type="number" placeholder="Total" readonly>
+                                                                <span *ngIf="item.get('totalAmount').hasError('required') && formValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter Total Amount</span>
+                                                            </div>
+                                                        </td>
+
+                                                        <td (click)="onDeleteskuItem(i)" style="text-align:center;padding: 14px;">
+                                                            <a class="editor_remove"><i class="fa fa-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="6" style="text-align: right;padding: 14px;
+                                                        font-weight: bold;">Total</td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input class="form-control" style="font-weight: bold"
+                                                                    readonly [ngModel]="getTotalOtherChargesValue()"
+                                                                    [ngModelOptions]="{standalone: true}" required type="text">
+                                                            </div>
+                                                        </td>
+                                                        <th colspan="1"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <span style="text-align:center;font-weight:bold;color:green">{{successAlertMessages}}</span>
+                                    <span style="text-align:center;font-weight:bold;color:red">{{errorOtherChargesAlertMessages}}</span>
+                                    <div class="row">
+                                        <!-- <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning"
+                                                (click)="gotoHomePage()" *ngIf="!this.loader">Cancel</button></div> -->
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-success"
+                                                style="font-weight:bold" [ngStyle]="{'display':this.showPriceDetails ? 'none': 'inline'}"
+                                                type="submit" (click)="AddOtherChargesDetails()">
+                                                Next </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Price Details</h2>
+                    </header>
+                    <div class="widget-body" *ngIf="this.showPriceDetails==true">
+                        <div class="row">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-8">
+                                <form [formGroup]="SkuForm">
+                                    <div class="row" style="margin-left: 0px;  margin-right: 0px;">
+
+                                        <div class="table-responsive" style="margin-top:2px">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:20%">SKU</th>
+                                                        <th style="width:40%">Item Name</th>
+                                                        <th style="width:10%">Quantity</th>
+                                                        <th style="width:20%">Price per Unit
+
+                                                            <select style="float:right" [(ngModel)]="CurrencyId"
+                                                                (ngModelChange)="getCurrencyChange()" [ngModelOptions]="{standalone: true}">
+                                                                <option *ngFor="let price of CurrencyTypes" [value]="price.id">{{price.currencyName}}</option>
+                                                            </select>
+                                                        </th>
+
+
+
+                                                    </tr>
+                                                    <tr style="padding:10px;text-align:center;background-color:white;"
+                                                        *ngIf="!this.SkuForm.get('items').length">
+                                                        <th style="background-color:white;border-right:none"></th>
+                                                        <th style="background-color:white;border-left:none;border-right:none">PLEASE
+                                                            ADD ITEM NAMES</th>
+                                                        <th style="background-color:white;border-right:none;border-left:none"></th>
+                                                        <th style="background-color:white;border-left:none"></th>
+                                                        <th style="background-color:white;border-left:none"></th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody formArrayName="items" *ngFor="let item of SkuForm.controls['items'].controls; let i = index">
+                                                    <tr [formGroupName]="i">
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='skuCode' class="form-control"
+                                                                    type="text" placeholder="SKU Code" readonly
+                                                                    (change)="getProductName(i)">
+                                                                <span *ngIf="item.get('skuCode').hasError('required') && formskuValidate"
+                                                                    class=" icon-color-bad">Please
+                                                                    enter SKU Code</span>
+                                                                <span *ngIf="item.get('skuCode').hasError('maxlength')"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter valid SKU between 2 to 32 characters only</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='itemName' class="form-control"
+                                                                    type="text" placeholder="Item Name" readonly>
+                                                                <span *ngIf="item.get('itemName').hasError('required') && formskuValidate"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter valid SKU for item name</span>
+
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='quantity' class="form-control"
+                                                                    type="number" placeholder="Quantity" readonly>
+                                                                <span *ngIf="item.get('quantity').hasError('required') && formskuValidate "
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter quantity</span>
+                                                                <span *ngIf="item.get('quantity').hasError('pattern')"
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter valid quantity below 99999</span>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <input formControlName='price' class="form-control"
+                                                                    type="number" placeholder="Price">
+                                                                <span *ngIf="item.get('price').hasError('required') && formskuValidate "
+                                                                    class=" icon-color-bad ">Please
+                                                                    enter price</span>
+
+                                                                <span *ngIf="item.get('price').hasError('pattern')  "
+                                                                    class=" icon-color-bad ">Not
+                                                                    allows letters and negative values
+                                                                </span>
+
+                                                            </div>
+                                                        </td>
+
+                                                        <!-- <td (click)="onDeletePriceItem(i)" style="text-align:center">
+                                                            <a class="editor_remove"><i class="fa fa-trash-o"></i></a>
+                                                        </td> -->
+                                                    </tr>
+
+
+
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+
+                                    </div>
+                                    <span style="text-align:center;font-weight:bold;color:green">{{pricesuccessAlertMessages}}</span>
+                                    <span style="text-align:center;font-weight:bold;color:red">{{priceerrorAlertMessages}}</span>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right; font-weight: bold;"><button
+                                                class="btn btn-warning" style=" font-weight: bold;" (click)="gotoHomePage()">Cancel</button></div>
+                                        <div class="col-sm-6"><button class="btn btn-success" style="font-weight:bold"
+                                                [ngStyle]="{'display':this.loaderbtn ? 'none': 'inline'}" type="submit"
+                                                (click)="finalSubmit()">
+                                                Submit </button></div>
+                                        <div class="col-sm-6" [ngStyle]="{'display':!this.loaderbtn ? 'none': 'inline'}"><button
+                                                style="font-weight:bold" class="btn btn-success" type="submit">
+                                                Calculating </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2">
+                            </div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+<div id="content" *ngIf="this.loaddata">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Purchase Order Details</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive" *ngIf="loader" style="margin-top:2px">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th *ngIf="CurrencyId==2" colspan="3"></th>
+                                                <th *ngIf="CurrencyId==2" colspan="2" style="background: #eee;text-align:center">USD</th>
+                                                <th colspan="3" *ngIf="CurrencyId==1"></th>
+                                                <th colspan="2" style="background: #eee;text-align:center">Before
+                                                    Charges(INR)</th>
+                                                <th colspan="1"></th>
+                                                <th colspan="2" style="background: #eee;text-align:center">After
+                                                    Charges(INR)</th>
+                                            </tr>
+
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <th>SKU</th>
+                                                <th>Item Name</th>
+                                                <th>Quantity</th>
+                                                <th *ngIf="CurrencyId==2">Price</th>
+                                                <th *ngIf="CurrencyId==2">Total</th>
+                                                <th>Unit Price</th>
+                                                <th>Total Price</th>
+                                                <th>Other Charges(per unit)</th>
+                                                <th>Unit Price</th>
+                                                <th>Total Price</th>
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody *ngFor="let item of poDetails.priceDetails;let i=index">
+                                            <tr>
+
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+                                                        {{item.vendorItemDetailsId.skuCode}}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+                                                        {{item.vendorItemDetailsId.itemName}}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+                                                        {{item.vendorItemDetailsId.quantity}}
+                                                    </div>
+                                                </td>
+                                                <td *ngIf="CurrencyId==2">
+                                                    <div class="form-group" style="margin-bottom:0px">
+                                                        {{item.price}}
+                                                    </div>
+
+                                                </td>
+
+                                                <td *ngIf="CurrencyId==2">
+                                                    <div class="form-group" style="margin-bottom:0px">
+
+                                                        {{item.unitPriceInUsdBeforeCharges}}
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+
+                                                        {{item.unitPriceInRupeesBeforeCharges}}
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+
+                                                        {{item.priceInRupeesBeforeCharges}}
+                                                    </div>
+
+                                                </td>
+
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+
+                                                        {{item.otherChargesPerUnit}}
+                                                    </div>
+
+                                                </td>
+
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+
+                                                        {{item.unitPriceInRupeesAfterCharges}}
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="form-group" style="margin-bottom:0px">
+
+                                                        {{item.priceInRupeesAfterCharges}}
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <th *ngIf="CurrencyId==2" colspan="4" style="text-align:center">Total</th>
+                                                <th *ngIf="CurrencyId==1" colspan="3" style="text-align:center">Total</th>
+                                                <td *ngIf="CurrencyId==2" style="background: #eee">
+                                                    <div class="form-group" style="margin-bottom:0px;font-weight:bold;background: #eee">
+                                                        {{poDetails.totalAmount[0].totalAmountInUsd}}
+                                                    </div>
+                                                </td>
+                                                <td style="background: #eee">
+                                                    <div class="form-group" style="margin-bottom:0px;font-weight:bold;background: #eee">
+
+                                                        {{poDetails.totalAmount[0].totalUnitPriceAmountInRupees}}
+                                                    </div>
+                                                </td>
+                                                <td style="background: #eee">
+                                                    <div class="form-group" style="margin-bottom:0px;font-weight:bold;background: #eee">
+                                                        {{poDetails.totalAmount[0].totalPriceAmountInRupees}}
+                                                    </div>
+                                                </td>
+                                                <td style="background: #eee">
+                                                    <div class="form-group" style="margin-bottom:0px;font-weight:bold;background: #eee">
+                                                        {{poDetails.totalAmount[0].totalAmountForOtherCharges}}
+                                                    </div>
+                                                </td>
+                                                <th colspan="1"></th>
+                                                <td style="background: #eee">
+                                                    <div class="form-group" style="margin-bottom:0px;font-weight:bold;background: #eee">
+                                                        {{poDetails.totalAmount[0].totalAmountForAfterCharges}}
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

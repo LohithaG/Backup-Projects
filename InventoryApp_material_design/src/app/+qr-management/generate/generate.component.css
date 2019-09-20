@@ -1,0 +1,22 @@
+.mat-focused .placeholder {    
+  color: #AAAAAA;
+  }
+.placeholder {
+   color:#AAAAAA;
+  }
+  .img1
+  {
+    height: 120px;
+  }
+  /* ::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+    } */
+    
+    .height-skus{
+    max-height: 100px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: block;
+    }
+  

@@ -1,0 +1,48 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title></title>
+<style>
+table {
+	border-collapse: collapse;
+}
+
+table, td, th {
+	border: 1px solid black;
+}
+
+table th {
+	background-color: gray;
+}
+</style>
+</head>
+
+<body>
+	<table border="1">
+		<tr align="center" style="font-size: medium; color: black;">
+			<th>S NO</th>
+			<th width="300">Product Name</th>
+			<th width=100>SKU Code</th>
+			<th width=80>SKU Type</th>
+			<th>Facility Wise Inventory Count</th>
+		</tr>
+		<tr th:each="inventory,iterator : ${inventoryList}">
+			<td th:text="${iterator.index+1}" align="center"
+				style="color: black;"
+				></td>
+
+			<td th:text="${inventory.productName}" align="center"
+				style="color: black ;"></td>
+
+			<td th:text="${inventory.skuCode}" align="center"
+				style="color: black;"></td>
+				<td th:text="${inventory.accessoriesStatus}" align="center"
+				style="color: black;"></td>
+			<td th:text="${inventory.facilityWiseInventoryCount}" align="center"
+				style="color: black;"></td>
+		</tr>
+	</table>
+</body>
+</html>
+

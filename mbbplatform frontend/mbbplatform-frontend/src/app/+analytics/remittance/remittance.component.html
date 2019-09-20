@@ -1,0 +1,159 @@
+<div id="content">
+    <br>
+    <sa-widgets-grid>
+
+        <div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                        <header>
+                            <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                            <h2>Analytics</h2>
+                        </header>
+                        <div>
+                            <div class="widget-body">
+                                <form class="smart-form" id="dealer-filter-form">
+                                    <fieldset style="padding:0px">
+                                        <section class="form-group col-sm-4 padding-5" *ngIf="QueryData">
+                                            <label class="control-label"><b> From </b></label>
+                                            <my-date-picker [options]="myDatePickerOptions" [selDate]="startDate" [(ngModel)]="QueryData.startDate" name="startDate"></my-date-picker>
+                                        </section>
+                                        <section class="form-group col-sm-4 padding-5" *ngIf="QueryData">
+                                            <label class="control-label"><b> To </b></label>
+                                            <my-date-picker [options]="myDatePickerOptions" [selDate]="endDate" [(ngModel)]="QueryData.endDate" name="endDate"></my-date-picker>
+                                            <div class="icon-color-bad">{{errorMessage}}</div>
+                                        </section>
+                                    </fieldset>
+                                    <footer style="padding:0px">
+                                        <section class="col col-8">
+                                            <button class="btn btn-default" title="Reset" type="button" id="filter-reset" (click)="getDefaultDates()">Reset</button>
+                                            <input type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit" value="Submit" (click)="QuerySubmit()">
+                                        </section>
+                                    </footer>
+                                </form>
+                            </div>
+                        </div>
+                    </sa-widget>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row" id="noData">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            No data to display
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="data">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                        <header>
+                            <span class="widget-icon">
+                                <i class="fa fa-bar-chart-o"></i>
+                            </span>
+                            <h2>Remittance Status </h2>
+                            <div class="widget-toolbar status-chart_rem" role="menu">
+                                <a class="btn btn-primary"> Reset</a>
+                            </div>
+                        </header>
+                        <div>
+                            <div class="widget-body">
+                                <div id="status-chart_rem" class="dc-chart">
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                        <header>
+                            <span class="widget-icon">
+                                <i class="fa fa-bar-chart-o"></i>
+                            </span>
+                            <h2>Shipping Aggregators </h2>
+                            <div class="widget-toolbar shipping_Aggrtr_chart" role="menu">
+                                <a class="btn btn-primary"> Reset</a>
+                            </div>
+                        </header>
+                        <div>
+                            <div class="widget-body">
+                                <div id="shipping_Aggrtr_chart" class="dc-chart">
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                        <header>
+                            <span class="widget-icon">
+                                <i class="fa fa-bar-chart-o"></i>
+                            </span>
+                            <h2>Payment Reference</h2>
+                            <div class="widget-toolbar" role="menu" (click)="resetGraphs()">
+                                <a class="btn btn-primary"> Reset</a>
+                            </div>
+                        </header>
+                        <div>
+                            <div class="widget-body">
+                                <div id="payment_ref_chart" class="dc-chart">
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                        <header>
+                            <span class="widget-icon">
+                                <i class="fa fa-bar-chart-o"></i> 
+                            </span>
+                            <h2>Total Shipments</h2>
+                            <div class="widget-toolbar" role="menu" (click)="resetGraphs()">
+                                <a class="btn btn-primary"> Reset All</a>
+                            </div>
+                            <div class="widget-toolbar" role="menu">
+                                <a class="btn btn-primary" id="download"><i class="fa fa-download"></i> CSV Download</a>
+                            </div>
+                        </header>
+                        <div>
+                            <div class="widget-body">
+                                <div id="dc-data-count_rem" class="dc-chart" style="color:#38397b">
+                                    <span class="filter-count"></span> selected out of
+                                    <span class="total-count"></span> shipments
+                                </div>
+                                <table class="table table-hover dc-data-table_rem">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+<loader [loading]="loading"></loader>

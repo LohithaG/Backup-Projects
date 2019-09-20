@@ -1,0 +1,114 @@
+<date-filter (dateData)="QueryDate($event)">
+</date-filter>
+
+<sa-widgets-grid *ngIf="hideThePage">
+    <div class="row" style="padding:10px">
+        <ticket-kpi-boxes [ticketsKpiInfo]="ticketsKpiInfo"></ticket-kpi-boxes>
+        <div class="col-sm-12 ">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>Ticket Size</h2>
+                </header>
+                <div class="widget-body text-center">
+                    <h3>There is no data in selected time range</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+<sa-widgets-grid *ngIf="!hideThePage">
+    <div class="row" style="padding:10px">
+        <ticket-kpi-boxes [ticketsKpiInfo]="ticketsKpiInfo"></ticket-kpi-boxes>
+        <div class="col-sm-12 " [hidden]="!showActuals">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>LOCATION-WISE TICKET SIZES </h2>
+                    <div class="widget-toolbar inventory_location_chart" role="menu" (click)="getChartData()">
+                        <a class="btn btn-primary"> Reset</a>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="ticketsizepieContainershw" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 " [hidden]="!showActuals">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>GOLD & DIAMONDS TICKET SIZE</h2>
+                    <!--<div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('golddiamondgroup')"></on-off-switch>
+                    </div>-->
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="goldDiamondsTicketStack" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 ">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>DIAMONDS - TARGET vs ACTUAL TICKET SIZE </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('diamondTargetgroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_diamond" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 ">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>GOLD - TARGET vs ACTUAL TICKET SIZE </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('goldTargetgroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_gold" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 " [hidden]="!salesPersonStatus">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>SALESPERSON-GOLD - TARGET vs ACTUAL </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('salesgoldTargetgroup')" [status]="1"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_gold_sales" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 " [hidden]="!salesPersonStatus" style="margin-top:10px">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>SALESPERSON-DIAMOND - TARGET vs ACTUAL </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('salesdiamondTargetgroup')" [status]="1">
+                        </on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_diamond_sales" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+
+<loader [loading]=loaderStatus></loader>

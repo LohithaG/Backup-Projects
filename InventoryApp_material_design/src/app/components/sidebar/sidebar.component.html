@@ -1,0 +1,74 @@
+<div class="logo">
+    <!--<a class="simple-text">
+        MEDICALBULKBUY
+    </a>-->
+    <img _ngcontent-c2="" src="assets/img/logom.png" width="100%" style="padding: 0px 19px;
+">
+</div>
+<div class="sidebar-wrapper">
+    <ul class="nav">
+        <li routerLinkActive="active" class="nav-item" *ngIf="userType=='INVENTORY_MANAG' || userType=='PRODUCT_VERIFIER' || userType=='RETURN_MANAG' ">
+            <a class="nav-link" routerLink="/inventory/view">
+                <i class="material-icons">home</i>
+                <p>Home</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item" *ngIf="userType=='DISPATCHER'">
+            <a class="nav-link" routerLink="/dispatch/home">
+                <i class="material-icons">home</i>
+                <p>Home</p>
+            </a>
+        </li>
+
+        <!--<li routerLinkActive="active" class="nav-item" *ngIf="userType=='INVENTORY_MANAG'">
+            <a class="nav-link" routerLink="/product/shipping">
+                <i class="material-icons">swap_calls</i>
+                <p>Inventory Transfers</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item" *ngIf="userType=='INVENTORY_MANAG'">
+            <a class="nav-link" routerLink="/product/delete">
+                <i class="material-icons">import_export</i>
+                <p>Restore Inventory</p>
+            </a>
+        </li>-->
+        <!--<li routerLinkActive="active" class="nav-item" *ngIf="userType=='Inventory'">
+            <a class="nav-link" routerLink="/inventory/details">
+                <i class="material-icons">table</i>
+                <p>Details</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item" *ngIf="userType=='Dispatch'">
+            <a class="nav-link" routerLink="/dispatch/details">
+                <i class="material-icons">table</i>
+                <p>Details</p>
+            </a>
+        </li>-->
+        <li routerLinkActive="active" class="nav-item" *ngIf="userType=='INVENTORY_MANAG'">
+            <a class="nav-link" routerLink="/product/view">
+                <i class="material-icons">visibility</i>
+                <p>View Product</p>
+            </a>
+        </li>
+        <!--<li routerLinkActive="active" class="nav-item" *ngIf="userType=='Inventory'">
+            <a class="nav-link" routerLink="/product/return-product">
+                <i class="material-icons">table</i>
+                <p>Return Product</p>
+            </a>
+        </li>-->
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/version">
+                <i class="material-icons">info</i>
+                <p>Version</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/loginUrl">
+                <i class="material-icons">logout</i>
+                <p>Logout</p>
+            </a>
+        </li>
+
+
+    </ul>
+</div>

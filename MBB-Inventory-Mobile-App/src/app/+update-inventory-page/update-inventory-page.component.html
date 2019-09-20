@@ -1,0 +1,152 @@
+<div class="headerRibbon" id="ribbon">
+  <span class="ribbon-button-alignment breadcrumb">
+    <span class="btn btn-ribbon" placement="bottom">
+      <i class="fa fa-truck"></i>
+    </span> Update Product
+  </span>
+</div>
+
+<div style="margin:1%">
+  <div class="widget-body text-align" style="color:red" *ngIf="productDetailsError">{{productDetailsError}}</div>
+  <div class="widget-body no-padding text-align" *ngIf="productDetails">
+
+    <form [formGroup]="complexForm" method="post" id="checkout-form" class="smart-form">
+
+      <fieldset>
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">Barcode
+              <font class="text-danger">*</font>
+            </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+              <input type="text" name="barcode" formControlName="barcode" [(ngModel)]="productDetails.barcode" placeholder="please enter barcode "
+                readonly>
+            </label>
+            <div *ngIf="!submitted || complexForm.controls['barcode'].touched ||complexForm.controls['barcode'].dirty" class="text-danger">
+              <div *ngIf="complexForm.controls['barcode'].hasError('required')">
+                Please enter barcode
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">SKU Code
+              <font class="text-danger">*</font>
+            </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+              <input type="text" name="barcode" formControlName="skucode" [(ngModel)]="productDetails.inventoryId.skuCode" placeholder="Please enter SKU code"
+                readonly>
+            </label>
+          </section>
+        </div>
+
+
+        <div formGroupName="inventoryId">
+          <div class="row">
+            <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+              <label class="label" for="productName" style="font-weight: 600;">Product Name
+                <font class="text-danger">*</font>
+              </label>
+            </section>
+            <section class="col col-5">
+              <label class="input form-control">
+                <input type="text" name="productName" formControlName="productName" [(ngModel)]="productDetails.inventoryId.productName"
+                  placeholder="Product Name" readonly>
+              </label>
+              <div *ngIf="!submitted || complexForm.controls['inventoryId'].controls['productName'].touched ||complexForm.controls['inventoryId'].controls['productName'].dirty"
+                class="text-danger">
+                <div *ngIf="complexForm.controls['inventoryId'].controls['productName'].hasError('required')">
+                  Please enter product name
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="inventoryCondition" style="font-weight: 600;">Inventory Condition
+              <font class="text-danger">*</font>
+            </label>
+          </section>
+          <section class="col col-5">
+
+            <label class="select form-control">
+              <select id="power" name="status" class="form-control" formControlName="inventoryConditionId"  [(ngModel)]="productDetails.inventoryConditionId"
+                placeholder="please select inventory condition" required (ngModelChange)="myMethod()">
+                <option [selected]="true" [disabled]="true">Please select inventory condition </option>
+                <option *ngFor="let condition of productConditionList" [ngValue]="condition">{{condition.inventoryCondition}}</option>
+              </select>
+              <i></i>
+            </label>
+            <div *ngIf="(!submitted || complexForm.controls['inventoryConditionId'].touched ||complexForm.controls['inventoryConditionId'].dirty) && complexForm.controls['inventoryConditionId'].hasError('required')"
+              class="text-danger">
+              Please select inventory condition
+            </div>
+          </section>
+        </div>
+
+
+
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" style="font-weight: 600;">Item Status
+              <font class="text-danger">*</font>
+            </label>
+          </section>
+          <section class="col col-5">
+            <label class="select form-control">
+              <select id="power" name="status" class="form-control" formControlName="itemStatusId" [(ngModel)]="productDetails.itemStatusId"
+                placeholder="please select status" required>
+                <option [selected]="true" [disabled]="true">Please select status </option>
+                <option *ngFor="let status of ItemStatusType" [ngValue]="status">{{status.itemStatus}}</option>
+              </select>
+              <i></i>
+            </label>
+            <div *ngIf="(!submitted || complexForm.controls['itemStatusId'].touched ||complexForm.controls['itemStatusId'].dirty) && complexForm.controls['itemStatusId'].hasError('required')"
+              class="text-danger">
+              Please select item status
+            </div>
+          </section>
+        </div>
+
+
+      </fieldset>
+
+      <footer>
+        <section class="col col-9">
+          <button class="btn  btn-warning btn-sm" type="submit" (click)="cancelUser()">Cancel</button>
+          <button class="btn  btn-success btn-sm" type="submit" (click)="updateProduct()">
+            Update
+          </button>
+        </section>
+      </footer>
+
+    </form>
+  </div>
+</div>
+
+<div bsModal #UpdateAlert="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+  role="dialog" aria-labelledby="myLargeModalLabel" style="top:35%">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>Update Product</strong></h4>
+      </div>
+      <div class="modal-body ">
+        {{successResponse}}
+      </div>
+      <div class="modal-footer padding-10" style="text-align:center">
+        <button class="btn btn-primary" type="button" (click)="Okay()"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>

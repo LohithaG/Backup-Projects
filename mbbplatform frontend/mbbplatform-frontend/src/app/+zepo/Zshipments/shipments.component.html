@@ -1,0 +1,38 @@
+<div id="content">
+    <sa-widgets-grid>
+
+
+        <sa-widgets-grid>
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer>
+                <header>
+                    <span class="widget-icon">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </span>
+                    <h2 style="margin-right:2%;">Zepo Shipments</h2>
+                </header>
+                <div class="well padding-10 ">
+
+                    <sa-datatable id="diapatchDataTable" [options]="ZepoShipments" tableClass="table table-striped table-bordered table-hover"
+                        paginationLength="true" width="100%">
+                        <thead>
+                            <tr>
+                                <th>TRACKING NUMBER</th>
+                                <th>COURIER NAME</th>
+                                <th>ORDER NUMBER</th>
+                                <th>SHIPMENT ID</th>
+                                <th>CUSTOMER NAME</th>
+                                <th>PICKUP NUMBER</th>
+                                <th>TRACKING STATUS </th>
+                                <th>PAYMENT MODE </th>
+                                <th>REQUEST DATE (dd/mm/yyyy)</th>
+                                <th>CREATED DATE (dd/mm/yyyy)</th>
+                            </tr>
+                        </thead>
+                    </sa-datatable>
+                </div>
+            </div>
+        </sa-widgets-grid>
+
+    </sa-widgets-grid>
+</div>

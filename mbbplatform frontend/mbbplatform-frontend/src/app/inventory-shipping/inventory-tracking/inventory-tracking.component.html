@@ -1,0 +1,42 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/shipping">Package Details</span> <span> / Tracking Details</span> </div><br>
+    <sa-widgets-grid>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                    <i class="fa fa-bar-chart-o"></i>
+                </span>
+                        <h2 style="margin-right:2%;">Tracking Details </h2>
+                    </header>
+                    <div class="well padding-10">
+                        <div class="table-responsive" style="margin-top:2px">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Status</th>
+                                        <th>Location</th>
+                                        <th>Date</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tracking of trackingObj">
+                                        <td>{{tracking?.status}}</td>
+                                        <td>{{tracking?.location}}</td>
+                                        <td>{{tracking?.status_date_time}}</td>
+                                        <td>{{tracking?.message_detail}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

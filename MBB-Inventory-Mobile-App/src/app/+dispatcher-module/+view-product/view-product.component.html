@@ -1,0 +1,138 @@
+<div class="headerRibbon" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <span class="btn btn-ribbon" placement="bottom">
+            <i class="fa fa-truck"></i>
+        </span>product Details
+    </span>
+</div>
+
+
+<div style="margin:1%">  
+    <sa-widget [editbutton]="false" color="blueDark">
+        <header>
+            <span class="widget-icon">
+            <i class="fa fa-table"></i>
+          </span>
+            <h2>Product Details</h2>
+        </header>
+        <form method="post" id="checkout-form" class="smart-form" *ngIf="productData">
+            <fieldset>
+                <div class="row">
+                    <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+                        <label class="label" for="id" style="font-weight: 600;">Barcode Id
+                            <font class="text-danger">*</font>
+                        </label>
+                    </section>
+                    <section class="col col-5">
+                        <label class="input form-control">
+                            <input type="text" name="barcode"  [(ngModel)]='productData.barcode' readonly>
+                        </label>
+                    </section>
+                </div>
+
+                <div class="row">
+                    <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+                        <label class="label" for="id" style="font-weight: 600;">Product Name 
+                            <font class="text-danger">*</font>
+                        </label>
+                    </section>
+                    <section class="col col-5">
+                        <label class="input form-control">
+                            <input type="text" name="name"  [(ngModel)]='productData.inventoryId.productName' readonly>
+                        </label>
+                    </section>
+                </div>
+
+                <div class="row">
+                    <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+                        <label class="label" style="font-weight: 600;">SKU
+                            <font class="text-danger">*</font>
+                        </label>
+                    </section>
+                    <section class="col col-5">
+                        <label class="input form-control">
+                            <input type="text" name="sku"  [(ngModel)]='productData.inventoryId.skuCode' readonly>
+                        </label>
+                    </section>
+                </div>
+
+                <div class="row">
+                    <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+                        <label class="label" style="font-weight: 600;">Invoice Number
+                            <font class="text-danger">*</font>
+                        </label>
+                    </section>
+                    <section class="col col-5">
+                        <div class="row" style="padding-left:15px;padding-right:15px">
+                            <div class="col-sm-11 col-xs-11">
+                                <label class="input form-control">
+                            <input type="text" name="invoice" [(ngModel)]="productData.invoiceId"  placeholder="Please enter or scan Invoice number">
+                        </label>
+                            </div>
+                            <div class="col-sm-1 col-xs-1" (click)="getInvoiceBybarcode()">
+                                <span class="scan-icon glyphicon glyphicon-qrcode"></span>
+                            </div>
+                        </div>
+                        <span *ngIf="invoiceValidation" class="text-danger">{{invoiceValidation}}</span>
+                    </section>
+                </div>
+                <div *ngIf="checkList.length>0">
+                    <div class="row">
+                        <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+                            <label class="label" style="font-weight: 600;">Check List
+                            <font class="text-danger">*</font>
+                        </label>
+                        </section>
+                        <section class="col col-5">
+                            <div class="row" style="margin:0px">
+                                <div class="col-xs-4" *ngFor="let option of checkList"><label class="checkbox">
+							<input type="checkbox" name="checkbox"  value="{{option.conditionCheck}}" 
+                                    [(ngModel)]="option.conditionCheck" (ngModelChange)="onChange()">
+								<i></i> {{option.accessory}}
+                             </label>
+                                </div>
+                            </div>
+                            <br>
+                        </section>
+                    </div>
+                </div>
+                <div class="row" *ngIf="checkList.length>0">
+                    <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+                        <label class="label" style="font-weight: 600;">Comments
+                            <font class="text-danger">*</font>
+                        </label>
+                    </section>
+                    <section class="col col-5">
+                        <label class="input form-control">
+                         <textarea rows="2" class="form-control" [(ngModel)]='productData.comment' [ngModelOptions]="{standalone: true}"  placeholder="Please enter comments"></textarea>
+                        </label>
+                    </section>
+                </div>
+            </fieldset>
+
+            <footer>
+                <section class="col col-9">
+                    <button class="btn  btn-warning btn-sm" type="submit" (click)="cancel()">Cancel</button>
+                    <button class="btn  btn-success btn-sm" type="submit" (click)="addProduct()"> Add</button>
+                </section>
+            </footer>
+        </form>
+    </sa-widget>
+</div>
+
+<div bsModal #dispatchAlert="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+    role="dialog" aria-labelledby="myLargeModalLabel" style="top:35%">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>DISPATCH </strong></h4>
+            </div>
+            <div class="modal-body ">
+                {{successResponse}}
+            </div>
+            <div class="modal-footer padding-10" style="text-align:center">
+                <button class="btn btn-primary" type="button" (click)="Okay()"> Ok </button>
+            </div>
+        </div>
+    </div>
+</div>

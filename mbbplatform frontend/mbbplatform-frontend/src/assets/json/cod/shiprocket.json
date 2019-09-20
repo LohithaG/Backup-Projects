@@ -1,0 +1,212 @@
+
+{
+    "data": [
+        {
+            "created_at": 1541709009,
+            "crf_id": 91992,
+            "utr": null,
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "33219.00",
+            "cod_payble": "33219.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance Initiated",
+            "remarks": "Remittance Initiated"
+        },
+        {
+            "created_at": 1541363412,
+            "crf_id": 87851,
+            "utr": "KKBK183107929919",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "3880.00",
+            "cod_payble": "3880.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1541104210,
+            "crf_id": 85857,
+            "utr": "KKBK183067111133",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "7568.00",
+            "cod_payble": "7568.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1540931411,
+            "crf_id": 83805,
+            "utr": "KKBK183046639679",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "39000.00",
+            "cod_payble": "39000.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1540499410,
+            "crf_id": 79665,
+            "utr": "KKBK182995967589",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "1009.00",
+            "cod_payble": "1009.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1540326611,
+            "crf_id": 77642,
+            "utr": "KKBK182975669904",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "20000.00",
+            "cod_payble": "20000.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1540153810,
+            "crf_id": 75573,
+            "utr": "KKBK182955406283",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "730.00",
+            "cod_payble": "730.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1539894609,
+            "crf_id": 73570,
+            "utr": "KKBK182955411327",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "48932.00",
+            "cod_payble": "48932.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1539721802,
+            "crf_id": 71502,
+            "utr": "KKBK182904956093",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "5550.00",
+            "cod_payble": "5550.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1539549002,
+            "crf_id": 69484,
+            "utr": "KKBK182884626597",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "20000.00",
+            "cod_payble": "20000.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1539117001,
+            "crf_id": 65387,
+            "utr": "KKBK182834002222",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "1009.00",
+            "cod_payble": "1009.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1538944201,
+            "crf_id": 63347,
+            "utr": "KKBK182813659466",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "26160.00",
+            "cod_payble": "26160.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1538685002,
+            "crf_id": 62285,
+            "utr": "KKBK182783178599",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "2046.00",
+            "cod_payble": "2046.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1538512201,
+            "crf_id": 60255,
+            "utr": "KKBK182762721824",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "21009.00",
+            "cod_payble": "21009.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        },
+        {
+            "created_at": 1538080201,
+            "crf_id": 57208,
+            "utr": "KKBK182712092921",
+            "recharge_value": "0.00",
+            "reversal_value": "0.00",
+            "remitted_value": "40000.00",
+            "cod_payble": "40000.00",
+            "account_type": "Prepaid",
+            "maintained_balance_limit": null,
+            "status": "Remittance success",
+            "remarks": "Remitted"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 31,
+            "count": 15,
+            "per_page": 15,
+            "current_page": 1,
+            "total_pages": 3,
+            "links": {
+                "next": "https://apiv2.shiprocket.in/v1/account/details/remittance?page=2"
+            }
+        }
+    }
+}

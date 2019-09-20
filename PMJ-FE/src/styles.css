@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
+        .smart-style-5 .jarviswidget>div {
+            background: rgba(0, 0, 0, -2.6)!important;
+            border-color: rgba(0, 0, 0, .13)!important;
+        }
+        router-outlet+div.loading {
+  display: block;
+}
+
+        div.loading {
+   background: rgba(0,0,0,0.7);
+  display: block;
+  position: fixed;
+  z-index:1100;
+    background-image : url('assets/img/pmj/diamond.gif');
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+    background-size: 300px 200px;
+    display: none;
+}
+        
+        .jarviswidget>div {
+            border: 1px solid #CCC;
+        }
+        
+        .jarviswidget {
+            position: unset;
+        }
+        
+        #extr-page #main {
+            background: transparent
+        }
+        
+        #extr-page {
+            background: transparent
+        }
+        
+        #extr-page {
+            background: transparent;
+            /*background-image: url(http://stockone.in/wp-content/uploads/2017/12/warehousing.png);*/
+            background-repeat: no-repeat;
+            background-position: bottom;
+            /*border-bottom: 10px solid green;*/
+        }
+        
+        #logo img {
+            width: 101px;
+            margin-top: 11px
+        }
+        
+        #logo {
+            margin-top: 7px;
+        }
+        
+        .pricing-big .panel-heading {
+            border-radius: 0px
+        }
+        
+        .login-info {
+            border-bottom: none;
+            text-align: center
+        }
+        
+        .login-info a {
+            margin-top: 10px
+        }
+        
+        #extr-page #header #logo img {
+            width: 208px;
+        }
+        
+            
+              
+              
+        .tabs-custom {
+            padding: 8px;
+            text-align: center;
+            background-color: #4c4f53;
+            color: white;
+        }
+        
+        .tabs-custom-border1 {
+            border-right: 2px solid white;
+            border-left: 2px solid white
+        }
+        
+        .tabs-custom-border2 {
+            border-right: 2px solid white;
+        }
+        
+        .header-tag {
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .header-tag > img {
+            width: auto;
+            vertical-align: bottom;
+            height: 55px;
+        }
+        
+        .app-version {
+            font-weight: bold;
+            color: #2e5090;
+        }
+        
+        .loginui.well {
+            box-shadow: 0px 0px 16px #2E5070;
+            margin-top: 120px
+        }
+        
+        #logo {
+            margin-top: -5px;
+        }
+        
+        .box-shadow-ui {
+            /*box-shadow:0px 0px 3px #2E5070*/
+            margin-bottom: 12px
+        }
+        
+        nav ul .active>a {
+            /*background: #00AFB1*/
+            background: darkcyan
+        }
+        
+        .onoffswitch {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .onoffswitch-checkbox+.onoffswitch-label .onoffswitch-switch:before,
+        .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch:before,
+        .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch:before {
+            content: "•";
+            font-size: 47px;
+            color: black;
+        }
+        
+        .onoffswitch-inner:before {
+            content: attr(data-swchon-text);
+            padding-right: 7px;
+            text-shadow: 0 -1px 0 #fff;
+            background-color: #fff;
+            color: #555;
+            text-align: left;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
+        }
+        /*line*/
+        
+        .onoffswitch-inner:after {
+            content: attr(data-swchoff-text);
+            padding-right: 7px;
+            text-shadow: 0 -1px 0 #fff;
+            background-color: #fff;
+            color: #555;
+            text-align: right;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
+        }
+        
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background: #ddd !important;
+        }
+        
+        .jarviswidget-color-blueDark>header {
+            border-color: darkcyan !important;
+            background: darkcyan;
+            color: #fff;
+        }
+        
+        .padding-rm-13 {
+            padding-right: 13px;
+        }
+        
+        .padding-ad-13 {
+            padding-right: 0px;
+        }
+        
+       
+        body::-webkit-scrollbar {
+            width: 0 !important
+        }
+        
+        .even {
+            padding-left: 0px !important;
+        }
+        
+        .padding-r-4 {
+            padding-right: 4px !important
+        }
+        
+        .padding-r-0 {
+            padding-right: 0px !important
+        }
+        
+        .padding-r-11 {
+            padding-right: 13px !important
+        }
+        
+        .widget-body-r {
+            padding: 13px 0px 0px 0px !important
+        }
+        /**KPI BLOCK INFO*/
+        
+        .box-title_gold {
+            color: #cc4125;
+            font-size: 20px
+        }
+        
+        .gold-act-value {
+            color: black;
+            font-size: 15px;
+            padding-top: 5px
+        }
+        
+        .dia-act-value {
+            color: black;
+            font-size: 15px;
+            padding-top: 5px
+        }
+        
+        .dia-tar-value,
+        .gold-tar-value {
+            font-size: 15px;
+            padding-top: 5px
+        }
+        
+        .kpi-block {
+            padding: 0px !important;
+            /*box-shadow:0px 0px 3px #2E5070*/
+        }
+        
+        .box-value {
+            font-size: 45px;
+            color: #fda706;
+        }
+        
+        .box-title {
+            color: #2196F3;
+            font-size: 20px
+        }
+        
+        .box-bottom {
+            border-bottom: 2px solid #f7f1f1
+        }
+        
+        .abc {
+            text-align: center;
+            padding: 0px 4px 6px 0px
+        }
+        
+        .def {
+            text-align: center;
+            padding: 0px 4px 6px 0px
+        }
+        
+        .date-filter-widget-body {
+            min-height: 0px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        
+        @media only screen and (min-width: 769px) {
+            /*For Large screens more them 769 pixels desktop views*/
+            .postion-from-filter {
+                margin-top: 169px;
+            }
+            .postion-from-filter-target {
+                margin-top: 102px;
+            }
+            .date-filter {
+                position: fixed;
+                z-index: 1000;
+                padding: 10px;
+                padding-top: 0px
+            }
+            .border-r-1 {
+                border-right: 1px solid #ddd;
+            }
+            .padding-r-4-g {
+                padding-right: 4px !important
+            }
+            .padding-ad-13-g {
+                padding-right: 0px !important
+            }
+        }
+        
+        @media only screen and(max-width: 68px)and (max-width: 768px) {
+            /*For Large screens more them 769 pixels mobile & tabs*/
+            .postion-from-filter {
+                margin-top: -45px;
+            }
+            .postion-from-filter-target {
+                margin-top: -45px;
+            }
+            .date-filter {
+                z-index: 1000;
+                padding: 10px;
+                padding-top: 0px
+            }
+            .padding-r-4 {
+                padding-right: 5px
+            }
+            .padding-r-11 {
+                padding-right: 0px
+            }
+            .padding-r-4-g {
+                padding-right: 0px !important
+            }
+            .padding-ad-13-g {
+                padding-right: 4px !important
+            }
+        }
+         .datefiltersalesperson{
+         top: 49px;
+         padding-left: 0px;
+         padding-right: 14px;
+         position: fixed;
+         z-index: 1;
+          }
+        .select2-selection {
+        height: 30px !important;
+        border-radius: 4px !important;
+        }
+        #left-panel {
+        position: fixed !important;
+        }
+		  .align-top{
+            top: -17px;
+        }

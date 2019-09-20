@@ -1,0 +1,237 @@
+<div id="content" style="padding:0px 14px">
+ <div class="row" *ngIf="marginTagToSaleSHW">
+        <div class="col-sm-4 col-xs-12" style="text-align:center;">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10">
+                        <span class="box-title_dia">TAG PRICE</span> <span style="color:black;font-size:9px"> (In
+                            LACs)</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value box-title_dia_percentage" style="font-size:32px"> {{marginTagToSaleSHW?.info?.totaltagprice}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12" style="text-align:center;">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10">
+                        <span class="box-title_dia">SALE PRICE</span> <span style="color:black;font-size:9px"> (In
+                            LACs)</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value box-title_dia_percentage" style="font-size:32px"> {{marginTagToSaleSHW?.info?.totalsaleprice}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12" style="text-align:center;">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10">
+                        <span class="box-title_dia">MARGIN</span> <span style="color:black;font-size:9px"> (In %)</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value box-title_dia_percentage" style="font-size:32px"> {{marginTagToSaleSHW?.info?.totalmargin}}%
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" *ngIf="infoData">
+        <div class="col-sm-3 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-5">
+                        <span class="box-title_dia">DIAMOND QTY</span> <span style="color:black;font-size:9px"> (CTs)</span>
+                    </div>
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty?.diamond">{{((goldDiaInfo?.actuals?.qty.diamond/goldDiaInfo?.target?.qty.diamond)*100).toFixed(2)}}</span>
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty?.diamond==0">0</span><span>%</span>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                        <div>Target</div>
+                        <div class="dia-tar-value"> {{(goldDiaInfo?.target?.qty.diamond).toFixed(2)}}</div>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5 ">
+                        Actual
+                        <div class="dia-act-value">{{(goldDiaInfo?.actuals?.qty.diamond).toFixed(2)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-5">
+                        <span class="box-title_dia">DIAMOND VALUE</span> <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.diamond">{{((goldDiaInfo?.actuals?.value.diamond/goldDiaInfo?.target?.value.diamond)*100).toFixed(2)}}</span>
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.diamond==0">0</span><span>%</span>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                        <div>Target</div>
+                        <div class="dia-tar-value">{{(goldDiaInfo?.target?.value.diamond).toFixed(2)}}</div>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5">
+                        <div>Actual</div>
+                        <div class="dia-act-value">{{(goldDiaInfo?.actuals?.value.diamond).toFixed(2)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+
+                <div class="row kpi-block">
+                    <div class="col-sm-12 col-xs-12 padding-5">
+                        <span class="box-title_gold">GOLD QTY</span> <span style="color:black;font-size:9px"> (KGs)</span>
+                    </div>
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty.gold">{{((goldDiaInfo?.actuals?.qty.gold/goldDiaInfo?.target?.qty.gold)*100).toFixed(2)}}</span>
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty.gold==0">0</span><span>%</span>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                        <div class="gold-act-title">Target</div>
+                        <div class="gold-tar-value">{{(goldDiaInfo?.target?.qty.gold).toFixed(2)}}</div>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5">
+                        <div class="gold-act-title">Actual</div>
+                        <div class="gold-act-value">{{(goldDiaInfo?.actuals?.qty.gold).toFixed(2)}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-3 col-xs-12" style="text-align:center;padding:0px 0px 0px 0px">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-5">
+                        <span class="box-title_gold">GOLD VALUE </span> <span style="color:black;font-size:9px"> (LACs)</span>
+                    </div>
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.gold">{{((goldDiaInfo?.actuals?.value.gold/goldDiaInfo?.target?.value.gold)*100).toFixed(2)}}</span>
+                        <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.gold==0">0</span><span>%</span>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                        <div class="gold-tar-title">Target</div>
+                        <div class="gold-tar-value">{{(goldDiaInfo?.target?.value.gold).toFixed(2)}}</div>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 padding-5">
+                        <div class="gold-act-title">Actual</div>
+                        <div class="gold-act-value">{{(goldDiaInfo?.actuals?.value.gold).toFixed(2)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="marginsInfo">
+        <div class="col-sm-4 col-xs-12" style="text-align:center;" *ngIf="marginsInfo?.info?.tag_price">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                        <span class="box-title_dia">TAG PRICE</span> <br> <span style="color:black">In LACs</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value" style="font-size:32px"> {{marginsInfo?.info?.tag_price}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12" style="text-align:center;" *ngIf="marginsInfo?.info?.sale_price">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                        <span class="box-title_dia">SALE PRICE</span> <br> <span style="color:black">In LACs</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value" style="font-size:32px"> {{marginsInfo?.info?.sale_price}}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12" style="text-align:center;" *ngIf="marginsInfo?.info?.cost">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                        <span class="box-title_dia">COST PRICE</span> <br> <span style="color:black">In LACs </span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value" style="font-size:32px"> {{marginsInfo?.info?.cost}}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-12" style="text-align:center;" *ngIf="marginsInfo?.info?.margin">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                        <span class="box-title_dia">MARGIN</span> <br> <span style="color:black">%</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value" style="font-size:32px"> {{marginsInfo?.info?.margin}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" *ngIf="ticketsInfo">
+        <div class="col-sm-4 col-xs-12" style="text-align:center;" *ngIf="ticketsInfo?.info?.diamond">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                        <span class="box-title_dia">DIAMOND</span> <br> <span style="color:black">In QTY(CTS)</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value" style="font-size:32px"> {{ticketsInfo?.info?.diamond}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-12" style="text-align:center;" *ngIf="ticketsInfo?.info?.gold">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <div class="row kpi-block">
+                    <div class="col-sm-12 padding-10" style="border-bottom:1px solid black">
+                        <span class="box-title_dia">GOLD</span> <br> <span style="color:black">In QTY(KGS)</span>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 padding-10">
+                        <div class="dia-tar-value" style="font-size:32px"> {{ticketsInfo?.info?.gold}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

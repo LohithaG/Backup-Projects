@@ -1,0 +1,98 @@
+<!--<header id="header" class="animated fadeInDown">
+  <div id="logo-group">
+    <span id="logo">
+  
+         </span>
+  </div>
+</header>-->
+<br><br>
+<div id="main" role="main" class="animated fadeInDown">
+  <!-- MAIN CONTENT -->
+  <div id="content" class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 " style="margin-left:27%">
+        <div class="loginui well no-padding">
+          <form [formGroup]="complexForm" method="post" *ngIf="userRegisterModel" class="smart-form client-form">
+            <header style="background-color:white;text-align:center">
+              <img src="https://www.pmjjewels.com/media/logo/websites/2/pmj.png" alt="PMJ" width="40%">
+            </header>
+            <fieldset>
+              <section *ngIf="errorMessage" class="icon-color-bad text-center"> {{errorMessage}} </section>
+              <section *ngIf="forgotPasswordMessage" class="text-success text-center">{{forgotPasswordMessage}}</section>
+              <section class="otp-section">
+                <label class="label" for="otp" [ngClass]="{'has-error':! this.otp.valid &&  this.otp}">OTP</label>
+
+                <div class="form-group form-control  input">
+                  <label class="input">
+                    <i class="icon-append fa fa-user"></i>
+                    <input type="text" name="otp" [formControl]="this.otp" [(ngModel)]="userRegisterModel.otp" placeholder="OTP" />
+
+                    <span *ngIf=" this.otp.hasError('required') &&submitted  " class=" icon-color-bad ">Please enter otp</span>
+
+                    <span *ngIf=" this.otp.hasError('pattern') " class=" icon-color-bad ">Please enter only 6 numeric characters for OTP</span>
+
+                  </label>
+                </div>
+              </section>
+
+
+              <section class="otp-section">
+                <label class="label" for="password" [ngClass]="{'has-error':! this.password.valid &&  this.password}">Password</label>
+
+                <div class="form-group form-control  input">
+                  <label class="input">
+                    <i class="icon-append fa fa-lock"></i>
+                    <input type="password" name="password" [formControl]="this.password" [(ngModel)]="userRegisterModel.password" placeholder="Password"
+                    />
+                    <span *ngIf=" this.password.hasError('required')  && submitted" class=" icon-color-bad ">Please enter password</span>
+                  </label>
+                </div>
+              </section>
+
+
+              <section class="otp-section">
+                <label class="label" for="retypePassword" [ngClass]="{'has-error':! this.retypePassword.valid &&  this.retypePassword}">Confirm Password</label>
+
+                <div class="form-group form-control  input">
+                  <label class="input">
+                    <i class="icon-append fa fa-lock"></i>
+                    <input type="password" name="retypePassword" [formControl]="this.retypePassword" [(ngModel)]="userRegisterModel.reTypepassword"
+                      placeholder="Password" />
+                    <span class=" icon-color-bad " *ngIf=" (userRegisterModel.reTypepassword) && (userRegisterModel.password != userRegisterModel.reTypepassword) ">Password miss match</span>
+                    <span *ngIf=" this.retypePassword.hasError('required')  && submitted" class=" icon-color-bad ">Please Enter Re-Type Password</span>
+                  </label>
+                </div>
+              </section>
+
+            </fieldset>
+            <br>
+
+
+            <div class="row show-grid">
+              <div class="col-xs-1 "> </div>
+              <div class="col-xs-4 ">
+                <span class="hidden-mobile hiddex-xs"><b>Already registered ? </b> </span>
+                <a routerLink="/auth/login">
+                  <u> <b> Sign In </b></u>
+                </a>
+              </div>
+            </div>
+            <br>
+
+            <footer style="background-color:white">
+              <button (click)="register(userRegisterModel)" [disabled]="!complexForm.valid" class="btn btn-primary">
+                Reset
+                <i class="fa fa-cog fa-spin" *ngIf="loading"></i>
+                <span *ngIf="loading">loading...</span>
+              </button>
+            </footer>
+          </form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

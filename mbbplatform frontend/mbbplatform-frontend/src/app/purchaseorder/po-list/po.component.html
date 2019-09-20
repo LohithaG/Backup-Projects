@@ -1,0 +1,325 @@
+<div id="content">
+	<br>
+	<sa-widgets-grid>
+		<div class="row">
+			<div class="col-sm-12">
+				<sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+					[colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+					color="blueDark">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+						</span>
+						<h2>Purchase Invoices </h2>
+						<div *ngIf="userWidget" class="widget-toolbar" role="menu">
+							<a class="btn btn-primary" routerLink="/purchaseorder/add"
+								*ngIf="userType=='SUPERADMIN'||userType=='ADMIN'||userType=='ACCOUNTANT_MANAG' || userType=='ACCOUNTANT'">
+								Add P.O </a>
+						</div>
+					</header>
+
+					<div>
+						<div class="widget-body">
+							<form class="smart-form" id="dealer-filter-form">
+								<fieldset style="padding:0px">
+									<section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+										<label class="control-label"><b>From</b></label>
+										<my-date-picker [options]="myDatePickerOptions" [selDate]="startDate"
+											[(ngModel)]="QueryData.startDate" name="startDate"></my-date-picker>
+									</section>
+
+									<section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+										<label class="control-label"><b>To</b></label>
+										<my-date-picker [options]="myDatePickerOptions" [selDate]="endDate"
+											[(ngModel)]="QueryData.endDate" name="endDate"></my-date-picker>
+										<div class="icon-color-bad">{{errorMessage}}</div>
+									</section>
+
+									<section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+										<label class="control-label"><b>Vendor Name</b></label>
+										<select class="form-control ng-pristine ng-valid ng-touched"
+											[(ngModel)]="vendorId" [ngModelOptions]="{standalone: true}">
+											<!-- <option  [value]="0" selected>All</option> -->
+											<option *ngFor="let vendor of vendorsNameList" [value]="vendor.id">
+												{{vendor.name}}</option>
+										</select>
+									</section>
+									<section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+										<label class="control-label"><b>Status</b></label>
+										<select class="form-control ng-pristine ng-valid ng-touched"
+											[(ngModel)]="purchaseInvoiceId" [ngModelOptions]="{standalone: true}">
+											<!-- <option  [value]="0" selected>All</option> -->
+											<option *ngFor="let vendor of purchaseInvoiceStatusList"
+												[value]="vendor.id">{{vendor.status}}</option>
+										</select>
+									</section>
+
+									<section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+										<br>
+										<button type="button" title="Submit" class="btn btn-sm btn-primary"
+											id="filter-submit" (click)="QuerySubmit()">Submit</button>
+									</section>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div>
+						<div class="widget-body no-padding ">
+							<section *ngIf="userlistMessage" class="text-success text-center"> {{userlistMessage}}
+							</section>
+							<sa-datatable id="DataTable" [options]="options"
+								tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+								width="100%" filter="true">
+								<thead>
+									<!--<tr>
+										<th class="hasinput ">
+											<input type="text" class="form-control" placeholder="Search By P.O">
+										</th>
+										<th class="hasinput ">
+											<input type="text" class="form-control" placeholder="Search By Vendor Name">
+										</th>
+										
+										<th></th><th></th><th></th><th></th><th></th>
+									</tr>-->
+									<tr>
+										<th width="10%">P.O Number</th>
+										<th width="15%">Vendor Name</th>
+										<th width="9%">No.Of SKU'S</th>
+										<th width="8%">Invoice Date</th>
+										<th width="15%">Comments</th>
+										<th width="10%">SKU list </th>
+										<th width="8%">Status</th>
+										<th width="10%">Received Date</th>
+										<th width="15%">Actions </th>
+									</tr>
+								</thead>
+
+
+							</sa-datatable>
+						</div>
+					</div>
+				</sa-widget>
+
+			</div>
+		</div>
+
+	</sa-widgets-grid>
+</div>
+
+
+<div bsModal #loadPOPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" (click)="loadPOPopup.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title"><b>PO Number: {{poListView?.ponumber}}</b></h4>
+			</div>
+			<div class="modal-body ">
+				<div class="row" style="padding:11px;padding-top:0px;">
+					<div class="col-xs-12 col-sm-6 ">
+						<div class="row">
+							<div class=" col-xs-5 col-sm-5 padding-5  ">
+								<b>Vendor Name</b>
+							</div>
+							<div class="col-xs-1 col-sm-1 padding-5">:</div>
+							<div class=" col-xs-6 col-sm-5 padding-5">
+								{{poListView?.vendorname}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="table-responsive" style="margin-top:2px">
+					<table class="table table-bordered">
+
+						<thead>
+							<tr>
+								<th *ngIf="priceId==2" colspan="3"></th>
+								<th *ngIf="priceId==1" colspan="3"></th>
+								<th *ngIf="priceId==2" colspan="2" style="text-align:center">USD</th>
+								<th colspan="2" style="text-align:center">Before Charges(INR)</th>
+								<th colspan="1"></th>
+								<th colspan="2" style="text-align:center">After Charges(INR)</th>
+							</tr>
+
+						</thead>
+						<thead>
+							<tr>
+								<th>SKU</th>
+								<th>Item Name</th>
+								<th>Quantity</th>
+								<th *ngIf="priceId==2">Price</th>
+								<th *ngIf="priceId==2">Total(USD)</th>
+								<th>Unit Price(INR)</th>
+								<th>Total Price(INR)</th>
+								<th>Other Charges(per unit)</th>
+								<th>Unit Price(INR)</th>
+								<th>Total Price(INR)</th>
+
+							</tr>
+
+						</thead>
+
+
+						<tbody *ngFor="let item of poDetails.priceDetails;let i=index">
+							<tr>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{item.vendorItemDetailsId.skuCode}}
+									</div>
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{item.vendorItemDetailsId.itemName}}
+									</div>
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{item.vendorItemDetailsId.quantity}}
+									</div>
+								</td>
+								<td *ngIf="priceId==2">
+									<div class="form-group" style="margin-bottom:0px">
+										{{item.price}}
+									</div>
+
+								</td>
+
+								<td *ngIf="priceId==2">
+									<div class="form-group" style="margin-bottom:0px">
+										{{item.unitPriceInUsdBeforeCharges}}
+									</div>
+
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+
+										{{item.unitPriceInRupeesBeforeCharges}}
+									</div>
+
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+
+										{{item.priceInRupeesBeforeCharges}}
+									</div>
+
+								</td>
+
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+
+										{{item.otherChargesPerUnit}}
+									</div>
+
+								</td>
+
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+
+										{{item.unitPriceInRupeesAfterCharges}}
+									</div>
+
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+
+										{{item.priceInRupeesAfterCharges}}
+									</div>
+
+								</td>
+							</tr>
+
+						</tbody>
+						<tbody *ngFor="let data of poDetails.totalAmount">
+							<tr>
+								<th *ngIf="priceId==2" colspan="4" style="text-align:center">Total:</th>
+								<th *ngIf="priceId==1" colspan="2" style="text-align:center">Total:</th>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{data.totalAmountInUsd}}
+									</div>
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{data.totalUnitPriceAmountInRupees}}
+									</div>
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{data.totalPriceAmountInRupees}}
+									</div>
+								</td>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{data.totalAmountForOtherCharges}}
+									</div>
+								</td>
+								<th colspan="1"></th>
+								<td>
+									<div class="form-group" style="margin-bottom:0px">
+										{{data.totalAmountForAfterCharges}}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="form-group" *ngIf="poListView.comments">
+						<label for="comments"><b>Comments : </b></label>
+						<div>{{poListView.comments}}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" (click)="loadPOPopup.hide()">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<loader [loading]="loading"> </loader>
+<div bsModal #transportModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" (click)="transportModal.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h2 class="modal-title"><strong>Stock Received Confirmation</strong></h2>
+			</div>
+			<div class="modal-body">
+
+				<div class="row">
+					<div class="col-sm-3">
+						<h4><strong>
+								Stock Received on:
+							</strong></h4>
+					</div>
+
+					<div class="col-sm-3">
+						<my-date-picker [options]="stockRecievedDatePickerOptions" [selDate]="startDate"
+							(dateChanged)="onDateChanged($event)" [(ngModel)]="stockRecievedDate" name="startDate">
+						</my-date-picker>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+
+				<button type="button" [ngStyle]="{'display':this.loaderbtn ? 'none': 'inline'}" class="btn btn-primary"
+					(click)="stockRecieved()">
+					Stock Received
+				</button>
+				<button [ngStyle]="{'display':!this.loaderbtn ? 'none': 'inline'}" class="btn btn-primary"
+					type="submit">
+					Stock Received <i class="fa fa-refresh fa-spin"></i> </button>
+				<button type="button" class="btn btn-default" (click)="transportModal.hide()">
+					Cancel
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

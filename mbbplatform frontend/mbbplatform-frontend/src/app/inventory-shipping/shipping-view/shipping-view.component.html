@@ -1,0 +1,170 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/shipping" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Package
+            Details</span> <span> / {{packageName}} Package</span> </div><br>
+    <sa-widgets-grid>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">Shipping Products </h2>
+                        <!--<div class="widget-toolbar" role="menu">
+                            <a class="btn btn-primary" (click)="sentEmail()">Get Documents</a>
+                        </div>-->
+                    </header>
+                    <div class="well padding-10">
+
+                        <div class="table-responsive" style="margin-top:2px">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>SKU Code</th>
+                                        <th>Product Name</th>
+                                        <th>Good</th>
+                                        <th>QC</th>
+                                        <th>Bad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let package of packageSKUDetails">
+                                        <td>{{package.skucode}}</td>
+                                        <td>{{package.productName}}</td>
+                                        <td>{{package.available}}</td>
+                                        <td>{{package.pendingQualityCheck}}</td>
+                                        <td>{{package.unAvailable}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-3">
+                                <b>Package Created Comments</b>
+                            </div>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <span *ngIf='packageSKUDetails[0]?.packageDetailsComments != ""'>{{packageSKUDetails[0]?.packageDetailsComments}}</span>
+                                <span *ngIf='packageSKUDetails[0]?.packageDetailsComments == ""'>-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="trackingDetails?.transportType">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">Transport Details </h2>
+                    </header>
+                    <div class="well padding-10">
+
+                        <div class="row" *ngIf="trackingDetails.transportType=='selfShipment'">
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="row" style="padding:10px">
+                                    <div class="col-sm-4">
+                                        <b>Driver Name</b>
+                                    </div>
+                                    <div class="col-sm-2">:</div>
+                                    <div class="col-sm-6">
+                                        {{trackingDetails?.driverName}}
+                                    </div>
+                                </div>
+                                <div class="row" style="padding:10px">
+                                    <div class="col-sm-4">
+                                        <b>Vehicle Number</b>
+                                    </div>
+                                    <div class="col-sm-2">:</div>
+                                    <div class="col-sm-6">
+                                        {{trackingDetails?.VehicleNumber}}
+                                    </div>
+                                </div>
+                                <div class="row" style="padding:10px">
+                                    <div class="col-sm-4">
+                                        <b>Phone Number</b>
+                                    </div>
+                                    <div class="col-sm-2">:</div>
+                                    <div class="col-sm-6">
+                                        {{trackingDetails?.phoneNumber}}<span *ngIf='trackingDetails.driverAlternateNumber!=null'>,</span><br>{{trackingDetails?.driverAlternateNumber}}
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="row" *ngIf="trackingDetails.transportType=='shippingAggregator'">
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="row" style="padding:10px">
+                                    <div class="col-sm-4">
+                                        <b>Shipping Aggregator</b>
+                                    </div>
+                                    <div class="col-sm-2">:</div>
+                                    <div class="col-sm-6">
+                                        {{trackingDetails?.shippingAggregatorName}}
+                                    </div>
+                                </div>
+                                <div class="row" style="padding:10px">
+                                    <div class="col-sm-4">
+                                        <b>Courier Name</b>
+                                    </div>
+                                    <div class="col-sm-2">:</div>
+                                    <div class="col-sm-6">
+                                        {{trackingDetails?.courierName}}
+                                    </div>
+                                </div>
+                                <div class="row" style="padding:10px">
+                                    <div class="col-sm-4">
+                                        <b>Tracking Number</b>
+                                    </div>
+                                    <div class="col-sm-2">:</div>
+                                    <div class="col-sm-6">
+                                        {{trackingDetails?.trackingNumber}}
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Package Received Comments</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                <span *ngIf='packageSKUDetails[0]?.transferInventoryComments != null'>{{packageSKUDetails[0]?.transferInventoryComments}}</span>
+                                <span *ngIf='packageSKUDetails[0]?.transferInventoryComments == null'>-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="downloadDocuments">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">Documents </h2>
+                    </header>
+                    <div class="well padding-10">
+                        <div class="row" *ngIf="downloadDocuments.length">
+                            <div class="col-sm-12" *ngFor="let download of downloadDocuments;let i=index">
+                                <h6>{{download.imageName}}</h6>
+                                <img class="zoom" [src]="download.binaryData" style="width:100%;height:100%" /><br>
+                                <hr><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

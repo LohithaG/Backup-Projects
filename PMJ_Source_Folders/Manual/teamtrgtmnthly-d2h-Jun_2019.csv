@@ -1,0 +1,119 @@
+Sl No,No. Of Team,State,Cluster,location_code,location_name,TEAM,Emp     CODE,FULL NAME,home_visits,Conv %,Buyers,ticket_size,total_val,Billing Target, Diamond Sales , Gold Sales , Diamond Wt. (in CTS) , Gold Wt. (in gms.) 
+1,1,AP,VZG,BLIMM,Bobbili Mobile Marketing,1,1076,KALINGA SASIBHUSHANA  RAO,50,20%,10,1.5,15,6,5.28,0.72,6.21,18
+1,,AP,VZG,BLIMM,Bobbili Mobile Marketing,1,1077,KILLADA MALLESWARA RAO,,,,,,,,,,
+2,2,AP,VZG,SKKLMM,Srikakulam Mobile Marketing,1,1202,MAHANTHI SAI RAM,55,20%,11,2,22,8,4,4,4.71,100
+2,,AP,VZG,SKKLMM,Srikakulam Mobile Marketing,1,1203,GANGARAPU NAGARAJU,,,,,,,,,,
+3,3,AP,VZG,VJGRMM,Vizianagaram Mobile Marketing,1,597,PRATAP MAJJI,50,25%,12.5,3.5,43.75,17.5,9.98,7.53,11.74,188.13
+3,,AP,VZG,VJGRMM,Vizianagaram Mobile Marketing,1,977,BODDETI ANANTHA KUMAR,,,,,,,,,,
+4,4,AP,VZG,APKAMM,Kakinada Mobile Marketing,1,473,SHAIK KHAJABABU,60,25%,15,3.5,52.5,24,15.84,8.16,18.64,204
+4,,AP,VZG,APKAMM,Kakinada Mobile Marketing,1,959,THOTAKURA SRIRAM,,,,,,,,,,
+5,5,AP,VZG,APKAMM,Kakinada Mobile Marketing,2,1239,KOMMOJU GIRIBABU,60,15%,9,3,27,10.8,7.13,3.67,8.39,91.8
+5,,AP,VZG,APKAMM,Kakinada Mobile Marketing,2,823,DASARI RAJESH,,,,,,,,,,
+6,6,AP,VZG,APKAMM,Kakinada Mobile Marketing,3,1304,Raja Babu,55,20%,11,1.5,16.5,0,0,0,0,0
+6,,AP,VZG,APKAMM,Kakinada Mobile Marketing,3,1221,Shankar Rao,,,,,,,,,,
+7,7,AP,BVRM,APBMM,Bhimavaram Mobile Marketing,2,259,ALAPATI V V SRINIVASARAO,10,50%,5,5,25,7.5,6.38,1.13,7.5,28.13
+8,8,AP,BVRM,APBMM,Bhimavaram Mobile Marketing,1,589,VENKATA SATYAPRASAD BONAM,55,25%,13.75,4,55,17.5,14.88,2.63,17.5,65.63
+8,,AP,BVRM,APBMM,Bhimavaram Mobile Marketing,2,1322,JANKALA SIVA KOTESWARA RAO,,,,,,,,,,
+9,9,AP,BVRM,APRMM,Rajahmundry Mobile Marketing,1,343,SHAIK APSAR,55,20%,11,4,44,23.04,19.12,3.92,22.5,97.92
+9,,AP,BVRM,APRMM,Rajahmundry Mobile Marketing,1,1185,DASUKONDA NAGESWARA RAO,,,,,,,,,,
+10,10,AP,BVRM,APRMM,Rajahmundry Mobile Marketing,2,379,SULTANKHAN PATAN,55,20%,11,3,33,15.84,13.15,2.69,15.47,67.32
+10,,AP,BVRM,APRMM,Rajahmundry Mobile Marketing,2,1415,STALIN,,,,,,,,,,
+11,11,AP,BVRM,APRMM,Rajahmundry Mobile Marketing,3,265,P RAMBABU,55,20%,11,3,33,17.28,14.34,2.94,16.87,73.44
+11,,AP,BVRM,APRMM,Rajahmundry Mobile Marketing,3,1362,V J NAGENDRA KUMAR,,,,,,,,,,
+12,12,AP,BVRM,APEMM,Eluru Mobile Marketing,1,1190,PASAM SIVA NAGA RAJU,60,15%,9,2,18,12.1,9.32,2.78,10.96,69.58
+12,,AP,BVRM,APEMM,Eluru Mobile Marketing,1,1325,ALAPATI VENKATA NAGESH,,,,,,,,,,
+13,13,AP,BVRM,APEMM,Eluru Mobile Marketing,2,1174,CHANNAGIRI SRIHARI,55,20%,11,3,33,11,8.47,2.53,9.96,63.25
+13,,AP,BVRM,APEMM,Eluru Mobile Marketing,2,1449,P SRINIVAS,,,,,,,,,,
+14,14,AP,BVRM,AMPMM,Amalapuram Mobile Marketing,1,290,PULAGAM VEERA VENKATA RAMAKRISHNA,55,25%,13.75,3,41.25,10.4,8.01,2.39,9.42,59.8
+14,,AP,BVRM,AMPMM,Amalapuram Mobile Marketing,1,,VACANCY,,,,,,,,,,
+15,15,AP,BVRM,MPTMM,Machilipatnam Mobile Marketing,1,883,GUDISEVA VIJAYADURGA,50,15%,7.5,2,15,5,2.5,2.5,2.94,62.5
+15,,AP,BVRM,MPTMM,Machilipatnam Mobile Marketing,1,1206,ATUMURI VEERA VENKATA ARUN KUMAR ,,,,,,,,,,
+16,16,AP,BVRM,GDVDMM,Gudivada Mobile Marketing,1,469,KONDAPALLI NARESH KUMAR,60,25%,15,2.5,37.5,15.12,10.58,4.54,12.45,113.4
+16,,AP,BVRM,GDVDMM,Gudivada Mobile Marketing,1,888,ANNAPUREDDY RAMALINGESWARA RAO,,,,,,,,,,
+17,17,AP,GNT,APGMM,Guntur Mobile Marketeting,1,294,SHUMOGA RAMAMURTHY SANTOSH KUMAR,50,30%,15,5,75,44.4,39.07,5.33,45.97,133.2
+17,,AP,GNT,APGMM,Guntur Mobile Marketeting,1,1154,KALUMURI SRINIVASULU,,,,,,,,,,
+18,18,AP,GNT,APGMM,Guntur Mobile Marketeting,2,593,SURESH BABU KASUMALLA,50,22%,11,5,55,29.6,26.05,3.55,30.64,88.8
+18,,AP,GNT,APGMM,Guntur Mobile Marketeting,2,935,BANKA TIRUPATAIAH,,,,,,,,,,
+19,19,AP,GNT,APGMM,Guntur Mobile Marketeting,3,1364,CHALLA NARESH,50,15%,7.5,5,37.5,22.2,19.54,2.66,22.98,66.6
+19,,AP,GNT,APGMM,Guntur Mobile Marketeting,3,1416,EDPUGANTI CHNVV SURESH KUMAR,,,,,,,,,,
+20,20,AP,GNT,APNMM,Nellore Mobile Marketing,1,311,BOPPANA RAM CHALAPATHI,55,25%,13.75,6,82.5,40.8,33.86,6.94,39.84,173.4
+20,,AP,GNT,APNMM,Nellore Mobile Marketing,1,1054,A NARESH,,,,,,,,,,
+21,21,AP,GNT,APNMM,Nellore Mobile Marketing,2,631,MEDAM RAMA KRISHNA REDDY,55,15%,8.25,4,33,13.6,11.29,2.31,13.28,57.8
+21,,AP,GNT,APNMM,Nellore Mobile Marketing,2,1191,N NAVEEN KUMAR,,,,,,,,,,
+22,22,AP,GNT,APNMM,Nellore Mobile Marketing,3,1040,YANNAPUSA BRAMHA NANDHA REDDY,60,20%,12,1,12,6.8,5.64,1.16,6.64,28.9
+22,,AP,GNT,APNMM,Nellore Mobile Marketing,3,1363,ANNIMI SUKUMAR,,,,,,,,,,
+23,23,AP,GNT,NSPTMM,Narasaraopet Mobile Marketing,1,1294,VALAVALA RAMANJANEYULU,50,20%,10,2,20,7,6.3,0.7,7.41,17.5
+23,,AP,GNT,NSPTMM,Narasaraopet Mobile Marketing,1,,VACANCY,,,,,,,,,,
+24,24,AP,GNT,APOMM,Ongole Mobile Marketing,1,466,PALEM VENKATA SURESH,55,30%,16.5,4,66,34,28.56,5.44,33.6,136
+24,,AP,GNT,APOMM,Ongole Mobile Marketing,1,953,MUKKARA CHARAN KUMAR REDDY,,,,,,,,,,
+25,25,AP,GNT,APOMM,Ongole Mobile Marketing,2,919,BATHINI ALLURI SWAMY,50,20%,10,1.5,15,6.8,5.71,1.09,6.72,27.2
+25,,AP,GNT,APOMM,Ongole Mobile Marketing,2,1178,MIRYAlA VENKATA RAO,,,,,,,,,,
+26,26,AP,GNT,NGMAMM,Nandigama Mobile Marketing,1,788,BAPANAPALLI SUBHASH,55,20%,11,2,22,9,7.47,1.53,8.79,38.25
+26,,AP,GNT,NGMAMM,Nandigama Mobile Marketing,1,,VACANCY,,,,,,,,,,
+27,27,AP,TPT,APTMM,Tirupathi Mobile Marketing,1,388,SOMA SEKHAR REDDY TUKIVAKAM,50,30%,15,4,60,41.25,33.41,7.84,39.31,195.94
+27,,AP,TPT,APTMM,Tirupathi Mobile Marketing,1,1471,M SHIVA,,,,,,,,,,
+28,28,AP,TPT,APTMM,Tirupathi Mobile Marketing,2,,VACANCY,,,,,,15,12.15,2.85,14.29,71.25
+28,,AP,TPT,APTMM,Tirupathi Mobile Marketing,2,,VACANCY,,,,,,,,,,
+29,29,AP,TPT,CHITR,Chittoor Mobile Marketing,1,671,GIRI PRASAD K,55,15%,8.25,3,24.75,15.3,12.39,2.91,14.58,72.68
+29,,AP,TPT,CHITR,Chittoor Mobile Marketing,1,896,JANGA PURUSHOTHAMREDDY,50,20%,10,4,40,,,,,
+30,30,AP,TPT,KDPMM,Kadapa Mobile Marketing,1,1314,KANCHAM NAGESWAR REDDY,55,20%,11,2,22,13.5,9.32,4.19,10.96,104.63
+30,,AP,TPT,KDPMM,Kadapa Mobile Marketing,1,1352,THUPAKULA MAHEVALI,,,,,,,,,,
+31,31,KA,ROK,HBLIMM,Hubli Mobile Marketing,1,1453,ABDUL JAFAR ALI KHAN,60,15%,9,3,27,8,5.2,2.8,6.12,70
+31,,KA,ROK,HBLIMM,Hubli Mobile Marketing,1,,Manjunath,,,,,,,,,,
+32,32,KA,ROK,KAMMM,Mysore Mobile Marketing,1,1056,NAVEEN KUMAR M K,50,20%,10,2.5,25,9.5,7.79,1.71,9.16,42.75
+32,,KA,ROK,KAMMM,Mysore Mobile Marketing,1,,Santosh Kothary,,,,,,,,,,
+33,33,KA,ROK,MGLRMM,Mangalore Mobile Marketing,1,,NAGARAJU,,,,,,6.3,5.04,1.26,5.93,31.5
+33,,KA,ROK,MGLRMM,Mangalore Mobile Marketing,1,,VACANCY,,,,,,,,,,
+34,34,KA,ROK,DVNGMM,Davanagere Mobile Marketing,1,1434,K GANESH,50,15%,7.5,2,15,8.1,4.21,3.89,4.96,97.2
+34,,KA,ROK,DVNGMM,Davanagere Mobile Marketing,1,1336,NM SANTOSH,,,,,,,,,,
+35,35,KA,ROK,KMMSMG,Shimoga Mobile Marketing,1,1213,ANIL KUMAR A,50,15%,7.5,2.5,18.75,8.54,5.98,2.56,7.03,64.05
+35,,KA,ROK,KMMSMG,Shimoga Mobile Marketing,1,1263,SYED AHMED KHADRI,,,,,,,,,,
+36,36,TN,CHE,TNCHMM,Chennai Mobile Marketing,1,1096,V DURAI RAJ,,,,,,6,5.04,0.96,5.93,24
+36,,TN,CHE,TNCHMM,Chennai Mobile Marketing,1,,VACANT,,,,,,,,,,
+37,37,TN,CHE,TNCHMM,Chennai Mobile Marketing,2,649,KARTHICK AN,55,20%,11,3,33,6,5.04,0.96,5.93,24
+37,,TN,CHE,TNCHMM,Chennai Mobile Marketing,2,,Vacant,,,,,,,,,,
+38,38,TN,CHE,TNCHMM,Chennai Mobile Marketing,3,877,SIVANANDHAM,55,20%,11,2,22,6.75,5.67,1.08,6.67,27
+38,,TN,CHE,TNCHMM,Chennai Mobile Marketing,3,1184,M MURALI ,,,,,,,,,,
+39,39,TN,CHE,,Kanchipuram Mobile Marketing,1,1200,MOHAMMED MANSOOR ABDUL GAFOOR,50,15%,7.5,2,15,8.9,4.45,4.45,5.24,111.25
+39,,TN,CHE,,Kanchipuram Mobile Marketing,1,,VACANCY,,,,,,,,,,
+40,40,TN,CHE,VLRMM,Vellore Mobile Marketing,1,1193,N NIZAMUDDIN,60,15%,9,2,18,12.6,11.34,1.26,13.34,31.5
+40,,TN,CHE,VLRMM,Vellore Mobile Marketing,1,1360,K SELVA KUMAR,,,,,,,,,,
+41,41,TN,COIM,TNCOMM,Coimbatore Mobile Marketing,1,921,SUNILKANTH S,55,25%,13.75,2.5,34.375,13.5,12.15,1.35,14.29,33.75
+41,,TN,COIM,TNCOMM,Coimbatore Mobile Marketing,1,1473,B SRIRAM,,,,,,,,,,
+42,42,TN,COIM,TNCOMM,Coimbatore Mobile Marketing,2,1099,MAURUGESAN RAMASWAMY,55,20%,11,2.5,27.5,9,8.1,0.9,9.53,22.5
+42,,TN,COIM,TNCOMM,Coimbatore Mobile Marketing,2,1205,PRAKASH D ,,,,,,,,,,
+43,43,TN,COIM,TNSMM,Salem Mobile Marketing,1,916,SARAVANAN D,55,20%,11,2,22,10.8,9.72,1.08,11.44,27
+43,,TN,COIM,TNSMM,Salem Mobile Marketing,1,682,RAJESH KUMAR C,,,,,,,,,,
+44,44,TN,COIM,GVKAMM,Tirupur Mobile Marketing,1,1223,KAMAL RAJ,55,20%,11,2.5,27.5,8.68,4.43,4.25,5.21,106.33
+44,,TN,COIM,GVKAMM,Tirupur Mobile Marketing,1,915,MANIKANDAN S,,,,,,,,,,
+45,45,TN,COIM,TNVLMM,Tirunelveli Mobile Marketing,1,1253,NAVANEETHAKRISHNAN,55,15%,8.25,2,16.5,7.2,5.04,2.16,5.93,54
+45,,TN,COIM,TNVLMM,Tirunelveli Mobile Marketing,1,1256,ESAKKI,,,,,,,,,,
+46,46,TN,COIM,CRLAMM,Trichy Mobile Marketing,1,1309,ARAVINDHA VASHIHARAN PALANISAMY,55,15%,8.25,2,16.5,9.9,8.91,0.99,10.48,24.75
+46,,TN,COIM,CRLAMM,Trichy Mobile Marketing,1,1257,GEORGE J,,,,,,,,,,
+47,47,TS,KNL,APKUMM,Kurnool Mobile Marketing,1,772,PINJARI TEJA,60,30%,18,4,72,35.4,22.66,12.74,26.65,318.6
+47,,TS,KNL,APKUMM,Kurnool Mobile Marketing,1,1493,KONDAIAH,,,,,,,,,,
+48,48,TS,KNL,APKUMM,Kurnool Mobile Marketing,2,527,ANANTHAGIRI SUBHAS BOBJI,60,25%,15,3,45,10.03,6.42,3.61,7.55,90.27
+48,,TS,KNL,APKUMM,Kurnool Mobile Marketing,2,,VACANCY,,,,,,,,,,
+48,,,,,,,,1 TBA,,,,,,,,,,
+49,49,TS,KNL,APAMM,Anantapur Mobile Marketing,1,937,OBULAREDDY VENKATARAMI REDDY,55,25%,13.75,3,41.25,24.3,15.07,9.23,17.72,230.85
+49,,TS,KNL,APAMM,Anantapur Mobile Marketing,1,873,Y SHAMIVULLA,,,,,,,,,,
+50,50,TS,KNL,BLRMM,Bangalore Mobile Marketing,1,1391,B NAGARAJU,55,15%,8.25,2.5,20.625,13.5,7.7,5.81,9.05,145.13
+50,,TS,KNL,BLRMM,Bangalore Mobile Marketing,1,1454,S PAVAN KUMAR,,,,,,,,,,
+51,51,TS,KNL,NDLYMM,Nandyal Mobile Marketing,1,1161,B PURANDAR,55,15%,8.25,2,16.5,10.65,5.33,5.33,6.26,133.13
+51,,TS,KNL,NDLYMM,Nandyal Mobile Marketing,1,1368,SHAIK SHAIKSHA VALI,,,,,,,,,,
+52,52,TS,WGL-1,TLWMM,Warangal Mobile Marketing,1,360,SANDELA VIJAY,55,25%,13.75,3,41.25,25.5,19.64,5.87,23.1,146.63
+52,,TS,WGL-1,TLWMM,Warangal Mobile Marketing,1,1111,PENDEM SUMAN,,,,,,,,,,
+52,,TS,WGL-1,TLWMM,Warangal Mobile Marketing,1,1417,CHINTHALA MURALI,,,,,,,,,,
+53,53,TS,WGL-2,TLWMM,Warangal Mobile Marketing,2,359,MAHESH MANDHA,55,25%,13.75,3,41.25,25.5,19.64,5.87,23.1,146.63
+53,,TS,WGL-2,TLWMM,Warangal Mobile Marketing,2,1098,SALENDRA SURESH,,,,,,,,,,
+54,54,TS,WGL-1,TLKAMM,Karimanagar Mobile Marketing,1,441,MOHAMMED SADIQ,50,25%,12.5,2.5,31.25,18.75,12,6.75,14.12,168.75
+54,,TS,WGL-1,TLKAMM,Karimanagar Mobile Marketing,1,1394,GOLLE RAMESH,,,,,,,,,,
+55,55,TS,WGL-1,TLKAMM,Karimanagar Mobile Marketing,2,508,MUSTHAK MD,50,25%,12.5,2.5,31.25,18.75,12,6.75,14.12,168.75
+55,,TS,WGL-1,TLKAMM,Karimanagar Mobile Marketing,2,1254,KANAKAM ANIL KUMAR,,,,,,,,,,
+56,56,TS,WGL-1,TLNMM,Nizambad Mobile Marketing,1,1428,M RAVI KIRAN,55,25%,13.75,2.5,34.375,18.17,7.63,10.54,8.98,263.47
+56,,TS,WGL-1,TLNMM,Nizambad Mobile Marketing,1,1150,M SREEKANTH,,,,,,,,,,
+57,57,TS,WGL-2,TLKHMM,Khammam Mobile Marketing,1,617,MANIKA UPPAIAH,55,25%,13.75,2,27.5,15.4,10.32,5.08,12.14,127.05
+57,,TS,WGL-2,TLKHMM,Khammam Mobile Marketing,1,845,MUNIGALA VISHNU VARDHAN,,,,,,,,,,
+58,58,TS,WGL-2,TLMMM,Miryalaguda Mobile Marketing,1,585,MAJJI RAVI KUMAR,55,25%,13.75,1.5,20.625,11.18,5.59,5.59,6.58,139.75
+58,,TS,WGL-2,TLMMM,Miryalaguda Mobile Marketing,1,918,BANOTH VENKANNA,,,,,,,,,,
+,,,,,,,,,"3,000.00",11.97,628.5,159,"1,817.25",867.23,651.81,215.42,766.83,"5,385.58"

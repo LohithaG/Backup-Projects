@@ -1,0 +1,169 @@
+<!--<div style="margin:1%">
+  <br><br><br>
+  <div class="jarviswidget jarviswidget-sortable">
+    <header role="heading" class="ui-sortable-handle">
+      <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+      <h2>ADD SKU </h2>
+      <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
+    <div role="content">
+      <div class="jarviswidget-editbox">
+      </div>
+      <div class="widget-body no-padding">
+        <form action="php/demo-comment.php" method="post" id="comment-form" class="smart-form" novalidate="novalidate">
+          <fieldset>
+            <div class="row">
+              <section class="col col-4">
+                <label class="label">SKU Code
+                   <font class="text-danger">*</font>
+                </label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+											<input type="text" name="name">
+										</label>
+              </section>
+              <section class="col col-4">
+                <label class="label">Product Name
+                   <font class="text-danger">*</font>
+                </label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+											<input type="text" name="name">
+										</label>
+              </section>
+              <section class="col col-4">
+                <label class="label">Threshold Level
+                   <font class="text-danger">*</font>
+                </label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+											<input type="text" name="name">
+										</label>
+              </section>
+            </div>
+            <section>
+              <label class="label">Description<font class="text-danger">*</font></label>
+              <label class="textarea"> <i class="icon-append fa fa-comment"></i> 			
+              <textarea rows="4" name="comment"></textarea> </label>
+            </section>
+            
+          </fieldset>
+
+          <footer>
+            <button type="submit" name="submit" class="btn btn-primary">
+									SUBMIT
+								</button>
+          </footer>
+
+          <div class="message">
+            <i class="fa fa-check fa-lg"></i>
+            <p>
+              Your comment was successfully added!
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="headerRibbon" id="ribbon">
+</div>
+
+<div style="margin:1%">
+  <div class="panel panel-default">
+    <div class="panel-heading load-header">
+      <div class="row">
+        <div>
+          <b class="load-title"> &nbsp; Add SKU</b>
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup]="addSKUForm" method="post" id="checkout-form" class="smart-form">
+      <fieldset>
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">SKU Code
+                <font class="text-danger">*</font>
+             </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+               <input type="text" name="barcode"  [formControl]="this.skucode" [(ngModel)]="skuObj.skuCode" placeholder="Please enter SKU code">
+            </label>
+            <span *ngIf="this.skucode.hasError('required') &&formValidate " class=" icon-color-bad ">Please enter SKU code</span>
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" for="id" style="font-weight: 600;">Product Name 
+                            <font class="text-danger">*</font>
+                        </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+                        <input type="text" name="status" class="form-control" [formControl]="this.productName" [(ngModel)]="skuObj.productName" placeholder="Please enter product name">
+            </label>
+            <span *ngIf="this.productName.hasError('required') &&formValidate " class=" icon-color-bad ">Please enter product name</span>
+
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" style="font-weight: 600;">Threshold level
+                            <font class="text-danger">*</font>
+                        </label>
+          </section>
+          <section class="col col-5">
+            <label class="input form-control">
+                           <input type="text" name="status" class="form-control" [formControl]="this.threshold" [(ngModel)]="skuObj.thresholdLevel"
+                placeholder="Please enter Threshold level">
+            </label>
+            <span *ngIf="this.threshold.hasError('required') &&formValidate " class=" icon-color-bad ">Please enter
+              threshold level</span>
+            <span *ngIf="this.threshold.hasError('pattern')" class=" icon-color-bad ">Allows only numbers</span>
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+            <label class="label" style="font-weight: 600;">Description
+                            <font class="text-danger">*</font>
+                        </label>
+          </section>
+          <section class="col col-5">
+            <label class="input textarea">
+                          <textarea rows="3"   [formControl]="this.description" [(ngModel)]="skuObj.description" placeholder="Please enter some descrption"></textarea>
+            </label>
+            <div style="padding:3px;"></div>
+            <span *ngIf="this.description.hasError('required') &&formValidate " class="icon-color-bad ">Please enter descrption</span>
+          </section>
+        </div>
+      </fieldset>
+
+      <footer>
+        <section class="col col-9">
+          <button class="btn  btn-success btn-sm" type="submit" (click)="addSkuDetails()"> SUBMIT</button>
+        </section>
+      </footer>
+    </form>
+  </div>
+
+</div>
+
+
+<div bsModal #skuAlert="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+  role="dialog" aria-labelledby="myLargeModalLabel" style="top:35%">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>SKU</strong></h4>
+      </div>
+      <div class="modal-body ">
+        {{successResponse}}
+      </div>
+      <div class="modal-footer padding-10" style="text-align:center">
+        <button class="btn btn-primary" type="button" (click)="Okay()"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>

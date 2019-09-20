@@ -1,0 +1,100 @@
+<div class="main-content" style="padding: 30px 14px">
+    <div class="container-fluid" style="padding:0px;margin:0px">
+        <div class="row scan-btn">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 col-xs-4 col-md-4 col-12">
+                <button class="btn btn-info btn-block btn-fill" (click)="getProductDetails()"> Scan </button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <br><br>
+        <div class="row" *ngIf="productInfo">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title" style="text-align:center">Product Details</h4>
+                    </div>
+                    <div class="card-body" style="padding-top:13px;padding-left:11px;padding-right:0px">
+                        <div class="row">
+                            <b class="col-12" style="text-align:center;font-size:14px">{{productInfo.inventoryId.productName}}</b>
+                            <br>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b>QR Code</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.barcode}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> SKU Code</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.inventoryId.skuCode}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> Facility</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.facilityId.facility}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> Condition</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.inventoryConditionId.inventoryCondition}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> Status</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.itemStatusId.itemStatus}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> P.O Number</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.poVendorId.purchaseOrderNumber}}
+                            </p>
+
+                            <p class="col-sm-5 col-md-5 col-5" *ngIf="serialNumber !=null">
+                                <b> Serial Number</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1" *ngIf="serialNumber !=null">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5" *ngIf="serialNumber !=null">
+                                {{serialNumber}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> Created By</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.createdUser}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b>Date </b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.updatedTime | date: 'dd/MM/yyyy'}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-info btn-block btn-fill" (click)="goToHomePage()"> Back to Home </button>
+            </div>
+        </div>
+    </div>
+</div>

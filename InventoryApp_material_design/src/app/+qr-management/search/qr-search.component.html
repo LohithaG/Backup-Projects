@@ -1,0 +1,16 @@
+<div class="main-content" style="padding:30px 1px">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="QR Code" [(ngModel)]="qrCode">
+                    </mat-form-field>
+                    <div style="color:red" *ngIf="submitted">Please enter QR Code</div><br>
+                    <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="getQrCode()">Get QR</button>
+                    <button mat-raised-button class="btn btn-danger pull-right" (click)="gotoPreviousPage()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

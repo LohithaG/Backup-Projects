@@ -1,0 +1,51 @@
+<growth-date-filter (dateData)="QueryDate($event)" [clusterStatus]="true">
+</growth-date-filter>
+<sa-widgets-grid>
+    <div class="padding-10">
+        <div class="postion-from-filter">
+            <growth-kpi-blocks [growthLocationStore]="kpiBlockInfo" *ngIf="kpiInfo"></growth-kpi-blocks>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>LOCATION WISE SALES (D2H) </h2>
+                    </header>
+                    <div class="widget-body widget-body-r">
+                        <div id="locationWiseSales_SHW" style="height:250px"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xs-12 padding-ad-13-g">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>GOLD SALES</h2>
+                    </header>
+                    <div class="widget-body widget-body-r">
+                        <div id="gold_Sales" style="height:250px"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 padding-r-11">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>DIAMOND SALES</h2>
+                    </header>
+                    <div class="widget-body widget-body-r">
+                        <div id="diamond_Sales" style="height:250px"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</sa-widgets-grid>
+
+<loader [loading]=loaderStatus></loader>

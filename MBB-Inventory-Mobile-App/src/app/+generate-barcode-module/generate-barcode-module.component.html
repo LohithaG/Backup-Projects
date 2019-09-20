@@ -1,0 +1,146 @@
+<sa-widget [editbutton]="false" color="blueDark">
+  <header>
+    <span class="widget-icon">
+            <i class="fa fa-table"></i>
+          </span>
+    <h2>Barcodes generate </h2>
+  </header>
+  <form [formGroup]="complexForm" method="post" id="checkout-form" class="smart-form">
+    <fieldset>
+      <div class="row">
+        <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+          <label class="label" for="skuCode" style="font-weight: 600;">SKU Code
+                    <font class="text-danger">*</font>
+                  </label>
+        </section>
+        <section class="col col-5">
+          <label class="select form-control">
+                    <select id="power" name="status" class="form-control" formControlName="skuId"  placeholder="please select SKU code"
+                      required>
+                      <option selected="true" [disabled]="true" [ngValue]="null">Please select SKU code </option>
+                      <option *ngFor="let skuCodes of skuCodeList" [ngValue]="skuCodes">{{skuCodes.skuCode}}</option>
+                     </select>
+                    <i></i>
+                  </label>
+          <div *ngIf="submitted&& complexForm.controls['skuId'].hasError('required')" class="text-danger">
+            Please select sku code
+          </div>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+          <label class="label" for="skuCode" style="font-weight: 600;">No.of Products
+                    <font class="text-danger">*</font>
+                  </label>
+        </section>
+        <section class="col col-5">
+          <label class="input form-control">
+                    <input type="text" name="productsCount" formControlName="productsCount"  placeholder="Please enter no.of products">
+                  </label>
+          <div class="text-danger">
+            <div *ngIf="complexForm.controls['productsCount'].hasError('required')&&submitted ">
+              Please enter no.of products
+            </div>
+            <div *ngIf="complexForm.controls['productsCount'].hasError('pattern') ">
+              Please enter 1-100 number only
+            </div>
+          </div>
+        </section>
+      </div>
+    </fieldset>
+    <footer>
+      <section class="col col-9">
+        <button class="btn  btn-success btn-sm" type="submit" (click)="GenerateBarcode()">
+                    Generate Barcode
+                  </button>
+      </section>
+    </footer>
+  </form>
+</sa-widget>
+
+<sa-widget [editbutton]="false" color="blueDark">
+  <header>
+    <span class="widget-icon">
+            <i class="fa fa-table"></i>
+          </span>
+    <h2>Reprint Barcodes </h2>
+  </header>
+  <form [formGroup]="reprintForm" method="post" id="checkout-form" class="smart-form">
+    <fieldset>
+      <div class="row">
+        <section class="col col-5" style="margin-bottom: 0px;margin-top: 5px;">
+          <label class="label" for="skuCode" style="font-weight: 600;">SKU Code
+                    <font class="text-danger">*</font>
+                  </label>
+        </section>
+        <section class="col col-5">
+          <label class="select form-control">
+                    <select id="power" name="status" class="form-control" formControlName="skuId"  placeholder="please select SKU code"
+                      required>
+                      <option selected="true" [disabled]="true" [ngValue]="null">Please select SKU code </option>
+                      <option *ngFor="let skuCodes of skuCodeList" [ngValue]="skuCodes">{{skuCodes.skuCode}}</option>
+                     </select>
+                    <i></i>
+                  </label>
+          <div *ngIf="printSubmit&& reprintForm.controls['skuId'].hasError('required')" class="text-danger">
+            Please select SKU code
+          </div>
+        </section>
+      </div>
+    </fieldset>
+    <sa-widget *ngIf="reprintBarcodeList.length>0">
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 col-xs-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Barcode</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let print of reprintBarcodeList">
+                  <td>{{print}}</td>
+                  <td>
+                    <a class="btn btn-primary btn-circle" (click)="printBarcode(print)"><i class="glyphicon glyphicon-print"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+    </sa-widget>
+    <footer>
+      <section class="col col-9">
+        <button class="btn  btn-success btn-sm" type="submit" (click)="ReprintBarcodes()">
+                    Print Barcode
+                  </button>
+      </section>
+    </footer>
+  </form>
+
+
+
+</sa-widget>
+
+<div bsModal #addProductAlert="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+  role="dialog" aria-labelledby="myLargeModalLabel" style="top:35%">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>Barcode</strong></h4>
+      </div>
+      <div class="modal-body ">
+        {{successResponse}}
+      </div>
+      <div class="modal-footer padding-10" style="text-align:center">
+        <button class="btn btn-primary" type="button" (click)="Okay()"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>

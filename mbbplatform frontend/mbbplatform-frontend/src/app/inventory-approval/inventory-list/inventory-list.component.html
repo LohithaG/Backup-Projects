@@ -1,0 +1,104 @@
+<div id="content">
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </span>
+                        <h2 style="margin-right:2%;">Inventory Approval </h2>
+
+                    </header>
+                    <div class="widget-body">
+                        <form class="smart-form" id="dealer-filter-form">
+                            <fieldset style="padding:0px">
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>From</b></label>
+                                    <my-date-picker [options]="myDatePickerOptions" [selDate]="startDate" [(ngModel)]="QueryData.startDate" name="startDate"></my-date-picker>
+                                </section>
+
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>To</b></label>
+                                    <my-date-picker [options]="myDatePickerOptions" [selDate]="endDate" [(ngModel)]="QueryData.endDate" name="endDate"></my-date-picker>
+                                    <div class="icon-color-bad">{{errorMessage}}</div>
+                                </section>
+                                <!--<section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>Source</b></label>
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="QueryData.sourceId" [ngModelOptions]="{standalone: true}"
+                                        (change)="getDestinationLocations()" disabled={{adminType}}>
+                                           <option *ngFor="let location of locationDetails" [value]="location.id">{{location.location_name}}</option>
+                                        </select>
+                                </section>
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>Destination</b></label>
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="QueryData.destinationId" [ngModelOptions]="{standalone: true}">
+                                           <option *ngFor="let location of locationDetails2" [value]="location.id">{{location.location_name}}</option>
+                                        </select>
+                                </section>-->
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>Status</b></label>
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="QueryData.statusId" [ngModelOptions]="{standalone: true}">
+                                           <option *ngFor="let package of packageStatusList" [value]="package.id">{{package.status}}</option>
+                                        </select>
+                                </section>
+                                <section class="form-group col-sm-1 padding-5" *ngIf="QueryData">
+                                    <br>
+                                    <button type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit" (click)="QuerySubmit()">Submit</button>
+                                </section>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="well padding-10">
+                        <div *ngIf="sucessMsg" style="font-weight:bold;color:green;text-align:center">{{sucessMsg}}</div>
+                        <sa-datatable id="PACKAGEDataTable" [options]="PackageDetails" tableClass="table table-striped table-bordered table-hover"
+                            paginationLength="true" width="100%" filter="true" *ngIf="!sucessMsg">
+                            <thead>
+                                <tr>
+                                    <th>P.O Number</th>
+                                    <th>Total Products</th>
+                                    <th>Added to Inventory</th>
+                                    <th>Status</th>
+                                    <th>Invoice Date</th>
+                                    <th>SKU List</th>
+                                    <th>Actions </th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+<div bsModal #approvalModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="approvalModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                <h4 class="modal-title"><strong>Inventory Approval</strong></h4>
+            </div>
+            <div class="modal-body">
+                Are you sure to approve this <b> {{approvedPoName}}</b>
+            </div>
+            <div style="color:green;text-align:center">{{approvedSuccessMsg}}</div>
+            <div style="color:red;text-align:center">{{approvedErrorMsg}}</div>
+            <div class="modal-footer">
+                <button type="button" [disabled]='success' class="btn btn-default" (click)="approvalModal.hide()">
+                        Cancel
+                    </button>
+                <button type="button" [disabled]='success' class="btn btn-primary" (click)="InventoryApproved()">
+                        Submit
+                    </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<loader [loading]="loading"> </loader>

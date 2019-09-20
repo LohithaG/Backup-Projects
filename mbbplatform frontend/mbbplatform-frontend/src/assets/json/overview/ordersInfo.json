@@ -1,0 +1,33 @@
+{
+    "status": "Success",
+    "data": {
+        "yesterday": {
+            "revenue": 352331,
+            "noOfItems": 15
+        },
+        "yesterdaySameDayLastWeek": {
+            "revenue": 45829,
+            "noOfItems": 18
+        },
+        "thisQuarter": {
+            "revenue": 4543273,
+            "noOfItems": 593
+        },
+        "today": {
+            "revenue": 230102,
+            "noOfItems": 11
+        },
+        "lastQuarter": {
+            "revenue": 6212167,
+            "noOfItems": 1648
+        },
+        "lastMonth": {
+            "revenue": 3585928,
+            "noOfItems": 977
+        },
+        "thisMonth": {
+            "revenue": 4543273,
+            "noOfItems": 593
+        }
+    }
+}

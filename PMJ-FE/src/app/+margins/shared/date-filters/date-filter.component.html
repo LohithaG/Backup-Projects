@@ -1,0 +1,55 @@
+<sa-widgets-grid>
+        <div class="row"  [ngClass]="url == '/margins/tag-price-to-sales' ? 'kpimarginSHW' : 'kpimargincost'" >
+            <div class="col-sm-12" style="padding-right:13px !important">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>Date Filters </h2>
+                    </header>
+                    <div class="widget-body" style="min-height:0px;padding-top:0px;padding-bottom:0px;border-bottom:6px solid #ddd !important">
+                        <form class="smart-form" id="dealer-filter-form">
+                            <fieldset style="padding:0px">
+                                <div class="row col-sm-12">
+                                    <section class="form-group col-sm-1 padding-5 "></section>
+                                    <section class="col-sm-2 padding-5">
+                                        <label class="control-label"><b>Select</b></label>
+                                        <select class="form-control" [(ngModel)]="dateRange1" [ngModelOptions]="{standalone: true}" (change)="dataChangeRange1()">
+                                            <option *ngFor="let data of dateRangeDetails1 " [value]="data.range">
+                                                {{data.name}}</option>
+                                        </select>
+                                    </section>
+    
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryDateRange1">
+                                        <label class="control-label"> <b>From</b></label>
+                                        <my-date-picker [disabled]="dateRange1 !='CustomRange'" [options]="myDatePicker" [selDate]="startDate" [(ngModel)]="QueryDateRange1.startDate"
+                                            name="startDate">
+                                        </my-date-picker>
+                                    </section>
+    
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryDateRange1">
+                                        <label class="control-label"><b>To</b></label>
+                                        <my-date-picker [disabled]="dateRange1 !='CustomRange'" [options]="myDatePicker" [selDate]="endDate" [(ngModel)]="QueryDateRange1.endDate"
+                                            name="endDate">
+                                        </my-date-picker>
+                                        <div class="icon-color-bad">{{errorMessage1}}</div>
+                                    </section>
+    
+                                    <section class="form-group col-sm-1 padding-5">
+                                        <label class="control-label"><b>&nbsp;</b></label>
+                                        <button type="submit" class="btn btn-primary form-control"  style="color: #fff;
+                                        background-color: #3276b1;
+                                        border-color: #2c699d;" [disabled]="dateRange1 !=='CustomRange'" title="Submit" type="button" id="filter-reset" (click)="QuerySubmit()">Submit</button>
+                                    </section>
+    
+                                    <section class="form-group col-sm-1 padding-5">
+                                        <label class="control-label"><b>&nbsp;</b></label>
+                                        <button class="btn btn-default form-control"  [disabled]="dateRange1 !=='CustomRange'" title="Reset" type="button" id="filter-reset" (click)="getDefaultDates()">Reset</button>
+                                    </section>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>

@@ -1,0 +1,26 @@
+<aside id="left-panel">
+  <sa-login-info></sa-login-info>
+  <nav>
+    <ul saSmartMenu>
+      <li *ngIf="userRole == 'INVENTORY_MANAG'" (click)="closeMenu()">
+        <a routerLink="/inventory/inventory-manager">
+          <i class="fa fa-lg fa-fw fa-truck"></i>
+          <span class="menu-item-parent">Inventory Dashboard</span></a>
+      </li>
+      <li *ngIf="userRole == 'INVENTORY_MANAG'" (click)="closeMenu()">
+        <a routerLink="/inventory/inventory-details">
+          <i class="fa fa-lg fa-fw fa-truck"></i>
+          <span class="menu-item-parent">Inventory Details</span></a>
+      </li>
+      <li *ngIf="userRole == 'DISPATCHER'" (click)="closeMenu()">
+        <a routerLink="/dispatcher/dispatcher-module">
+          <i class="fa fa-lg fa-fw fa-truck"></i>
+          <span class="menu-item-parent">Dispatch Dashboard</span></a>
+      </li>
+      <li>
+        <sa-logout></sa-logout>
+      </li>
+    </ul>
+  </nav>
+  <sa-minify-menu></sa-minify-menu>
+</aside>

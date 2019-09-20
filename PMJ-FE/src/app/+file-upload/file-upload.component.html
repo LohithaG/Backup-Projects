@@ -1,0 +1,80 @@
+<h2>&nbsp;</h2>
+<div bsModal #lgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static',  keyboard: false}" tabindex="-1"
+    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="modelClose()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"><b>File Upload/Download </b></h4>
+            </div>
+            <div class="modal-body ">
+
+                <div class="widget-body">
+                    <form method="post" id="checkout-form" class="smart-form">
+                        <fieldset>
+                            <div class="row">
+                                <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                                    <label class="label" style="font-weight: 600;">Select File Type
+                                        <font class="icon-color-bad">*</font>
+                                    </label>
+                                </section>
+                                <section class="col col-4">
+                                    <label class="select form-control">
+                                        <select class="form-control" [(ngModel)]="fileType"
+                                            [ngModelOptions]="{standalone: true}" (change)="fileTypeChange()">
+                                            <option disabled value="">Select File</option>
+                                            <option *ngFor="let data of fileTypes " [value]="data.value">
+                                                {{data.name}}</option>
+                                        </select>
+                                        <div class="icon-color-bad">{{downloadError}}</div>
+
+                                    </label>
+                                </section>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                                    <label class="label" style="font-weight: 600;">File
+                                        <font class="icon-color-bad">*</font>
+                                    </label>
+                                </section>
+                                <section class="col col-4">
+
+                                    <input id="file-input1" [disabled]="fileType==''" type="file"
+                                        (change)="picked($event,1)" accept=".csv" />
+                                    <div class="text-success"><b>{{fileUploadStatusSuccess}}</b></div>
+                                    <div class="icon-color-bad">{{fileUploadStatusFail}}</div>
+                                    <div class="icon-color-bad">{{fileError}}</div>
+                                </section>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <section class="col col-2"></section>
+                                <section class="col col-2">
+                                    <button class="btn btn-primary form-control" title="Upload" type="button"
+                                        id="filter-reset" (click)="updateFile()"> Upload File </button>
+                                </section>
+                                <section class="col col-5"></section>
+                                <section class="col col-3">
+
+                                    <a title="Download" (click)="downloadCsvFile()" style="  text-decoration: underline;
+                                         ">Download CSV Format</a>
+                                         <br>
+                                    <div class="text-success" style="font-size: 12px"><b>{{downloadSuccess}}</b></div>
+                                </section>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="modelClose()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<loader [loading]=loaderStatus></loader>

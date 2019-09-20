@@ -1,0 +1,44 @@
+<sa-header></sa-header>
+<sa-navigation></sa-navigation>
+<div id="main" role="main">
+  <!--<sa-layout-switcher></sa-layout-switcher>-->
+  <!--<sa-ribbon></sa-ribbon>-->
+  <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+    [config]="{'backdrop':'static', 'keyboard': false}">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title"><strong>Your Session is about to expire in <span style='color:red;'>{{ time }}</span>
+seconds!</strong> </h4>
+        </div>
+        <div class="modal-body padding-8">
+
+          <div class="modal-body ">
+            <fieldset>
+              <section class="fa fa-warning col-sm-2" style='font-size: 40px;color:red'>
+              </section>
+              <section class='col-sm-8'>
+                Your Session will timeout in <span style="color:red;"><b>60 </b> </span> seconds. Are you sure to Stay or Logout
+              </section>
+            </fieldset>
+
+
+          </div>
+        </div>
+        <div class="modal-footer padding-8">
+
+          <button type="button" class="btn btn-default" (click)="goToLogin()">
+Logout
+</button>
+          <button type="button" style="width:14%" class="btn btn-primary" (click)="stay()">
+Stay 
+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<!--<sa-footer></sa-footer>-->
+<sa-shortcut></sa-shortcut>

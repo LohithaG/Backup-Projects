@@ -1,0 +1,33 @@
+<div id="content">
+
+  <date-filter-salesperson (dateData)="queryDate($event)"></date-filter-salesperson>
+
+  <growth-kpi-blocks [growthInfo]="kpiBlockInfo"></growth-kpi-blocks>
+  <ul class="nav navbar-nav" id="myTab">
+    <li [ngClass]="{active:activePath=='/salesperson/salespersoncomponent/salescomponent'}">
+
+      <a [routerLink]="['/salesperson/salespersoncomponent/salescomponent']"><i class="fa fa-bar-chart"></i>
+        <span> Sales(Target vs Actuals)</span></a>
+
+
+    </li>
+
+    <li [ngClass]="{active:activePath=='/salesperson/salespersoncomponent/achievementscomponent'}">
+      <a [routerLink]="['/salesperson/achievementscomponent']"><i class="fa fa-star"></i> <span> Achievements</span></a>
+    </li>
+    <li [ngClass]="{active:activePath=='/salesperson/salespersoncomponent/marginscomponent'}">
+      <a routerLink="/salesperson/marginscomponent"><i class="fa fa-line-chart"></i> <span> Margins</span></a>
+    </li>
+    <li [ngClass]="{active:activePath=='/salesperson/salespersoncomponent/conversioncomponent'}">
+      <a routerLink="/salesperson/conversioncomponent"><i class="fa fa-filter"></i> <span> Conversions</span></a>
+    </li>
+    <li [ngClass]="{active:activePath=='/salesperson/salespersoncomponent/averageticketsizecomponent'}">
+      <a routerLink="/salesperson/averageticketsizecomponent"><i class="fa fa-ticket"></i> <span> Average Ticket
+          Size</span></a>
+    </li>
+
+  </ul>
+</div>
+  <div class="graphContainer">
+    <router-outlet (activate)="changeOfRoutes($event)"></router-outlet>
+  </div>

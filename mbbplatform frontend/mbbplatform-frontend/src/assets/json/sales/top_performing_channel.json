@@ -1,0 +1,37 @@
+{
+    "generatedTime": "Generated at 09:45",
+    "innerPieTitle": "Categories",
+    "title": "Top Category vs Channel",
+    "outerPieTitle": "Channels",
+    "type": "DONUT",
+    "dataset": {
+        "name": "MEDICALEQUIPMENT",
+        "value": "4432809",
+        "drilldown": [
+            {
+                "name": "AMAZON_FBA",
+                "value": "373523"
+            },
+            {
+                "name": "AMAZON_IN",
+                "value": "857320"
+            },
+            {
+                "name": "CUSTOM",
+                "value": "2118528"
+            },
+            {
+                "name": "FLIPKART",
+                "value": "111984"
+            },
+            {
+                "name": "SNAPDEAL",
+                "value": "35678"
+            },
+            {
+                "name": "WOOCOMMERCE",
+                "value": "935776"
+            }
+        ]
+    }
+}

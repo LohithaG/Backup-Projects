@@ -1,0 +1,28 @@
+.loader{
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  bottom: 42%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+}
+#divLoading
+{
+    display : none;
+    
+}
+#divLoading.show
+{
+  background: rgba(0,0,0,0.7);
+  display: block;
+  position: fixed;
+  z-index:1100;
+    background-image : url('assets/img/pmj/diamond.gif');
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+    background-size: 300px 200px;
+} 

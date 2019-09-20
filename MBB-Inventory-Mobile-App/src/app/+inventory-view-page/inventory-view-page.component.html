@@ -1,0 +1,142 @@
+<div class="headerRibbon" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+    <span class="btn btn-ribbon" placement="bottom">
+      <i class="fa fa-truck"></i>
+    </span>product Details
+    </span>
+</div>
+
+
+<div style="margin:1%">
+    <div class="panel-body text-danger" style="border-bottom:1px solid rgb(245,245,245)" *ngIf="errorStatus">
+        {{errorStatus}}
+    </div>
+    <div class="panel panel-default" *ngIf="product">
+        <div class="panel-heading load-header">
+            <div class="row">
+                <div>
+                    <b class="load-title">Product Details</b></div>
+            </div>
+        </div>
+
+        <div class="panel-body" style="border-bottom:1px solid rgb(245,245,245)">
+            <div class="row load-view">
+
+                <div class="col-sm-6  padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b>Barcode Id</b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">
+                            {{product.barcode}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b> Name</b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">
+                            {{product.inventoryId.productName}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6  padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b>SKU Id</b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">
+                            {{product.inventoryId.skuCode}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row load-view">
+                <div class="col-sm-6 padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b>Category Name</b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">{{product.inventoryId.categoryName}}</div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="row load-view">
+                <div class="col-sm-6 padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b> Created Date</b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">{{product.inventoryId.createdTime| momentdategrouped:'Do MMM YYYY'}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row load-view">
+                <div class="col-sm-6 padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b> Facility </b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">{{product.facilityId.facility}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row load-view">
+                <div class="col-sm-6 padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b> Condition</b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">{{product.inventoryConditionId.inventoryCondition}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row load-view">
+                <div class="col-sm-6 padding-5">
+                    <div class="row">
+                        <div class="col-sm-5 col-xs-5 col-md-5 load-subtitle">
+                            <b> Status </b>
+                        </div>
+                        <div class="col-sm-1 col-xs-1 col-md-1"> : </div>
+                        <div class="col-sm-6 col-xs-5 col-md-5">{{product.itemStatusId.itemStatus}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!--  <div class="row load-view">
+                <div class="col-sm-6 padding-5">
+                 
+                </div>
+            </div>
+        </div> -->
+
+
+        </div>
+
+    </div>

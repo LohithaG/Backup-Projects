@@ -1,0 +1,38 @@
+
+.smart-form section {
+    margin-bottom: 1px; 
+}
+.kpimarginSHW{
+    padding-left: 10px;
+    padding-right: 9px;
+    position: fixed;
+    z-index: 1;
+}
+.kpimarginD2H{
+padding-right: 12px;
+margin-top: -10px;
+position: fixed;
+z-index: 1;
+}
+.kpimargincost {
+    position: fixed;
+    z-index: 1;
+    top: 49px;
+    padding-right: 8px;
+    padding-left: 0px !important;
+}
+.buttonright{
+    right:15em;
+}
+@media screen and (max-width: 767px) {
+    .buttonright{
+        right:0em;
+    }
+    .kpimarginD2H{
+        padding-right: 5px;
+    }
+  }
+  .form-control{
+      height:30px;
+      border-radius: 4px!important;
+  }

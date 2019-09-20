@@ -1,0 +1,78 @@
+<growth-date-filter (dateData)="QueryDate($event)">
+</growth-date-filter>
+<sa-widgets-grid>
+    <div class="padding-10">
+        <div class="postion-from-filter">
+            <growth-kpi-blocks [growthInfoChannel]="kpiBlockInfo"></growth-kpi-blocks>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-xs-12 padding-ad-13">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>GOLD SALES (SHW)</h2>
+                        <div class="widget-toolbar inventory_status_chart" role="menu">
+                            <on-off-switch (onoffClick)="lineChartConvertion('gold_Sales_shw')"></on-off-switch>
+                        </div>
+                    </header>
+
+                    <div class="widget-body widget-body-r">
+                        <div id="gold_Sales_shw" style="height:250px"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 padding-r-11" style="padding-right:20px">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>GOLD SALES (D2H)</h2>
+                        <div class="widget-toolbar inventory_status_chart" role="menu">
+                            <on-off-switch (onoffClick)="lineChartConvertion('gold_Sales_d2h')"></on-off-switch>
+                        </div>
+                    </header>
+
+                    <div class="widget-body widget-body-r">
+                        <div id="gold_Sales_d2h" style="height:250px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 padding-ad-13">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>DIAMOND SALES (SHW)</h2>
+                        <div class="widget-toolbar inventory_status_chart" role="menu">
+                            <on-off-switch (onoffClick)="lineChartConvertion('diamond_Sales_shw')"></on-off-switch>
+                        </div>
+                    </header>
+
+                    <div class="widget-body widget-body-r">
+                        <div id="diamond_Sales_shw" style="height:250px;width:100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12 padding-r-11" style="padding-right:20px">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>DIAMOND SALES (D2H)</h2>
+                        <div class="widget-toolbar inventory_status_chart" role="menu">
+                            <on-off-switch (onoffClick)="lineChartConvertion('diamond_Sales_d2h')"></on-off-switch>
+                        </div>
+                    </header>
+
+                    <div class="widget-body widget-body-r">
+                        <div id="diamond_Sales_d2h" style="height:250px;width:100%"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+
+
+<loader [loading]=loaderStatus></loader>

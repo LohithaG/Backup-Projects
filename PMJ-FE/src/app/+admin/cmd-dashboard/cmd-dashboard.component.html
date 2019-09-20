@@ -1,0 +1,163 @@
+<date-filter (dateData)="QueryDate($event)" [status]="'1'">
+</date-filter>
+<sa-widgets-grid *ngIf="hideThePage">
+    <div class="row" style="padding:10px">
+
+        <info-boxes [kpiInfo]="kpiInfo"></info-boxes>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>TOTAL SALES </h2>
+                </header>
+
+                <div class="widget-body text-center">
+                    <h3>There is no data in selected time range</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+
+<sa-widgets-grid *ngIf="!hideThePage">
+    <div class="row" style="padding:10px;padding-bottom:0px">
+        <info-boxes [kpiInfo]="kpiInfo"></info-boxes>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>SALES </h2>
+                    <!--<div class="widget-toolbar inventory_status_chart" role="menu">
+                        <p (click)="combinedViewFullScreen('combinedView')"><i class="fa fa-expand"></i></p>
+                    </div>-->
+                </header>
+                <div class="row" *ngIf="combinedFullView==''">
+                    <div class="col-sm-4 widget-body border-r-1">
+                        <div id="actualSalesPieContainer" style="height:300px"></div>
+                    </div>
+
+                    <div class="col-sm-4 widget-body border-r-1">
+                        <div id="channelWisePieContainer" style="height:300px"></div>
+                    </div>
+                    <div class="col-sm-4 widget-body">
+                        <div id="classWisePieContainer" style="height:300px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 padding-r-0">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>LOCATION WISE SALES - GOLD & DIAMOND</h2>
+                    <!--<div class="widget-toolbar inventory_status_chart" role="menu">
+                        <p (click)="viewFullScreen('locationStackedContainer','STATE WISE SALES - GOLD & DIAMOND')"><i class="fa fa-expand"></i></p>
+                    </div>-->
+                </header>
+                <div class="widget-body widget-body-r">
+                    <!--<div id="locationStackedContainer" style="height:250px;width:100%"></div>-->
+                    <div id="locationStackedContainer" style="height:300px" *ngIf="selectedChartId!=='locationStackedContainer'"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>STATE WISE SALES - GOLD & DIAMOND</h2>
+                    <!--<div class="widget-toolbar inventory_status_chart" role="menu">
+                        <p (click)="viewFullScreen('stateStackedContainer','LOCATION WISE SALES - GOLD & DIAMOND')"><i class="fa fa-expand"></i></p>
+                    </div>-->
+                </header>
+                <div class="widget-body widget-body-r">
+                    <!--<div id="stateStackedContainer" style="height:250px"></div>-->
+                    <div id="stateStackedContainer" style="height:300px" *ngIf="selectedChartId!=='stateStackedContainer'"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 padding-r-0">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>TOP 10 EMPLOYEES - SHW</h2>
+                    <!--<div class="widget-toolbar inventory_status_chart" role="menu">
+                        <p (click)="viewFullScreen('topEmployees','TOP 10 EMPLOYEES - SHW')"><i class="fa fa-expand"></i></p>
+                    </div>-->
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="topEmployees" style="height:300px" *ngIf="selectedChartId!=='topEmployees'"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>TOP 10 TEAMS - D2H</h2>
+                    <!--<div class="widget-toolbar inventory_status_chart" role="menu">
+                        <p (click)="viewFullScreen('topTeams','TOP 10 TEAMS - D2H')"><i class="fa fa-expand"></i></p>
+                    </div>-->
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="topTeams" style="height:300px" *ngIf="selectedChartId!=='topTeams'"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</sa-widgets-grid>
+
+<loader [loading]="categoryStatus||channelStatus||classStatus||locationStatus||stateStatus"></loader>
+
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align:center;"><strong>{{selectedChartTitle}}</strong></h4>
+            </div>
+            <div class="modal-body">
+                <div id={{selectedChartId}}></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style='width: 72px' class="btn btn-default" (click)="closeFullView(selectedChartId)">
+							<i class="fa fa-close" style="color:red"></i> Close
+						</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div bsModal #lgModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:94%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align:center;"><strong>Sales</strong></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" *ngIf="combinedFullView">
+                    <div class="col-sm-4 widget-body border-r-1">
+                        <div id="actualSalesPieContainer"></div>
+                    </div>
+
+                    <div class="col-sm-4 widget-body border-r-1">
+                        <div id="channelWisePieContainer"></div>
+                    </div>
+                    <div class="col-sm-4 widget-body">
+                        <div id="classWisePieContainer"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style='width: 72px' class="btn btn-default" (click)="closeFullView('combinedView')">
+							<i class="fa fa-close" style="color:red"></i> Close
+						</button>
+            </div>
+        </div>
+    </div>
+</div>

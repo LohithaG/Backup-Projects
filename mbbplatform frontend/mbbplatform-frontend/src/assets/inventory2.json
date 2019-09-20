@@ -1,0 +1,520 @@
+{
+    "data": [
+        {
+            "sku": "6830-6834",
+            "name": "ivolve Cpap/Bipap Nasal Mask(NM4)",
+            "inventory": "115"
+        },
+        {
+            "sku": "189",
+            "name": "Alcan oxygen regulator(ACI-4-CGA870-L)",
+            "inventory": "100"
+        },
+        {
+            "sku": "3547",
+            "name": "Airinlet Filter For Oxygen Concentrator",
+            "inventory": "98"
+        },
+        {
+            "sku": "5125-5629-25mm",
+            "name": "Disposable Male External Condom Catheter(Pack of 5)",
+            "inventory": "81"
+        },
+        {
+            "sku": "6226",
+            "name": "All In One Infrared Thermometer With Memory Recall",
+            "inventory": "64"
+        },
+        {
+            "sku": "5435",
+            "name": "Urine Collecting Bag With Moulded Handle",
+            "inventory": "39"
+        },
+        {
+            "sku": "5108",
+            "name": "Umbilical Cord Clamp (10Pcs.)",
+            "inventory": "37"
+        },
+        {
+            "sku": "114",
+            "name": "Oxygen Cannula  Child",
+            "inventory": "30"
+        },
+        {
+            "sku": "5077",
+            "name": "Humidifier For RESmart GII Auto Cpap/Bipap",
+            "inventory": "25"
+        },
+        {
+            "sku": "5437-5649-FG12",
+            "name": "Nel Cath - Nelaton Catheter(Pack of 5)",
+            "inventory": "21"
+        },
+        {
+            "sku": "145-6761-M",
+            "name": "Cpap/Bipap Full Face Mask",
+            "inventory": "21"
+        },
+        {
+            "sku": "5781",
+            "name": "I.V. Fluid Flow Regulator Extension Set",
+            "inventory": "20"
+        },
+        {
+            "sku": "3512",
+            "name": "Ward Vacuum 600 ML Jar",
+            "inventory": "19"
+        },
+        {
+            "sku": "5011-6718-S",
+            "name": "iVolve Cpap Full Face Mask(F2)",
+            "inventory": "19"
+        },
+        {
+            "sku": "5437-5649-FG16",
+            "name": "Nel Cath - Nelaton Catheter(Pack of 5)",
+            "inventory": "18"
+        },
+        {
+            "sku": "5713",
+            "name": "Bottle Holder For Wheel Chair",
+            "inventory": "17"
+        },
+        {
+            "sku": "3516",
+            "name": "Ward Vacuum Regulator",
+            "inventory": "16"
+        },
+        {
+            "sku": "5385",
+            "name": "Urocare Leg Bag Set With Non Return Valve(Pack Of 5)",
+            "inventory": "14"
+        },
+        {
+            "sku": "195",
+            "name": "Aero Mist Nebulizer Mask - Adult",
+            "inventory": "12"
+        },
+        {
+            "sku": "6112",
+            "name": "Alternating Pressure Pump And Bubble Mattress",
+            "inventory": "11"
+        },
+        {
+            "sku": "4891",
+            "name": "Arm Blood Pressure Monitor",
+            "inventory": "11"
+        },
+        {
+            "sku": "5806",
+            "name": "HME BVF Breathing Filter",
+            "inventory": "10"
+        },
+        {
+            "sku": "5408-5636-100ml",
+            "name": "Pediatric Urine Collecting Bag(Pack of 10)",
+            "inventory": "10"
+        },
+        {
+            "sku": "653",
+            "name": "Oxygen Cylinder Bag For 2.2/2.5 KG",
+            "inventory": "10"
+        },
+        {
+            "sku": "930",
+            "name": "Spindle key for Oxygen and  Nitrous Oxide Pin Type valve",
+            "inventory": "10"
+        },
+        {
+            "sku": "655",
+            "name": "Oxygen Cylinder Bag For 4 KG",
+            "inventory": "10"
+        },
+        {
+            "sku": "660",
+            "name": "Oxygen Cylinder Bag For 3.3KG",
+            "inventory": "10"
+        },
+        {
+            "sku": "8432",
+            "name": "Automatic Blood Pressure Machine(VM-44)",
+            "inventory": "9"
+        },
+        {
+            "sku": "6109",
+            "name": "Piston Compressor Nebulizer",
+            "inventory": "7"
+        },
+        {
+            "sku": "5784",
+            "name": "T-Recovery Kit with T.Oxygenator",
+            "inventory": "7"
+        },
+        {
+            "sku": "7527",
+            "name": "Wheel Chair Tire With Tube For Reclining Electrical Wheelchair",
+            "inventory": "6"
+        },
+        {
+            "sku": "7488",
+            "name": "Electrical Wheel Chair Tire With Tube",
+            "inventory": "6"
+        },
+        {
+            "sku": "145-6761-S",
+            "name": "Cpap/Bipap Full Face Mask",
+            "inventory": "6"
+        },
+        {
+            "sku": "181-6752-S",
+            "name": "Cpap/Bipa Full Face Mask (FM)",
+            "inventory": "6"
+        },
+        {
+            "sku": "5800-5803-7.5",
+            "name": "Latex Surgical Gloves 50 Pair Box",
+            "inventory": "6"
+        },
+        {
+            "sku": "1822-5603-A",
+            "name": "Silicone Resuscitators (Ambu Bag)",
+            "inventory": "5"
+        },
+        {
+            "sku": "4350",
+            "name": "Humidifier Bottle For Gvs Oxygen Concentrator",
+            "inventory": "5"
+        },
+        {
+            "sku": "5786",
+            "name": "Disposable Infusion Set(Pack Of 5)",
+            "inventory": "5"
+        },
+        {
+            "sku": "0644",
+            "name": "Oxygen Cylinder Set 4.2KG wt Gas Capacity (675 Ltrs)",
+            "inventory": "5"
+        },
+        {
+            "sku": "1822-5602-C",
+            "name": "Silicone Resuscitators (Ambu Bag)",
+            "inventory": "5"
+        },
+        {
+            "sku": "4142",
+            "name": "Nasal Cpap/Bipap Mask Liners(Large/Medium/Small)",
+            "inventory": "4"
+        },
+        {
+            "sku": "8379",
+            "name": "Portable Oxygen Concentrator With Continuous and Pulse Mode",
+            "inventory": "4"
+        },
+        {
+            "sku": "5593",
+            "name": "Ventilator Circuit",
+            "inventory": "3"
+        },
+        {
+            "sku": "5408-5635-200ml",
+            "name": "Pediatric Urine Collecting Bag(Pack of 10)",
+            "inventory": "3"
+        },
+        {
+            "sku": "1857",
+            "name": "Anatomical Face Mask",
+            "inventory": "3"
+        },
+        {
+            "sku": "7365",
+            "name": "Joystick For Electrical Wheel Chair",
+            "inventory": "3"
+        },
+        {
+            "sku": "7512",
+            "name": "Electrical Wheel Chair Tire With Tube For Big Wheels",
+            "inventory": "3"
+        },
+        {
+            "sku": "5573-5615-FG14-G",
+            "name": "Foley Balloon Catheter 2 Way",
+            "inventory": "3"
+        },
+        {
+            "sku": "5587",
+            "name": "Central Venous Pressure Measuring Device(C.V.P Manometer)",
+            "inventory": "2"
+        },
+        {
+            "sku": "4144",
+            "name": "Full Face Cpap/Bipap Mask Liners(Large/Medium/Small)",
+            "inventory": "2"
+        },
+        {
+            "sku": "7844",
+            "name": "GVS Oxygen Pulse Mode Portable Oxygen Concentrator",
+            "inventory": "2"
+        },
+        {
+            "sku": "188",
+            "name": "Lightweight Cylinder for Trekking and mountaineering Gas Capacity(100Ltrs)",
+            "inventory": "2"
+        },
+        {
+            "sku": "8416",
+            "name": "Philips Respironics Dream Station Auto Cpap",
+            "inventory": "2"
+        },
+        {
+            "sku": "4417",
+            "name": "Philips Sami the Seal Nebulizer",
+            "inventory": "2"
+        },
+        {
+            "sku": "4058-6762-S",
+            "name": "Acucare F1-4 Full Face Mask",
+            "inventory": "2"
+        },
+        {
+            "sku": "5789",
+            "name": "Latex Examination Gloves 100 pcs Box (Medium)",
+            "inventory": "2"
+        },
+        {
+            "sku": "1822-5601-I",
+            "name": "Silicone Resuscitators (Ambu Bag)",
+            "inventory": "2"
+        },
+        {
+            "sku": "5800-5804-7",
+            "name": "Latex Surgical Gloves 50 Pair Box",
+            "inventory": "2"
+        },
+        {
+            "sku": "5800-5805-6.5",
+            "name": "Latex Surgical Gloves 50 Pair Box",
+            "inventory": "1"
+        },
+        {
+            "sku": "4575",
+            "name": "Rossmax AV151f Blood Pressure Monitor",
+            "inventory": "1"
+        },
+        {
+            "sku": "3507",
+            "name": "Ward Vacuum 1000 ml Jar",
+            "inventory": "1"
+        },
+        {
+            "sku": "4580",
+            "name": "Rossmax Blood Pressure Monitor X3",
+            "inventory": "1"
+        },
+        {
+            "sku": "7345",
+            "name": "Wrist Pulse Oximeter With Sleep Apnea Monitor",
+            "inventory": "1"
+        },
+        {
+            "sku": "4586",
+            "name": "Rossmax AC 701 Blood pressure monitor",
+            "inventory": "1"
+        },
+        {
+            "sku": "6312",
+            "name": "Quick Folding Light Weight Electric Wheelchair",
+            "inventory": "1"
+        },
+        {
+            "sku": "8434",
+            "name": "Lithium Battery Electrical wheel Chair With Big wheels",
+            "inventory": "1"
+        },
+        {
+            "sku": "4485",
+            "name": "Cefaly Drug-Free Migraine Pain Relief",
+            "inventory": "1"
+        },
+        {
+            "sku": "4527",
+            "name": "Amara Full Face Mask",
+            "inventory": "1"
+        },
+        {
+            "sku": "01899",
+            "name": "RMS Manual Cpap",
+            "inventory": "1"
+        },
+        {
+            "sku": "4569",
+            "name": "Digital Blood Pressure Monitor Upper Arm (X1)",
+            "inventory": "1"
+        },
+        {
+            "sku": "4571",
+            "name": "Rossmax AU941f 7/14 Blood Pressure Monitor",
+            "inventory": "1"
+        },
+        {
+            "sku": "07793",
+            "name": "Philips Remstar Auto CPAP With Humidifier",
+            "inventory": "0"
+        },
+        {
+            "sku": "2123",
+            "name": "Humidifier Bottle For Oxygen Concentrator",
+            "inventory": "0"
+        },
+        {
+            "sku": "7528",
+            "name": "Battery Charger For Electrical Wheel Chair",
+            "inventory": "0"
+        },
+        {
+            "sku": "1846",
+            "name": "Portable Oxygen Concentrator",
+            "inventory": "0"
+        },
+        {
+            "sku": "4576",
+            "name": "Rossmax MJ701f Blood Pressure Monitor",
+            "inventory": "0"
+        },
+        {
+            "sku": "7099",
+            "name": "Electric Wheel Chair With Lithium Battery",
+            "inventory": "0"
+        },
+        {
+            "sku": "5677",
+            "name": "Intra Venous Cannula(Pack of 5)",
+            "inventory": "0"
+        },
+        {
+            "sku": "1189",
+            "name": "Humidifier for Philips Auto Cpap/Bipap For DS761S",
+            "inventory": "0"
+        },
+        {
+            "sku": "7530",
+            "name": "Battery Charger For Reclining Electrical Wheel Chair",
+            "inventory": "0"
+        },
+        {
+            "sku": "4203",
+            "name": "iVolve Nasal Pillow Mask(Small/Medium/large)",
+            "inventory": "0"
+        },
+        {
+            "sku": "1855",
+            "name": "Silicone Face Mask",
+            "inventory": "0"
+        },
+        {
+            "sku": "4578",
+            "name": "Rossmax Ch155 Digital Bp Monitor",
+            "inventory": "0"
+        },
+        {
+            "sku": "7113",
+            "name": "Philips Nasal Comfort Gel Mask",
+            "inventory": "0"
+        },
+        {
+            "sku": "126",
+            "name": "Nitrous Oxide Gauge",
+            "inventory": "0"
+        },
+        {
+            "sku": "4209-6726-L",
+            "name": "iVolve Cpap/Bipap Nasal Mask(N2)",
+            "inventory": "0"
+        },
+        {
+            "sku": "3514",
+            "name": "Ward Vacuum 2000 ml Jar",
+            "inventory": "0"
+        },
+        {
+            "sku": "5778",
+            "name": "Infant Mucus Extractor(Pack Of 5)",
+            "inventory": "0"
+        },
+        {
+            "sku": "143",
+            "name": "Electrical Wheel Chair with Big Wheels",
+            "inventory": "0"
+        },
+        {
+            "sku": "4209-6728-S",
+            "name": "iVolve Cpap/Bipap Nasal Mask(N2)",
+            "inventory": "0"
+        },
+        {
+            "sku": "145-6761-L",
+            "name": "Cpap/Bipap Full Face Mask",
+            "inventory": "0"
+        },
+        {
+            "sku": "3519",
+            "name": "Ward Vacuum Unit With 2000 ml Jar",
+            "inventory": "0"
+        },
+        {
+            "sku": "5437-5649-FG14",
+            "name": "Nel Cath - Nelaton Catheter(Pack of 5)",
+            "inventory": "0"
+        },
+        {
+            "sku": "6326",
+            "name": "GVS 10L Oxygen Concentrator",
+            "inventory": "0"
+        },
+        {
+            "sku": "192",
+            "name": "Aero Neb Nebulizer Mask - Child",
+            "inventory": "0"
+        },
+        {
+            "sku": "5023-6721-S",
+            "name": "iVolve Cpap Nasal Mask(NM)",
+            "inventory": "0"
+        },
+        {
+            "sku": "7517",
+            "name": "Lithium Battery For Electrical Wheel Chair",
+            "inventory": "0"
+        },
+        {
+            "sku": "5573-5611-FG16-O",
+            "name": "Foley Balloon Catheter 2 Way",
+            "inventory": "0"
+        },
+        {
+            "sku": "1970",
+            "name": "EverFlow Oxygen Concentrator",
+            "inventory": "0"
+        },
+        {
+            "sku": "7521",
+            "name": "Acid Battery For Reclining Electrical Wheelchair",
+            "inventory": "0"
+        }
+    ],
+    "title": "Inventories Of Products With Zero Order In Last Month",
+    "type": "TABLE",
+    "columns": [
+        {
+            "name": "sku",
+            "displayName": "Sku"
+        },
+        {
+            "name": "name",
+            "displayName": "Name"
+        },
+        {
+            "name": "inventory",
+            "displayName": "Inventory"
+        }
+    ]
+}

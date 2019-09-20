@@ -1,0 +1,174 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div>
+                    <div>
+                        <form>
+                            <div *ngFor="let item of productArray;let i=index">
+                                <div class="card" [ngStyle]="{'background':!item.condition ? 'none': '#fff','box-shadow':!item.condition ? 'none': '0 1px 4px 0 rgba(0, 0, 0, 0.14)'}">
+
+                                    <div class="card-header card-header-info">
+                                        <div>
+                                            <h4 class="card-title" style="text-align:center;display: inline;" (click)="expand(i)">{{item.inventoryItem.barcode}}</h4>
+
+                                            <span style="float: right;cursor: pointer;" (click)="expand(i)">
+                                                <mat-icon>remove_red_eye</mat-icon>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" *ngIf="item.condition">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="QR Code" [(ngModel)]="item.inventoryItem.barcode" type="text" [ngModelOptions]="{standalone: true}"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Created User" type="text" [(ngModel)]="item.inventoryItem.createdUser" [ngModelOptions]="{standalone: true}"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Product Name" type="text" name="productName" [(ngModel)]="item.inventoryItem.inventoryId.productName"
+                                                        readonly [ngModelOptions]="{standalone: true}">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="P.O Number" type="text" name="ponumber" [(ngModel)]="item.inventoryItem.poVendorId.purchaseOrderNumber"
+                                                        readonly [ngModelOptions]="{standalone: true}">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="item.inventoryItem.serialNumber !=null">
+                                            <div class="col-md-12">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Serial Number" type="text" name="serialNumber" [(ngModel)]="item.inventoryItem.serialNumber"
+                                                        readonly [ngModelOptions]="{standalone: true}">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="SKU Code" type="text" name="skucode" [(ngModel)]="item.inventoryItem.inventoryId.skuCode" readonly
+                                                        [ngModelOptions]="{standalone: true}">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <mat-form-field>
+                                                    <label>Facility</label>
+                                                    <mat-select matInput [(ngModel)]="item.inventoryItem.facilityId.id" [ngModelOptions]="{standalone: true}" required>
+                                                        <mat-option *ngFor="let item of facilitiesList" [value]="item.id">{{item.facility}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <mat-form-field>
+                                                    <label>Product Condition</label>
+                                                    <mat-select matInput [(ngModel)]="item.inventoryItem.inventoryConditionId.id" [ngModelOptions]="{standalone: true}" (selectionChange)="getStatusList(item.inventoryItem)">
+                                                        <mat-option *ngFor="let condition of conditionsList" [value]="condition.id">{{condition.inventoryCondition}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="item.inventoryItem.inventoryConditionId.id==1">
+                                            <div class="col-md-12">
+                                                <mat-form-field>
+                                                    <label>Product Status</label>
+                                                    <mat-select matInput [(ngModel)]="item.inventoryItem.itemStatusId.id" [ngModelOptions]="{standalone: true}" #status1="ngModel">
+                                                        <mat-option *ngFor="let status of statusList" [value]="status.id">{{status.itemStatus}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                                <span *ngIf="item.inventoryItem.itemStatusId.id== ''" class=" text-danger">Please
+                                                    enter Itemstatus</span>
+
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="item.inventoryItem.inventoryConditionId.id==2">
+                                            <div class="col-md-12">
+                                                <mat-form-field>
+                                                    <label>Product Status</label>
+                                                    <mat-select matInput [(ngModel)]="item.inventoryItem.itemStatusId.id" [ngModelOptions]="{standalone: true}" #status="ngModel"
+                                                        required>
+                                                        <mat-option *ngFor="let status of statusList1" [value]="status.id">{{status.itemStatus}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+
+                                                <span *ngIf="item.inventoryItem.itemStatusId.id== ''" class=" text-danger">Please
+                                                    enter Itemstatus</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-xs-12" *ngFor="let data of item.checklist; let j=index">
+                                                    <div class="row">
+                                                        <mat-slide-toggle class="primary col-sm-6 col-xs-12" [(ngModel)]="data.accessoryCondition" [ngModelOptions]="{standalone: true}"
+                                                            (ngModelChange)="onChange(i,j)" name="checkbox">
+
+                                                            <input matInput type="number" style="border:1px solid #AAAAAA; border-top: 2px solid #AAAAAA;text-align:center;width:31px"
+                                                                value={{data.quantity}} [disabled]="!data.accessoryCondition"
+                                                                [(ngModel)]="data.quantity" required pattern="^(?:[1-9]|0[1-9]|10)$"
+                                                                #quant="ngModel" [ngModelOptions]="{standalone: true}">                                                            {{data.accessoriesId.accessory}}
+                                                        </mat-slide-toggle>
+
+                                                        <div>
+                                                            <span *ngIf="quant.errors && quant.errors.required" class=" text-danger">
+                                                                Please enter quantity</span>
+                                                            <span *ngIf="quant.errors && quant.errors.pattern" class=" text-danger">
+                                                                Please enter only 1-10 numbers</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <mat-form-field class="example-full-width">
+                                                    <textarea matInput [(ngModel)]="item.comments" [ngModelOptions]="{standalone: true}"
+                                                        required></textarea>
+                                                    <mat-placeholder class="placeholder">Comments</mat-placeholder>
+                                                </mat-form-field>
+                                                <span *ngIf="formValidate && (comment==null || comment=='')" class=" text-danger">please
+                                                    enter comments</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+
+
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right" *ngIf="!buttonStatus" (click)="addToInventory()">Add
+                                to Inventory</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="navigatetoHomePage()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+.box-title_gold{
+color:#cc4125;
+font-weight: bold;
+font-size: 20px
+}
+
+.box-title_dia{
+    color:#3AAFFF;
+    font-weight: bold;
+    font-size: 20px
+}
+
+
+.gold-act-value{
+color: #cc4125;
+font-weight: bold;
+font-size: 15px;
+padding-top: 5px
+}
+.dia-act-value{
+color: #3AAFFF;
+font-weight: bold;
+font-size: 15px;
+padding-top: 5px
+}
+
+.dia-tar-value,.gold-tar-value{
+font-weight: bold;
+font-size: 15px;
+padding-top: 5px
+}

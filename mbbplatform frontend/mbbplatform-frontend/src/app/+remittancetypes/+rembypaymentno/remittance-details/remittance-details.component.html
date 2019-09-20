@@ -1,0 +1,44 @@
+<div id="content">
+    <div style="font-weight:bold"><span style="cursor: pointer;color: #335CA7;text-decoration: underline;" routerLink="/remittance/byPaymentRef">Remittance</span>        <span> / remittance Details ( </span> <b style='color:green'>{{paymentReferenceNumber}}</b> )<span></span>
+    </div>
+
+    <sa-widgets-grid>
+
+        <br />
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+            <header>
+                <h2 style="margin-right:2%;">Remittance-Details </h2>
+            </header>
+
+            <div class="well padding-10 ">
+
+                <sa-datatable id="DataTable" [options]="remByPaytDetails" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                    width="100%">
+                    <thead>
+                        <tr>
+                            <th>DELIVERY DATE</th>
+                            <th>ORDER ID</th>
+                            <th>AWB NUMBER </th>
+                            <th>COURIER NAME</th>
+                            <th>ORDER TOTAL (in Rs)</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th style='text-align:right' colspan="4">Total Amount</th>
+                            <th>{{totalAmount}}.00</th>
+
+                        </tr>
+                    </tfoot>
+                </sa-datatable>
+            </div>
+        </div>
+
+
+
+
+    </sa-widgets-grid>
+
+</div>

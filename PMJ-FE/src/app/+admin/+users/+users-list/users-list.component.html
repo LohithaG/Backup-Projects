@@ -1,0 +1,68 @@
+<div id="content">
+	<sa-widgets-grid>
+		<div class="row">
+			<div class="col-sm-12">
+				<div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+					[deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+						</span>
+						<h2>Users Details </h2>
+						<div *ngIf="userWidget" class="widget-toolbar" role="menu">
+							<a class="btn btn-primary" routerLink="/admin/users/adduser"> Add User</a>
+						</div>
+					</header>
+					<div>
+
+						<div class="widget-body no-padding ">
+							<section *ngIf="userlistMessage" class="text-success text-center"> {{userlistMessage}} </section>
+							<sa-datatable id="DataTable" [options]="options" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+								width="100%">
+								<thead>
+									<tr>
+										<th>Emp ID</th>
+										<th>User Name</th>
+										<th>Role Type</th>
+										<th>Edit/Delete </th>
+									</tr>
+								</thead>
+							</sa-datatable>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content" style="margin-right: 60px;">
+					<div class="modal-header">
+
+						<h4 class="modal-title" style="text-align:center;"><strong>Delete User!</strong></h4>
+					</div>
+					<div class="modal-body">
+						<fieldset>
+							<section class="fa fa-warning col-sm-1" style='font-size: 40px;color:red'>
+							</section>
+							<section class='col-sm-10'>
+								<span style="font-size:14px;">Are you sure you want to delete <span style='color:green'>{{this.userName}}</span>!</span>
+							</section>
+						</fieldset>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" style='width: 72px' class="btn btn-default" (click)="lgModal.hide()">
+							<i class="fa fa-close" style="color:red"></i> No
+						</button>
+						<button type="button" style='width: 72px' class="btn btn-success" (click)="deleted()">
+							<i class="fa fa-check"></i> Ok
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</sa-widgets-grid>
+</div>

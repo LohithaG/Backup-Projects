@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title" style="text-align:center">Add SKU</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="addSKUForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width" >
+                                        <input matInput  [formControl]="this.skucode" [(ngModel)]="skuObj.skuCode" type="text">
+                                        <mat-placeholder class="placeholder">SKU Code</mat-placeholder>
+                                    </mat-form-field>
+
+                                    <span *ngIf="this.skucode.hasError('required') &&formValidate " class=" text-danger ">Please
+                                        enter SKU code</span>
+                                    <span *ngIf="this.skucode.hasError('maxlength')" class="text-danger">Please
+                                        enter valid SKU Code with 30 letters only</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput  type="text" [formControl]="this.productName" [(ngModel)]="skuObj.productName">
+                                        <mat-placeholder class="placeholder">Product Name</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.productName.hasError('required') &&formValidate " class=" text-danger ">Please
+                                        enter product name</span>
+                                    <span *ngIf="this.productName.hasError('maxlength')" class="text-danger">Please
+                                        enter product name less than 100 letters only</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput  type="number" [formControl]="this.threshold" [(ngModel)]="skuObj.thresholdLevel">
+                                        <mat-placeholder class="placeholder">Threshold Level</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.threshold.hasError('required') &&formValidate " class=" text-danger ">Please
+                                        enter
+                                        threshold level</span>
+                                    <span *ngIf="this.threshold.hasError('maxlength') ||this.threshold.hasError('pattern') " class="text-danger">Please enter valid threshold level between 1-999 only</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <textarea matInput  [formControl]="this.description" [(ngModel)]="skuObj.description"></textarea>
+                                        <mat-placeholder class="placeholder">Description</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.description.hasError('required') &&formValidate " class="text-danger ">Please
+                                        enter description</span>
+                                    <span *ngIf="this.description.hasError('maxlength')" class="text-danger">Please
+                                        enter only 200 letters only</span>
+                                </div>
+
+                            </div>
+                            <button mat-raised-button class="btn btn-success pull-right" (click)="addSkuDetails()">Submit</button>
+                            <button mat-raised-button class="btn btn-danger pull-right" (click)="gotoPreviousPage()">Cancel</button>
+                            <div class="clearfix"></div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <popup></popup> -->

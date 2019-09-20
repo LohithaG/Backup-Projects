@@ -1,0 +1,31 @@
+<div class="headerRibbon" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+    <span class="btn btn-ribbon" placement="bottom">
+      <i class="fa fa-truck"></i>
+    </span>Inventory Details
+    </span>
+</div>
+
+<div style="margin:1%">
+    <sa-widget [editbutton]="false" color="blueDark">
+        <header>
+            <span class="widget-icon">
+            <i class="fa fa-table"></i>
+          </span>
+            <h2>Inventory Details </h2>
+        </header>
+        <div class="widget-body">
+            <sa-datatable id="DataTable" [options]="shiprocketDetails" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                width="100%">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>SKU Code</th>
+                        <th>Threshold Level</th>
+                        <th>Inventory</th>
+                    </tr>
+                </thead>
+            </sa-datatable>
+        </div>
+    </sa-widget>
+</div>

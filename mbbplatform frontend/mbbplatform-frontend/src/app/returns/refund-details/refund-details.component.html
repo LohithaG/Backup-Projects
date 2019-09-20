@@ -1,0 +1,251 @@
+<!-- <div id="content">
+    <div style="font-weight:bold"><span routerLink="/returns"
+            style="cursor: pointer;color: #335CA7;text-decoration: underline;">Returns
+        </span> <span> / {{orderId}} Details</span> </div><br>
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Refund Details</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form [formGroup]="refundForm">
+
+                                    <div class="table-responsive" style="margin-top:2px">
+                                        <table style="height:116px;" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:25%"> Status</th>
+                                                    <th style="width:25%">Date</th>
+                                                    <th style="width:15%">Amount(Rs)</th>
+                                                    <th style="width:25%">Transaction Number</th>
+
+
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <select [(ngModel)]='refundObj.status'
+                                                                formControlName="status" placeholder="Refund Status"
+                                                                class="form-control ng-pristine ng-valid ng-touched">
+                                                                <option disabled value=''>Select status</option>
+                                                                <option *ngFor="let status of refundStatuses.data"
+                                                                    value="status.name" value="{{status.name}}">
+                                                                    {{status.name}}</option>
+                                                            </select>
+                                                            <span
+                                                                *ngIf="refundForm.get('status').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                select Refund Status</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <my-date-picker [options]="datePickerOptions"
+                                                                [(ngModel)]='refundObj.enteredDate'
+                                                                [selDate]="dateData | date: 'dd-MM-yyyy'"
+                                                                placeholder="Select Date" formControlName="enteredDate"
+                                                                required></my-date-picker>
+                                                            <span
+                                                                *ngIf="refundForm.get('enteredDate').hasError('required') && submitted"
+                                                                class="icon-color-bad ">Please
+                                                                enter Date</span>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <input [(ngModel)]='refundObj.amount'
+                                                                formControlName='amount' class="form-control"
+                                                                type="number" placeholder="Amount">
+                                                            <span
+                                                                *ngIf="refundForm.get('amount').hasError('required') && submitted "
+                                                                class=" icon-color-bad ">Please
+                                                                enter Amount</span>
+                                                            <span *ngIf="refundForm.get('amount').hasError('pattern') "
+                                                                class=" icon-color-bad ">Not
+                                                                allows letters and negative values
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <input [(ngModel)]='refundObj.transactionNumber'
+                                                                formControlName='transactionNumber' class="form-control"
+                                                                type="text" placeholder="Transaction Number">
+                                                            <span
+                                                                *ngIf="refundForm.get('transactionNumber').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                enter Transaction Number</span>
+                                                            <span
+                                                                *ngIf="refundForm.get('transactionNumber').hasError('maxlength') "
+                                                                class=" icon-color-bad ">
+                                                                Transaction Number between 1-50 chars only</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+
+                                    <span *ngIf='success'
+                                        style="text-align:center;font-weight:bold;color:green">{{refundSuccess}}</span>
+                                    <span *ngIf='fail'
+                                        style="text-align:center;font-weight:bold;color:red">{{refundFail}}</span>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-success"
+                                                (click)="addRefundDetails()" style="font-weight:bold">Submit</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div> -->
+
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/returns"
+            style="cursor: pointer;color: #335CA7;text-decoration: underline;">Returns
+        </span> <span> / {{orderId}} Details</span> </div><br>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- MAIN CONTENT -->
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Refund Details</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <form [formGroup]="refundForm" (ngSubmit)="addRefundDetails()">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group" style="margin-bottom:0px">
+                                                <label for="status"><b>Status : </b></label>
+                                                <!-- <select [(ngModel)]='refundObj.status' formControlName="status"
+                                                    placeholder="Refund Status"
+                                                    class="form-control ng-pristine ng-valid ng-touched">
+                                                    <option disabled value=''>Select status</option>
+                                                    <option *ngFor="let status of refundStatuses.data"
+                                                        value="status.name" value="{{status.name}}">
+                                                        {{status.name}}</option>
+                                                </select> -->
+                                                <input [(ngModel)]='refundObj.status' formControlName='status'
+                                                    class="form-control" type="text" placeholder="status" readonly>
+                                                <span *ngIf="refundForm.get('status').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    select Refund Status</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="enteredDate"><b>Date :</b></label>
+                                                <my-date-picker [options]="datePickerOptions"
+                                                    [(ngModel)]='refundObj.enteredDate'
+                                                    [selDate]="dateData | date: 'dd-MM-yyyy'" placeholder="Select Date"
+                                                    formControlName="enteredDate" required></my-date-picker>
+                                                <span
+                                                    *ngIf="refundForm.get('enteredDate').hasError('required') && submitted"
+                                                    class="icon-color-bad ">Please
+                                                    enter Date</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="amount"><b>Amount :</b></label>
+                                                <input [(ngModel)]='refundObj.amount' formControlName='amount'
+                                                    class="form-control" type="number" placeholder="Amount">
+                                                <span
+                                                    *ngIf="refundForm.get('amount').hasError('required') && submitted "
+                                                    class=" icon-color-bad ">Please
+                                                    enter Amount</span>
+                                                <span *ngIf="refundForm.get('amount').hasError('pattern') "
+                                                    class=" icon-color-bad ">Not
+                                                    allows letters and negative values
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="transactionNumber"><b>Transaction Number :</b></label>
+                                                <input [(ngModel)]='refundObj.transactionNumber'
+                                                    formControlName='transactionNumber' class="form-control" type="text"
+                                                    placeholder="Transaction Number">
+                                                <span
+                                                    *ngIf="refundForm.get('transactionNumber').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    enter Transaction Number</span>
+                                                <span *ngIf="refundForm.get('transactionNumber').hasError('maxlength') "
+                                                    class=" icon-color-bad ">
+                                                    Transaction Number between 1-50 chars only</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="comments"><b>Comments :</b></label>
+                                                <textarea [(ngModel)]='refundObj.comments' formControlName="comments"
+                                                    id="comments" class="form-control" rows="5"
+                                                    placeholder="please enter comments"></textarea>
+                                                <span
+                                                    *ngIf="refundForm.get('comments').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    enter comments</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-12">
+                                        <div style='text-align:center;' class="form-group">
+                                            <span *ngIf='fail'
+                                                style="text-align:center;font-weight:bold;color:red">{{refundFail}}</span>
+                                            <span *ngIf='success'
+                                                style="text-align:center;font-weight:bold;color:green">{{refundSuccess}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning"
+                                                (click)="gotoHomePage()">Cancel</button>
+                                        </div>
+                                        <div class="col-sm-6"><button class="btn btn-success" type="submit"> Submit
+                                            </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

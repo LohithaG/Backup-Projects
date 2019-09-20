@@ -1,0 +1,279 @@
+<div id="content">
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">Package Details </h2>
+                        <div class="widget-toolbar" role="menu">
+                            <a class="btn btn-primary" routerLink="/shipping/add"> Add Package</a>
+                        </div>
+                    </header>
+                    <div class="widget-body">
+                        <form class="smart-form" id="dealer-filter-form">
+                            <fieldset style="padding:0px">
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>From</b></label>
+                                    <my-date-picker [options]="myDatePickerOptions" [selDate]="startDate" [(ngModel)]="QueryData.startDate"
+                                        name="startDate"></my-date-picker>
+                                </section>
+
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>To</b></label>
+                                    <my-date-picker [options]="myDatePickerOptions" [selDate]="endDate" [(ngModel)]="QueryData.endDate"
+                                        name="endDate"></my-date-picker>
+                                    <div class="icon-color-bad">{{errorMessage}}</div>
+                                </section>
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>Source</b></label>
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="QueryData.sourceId"
+                                        [ngModelOptions]="{standalone: true}" (change)="getDestinationLocations()"
+                                       >
+                                        <option *ngFor="let location of locationDetails" [value]="location.id">{{location.location_name}}</option>
+                                    </select>
+                                </section>
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>Destination</b></label>
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="QueryData.destinationId"
+                                        [ngModelOptions]="{standalone: true}">
+                                        <option *ngFor="let location of locationDetails2" [value]="location.id">{{location.location_name}}</option>
+                                    </select>
+                                </section>
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                    <label class="control-label"><b>Status</b></label>
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="QueryData.statusId" [ngModelOptions]="{standalone: true}">
+                                       <option *ngFor="let package of packageStatusList" [value]="package.id">{{package.status}}</option>
+                                    </select>
+                                </section>
+                                <section class="form-group col-sm-1 padding-5" *ngIf="QueryData">
+                                    <br>
+                                    <button type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit"
+                                        (click)="QuerySubmit()">Submit</button>
+                                </section>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="well padding-10">
+                        <div *ngIf="sucessMsg" style="font-weight:bold;color:green;text-align:center">{{sucessMsg}}</div>
+                        <div *ngIf="errorMsg" style="font-weight:bold;color:red;text-align:center">{{errorMsg}}</div>
+                        <sa-datatable id="PACKAGEDataTable" [options]="PackageDetails" tableClass="table table-striped table-bordered table-hover"
+                            paginationLength="true" width="100%" filter="true">
+                            <thead>
+                                <tr>
+                                    <th>Transfer Id</th>
+                                    <th>Package Name</th>
+                                    <th>SKUs Count </th>
+                                    <th>Products</th>
+                                    <th>Status</th>
+                                    <th>Created Date</th>
+                                    <th>Received Date</th>
+                                    <th>SKU</th>
+                                    <th>Comments</th>
+                                    <th>Actions </th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+
+<div bsModal #transportModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="transportModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"><strong>Tracking Details</strong></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" *ngIf="trackingpopUpDetails.transportType=='selfShipment'">
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Package Id</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.transferId}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Package Name</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.packageName}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Driver Name</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.driverName}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Vehicle Number</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.VehicleNumber.toUpperCase()}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Phone Number</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.phoneNumber}},<br>{{trackingpopUpDetails?.driverAlternateNumber}}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="row" *ngIf="trackingpopUpDetails.transportType=='shippingAggregator'">
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Package Id</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.transferId}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Package Name</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.packageName}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Shipping Aggregator</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.shippingAggregator}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Courier Name</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.courierName}}
+                            </div>
+                        </div>
+                        <!--<div class="row" style="padding:10px" (click)="viewTracking(trackingpopUpDetails?.trackingNumber)">-->
+                        <div class="row" style="padding:10px">
+                            <div class="col-sm-4">
+                                <b>Tracking Number</b>
+                            </div>
+                            <div class="col-sm-2">:</div>
+                            <div class="col-sm-6">
+                                {{trackingpopUpDetails?.trackingNumber}}
+                            </div>
+                        </div>
+
+                    </article>
+                </div>
+                <div class="row" style="padding:10px" *ngIf="trackingpopUpDetails.facility==facilityId || role=='SUPERADMIN'">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for='description'><b>Comments
+                                </b></label>
+                            <textarea rows="5" placeholder="Comments" class="form-control" [(ngModel)]="comments"></textarea>
+                        </div>
+                        <span class="text-danger" *ngIf="commentsError">Please enter comments with 10-200 letters</span>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+                    <span *ngIf="packageRcvngMsg" style="font-weight:bold;color:green">{{packageRcvngMsg}}</span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" [ngStyle]="{'display':this.loaderbtn ? 'none': 'inline'}" class="btn btn-primary"
+                    (click)="packageReceived()" *ngIf="trackingpopUpDetails.facility==facilityId || role=='SUPERADMIN'">
+                    Package Received
+                </button>
+                <button  [ngStyle]="{'display':!this.loaderbtn ? 'none': 'inline'}"
+                    class="btn btn-primary" type="submit">
+                    Package Received <i class="fa fa-refresh fa-spin"></i> </button>
+                <button [disabled]='cancel'  type="button" class="btn btn-default" (click)="transportModal.hide()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" style="margin-right: 60px;">
+            <div class="modal-header">
+
+                <h4 class="modal-title" style="text-align:center;"><strong>Delete Vendor!</strong></h4>
+            </div>
+            <div class="modal-body">
+                <fieldset>
+                    <section class="fa fa-warning col-sm-1" style='font-size: 40px;color:red'>
+                    </section>
+                    <section class='col-sm-10'>
+                        <span style="font-size:14px;">Are you sure you want to delete <span style='color:green'>{{this.vendorName}}</span>!</span>
+                    </section>
+                </fieldset>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" style='width: 72px' class="btn btn-default" (click)="lgModal.hide()">
+                    <i class="fa fa-close" style="color:red"></i> No
+                </button>
+                <button type="button" style='width: 72px' class="btn btn-success" (click)="deleted()">
+                    <i class="fa fa-check"></i> Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<loader [loading]="loading"> </loader>
+<!--<tr>
+                                    <th class="hasinput ">
+                                        <input type="text" class="form-control" placeholder="Search By Package Name">
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>-->

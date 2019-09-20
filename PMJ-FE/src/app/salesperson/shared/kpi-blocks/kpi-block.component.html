@@ -1,0 +1,105 @@
+<div class="row" *ngIf="growthInfo" style="margin-top: 137px;">
+    <div class="col-sm-3 col-xs-12 abc" style="padding-left:14px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+            class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">ACHIEVEMENT</span>
+                </div>
+                <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.achivements?.percentageValue!=0">{{(growthInfo?.achivements?.percentageValue).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.achivements?.percentageValue==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                    <div>Target</div>
+                    <div class="dia-tar-value"> {{(growthInfo?.achivements?.target).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 ">
+                    Actual
+                    <div class="dia-act-value">{{(growthInfo?.achivements?.actual).toFixed(2)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-12 abc">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+            class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">MARGINS</span>
+                </div>
+                <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.margins?.percentageValue!=0">{{(growthInfo?.margins?.percentageValue).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.margins?.percentageValue==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                    <div>Tag Price</div>
+                    <div class="dia-tar-value"> {{(growthInfo?.margins?.tagPrice).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 ">
+                    Sale Price
+                    <div class="dia-act-value">{{(growthInfo?.margins?.salePrice).toFixed(2)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-12 abc">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+            class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">CONVERSION</span>
+                </div>
+                <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.conversion?.percentageValue!=0">{{(growthInfo?.conversion?.percentageValue).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.conversion?.percentageValue==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                    <div>Total Walkins</div>
+                    <div class="dia-tar-value"> {{(growthInfo?.conversion?.totalWalkins).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 ">
+                    Preferred Walkins
+                    <div class="dia-act-value">{{(growthInfo?.conversion?.preferredWalkins).toFixed(2)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-12 abc" style="padding-right:14px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+            class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">TICKET SIZE</span>
+                </div>
+                <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd;padding-top:0px !important">
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.ticketSize?.percentageValue!=0">{{(growthInfo?.ticketSize?.percentageValue).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage"
+                        *ngIf="growthInfo?.ticketSize?.percentageValue==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5" style="border-right:1px solid #ddd">
+                    <div>Target</div>
+                    <div class="dia-tar-value"> {{(growthInfo?.ticketSize?.target).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 ">
+                    Actual
+                    <div class="dia-act-value" *ngIf="growthInfo?.ticketSize?.flag?.bool">0</div>
+                    <div class="dia-act-value" *ngIf="!growthInfo?.ticketSize?.flag?.bool">{{(growthInfo?.ticketSize?.actual).toFixed(2)}}</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

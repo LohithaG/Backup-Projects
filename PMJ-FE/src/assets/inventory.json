@@ -1,0 +1,197 @@
+{
+    "data": [
+        {
+            "skuName": "Pulse Oximeter With High Protection Pouch",
+            "last30DaySale": 11,
+            "inventory": 8,
+            "daysOfInventoryLeft": 22,
+            "skuCode": "5723"
+        },
+        {
+            "skuName": "Oxygen Two in One  Spanner",
+            "last30DaySale": 11,
+            "inventory": 30,
+            "daysOfInventoryLeft": 82,
+            "skuCode": "104"
+        },
+        {
+            "skuName": "Oxygen Cannula Adult - 2 Meters",
+            "last30DaySale": 9,
+            "inventory": 92,
+            "daysOfInventoryLeft": 307,
+            "skuCode": "1216"
+        },
+        {
+            "skuName": "Portable Suction Machine(7E)",
+            "last30DaySale": 8,
+            "inventory": 24,
+            "daysOfInventoryLeft": 90,
+            "skuCode": "2611"
+        },
+        {
+            "skuName": "Airinlet Filter For Philips Everflow Oxygen Concentrator",
+            "last30DaySale": 8,
+            "inventory": 209,
+            "daysOfInventoryLeft": 784,
+            "skuCode": "3549"
+        },
+        {
+            "skuName": "Oxygen Cannula - Infant and Neo Natal",
+            "last30DaySale": 7,
+            "inventory": 9,
+            "daysOfInventoryLeft": 39,
+            "skuCode": "113"
+        },
+        {
+            "skuName": "Reclining Electrical Wheelchair",
+            "last30DaySale": 6,
+            "inventory": 10,
+            "daysOfInventoryLeft": 50,
+            "skuCode": "3346"
+        },
+        {
+            "skuName": "Non - Contact Digital Infrared Forehead Thermometer",
+            "last30DaySale": 6,
+            "inventory": 53,
+            "daysOfInventoryLeft": 265,
+            "skuCode": "6253"
+        },
+        {
+            "skuName": "Fingertip Pulse Oximeter With FDA Approved",
+            "last30DaySale": 5,
+            "inventory": 0,
+            "daysOfInventoryLeft": 0,
+            "skuCode": "6640"
+        },
+        {
+            "skuName": "BPC Metallic Flow meter with Humidifier bottle",
+            "last30DaySale": 5,
+            "inventory": 4,
+            "daysOfInventoryLeft": 24,
+            "skuCode": "137"
+        },
+        {
+            "skuName": "Oxygen Cannula Adult � 3.5 Meters",
+            "last30DaySale": 5,
+            "inventory": 25,
+            "daysOfInventoryLeft": 150,
+            "skuCode": "115"
+        },
+        {
+            "skuName": "Airinlet Filter For Nidek Oxygen Concentrator(For Pure Oxygen)",
+            "last30DaySale": 5,
+            "inventory": 94,
+            "daysOfInventoryLeft": 564,
+            "skuCode": "4267"
+        },
+        {
+            "skuName": "Oxygen Regulator With Humidifier",
+            "last30DaySale": 4,
+            "inventory": 0,
+            "daysOfInventoryLeft": 0,
+            "skuCode": "8298"
+        },
+        
+        {
+            "skuName": "Ward Vacuum Unit 1000 ml Jar",
+            "last30DaySale": 1,
+            "inventory": 0,
+            "daysOfInventoryLeft": 0,
+            "skuCode": "3521"
+        },
+        {
+            "skuName": "Foley Balloon Catheter 2 Way",
+            "last30DaySale": 1,
+            "inventory": 0,
+            "daysOfInventoryLeft": 0,
+            "skuCode": "5573-5607-FG18-R"
+        },
+        {
+            "skuName": "Bulk Oxygen Conversion Kit Pipe",
+            "last30DaySale": 1,
+            "inventory": 2,
+            "daysOfInventoryLeft": 60,
+            "skuCode": "154"
+        },
+        {
+            "skuName": "Joystick For Reclining Electrical Wheelchair",
+            "last30DaySale": 1,
+            "inventory": 2,
+            "daysOfInventoryLeft": 60,
+            "skuCode": "7369"
+        },
+        {
+            "skuName": "Smart Phone Holder For Electrical Wheel Chair",
+            "last30DaySale": 1,
+            "inventory": 4,
+            "daysOfInventoryLeft": 120,
+            "skuCode": "5705"
+        },
+        {
+            "skuName": "High Quality Auto Rotation Screen Finger tip Pulse Oximeter",
+            "last30DaySale": 1,
+            "inventory": 5,
+            "daysOfInventoryLeft": 150,
+            "skuCode": "4812"
+        },
+        {
+            "skuName": "Guedel Airways (Set of 6)",
+            "last30DaySale": 1,
+            "inventory": 13,
+            "daysOfInventoryLeft": 390,
+            "skuCode": "5120"
+        },
+        {
+            "skuName": "iVolve Cpap Nasal Mask(NM)",
+            "last30DaySale": 1,
+            "inventory": 14,
+            "daysOfInventoryLeft": 420,
+            "skuCode": "5023-6720-L"
+        },
+        {
+            "skuName": "Disposable Male External Condom Catheter(Pack of 5)",
+            "last30DaySale": 1,
+            "inventory": 32,
+            "daysOfInventoryLeft": 961,
+            "skuCode": "5125-5627-35mm"
+        },
+        {
+            "skuName": "Spindle Key Oxygen for Bull Nose valve (Spanner )",
+            "last30DaySale": 1,
+            "inventory": 47,
+            "daysOfInventoryLeft": 1411,
+            "skuCode": "940"
+        },
+        {
+            "skuName": "Airinlet Filter For GVS Oxygen Concentrator",
+            "last30DaySale": 1,
+            "inventory": 167,
+            "daysOfInventoryLeft": 5015,
+            "skuCode": "6495"
+        }
+    ],
+    "title": "Low Stock SKU's",
+    "type": "TABLE",
+    "columns": [
+        {
+            "name": "skuCode",
+            "displayName": "SKU Code"
+        },
+        {
+            "name": "skuName",
+            "displayName": "SKU Name"
+        },
+        {
+            "name": "inventory",
+            "displayName": "Inventory"
+        },
+        {
+            "name": "last30DaySale",
+            "displayName": "Sale in last 30 days"
+        },
+        {
+            "name": "daysOfInventoryLeft",
+            "displayName": "Days of Inventory"
+        }
+    ]
+}

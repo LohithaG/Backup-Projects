@@ -1,0 +1,236 @@
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <article class="col-sm-12">
+                <div class="widget-body padding-10">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <sa-widgets-grid>
+                                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                                    <header>
+                                        <h2 style="margin-right:2%;">Generate QR Codes</h2>
+                                    </header>
+                                    <div class="well padding-10 ">
+                                        <form action="" [formGroup]="generateSKUForm" class="smart-form">
+                                            <section>
+                                                <label class="label">SKU Code</label>
+                                                <label class="input">
+                                                    <input [formControl]="this.skucode" type="text" [(ngModel)]="generateObj.sku" (keyup)="getSKUSbasedonSearch()"
+                                                        class="input-sm">
+                                                </label>
+                                                <div class="height-skus">
+                                                    <div *ngFor="let key of filteredSkusList" (click)="selectSKU(key)" style="border-bottom:1px solid #AAAAAA;padding: 3px">{{key.skuCode}} - {{key.productName}}</div>
+                                                </div>
+                                                <span *ngIf="formValidate&&!skuSelection" class=" text-danger ">Please
+                                enter valid SKU code</span>
+                                            </section>
+
+                                            <section>
+                                                <label class="label">No.of QR Codes</label>
+                                                <label class="input">
+                                                    <input [formControl]="this.noofProducts" type="number" [(ngModel)]="generateObj.productsCount"
+                                                        class="input-sm">
+                                                </label>
+                                                <span *ngIf="this.noofProducts.hasError('required') &&formValidate " class=" text-danger ">
+                                                    Please enter no.of products</span>
+                                                <span *ngIf="this.noofProducts.hasError('pattern') " class=" text-danger ">
+                                                    Please enter 1-999 number only</span>
+                                            </section>
+                                            <div class="text-danger" style="text-align:center">{{generateErrorMsg}}</div>
+                                            <footer>
+                                                <button type="submit" class="btn btn-primary" (click)="GenerateQrCodes()">
+                                                    Submit
+                                                </button>
+                                                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                                    Back
+                                                </button>
+                                            </footer>
+                                        </form>
+                                    </div>
+                                </div>
+                            </sa-widgets-grid>
+                        </div>
+                        <div class="col-sm-6">
+                            <sa-widgets-grid>
+                                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                                    <header>
+                                        <h2 style="margin-right:2%;">Retrieve QR Codes</h2>
+                                    </header>
+                                    <div class="well padding-10 ">
+                                        <form [formGroup]="retrieveForm" class="smart-form">
+                                            <section>
+                                                <label class="label">Select SKU Code</label>
+                                                <label class="select">
+                                                    <select name="mySelect" [formControl]="this.printqrcode"
+                                                        [(ngModel)]="retrieveObj.sku" required>
+                                                        <option *ngFor="let skuCodes of skuCodeList" [value]=skuCodes.skuCode>{{skuCodes.skuCode}}</option>
+
+                                                    </select> <i></i> </label>
+
+                                                <span class=" text-danger" *ngIf="this.printqrcode.hasError('required') && printformValidate">
+                                                    Please enter SKU code </span>
+
+                                            </section>
+
+                                            <div *ngIf="displayMsg" class="text-danger" style="text-align:center">{{displayMsg}}</div>
+
+                                            <div class="card custom-scroll" *ngIf="reprintQRCodeList.length>0" style="overflow:hidden">
+
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>QR Code</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let print of reprintQRCodeList">
+                                                                    <td>{{print}}</td>
+                                                                    <td>
+                                                                        <a (click)="printQRrcode(print)"><i class="fa fa-print">
+                                                                                
+                                                                            </i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <br>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary" (click)="RePrintAllQRcodes()" style="padding:5px;float:right">Print
+                                                        All</button>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="reprintQRCodeList.length>0"><br><br></div>
+                                            <footer>
+                                                <button type="submit" class="btn btn-primary" (click)="RetrieveQRcodes()">
+                                                    Submit
+                                                </button>
+                                                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                                    Back
+                                                </button>
+                                            </footer>
+                                        </form>
+                                    </div>
+                                    <br><br>
+
+                                </div>
+                            </sa-widgets-grid>
+                        </div>
+                        <!--<div class="col-sm-6">
+                            <sa-widgets-grid>
+                                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                                    <header>
+                                        <h2 style="margin-right:2%;">Reprint QR Codes</h2>
+                                    </header>
+                                    <div class="well padding-10 ">
+                                        <form [formGroup]="reprintForm" class="smart-form">
+
+                                            <section>
+                                                <label class="label">QR Code Number</label>
+                                                <label class="input">
+                                                    <input type="text" [formControl]="this.qrcode" class="input-sm">
+                                                </label>
+                                                <span *ngIf="this.qrcode.hasError('required') && reprintFormValidate " class=" text-danger ">
+                                                    Please enter qr code</span>
+                                                <span *ngIf="this.qrcode.hasError('pattern') " class=" text-danger ">
+                                                    Please enter</span>
+                                            </section>
+                                            <footer>
+                                                <button type="submit" class="btn btn-primary" (click)="reprint()">
+                                                    Submit
+                                                </button>
+                                                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                                    Back
+                                                </button>
+                                            </footer>
+                                        </form>
+                                    </div>
+                                </div>
+                            </sa-widgets-grid>
+                        </div>-->
+
+
+
+                    </div>
+                    <div class="row">
+
+                        <!--<div class="col-sm-6">
+                            <sa-widgets-grid>
+                                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                                    <header>
+                                        <h2 style="margin-right:2%;">Retrieve QR Codes</h2>
+                                    </header>
+                                    <div class="well padding-10 ">
+                                        <form [formGroup]="retrieveForm" class="smart-form">
+                                            <section>
+                                                <label class="label">Select SKU Code</label>
+                                                <label class="select">
+                                                    <select name="mySelect" [formControl]="this.printqrcode"
+                                                        [(ngModel)]="retrieveObj.sku" required>
+                                                        <option *ngFor="let skuCodes of skuCodeList" [value]=skuCodes.skuCode>{{skuCodes.skuCode}}</option>
+
+                                                    </select> <i></i> </label>
+
+                                                <span class=" text-danger" *ngIf="this.printqrcode.hasError('required') && printformValidate">
+                                                    Please enter SKU code </span>
+
+                                            </section>
+
+                                            <div *ngIf="displayMsg" class="text-danger" style="text-align:center">{{displayMsg}}</div>
+
+                                            <div class="card custom-scroll" *ngIf="reprintQRCodeList.length>0" style="overflow:hidden">
+
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>QR Code</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let print of reprintQRCodeList">
+                                                                    <td>{{print}}</td>
+                                                                    <td>
+                                                                        <a (click)="printQRrcode(print)"><i class="fa fa-print">
+                                                                                
+                                                                            </i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <br>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary" (click)="RePrintAllQRcodes()" style="padding:5px;float:right">Print
+                                                        All</button>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="reprintQRCodeList.length>0"><br><br></div>
+                                            <footer>
+                                                <button type="submit" class="btn btn-primary" (click)="RetrieveQRcodes()">
+                                                    Submit
+                                                </button>
+                                                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                                    Back
+                                                </button>
+                                            </footer>
+                                        </form>
+                                    </div>
+                                    <br><br>
+
+                                </div>
+                            </sa-widgets-grid>
+                        </div>-->
+                    </div>
+                </div>
+            </article>
+        </div>
+    </sa-widgets-grid>
+</div>

@@ -1,0 +1,26 @@
+    
+
+
+   #ribbon {
+    min-height: 22px;
+    background: none;
+    padding: 0px -15px;
+    position: relative;
+   }
+
+   @media only screen and (max-width: 992px) and (min-width: 240px){
+   #ribbon {
+    background: none
+   }
+   }
+   
+    
+    .mat-focused .placeholder {    
+      color: #AAAAAA;
+      }
+    .placeholder {
+       color:#AAAAAA;
+      }
+
+
+   

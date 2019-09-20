@@ -1,0 +1,280 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* #GOOGLE FONT */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700");
+
+.smart-style-5 .jarviswidget>div {
+    background: rgba(0,0,0,-2.6)!important;
+    border-color: rgba(0,0,0,.13)!important;
+}
+
+.jarviswidget>div {
+    border: 1px solid #CCC ;
+}
+.smart-style-0 nav ul .active>a {
+    background: #275B89!important;
+ }
+ .smart-style-0 nav ul :hover>a {
+    background: rgb(59, 84, 105)!important;
+ }
+ nav ul li a {
+    color: #ffff!important
+ }
+ .login-info a {
+    color: #ffff!important
+ }
+/*
+#ribbon{
+    background: none;
+}
+
+
+#ribbon .breadcrumb{
+    color: black;
+}
+
+
+.smart-style-1 #ribbon{
+    background: none
+}
+.smart-style-2 #ribbon{
+    background: none
+}
+.smart-style-3 #ribbon{
+    background: none
+}
+.smart-style-4 #ribbon{
+    background: none
+}
+
+.smart-style-5 #ribbon .breadcrumb{
+    color: red;
+}
+
+.smart-style-4 #header {
+    background: #71a06a;
+}
+
+#ribbon .breadcrumb li:last-child{
+    color: brown
+}
+.smart-style-1 #ribbon .breadcrumb{
+    color: white
+}*/
+.jarviswidget {
+       position: unset;
+}
+
+.smart-style-5 .tracking_details{
+        color: #FFD600
+}
+
+#extr-page #main{
+    background: transparent
+}
+#extr-page{
+    background: transparent
+}
+#extr-page{
+    background: transparent;
+    background-image: url(http://stockone.in/wp-content/uploads/2017/12/warehousing.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border-bottom: 10px solid green;
+}
+#logo img {
+    width: 161px;
+}
+
+#logo{
+    margin-top: 7px;
+}
+
+
+.smart-style-5 .tracking_details{
+        color: #FFD600
+}
+
+.pricing-big .panel-heading{
+    border-radius: 0px
+}
+
+.login-info {
+    border-bottom: none
+}
+
+ .ad{
+    color: white;
+    background: red;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.smart-style-5  .ad{
+    /*color: #FFD600;*/
+    color: black;
+    background: yellow;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+
+/*.dp{
+    color: red;
+    text-align: center
+}
+
+.ad{
+    color: red;
+    text-align: center
+}*/
+
+#extr-page #header #logo img {
+    width: 208px;
+}
+
+.dataTables_wrapper .dt-buttons {
+    margin-right: 10px
+}
+
+.pdfBtn {
+    margin:0px 10px;
+}
+.moreColumns{
+    margin: 0px 10px
+}
+
+ .myClassText{
+        display: inline-block;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    color: red
+    }
+    
+      .height-skus{
+      max-height: 100px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: block;
+      
+      }
+     
+
+.tabs-custom{
+       padding: 8px;
+    text-align: center;
+    background-color: #4c4f53;
+    color: white;
+}
+
+ .tabs-custom-border1{
+border-right: 2px solid white;
+border-left: 2px solid white
+ }
+
+ .tabs-custom-border2{
+border-right: 2px solid white;
+ }
+
+.img-upload{
+    text-align: center;
+}
+ .img-upload > img{
+     padding: 12px ;
+     border: 1px solid black
+ }
+
+ .header-tag{
+    overflow: hidden;
+    text-align: center;
+ }
+
+ .header-tag > img{
+    width: auto;
+    vertical-align: bottom;
+    height: 55px;
+ }
+
+ .app-version{
+         font-weight: bold;
+    color: #2e5090;
+ }
+
+ .loginui.well{box-shadow: 0px 0px 16px #2E5070}
+
+ .image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 80px;
+    cursor: pointer;
+}
+
+
+.sc{
+    text-align: center
+}
+
+
+.ui-overlay-c {
+background-color: rgba(0, 0, 0, 0.5);
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+text-align: center;
+}
+.loading {
+position: absolute;
+top: 50%;
+left: 50%;
+}
+.loading-bar {
+display: inline-block;
+width: 4px;
+height: 18px;
+border-radius: 4px;
+animation: loading 1s ease-in-out infinite;
+}
+.loading-bar:nth-child(1) {
+background-color: #3498db;
+animation-delay: 0;
+}
+.loading-bar:nth-child(2) {
+background-color: #c0392b;
+animation-delay: 0.09s;
+}
+.loading-bar:nth-child(3) {
+background-color: #f1c40f;
+animation-delay: .18s;
+}
+.loading-bar:nth-child(4) {
+background-color: #27ae60;
+animation-delay: .27s;
+}
+
+@keyframes loading {
+0% {
+transform: scale(1);
+}
+20% {
+transform: scale(1, 2.2);
+}
+40% {
+transform: scale(1);
+}
+}
+/*
+.smart-style-5 .form-control{
+    background: white;
+    border-color: rgba(255,255,255,.4);
+    color: black;
+}*/

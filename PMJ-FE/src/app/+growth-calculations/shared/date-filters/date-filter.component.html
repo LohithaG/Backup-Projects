@@ -1,0 +1,116 @@
+<sa-widgets-grid>
+    <div class="row date-filter">
+        <div class="col-sm-12" style="padding-right:13px !important">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                <header>
+                    <h2>Date Filters </h2>
+                </header>
+                <div class="widget-body" style="min-height:0px;border-bottom:6px solid #ddd !important">
+                    <div class="row" style="padding:0px 14px 0px 14px">
+                        <div class="col-sm-3 padding-5">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 bold " style="padding-right:1px ;padding-left:2px">Range 1</div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <my-date-picker [options]="myDatePicker" [selDate]="startDate" [(ngModel)]="QueryDateRange1.startDate" [ngModelOptions]="{standalone: true}"
+                                        name="startDate">
+                                    </my-date-picker>
+                                </div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <my-date-picker [options]="myDatePicker" [selDate]="endDate" [(ngModel)]="QueryDateRange1.endDate" [ngModelOptions]="{standalone: true}"
+                                        name="endDate">
+                                    </my-date-picker>
+                                    <span class="icon-color-bad">{{errorMessage1}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 padding-5"></div>
+                        <div class="col-sm-3 padding-5">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 bold " style="padding-right:1px ;padding-left:2px">Range 2</div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <my-date-picker [options]="myDatePicker" [selDate]="startDate2" [(ngModel)]="QueryDateRange2.startDate" [ngModelOptions]="{standalone: true}"
+                                        name="startDate2">
+                                    </my-date-picker>
+                                </div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <my-date-picker [options]="myDatePicker" [selDate]="endDate2" [(ngModel)]="QueryDateRange2.endDate" [ngModelOptions]="{standalone: true}"
+                                        name="endDate2">
+                                    </my-date-picker>
+                                    <span class="icon-color-bad">{{errorMessage2}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 padding-5"></div>
+                        <div class="col-sm-3 padding-5">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 bold " style="padding-right:1px ;padding-left:2px"><input type="checkbox" style="margin:0px" [(ngModel)]="range3Status" (change)="statusChange()">                                    Range 3</div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <my-date-picker [disabled]="!range3Status" [options]="myDatePicker" [selDate]="startDate3" placeholder="Start Date" [(ngModel)]="QueryDateRange3.startDate"
+                                        name="startDate3">
+                                    </my-date-picker>
+                                    <b *ngIf="range3StartDateErrorMessage" class="icon-color-bad">{{range3StartDateErrorMessage}}</b><br>
+                                </div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <my-date-picker [disabled]="!range3Status" [options]="myDatePicker" [selDate]="endDate3" placeholder="End Date" [(ngModel)]="QueryDateRange3.endDate"
+                                        [ngModelOptions]="{standalone: true}" name="endDate3">
+                                    </my-date-picker>
+                                    <b *ngIf="range3EndDateErrorMessage" class="icon-color-bad">{{range3EndDateErrorMessage}}</b><br>
+                                    <div class="icon-color-bad">{{errorMessage3}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 padding-5"></div>
+                        <div class="col-sm-3">
+                            <div class="row" [hidden]="!(locationStatus==true)">
+                                <div class="col-sm-6 col-xs-6 bold" style="padding-right:1px ;padding-left:2px">Locations</div>
+                                <div class="col-sm-6 col-xs-6 bold" style="padding-right:1px ;padding-left:2px">SalesPersons</div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <select select2 class="form-control" id="location" style="width:100%" #location>
+                            <option *ngFor="let location of locationDetailsData " [value]="location.id">
+                                {{location.locationCode}}</option>
+                                </select>
+                                </div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <select select2 class="form-control" style="width:100%" #employee>
+                                    <option *ngFor="let salesperson of salesPersonDetailsData"
+                                    [value]="salesperson.id">{{salesperson.empName}}</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="row" [hidden]="!(clusterStatus==true)">
+                                <div class="col-sm-6 col-xs-6 bold" style="padding-right:1px ;padding-left:2px">States</div>
+                                <div class="col-sm-6 col-xs-6 bold" style="padding-right:1px ;padding-left:2px">Clusters</div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+
+                                    <select select2 class="form-control" id="state" style="width:100%" #state>
+                                    <option *ngFor="let state of statesData " [value]="state.state">
+                                    {{state.state}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-xs-6" style="padding-right:1px ;padding-left:2px">
+                                    <select select2 class="form-control" style="width:100%" #cluster>
+                                    <option *ngFor="let cluster of clusterDetailsData" [value]="cluster.cluster">
+                                    {{cluster.cluster}}</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">&nbsp;</div>
+                                <div class="col-sm-6 col-xs-6">
+                                    <input type="submit" class="btn btn-primary form-control" title="submit" id="filter-reset" (click)="QuerySubmit(location,employee,state,cluster)">
+                                </div>
+                                <div class="col-sm-6 col-xs-6">
+                                    <button class="btn btn-default form-control" title="Reset" type="button" id="filter-reset" (click)="getDefaultDates()">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>

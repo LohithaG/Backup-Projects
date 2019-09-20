@@ -1,0 +1,184 @@
+<div id="content">
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row" *ngIf="codPaybleDetails">
+                    <div *ngIf='allType' class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-blueLight pricing-big">
+                            <div class="panel-heading">
+                                <h3 style='padding:11px;' class="panel-title">
+                                    ALL</h3>
+                            </div>
+                            <div class="the-price" style='text-align:center;font-size: 14px;padding:9px;'>
+                                <p style='margin-right:30px;' class="panel-sub-title"> <span style='float:left'>
+                                        TOTAL COD REMITTED</span> :&nbsp; ₹ {{this.allRemittedAmt}}.00 </p>
+                                <p style='margin-right:57px;margin-top: -7px;' class="panel-sub-title"> <span
+                                        style='float:left'>COD
+                                        AMOUNT ONHOLD</span> :&nbsp; ₹ {{this.allPendingPay}}.00 </p>
+                                <p style='margin-right: 73px;margin-top: -7px;' class="panel-sub-title"> <span
+                                        style='float:left'>&nbsp;</span> &nbsp;
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div *ngIf='shiprocketType' class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-primary pricing-big">
+                            <div class="panel-heading">
+                                <h3 style='padding:11px;' class="panel-title">
+                                    SHIPROCKET</h3>
+                            </div>
+                            <div class="the-price" style='text-align:center;font-size: 14px;padding:9px;'>
+                                <p style='margin-right:58px;' class="panel-sub-title"> <span style='float:left'>LAST
+                                        COD REMITTED</span> :&nbsp; ₹ {{codPaybleDetails.last_cod_remitted}} </p>
+                                <p style='margin-right:47px;margin-top: -7px;' class="panel-sub-title"> <span
+                                        style='float:left'>
+                                        TOTAL COD REMITTED</span> :&nbsp; ₹ {{codPaybleDetails.total_COD_remitted}} </p>
+                                <p style='margin-right: 75px;margin-top: -7px;' class="panel-sub-title"> <span
+                                        style='float:left'>COD
+                                        AMOUNT ONHOLD</span> :&nbsp; ₹ {{codPaybleDetails.cod_amount_onhold}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf='zepoType' class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-teal pricing-big">
+                            <div class="panel-heading">
+                                <h3 style='padding:11px;' class="panel-title">
+                                    ZEPO</h3>
+                            </div>
+                            <div class="the-price" style='text-align:center;font-size: 14px;padding:9px;'>
+                                <p style='margin-right:38px;' class="panel-sub-title"> <span style='float:left'>
+                                        TOTAL COD REMITTED</span> :&nbsp; ₹ {{this.remittedAmt}}.00 </p>
+                                <p style='margin-right:57px;margin-top: -7px;' class="panel-sub-title"> <span
+                                        style='float:left'>COD
+                                        AMOUNT ONHOLD</span> :&nbsp; ₹ {{this.pendingPay}}.00 </p>
+                                <p style='margin-right: 73px;margin-top: -7px;' class="panel-sub-title"> <span
+                                        style='float:left'>&nbsp;</span> &nbsp;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+            <header>
+                <h2 style="margin-right:2%;">Remittance By Payment Reference Number </h2>
+            </header>
+            <div class="widget-body" style="min-height: 121px">
+                <fieldset style="padding:0px;padding-top:11px;margin-bottom:-30px;">
+                    <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                        <label class="control-label"><b>Start Date</b></label>
+                        <my-date-picker [options]="myDatePickerOptions" [(ngModel)]="QueryData.startDate"
+                            name="startDate"></my-date-picker>
+                    </section>
+
+                    <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                        <label class="control-label"><b>End Date</b></label>
+                        <my-date-picker [options]="myDatePickerOptions" [(ngModel)]="QueryData.endDate" name="endDate">
+                        </my-date-picker>
+                        <div class="icon-color-bad">{{errorMessage}}</div>
+                    </section>
+                    <section class="form-group col-sm-2 padding-5">
+                        <label class="control-label"><b>Shipping
+                                Aggregator</b></label>
+                        <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="shipmentType">
+
+                            <option *ngFor="let shipment of shipmentTypes" [value]="shipment.shipment_name">
+                                {{shipment.name}}</option>
+                        </select>
+                    </section>
+                    <section class="form-group col-sm-2 padding-5">
+                        <label class="control-label"><b>Status</b></label>
+                        <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="remittanceType">
+
+                            <option *ngFor="let rem of remittanceTypes" [value]="rem.remittance_name">{{rem.name}}
+                            </option>
+                        </select>
+                    </section>
+                    <section style='margin-top: 24px;' class="form-group col-sm-1 padding-5">
+
+                        <button type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit"
+                            (click)="QuerySubmit()">Submit</button>
+                    </section>
+                </fieldset>
+
+            </div>
+            <div class="well padding-10 ">
+
+                <sa-datatable id="DataTable" [options]="remByPaytDetails"
+                    tableClass="table table-striped table-bordered table-hover" paginationLength="true" width="100%">
+                    <thead>
+                        <tr>
+                            <th>REMITTANCE DATE</th>
+                            <th>CRF ID / LEDGER</th>
+                            <th>PAYMENT REFERENCE NUMBER </th>
+                            <th>STATUS </th>
+                            <th>REMITTED VALUE (in Rs)</th>
+                            <th>SHIPPING AGGREGATOR</th>
+                            <th>ACCOUNT TYPE</th>
+                            <th>REMARKS</th>
+                        </tr>
+                    </thead>
+                </sa-datatable>
+            </div>
+        </div>
+        <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title"><strong>AWB Reconciliation</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+                                <div sa-widget [editbutton]="false" color="greenDark">
+                                    <div>
+                                        <div class="widget-body no-padding">
+                                            <div class="table-responsive">
+                                                <table *ngIf='table' class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Delivery Date</th>
+                                                            <th>Order Id</th>
+                                                            <th>AWB Number</th>
+                                                            <th>Courier Name</th>
+                                                            <th>Order Total (in Rs)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngFor='let awb of awbsDetails'>
+                                                        <tr>
+                                                            <td> {{awb.delivered_date|date:'dd-MM-yyyy'}}</td>
+                                                            <td> {{awb.channel_order_id}}</td>
+                                                            <td> {{awb.awb}}</td>
+                                                            <td> {{awb.courier}}</td>
+                                                            <td> {{awb.total}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" (click)="lgModal.hide()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+
+</div>
+<loader [loading]="loading"></loader>

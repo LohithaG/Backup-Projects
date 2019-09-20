@@ -1,0 +1,139 @@
+<aside id="left-panel">
+    <sa-login-info></sa-login-info>
+    <br>
+    <nav>
+      <ul saSmartMenu>
+        <!--<li *ngIf="userType=='ADMIN'||userType=='DISPATCHER'||userType=='ACCOUNTANT_MANAG'||userType=='INVENTORY_MANAG'">
+          <a title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
+            class="menu-item-parent">Products</span></a>
+          <ul>
+            <li routerLinkActive="active" *ngIf="userType=='ADMIN'||userType=='INVENTORY_MANAG'||userType=='DISPATCHER'">
+              <a routerLink="/dashboard/reports/inventory">Inventory</a>
+            </li>
+            <li routerLinkActive="active" *ngIf="userType=='ADMIN'||userType=='INVENTORY_MANAG'||userType=='DISPATCHER'||userType=='ACCOUNTANT_MANAG'">
+              <a routerLink="/dashboard/reports/dispatch">Dispatch</a>
+            </li>
+          </ul>
+        </li>-->
+  
+  
+  
+        <li *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='ACCOUNTANT'||userType=='INVENTORY_MANAG'||userType=='DISPATCHER'||userType=='PRODUCT_VERIFIER'||userType=='RETURN_MANAG'">
+          <a title="Dashboard"><i class="fa fa-lg fa-fw fa-bar-chart"></i> <span
+              class="menu-item-parent">Analytics</span></a>
+  
+          <ul>
+            <li routerLinkActive="active">
+              <a routerLink="/analytics/inventory-graphs">Inventory</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/analytics/shipments">Shipments</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/analytics/remittance">Remittance</a>
+            </li>
+          </ul>
+        </li>
+        <li routerLinkActive="active" *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='INVENTORY_MANAG'">
+          <a routerLink="/shipping">
+            <i class="fa fa-lg fa-fw fa-truck"></i>
+            <span class="menu-item-parent">Inventory Transfers</span></a>
+        </li>
+  
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='ACCOUNTANT'||userType=='SUPERADMIN'">
+          <a routerLink="/purchaseorder">
+            <i class="fa fa-lg fa-fw fa-shopping-cart"></i>
+            <span class="menu-item-parent">Purchase Invoices</span></a>
+        </li>
+  
+        <li routerLinkActive="active" *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'">
+          <a routerLink="/inventory-approval">
+            <i class="fa fa-thumbs-up"></i>
+            <span class="menu-item-parent">Inventory Approval</span></a>
+        </li>
+  
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='INVENTORY_MANAG'||userType=='DISPATCHER'||userType=='PRODUCT_VERIFIER'||userType=='RETURN_MANAG'">
+          <a routerLink="/dashboard/reports/inventory"><i class="fa fa-lg fa-fw fa-table"></i><span
+              class="menu-item-parent">Inventory</span></a>
+        </li>
+  
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='INVENTORY_MANAG'||userType=='DISPATCHER'||userType=='ACCOUNTANT_MANAG'||userType=='PRODUCT_VERIFIER'||userType=='RETURN_MANAG'">
+          <a routerLink="/dashboard/reports/dispatch"><i class="fa fa-lg fa-fw fa-truck"></i><span
+              class="menu-item-parent">Dispatch</span></a>
+        </li>
+  
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='INVENTORY_MANAG'||userType=='DISPATCHER'||userType=='ACCOUNTANT_MANAG'">
+          <a routerLink="/invoices">
+            <i class="fa fa-lg fa-fw fa-table"></i>
+            <span class="menu-item-parent">Invoices</span></a>
+        </li>
+  
+        <li routerLinkActive="active" *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='INVENTORY_MANAG'">
+          <a routerLink="/sku">
+            <i class="fa fa-lg fa-fw fa-table"></i>
+            <span class="menu-item-parent">SKU</span></a>
+        </li>
+  
+        <li routerLinkActive="active" *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'">
+          <a routerLink="/users">
+            <i class="fa fa-lg fa-fw fa-group"></i>
+            <span class="menu-item-parent">Users</span></a>
+        </li>
+  
+        <!-- <li routerLinkActive="active">
+          <a routerLink="/qrcodes">
+            <i class="fa fa-lg fa-fw fa-qrcode"></i>
+            <span class="menu-item-parent">QR Codes</span></a>
+        </li> -->
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='DISPATCHER'||userType=='ACCOUNTANT'">
+          <a routerLink="/shipments" title="Widgets"><i class="fa fa-lg fa-fw fa-truck"></i><span
+              class="menu-item-parent">Shipments</span></a>
+        </li>
+  
+        <li *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='ACCOUNTANT'">
+          <a routerLink="/remittance/byOrders" title="Dashboard"><i class="fa fa-lg fa-fw fa-money"></i> <span
+              class="menu-item-parent">COD Remittance</span></a>
+          <ul>
+            <li routerLinkActive="active">
+              <a routerLink="/remittance/byOrders">By Orders</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/remittance/byPaymentRef">By Payment Reference</a>
+            </li>
+            <!-- <li routerLinkActive="active">
+              <a routerLink="/remittance/amazon-flipkart-cod">Amazon & Flipkart COD</a>
+            </li> -->
+            <li routerLinkActive="active">
+              <a routerLink="/remittance/flipkart-cod">Flipkart COD</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/remittance/amazon-cod">Amazon COD</a>
+            </li>
+          </ul>
+        </li>
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='ACCOUNTANT'">
+          <a routerLink="/vendors">
+            <i class="fa fa-lg fa-fw fa-group"></i>
+            <span class="menu-item-parent">Vendors</span></a>
+        </li>
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='ACCOUNTANT'">
+          <a routerLink="/fast-moving-skus">
+            <i class="fa fa-fast-forward"></i>
+            <span class="menu-item-parent">Fast Moving SKU's</span></a>
+        </li>
+        <li routerLinkActive="active"
+          *ngIf="userType=='ADMIN'||userType=='SUPERADMIN'||userType=='ACCOUNTANT_MANAG'||userType=='ACCOUNTANT'||userType=='RETURN_MANAG'||userType=='INVENTORY_MANAG'">
+          <a routerLink="/returns">
+            <i class="fa fa-exchange"></i> <span class="menu-item-parent">Returns</span></a>
+        </li>
+      </ul>
+    </nav>
+    <sa-minify-menu></sa-minify-menu>
+  </aside>

@@ -1,0 +1,332 @@
+<!-- <div id="content">
+    <div style="font-weight:bold"><span routerLink="/returns"
+            style="cursor: pointer;color: #335CA7;text-decoration: underline;">Returns
+        </span> <span> / {{orderId}} Details</span> </div><br>
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Return Details</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form [formGroup]="returnForm">
+
+                                    <div class="table-responsive" style="margin-top:2px">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:14%">Return Request On</th>
+                                                    <th style="width:14%">Channel</th>
+                                                    <th style="width:14%">Type Of Return</th>
+                                                    <th style="width:14%">Reason</th>
+                                                    <th style="width:14%">Return Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <my-date-picker [(ngModel)]='returnObj.enteredDate'
+                                                                [options]="datePickerOptions"
+                                                                [selDate]="dateData | date: 'dd-MM-yyyy'"
+                                                                placeholder="Select Date" formControlName="enteredDate"
+                                                                required></my-date-picker>
+                                                            <span
+                                                                *ngIf="returnForm.get('enteredDate').hasError('required') && submitted"
+                                                                class="icon-color-bad ">Please
+                                                                enter Date</span>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <select [(ngModel)]='returnObj.channel'
+                                                                formControlName="channel" placeholder="channel"
+                                                                class="form-control ng-pristine ng-valid ng-touched">
+                                                                <option disabled value=''>Select Channel</option>
+                                                                <option *ngFor="let channel of this.channelNames"
+                                                                    value="channel.channelName"
+                                                                    value="{{channel.channelName}}">
+                                                                    {{channel.channelName}}</option>
+                                                            </select>
+                                                            <span
+                                                                *ngIf="returnForm.get('channel').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                select Channel</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <select [(ngModel)]='returnObj.type' formControlName="type"
+                                                                placeholder="type"
+                                                                class="form-control ng-pristine ng-valid ng-touched">
+                                                                <option disabled value=''>Type of Return</option>
+                                                                <option *ngFor="let return of returnTypes"
+                                                                    value="return.returnType" value="{{return.id}}">
+                                                                    {{return.returnType}}</option>
+                                                            </select>
+                                                            <span
+                                                                *ngIf="returnForm.get('type').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                select type of return</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <select [(ngModel)]='returnObj.reason'
+                                                                formControlName="reason" placeholder="reason"
+                                                                class="form-control ng-pristine ng-valid ng-touched">
+                                                                <option disabled value=''>Select Reason</option>
+                                                                <option *ngFor="let return of allReasons"
+                                                                    value="return.reason" value="{{return.id}}">
+                                                                    {{return.reason}}</option>
+                                                            </select>
+                                                            <span
+                                                                *ngIf="returnForm.get('reason').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                select reason</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom:0px">
+                                                            <select [(ngModel)]='returnObj.status'
+                                                                formControlName="status" placeholder="Return Status"
+                                                                class="form-control ng-pristine ng-valid ng-touched">
+                                                                <option disabled value=''>Select status</option>
+                                                                <option *ngFor="let status of returnStatuses.data"
+                                                                    value="status.name" value="{{status.name}}">
+                                                                    {{status.name}}</option>
+                                                            </select>
+                                                            <span
+                                                                *ngIf="returnForm.get('status').hasError('required') && submitted"
+                                                                class=" icon-color-bad ">Please
+                                                                select Return Status</span>
+                                                        </div>
+                                                    </td>
+
+
+                                                </tr>
+
+                                            </tbody>
+
+                                        </table>
+
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-5">
+                                            <div class="form-group">
+                                                <label for="comments"><b>Comments </b></label>
+                                                <textarea [(ngModel)]='returnObj.comments' formControlName="comments"
+                                                    id="comments" class="form-control" rows="5"
+                                                    placeholder="please enter comments" 
+                                                    ></textarea>
+                                                <span *ngIf="returnForm.get('comments').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    enter comments</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <span *ngIf='success'
+                                        style="text-align:center;font-weight:bold;color:green">{{returnSuccess}}</span>
+                                    <span *ngIf='fail'
+                                        style="text-align:center;font-weight:bold;color:red">{{returnFail}}</span>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-success"
+                                                (click)="addReturnDetails()" style="font-weight:bold">Submit</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div> -->
+
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/returns"
+            style="cursor: pointer;color: #335CA7;text-decoration: underline;">Returns
+        </span> <span> / {{orderId}} Details</span> </div><br>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- MAIN CONTENT -->
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Return Details</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <form [formGroup]="returnForm" (ngSubmit)="addReturnDetails()">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="enteredDate"><b>Return Request On :</b></label>
+                                                <my-date-picker [(ngModel)]='returnObj.enteredDate'
+                                                    [options]="datePickerOptions"
+                                                    [selDate]="dateData | date: 'dd-MM-yyyy'" placeholder="Select Date"
+                                                    formControlName="enteredDate" required></my-date-picker>
+                                                <span
+                                                    *ngIf="returnForm.get('enteredDate').hasError('required') && submitted"
+                                                    class="icon-color-bad ">Please
+                                                    enter Date</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="channel"><b>Channel :</b></label>
+                                                <select [(ngModel)]='returnObj.channel' formControlName="channel"
+                                                    placeholder="channel"
+                                                    class="form-control ng-pristine ng-valid ng-touched">
+                                                    <option disabled value=''>Select Channel</option>
+                                                    <option *ngFor="let channel of this.channelNames"
+                                                        value="channel.channelName" value="{{channel.id}}">
+                                                        {{channel.channelName}}</option>
+                                                </select>
+                                                <span
+                                                    *ngIf="returnForm.get('channel').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    select Channel</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="type"><b>Type of Return :</b></label>
+                                                <select [(ngModel)]='returnObj.type' formControlName="type"
+                                                    placeholder="type"
+                                                    class="form-control ng-pristine ng-valid ng-touched">
+                                                    <option disabled value=''>Type of Return</option>
+                                                    <option *ngFor="let return of returnTypes" value="return.returnType"
+                                                        value="{{return.id}}">
+                                                        {{return.returnType}}</option>
+                                                </select>
+                                                <span *ngIf="returnForm.get('type').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    select type of return</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="reason"><b>Reason :</b></label>
+                                                <select [(ngModel)]='returnObj.reason' formControlName="reason"
+                                                    placeholder="reason"
+                                                    class="form-control ng-pristine ng-valid ng-touched">
+                                                    <option disabled value=''>Select Reason</option>
+                                                    <option *ngFor="let return of allReasons" value="return.reason"
+                                                        value="{{return.id}}">
+                                                        {{return.reason}}</option>
+                                                </select>
+                                                <span *ngIf="returnForm.get('reason').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    select reason</span>
+                                            </div>
+                                            <div *ngIf='this.returnObj.reason==13' class="form-group">
+                                                <label for="reason"><b>Others Reason:</b></label>
+                                                <!-- <select [(ngModel)]='returnObj.status' formControlName="status"
+                                                    placeholder="Return Status"
+                                                    class="form-control ng-pristine ng-valid ng-touched">
+                                                    <option disabled value=''>Select status</option>
+                                                    <option *ngFor="let status of returnStatuses.data"
+                                                        value="status.name" value="{{status.name}}">
+                                                        {{status.name}}</option>
+                                                </select> -->
+                                                <input  [(ngModel)]='returnObj.others' formControlName="others"
+                                                class="form-control" type="text"
+                                                    placeholder="Reason">
+                                                    <span *ngIf="returnForm.get('others').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    enter reason</span>
+                                               
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="reason"><b>Return Status :</b></label>                                                
+                                                <input  [(ngModel)]='returnObj.status'
+                                                    formControlName='status' class="form-control" type="text"
+                                                    placeholder="status"  readonly>
+                                                <span *ngIf="returnForm.get('status').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    select Return Status</span>
+                                            </div>                                           
+                                            <div class="form-group">
+                                                <label for="reason"><b>Product Status :</b></label>
+                                                <select [(ngModel)]='returnObj.prodStatus' formControlName="prodStatus"
+                                                    placeholder="Product Status"
+                                                    class="form-control ng-pristine ng-valid ng-touched">
+                                                    <option disabled value=''>Select status</option>
+                                                    <option *ngFor="let status of productStatuses.data"
+                                                        value="status.name" value="{{status.name}}">
+                                                        {{status.name}}</option>
+                                                </select>
+                                                <span
+                                                    *ngIf="returnForm.get('prodStatus').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    select Product Status</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="reason"><b>Unicommerce Reference Number :</b></label>                                              
+                                                <input  [(ngModel)]='returnObj.refNumber'
+                                                    formControlName='refNumber' class="form-control" type="text"
+                                                    placeholder="Unicommerce Reference Number" >
+                                                <span *ngIf="returnForm.get('refNumber').hasError('required') && submitted"
+                                                    class=" icon-color-bad ">Please
+                                                    enter Unicommerce reference number</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-12">
+                                        <div style='text-align:center;' class="form-group">
+                                            <label for="comments"><b>Comments :</b></label>
+                                            <textarea [(ngModel)]='returnObj.comments' formControlName="comments"
+                                                id="comments" class="form-control" rows="5"
+                                                placeholder="please enter comments"></textarea>
+                                            <span *ngIf="returnForm.get('comments').hasError('required') && submitted"
+                                                class=" icon-color-bad ">Please
+                                                enter comments</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-12">
+                                        <div style='text-align:center;' class="form-group">
+                                            <span *ngIf='fail'
+                                                style="text-align:center;font-weight:bold;color:red">{{returnFail}}</span>
+                                            <span *ngIf='success'
+                                                style="text-align:center;font-weight:bold;color:green">{{returnSuccess}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning"
+                                                (click)="gotoHomePage()">Cancel</button>
+                                        </div>
+                                        <div class="col-sm-6"><button class="btn btn-success" type="submit"> Submit
+                                            </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

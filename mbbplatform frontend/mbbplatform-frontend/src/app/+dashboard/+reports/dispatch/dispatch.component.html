@@ -1,0 +1,175 @@
+<div id="content">
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2>Dispatched Reports</h2>
+                        <!--<ul>
+                            <li style="float:right;display: block;">
+                                <a>
+                                    <span class="hidden-mobile hidden-tablet">
+                                    <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="locationId" (ngModelChange)="getLocationWise()">
+                                       <option *ngFor="let location of locationDetails" [value]="location.id">{{location.location_name}}</option>
+                                    </select>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>-->
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <form class="smart-form" id="dealer-filter-form">
+                                <fieldset style="padding:0px">
+                                    <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>From</b></label>
+                                        <my-date-picker [options]="myDatePickerOptions" [selDate]="startDate"
+                                            [(ngModel)]="QueryData.startDate" name="startDate"></my-date-picker>
+                                    </section>
+
+                                    <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>To</b></label>
+                                        <my-date-picker [options]="myDatePickerOptions" [selDate]="endDate" [(ngModel)]="QueryData.endDate"
+                                            name="endDate"></my-date-picker>
+                                        <div class="icon-color-bad">{{errorMessage}}</div>
+                                    </section>
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>Facility</b></label>
+                                        <select class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="locationId"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option *ngFor="let location of locationDetails" [value]="location.id">{{location.location_name}}</option>
+                                        </select>
+                                    </section>
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <br>
+                                        <button type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit"
+                                            (click)="QuerySubmit()">Submit</button>
+                                    </section>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="well padding-10 ">
+
+                        <sa-datatable id="diapatchDataTable" [options]="dispatchDetails" tableClass="table table-striped table-bordered table-hover"
+                            paginationLength="true" width="100%" filter="true">
+                            <thead>
+                                <!--<tr>
+                                    <th class="hasinput ">
+                                        <input type="text" class="form-control" placeholder="Search By Invoice">
+                                    </th>
+                                     <th class="hasinput ">
+                                        <input type="text" class="form-control" placeholder="Search By QRCode">
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>-->
+                                <tr>
+                                    <th>Invoice </th>
+                                    <th>SKU</th>
+                                    <th>Product Name</th>
+                                    <th>QR Code</th>
+                                    <th>Serial Number</th>
+                                    <th>Dispatch Manager</th>
+                                    <th>Facility</th>
+                                    <th>Dispatched Date</th>
+                                    <th>Returned date</th>
+                                    <th>Status</th>
+                                    <th>Comments</th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<sa-widgets-grid>
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer>
+                <header>
+                    <span class="widget-icon">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </span>
+                    <h2 style="margin-right:2%;">Dispatched Reports</h2>
+                </header>
+                <div class="well padding-10 ">
+
+                    <sa-datatable id="diapatchDataTable" [options]="dispatchDetails" tableClass="table table-striped table-bordered table-hover"
+                        paginationLength="true" width="100%">
+                        <thead>
+                            <tr>
+                                <th>QR Code</th>
+                                <th>Invoice </th>
+                                <th>Dispatch Manager</th>
+                                <th>Comments</th>
+                                <th>Dispatched Date</th>
+                            </tr>
+                        </thead>
+                    </sa-datatable>
+                </div>
+            </div>
+        </sa-widgets-grid>-->
+        <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title"><strong>Dispatch Details</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+                                <div sa-widget [editbutton]="false" color="greenDark">
+                                    <div>
+                                        <div class="widget-body no-padding">
+                                            <div class="table-responsive">
+                                                <table *ngIf='details' class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>QR Code</th>
+                                                            <th>SKU Code</th>
+                                                            <th>Product Name</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngFor='let invoice of inVoiceDetails'>
+                                                        <tr>
+                                                            <td> {{invoice.barcode}}</td>
+                                                            <td> {{invoice.skuCode}}</td>
+                                                            <td> {{invoice.productName}}</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" (click)="lgModal.hide()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+
+<div>
+    <loader [loading]="loading"></loader>
+</div>

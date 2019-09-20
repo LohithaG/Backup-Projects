@@ -1,0 +1,58 @@
+<div id="content">
+  <div style="font-weight:bold"><span routerLink="/vendors" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Vendors List</span> <span> / Add Vendor</span> </div><br>
+  <sa-widgets-grid>
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <!-- MAIN CONTENT -->
+        <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+          [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Add Vendor</h2>
+          </header>
+          <div class="widget-body">
+            <form [formGroup]="complexForm" method="post" *ngIf="vendorDetails" id="checkout-form" class="smart-form">
+              <fieldset>
+                <section *ngIf="vendorError" class="icon-color-bad"> {{vendorError}} </section>
+                <section *ngIf="vendorSuccess" class="text-success"> {{vendorSuccess}} </section>
+                <div class="row">
+                  <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                    <label class="label" for="vendorname" [ngClass]="{'has-error':! this.vendorname.valid &&  this.vendorname}"
+                      style="font-weight: 600;">Vendor Name
+                      <font class="icon-color-bad">*</font>
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="input form-control">
+                      <input type="text" name="vendorname" [formControl]="this.vendorname" [(ngModel)]="vendorDetails.name"
+                        placeholder="Vendor Name">
+                      <span *ngIf=" this.vendorname.hasError('required') &&submitted  " class=" icon-color-bad ">Please
+                        enter Vendorname</span>
+                      <span *ngIf=" this.vendorname.hasError('minlength')|| this.vendorname.hasError('maxlength')||this.vendorname.hasError('pattern') "
+                        class=" icon-color-bad ">Please enter valid name between 3 to 64 characters only</span>
+                    </label>
+                  </section>
+                </div>
+
+              </fieldset>
+              <footer>
+                <section class="col col-6">
+
+                  <button class="btn  btn-success btn-sm" type="submit" (click)="addUser(vendorDetails)">
+                    <span *ngIf="loading">Add</span> <span *ngIf="!loading"><i class="fa fa-cog fa-spin"></i>
+                      Loading....</span>
+                  </button>
+                  <button class="btn  btn-warning btn-sm" (click)="cancelVendor()">Cancel</button>
+                </section>
+              </footer>
+            </form>
+          </div>
+        </sa-widget>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div>

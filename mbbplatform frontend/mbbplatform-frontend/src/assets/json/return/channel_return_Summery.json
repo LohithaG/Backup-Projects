@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "channel": "AMAZON_IN",
+            "totalReturnedUnits": 8,
+            "soldUnitsValue": 901750.0,
+            "totalReturnedUnitsValue": 16070.0,
+            "totalSoldUnit": 135
+        },
+        {
+            "channel": "FLIPKART",
+            "totalReturnedUnits": 15,
+            "soldUnitsValue": 117284.0,
+            "totalReturnedUnitsValue": 17630.0,
+            "totalSoldUnit": 84
+        },
+        {
+            "channel": "SNAPDEAL",
+            "totalReturnedUnits": 0,
+            "soldUnitsValue": 37423.0,
+            "totalReturnedUnitsValue": 0.0,
+            "totalSoldUnit": 35
+        },
+        {
+            "channel": "SHOPCLUES",
+            "totalReturnedUnits": 0,
+            "soldUnitsValue": 3400.0,
+            "totalReturnedUnitsValue": 0.0,
+            "totalSoldUnit": 3
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+
+<div class="main-content">
+    <div class="container-fluid" style="padding:0px;margin:0px">
+        <div class="row scan-btn">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 col-xs-4 col-md-4 col-12">
+                <button class="btn btn-info btn-block btn-fill" (click)="getProductDetails()"> Scan </button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <br><br>
+        <div class="row" *ngIf="productInfo">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title" style="text-align:center">Product Details</h4>
+                    </div>
+                    <div class="card-body" style="padding-top:13px;padding-left:11px;padding-right:0px">
+                        <div class="row">
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b>QR Code</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.barcode}}
+                            </p>
+                           
+                           
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> Invoice </b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.invoiceId}}
+                            </p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b> Created By</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.createdUser}}
+                            </p>
+                            <p class="col-sm-5 col-md-5 col-5">
+                                <b>Date</b>
+                            </p>
+                            <p class="col-sm-1 col-md-1 col-1">:</p>
+
+                            <p class="col-sm-5 col-md-5 col-5">
+                                {{productInfo.createdTime|date}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-info btn-block btn-fill" (click)="addToDispatch()"> DISPATCH </button>
+            </div>
+        </div>
+    </div>
+</div>

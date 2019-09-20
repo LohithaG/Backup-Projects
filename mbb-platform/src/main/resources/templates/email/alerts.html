@@ -1,0 +1,41 @@
+
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title></title>
+<style>
+table {
+border-collapse: collapse;
+}
+
+table, td, th {
+border: 1px solid black;
+}
+table th {
+	background-color: gray;
+}
+</style>
+</head>
+
+<body>
+<table border="1" >
+<tr align="center" style="font-size: medium;color: black;">
+<th>S NO</th>
+<th>Order Id</th>
+<th>Dispatch Date</th>
+<th>Tracking Number</th>
+<th>Status</th>
+
+</tr>
+<tr th:each="alerts,iterator : ${shipmentsList}" >
+<td th:text="${iterator.index+1}" align="center" style="color: black;"></td>
+<td th:text="${alerts.orderId}" align="center"></td>
+<td th:text="${alerts.dispatchDate}" align="center"></td>
+<td th:text="${alerts.trackingNo}" align="center"></td>
+<td th:text="${alerts.status}" align="center"></td>
+
+</tr>
+</table>
+</body>
+</html>

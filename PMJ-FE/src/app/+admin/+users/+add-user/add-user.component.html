@@ -1,0 +1,122 @@
+<div id="content">
+  <sa-widgets-grid>
+    <div class="row">
+      <div class="col-sm-12">
+
+        <!-- MAIN CONTENT -->
+        <!--<sa-widget [editbutton]="false" color="blueDark">-->
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+          [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Add User</h2>
+          </header>
+          <div class="widget-body">
+            <form [formGroup]="complexForm" method="post" id="checkout-form" class="smart-form">
+
+              <fieldset>
+
+                <section *ngIf="userError" class="icon-color-bad text-center"> {{userError}} </section>
+                <section *ngIf="userSuccess" class="text-success text-center"> {{userSuccess}} </section>
+
+
+
+                <div class="row">
+                  <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                    <label class="label" for="username" [ngClass]="{'has-error':! this.username.valid &&  this.username}" style="font-weight: 600;">Username
+                      <font class="icon-color-bad">*</font>
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="input form-control">
+                      <input type="text" name="username" [formControl]="this.username"
+                        [(ngModel)]="userDetails.userName" placeholder="Username">
+                      <span *ngIf=" this.username.hasError('required') &&submitted  " class=" icon-color-bad ">Please
+                        enter username</span>
+
+                      <span
+                        *ngIf=" this.username.hasError('minlength')|| this.username.hasError('maxlength')||this.username.hasError('pattern') "
+                        class=" icon-color-bad ">Please enter valid name between 3 to 32 characters only</span>
+                    </label>
+                  </section>
+                </div>
+
+                <div class="row">
+                  <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                    <label class="label" for="username" [ngClass]="{'has-error':! this.username.valid &&  this.username}" style="font-weight: 600;">Password
+                      <font class="icon-color-bad">*</font>
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="input form-control">
+                      <input type="text" name="password" [formControl]="this.password"
+                        [(ngModel)]="userDetails.password" placeholder="Password">
+                      <span *ngIf=" this.password.hasError('required') &&submitted  " class=" icon-color-bad ">Please
+                        enter password</span>
+                      <span
+                        *ngIf="this.password.hasError('pattern') "
+                        class=" icon-color-bad ">Please enter atleast one number, one small letter, one capital letter and one special character for password</span>
+                    </label>
+                  </section>
+                </div>
+
+
+                <div class="row">
+                  <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                    <label class="label" style="font-weight: 600;">Role
+                      <font class="icon-color-bad">*</font>
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="select form-control">
+                      <select name="roles" [formControl]="this.roles" [(ngModel)]="userDetails.role"
+                        (change)="getRoleType()">
+                        <option disabled value='' disabled>Select role</option>
+                        <!--<option *ngFor="let userType of userTypeRoles"value="userType.name"  >{{userType.name}}</option>-->
+                        <option value='ADMIN'>Admin</option>
+                        <option value='MANAGER'>Manager</option>
+                        <!-- <option value="{{roles.name}}" >{{roles.name}}</option> -->
+                      </select>
+                    </label>
+                  </section>
+                </div>
+
+                <div class="row" *ngIf="complexForm.get('roles').value=='MANAGER'">
+                  <section class="col col-2" style="margin-bottom: 0px;margin-top: 5px;">
+                    <label class="label" for="username" [ngClass]="{'has-error':! this.username.valid &&  this.username}" style="font-weight: 600;">Employee Id
+                      <font class="icon-color-bad">*</font>
+                    </label>
+                  </section>
+                  <section class="col col-4">
+                    <label class="input form-control">
+                      <input type="text" name="empId" [formControl]="this.empId" [(ngModel)]="userDetails.empCode"
+                        placeholder="Employee Id">
+                      <span *ngIf=" this.empId.hasError('required') &&submitted  " class=" icon-color-bad ">Please enter
+                        Emp Id</span>
+                    </label>
+                  </section>
+                </div>
+
+
+
+
+              </fieldset>
+
+              <footer>
+                <section class="col col-6">
+                  <button class="btn  btn-warning btn-sm" type="button" (click)="cancelUser()">Cancel</button>
+                  <button class="btn  btn-success btn-sm" type="submit" [disabled]="!complexForm.valid" (click)="addUser()">
+                    Add
+                  </button>
+                </section>
+              </footer>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div>

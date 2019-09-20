@@ -1,0 +1,37 @@
+export const endponitConfig: any = {
+    USER_LOGIN: 'http://192.168.3.204:2020/login',
+    USER_API_ENDPOINT: 'http://192.168.3.204:2020/api/users/',
+    INVENTORY_ENDPOINT: 'http://192.168.3.204:2020/mbb/inventory/',
+    INVENTORY_ITEM_ENDPOINT: 'http://192.168.3.204:2020/mbb/inventoryItem/',
+    MBB_INVENTORY: 'http://192.168.3.204:2020/mbb/',
+    DISPATCH_ENDPONT: 'http://192.168.3.204:2020/mbb/dispatch/',
+    BARCODES_ENDPOINT: 'http://192.168.3.204:2020/mbb/barcodes/',
+    CHECKLIST_ENDPONT: 'http://192.168.3.204:2020/mbb/checklist/',
+    RETURN_ENDPOINT: 'http://192.168.3.204:2020/mbb/returns/',
+    MBB_ORDERS: 'http://192.168.3.204:2020/mbb/orderDetails/',
+    MBB_SHIPMENTS: 'http://192.168.3.204:2020/mbb/zepoSRShipments/',
+    MBB_REMITTANCE: 'http://192.168.3.204:2020/mbb/codremittance/',
+    VENDORS_API_ENDPOINT: 'http://192.168.3.204:2020/mbb/poVendor/',
+    VENDORS_API: 'http://192.168.3.204:2020/mbb/vendor/',
+    VENDOR_ITEM_DETAILS: 'http://192.168.3.204:2020/mbb/vendorItemDetails/',
+    INVOICE_DETAILS: 'http://192.168.3.204:2020/mbb/invoiceDetails/',
+    ALL_SHIPMENTS_COD: 'http://192.168.3.204:2020/mbb/',
+    ALL_REM_COD: 'http://192.168.3.204:2020/mbb/',
+    ALL_REM_BYPAY_COD: 'http://192.168.3.204:2020/api/',
+    BANK_DETAILS: 'http://192.168.3.204:2020/mbb/bankDetails/',
+    PRICE_DETAILS: 'http://192.168.3.204:2020/mbb/priceDetails/',
+    OTHER_CHARGES: 'http://192.168.3.204:2020/mbb/otherCharges/',
+    VENDORS_API_ENDPOINT_NEW: 'http://192.168.3.204:2020/mbb/vendor/',
+    INVENTORY_TRANSFER: 'http://192.168.3.204:2020/mbb/transferInventory/',
+    PACKAGE_DETAILS: 'http://192.168.3.204:2020/mbb/packageDetails/',
+    TRANSPORT_DETAILS: 'http://192.168.3.204:2020/mbb/transportation/',
+    SELF_TRANSPORT: 'http://192.168.3.204:2020/mbb/selfTransport/',
+    AGGGTR_TRANSPORT: 'http://192.168.3.204:2020/mbb/shippingAggregator/',
+    DOCUMENTS_UPLOAD: 'http://192.168.3.204:2020/mbb/transferDocument/',
+    FAST_MOVING_SKU: 'http://192.168.3.204:2020/mbb/fastMovingSku/',
+    RETURNS_API:'http://192.168.3.204:2020/mbb/dispatch/',
+    RETURNS_DETAILS_API:'http://192.168.3.204:2020/mbb/'
+};
+
+
+

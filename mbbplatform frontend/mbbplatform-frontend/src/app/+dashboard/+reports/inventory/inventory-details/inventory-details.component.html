@@ -1,0 +1,88 @@
+<div id="content">
+    <div style="font-weight:bold"><span style="cursor: pointer;color: #335CA7;text-decoration: underline;" routerLink="/dashboard/reports/inventory">Inventory</span>
+        <span> / {{sku}} Details</span> </div>
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;"><span *ngIf='productName != null'>{{productName}}</span><span *ngIf='productName == null'>Inventory</span> -Details </h2>
+
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <form class="smart-form" id="dealer-filter-form">
+                                <fieldset style="padding:0px">
+                                    <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>From</b></label>
+                                        <my-date-picker [options]="myDatePickerOptions" [selDate]="startDate"
+                                            [(ngModel)]="QueryData.startDate" name="startDate"></my-date-picker>
+                                    </section>
+
+                                    <section class="form-group col-sm-3 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>To</b></label>
+                                        <my-date-picker [options]="myDatePickerOptions" [selDate]="endDate" [(ngModel)]="QueryData.endDate"
+                                            name="endDate"></my-date-picker>
+                                        <div class="icon-color-bad">{{errorMessage}}</div>
+                                    </section>
+                                 
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <br>
+                                        <button type="button" title="Submit" class="btn btn-sm btn-primary" id="filter-submit"
+                                            (click)="QuerySubmit()">Submit</button>
+                                    </section>
+                                    <section style="width: 132px;margin-left: 189px;" class="form-group col-sm-3 padding-5">
+                                        <label class="control-label"><b>Status:</b></label>
+                                       <select class="form-control ng-pristine ng-valid ng-touched" (change)="getInventoryDetails()"
+                                        [(ngModel)]="id" [ngModelOptions]="{standalone: true}">
+                                        <option *ngFor="let list of listDetails" [value]="list.id">{{list.list_name}}</option>
+                                       </select>
+                                    </section>
+
+                                </fieldset>
+                            </form>
+                             <!-- <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2">
+                                <label>List:</label>
+                                <select class="form-control ng-pristine ng-valid ng-touched" (change)="getInventoryDetails()"
+                                    [(ngModel)]="id" [ngModelOptions]="{standalone: true}">
+                                    <option *ngFor="let list of listDetails" [value]="list.id">{{list.list_name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-5"></div>
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="well padding-10">
+                    
+                        <sa-datatable id="inventoryDetailsDataTable" [options]="inventoryDetails" tableClass="table table-striped table-bordered table-hover"
+                            paginationLength="true" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>QR Code </th>
+                                    <th>Serial Number</th>
+                                    <th>Created Date </th>
+                                    <th>Updated Date</th>
+                                    <th>User</th>
+                                    <th>Facility</th>
+                                    <!-- <th>To Facility</th> -->
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </sa-widgets-grid>
+</div>
+<div>
+    <loader [loading]="loading"></loader>
+</div>

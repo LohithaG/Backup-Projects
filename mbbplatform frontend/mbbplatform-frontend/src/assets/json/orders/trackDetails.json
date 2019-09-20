@@ -1,0 +1,114 @@
+{
+    "data": {
+        "tracking_data": {
+            "track_status": 1,
+            "shipment_status": 18,
+            "shipment_track": [
+                {
+                    "id": 758266,
+                    "awb_code": "1904110681704",
+                    "courier_company_id": 43,
+                    "shipment_id": null,
+                    "order_id": 4386014,
+                    "pickup_date": "2018-10-23 16:04:37",
+                    "delivered_date": null,
+                    "weight": "1",
+                    "packages": 1,
+                    "current_status": "In Transit-EN-ROUTE",
+                    "delivered_to": "Visakhapatnam",
+                    "destination": "Visakhapatnam",
+                    "consignee_name": "KOMPALLI",
+                    "origin": "Hyderabad"
+                }
+            ],
+            "shipment_track_activities": [
+                {
+                    "date": "2018-10-26 10:33:30",
+                    "activity": "In Transit - Added to IST",
+                    "location": "Visakhapatnam_Gajuwaka_IP (Andhra Pradesh)"
+                },
+                {
+                    "date": "2018-10-25 11:40:35",
+                    "activity": "In Transit - IST received",
+                    "location": "Visakhapatnam_Gajuwaka_IP (Andhra Pradesh)"
+                },
+                {
+                    "date": "2018-10-25 08:02:20",
+                    "activity": "In Transit - IST received",
+                    "location": "Visakhapatnam_Gajuwaka_IP (Andhra Pradesh)"
+                },
+                {
+                    "date": "2018-10-24 22:32:37",
+                    "activity": "In Transit - Surface Transit Delay",
+                    "location": "Hyderabad_Shamshbd_H (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 10:11:08",
+                    "activity": "In Transit - Added to IST",
+                    "location": "Hyderabad_Shamshbd_H (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 05:11:59",
+                    "activity": "In Transit - Handover to co-located facility",
+                    "location": "Hyderabad_Shamshbd_H (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 05:01:55",
+                    "activity": "In Transit - Bagged at origin city PC",
+                    "location": "Hyderabad_Shamshbd_P (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 02:48:48",
+                    "activity": "In Transit - Bag incoming at origin city PC",
+                    "location": "Hyderabad_Shamshbd_P (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 02:12:09",
+                    "activity": "In Transit - IST received",
+                    "location": "Hyderabad_Shamshbd_P (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 01:57:54",
+                    "activity": "In Transit - IST received",
+                    "location": "Hyderabad_Shamshbd_P (Telangana)"
+                },
+                {
+                    "date": "2018-10-24 00:18:30",
+                    "activity": "In Transit - Added to IST",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                },
+                {
+                    "date": "2018-10-23 23:24:18",
+                    "activity": "In Transit - Bagged at origin city PC",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                },
+                {
+                    "date": "2018-10-23 23:18:29",
+                    "activity": "In Transit - Shipment Recieved at Origin Center",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                },
+                {
+                    "date": "2018-10-23 22:43:25",
+                    "activity": "In Transit - Vehicle Reached at Origin Center",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                },
+                {
+                    "date": "2018-10-23 16:04:37",
+                    "activity": "In Transit - Shipment Picked Up from Client Location",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                },
+                {
+                    "date": "2018-10-23 14:00:09",
+                    "activity": "Manifested - Out for Pickup",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                },
+                {
+                    "date": "2018-10-23 13:25:19",
+                    "activity": "Manifested - Consignment Manifested",
+                    "location": "Hyderabad_Mhdiptnm_C (Telangana)"
+                }
+            ],
+            "track_url": "https://app.shiprocket.in/tracking/awb/1904110681704"
+        }
+    }
+}

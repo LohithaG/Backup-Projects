@@ -1,0 +1,36 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/inventory-approval" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Inventory Approvals</span>        <span> / {{poName}} </span> </div><br>
+
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">Inventory Details </h2>
+
+                    </header>
+
+                    <div class="well padding-10">
+                        <sa-datatable id="DataTable" [options]="PackageDetails" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                            width="100%" filter="true">
+                            <thead>
+                                <tr>
+                                    <th>SKU code</th>
+                                    <th>QRCode</th>
+                                    <th>Product Name</th>
+                                    <th>Facility</th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+<loader [loading]="loading"> </loader>

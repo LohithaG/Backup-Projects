@@ -1,0 +1,93 @@
+{
+
+    "data": {
+      "achivement": {
+        "target": 300,
+        "actual": 325,
+        "percentage": 116
+      },
+      "margins": {
+        "target": 80,
+        "actual": 90,
+        "percentage": 112
+      },
+      "conversion": {
+        "target": 100,
+        "actual": 75,
+        "percentage": 75
+      },
+      "ticketSize": {
+        "target": 100,
+        "actual": 80,
+        "percentage": 80
+      }
+    },
+    "details": {
+      "timeLine": [
+        "Apr",
+        "May",
+        "June"
+      ],
+      "employee": [
+        {
+          "name": "SWAMY KESHABOINA",
+          "empCode": "1535",
+          "targets": {
+            "qty": {
+              "gold": [
+                10,
+                10,
+                10
+              ],
+              "diamond": [
+                600,
+                600,
+                600
+              ]
+            },
+            "value": {
+              "gold": [
+                270,
+                285,
+                290
+              ],
+              "diamond": [
+                450,
+                420,
+                440
+              ]
+            }
+          },
+          "actuals": {
+            "qty": {
+              "gold": [
+                9,
+                10,
+                11
+              ],
+              "diamond": [
+                559,
+                602,
+                611
+              ]
+            },
+            "value": {
+              "gold": [
+                265,
+                288,
+                295
+              ],
+              "diamond": [
+                460,
+                435,
+                420
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+
+
+

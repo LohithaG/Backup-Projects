@@ -1,0 +1,451 @@
+2019-09-17 09:34:46.933 ERROR 584 --- [restartedMain] o.s.b.c.l.LoggingApplicationListener     : Cannot set level 'ERROR,debug,info' for 'null'
+2019-09-17 09:34:47.047  INFO 584 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : Starting PmjmisApplication on w1 with PID 584 (C:\Users\srinivas.motaparthy.FINHQ\git\pmj-mis-1\pmj-mis\target\classes started by srinivas.motaparthy in C:\Users\srinivas.motaparthy.FINHQ\git\pmj-mis-1\pmj-mis)
+2019-09-17 09:34:47.048  INFO 584 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : No active profile set, falling back to default profiles: default
+2019-09-17 09:34:47.091  INFO 584 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-17 09:34:47.092  INFO 584 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-17 09:34:48.634  INFO 584 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-17 09:34:48.858 ERROR 4664 --- [restartedMain] o.s.b.c.l.LoggingApplicationListener     : Cannot set level 'ERROR,debug,info' for 'null'
+2019-09-17 09:34:49.022  INFO 4664 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : Starting PmjmisApplication on w1 with PID 4664 (C:\Users\srinivas.motaparthy.FINHQ\git\pmj-mis-1\pmj-mis\target\classes started by srinivas.motaparthy in C:\Users\srinivas.motaparthy.FINHQ\git\pmj-mis-1\pmj-mis)
+2019-09-17 09:34:49.024  INFO 4664 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : No active profile set, falling back to default profiles: default
+2019-09-17 09:34:49.084  INFO 4664 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-17 09:34:49.084  INFO 4664 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-17 09:34:49.148  INFO 584 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 497ms. Found 13 repository interfaces.
+2019-09-17 09:34:49.802  INFO 584 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4a5be461] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-17 09:34:50.329  INFO 584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-09-17 09:34:50.358  INFO 584 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-17 09:34:50.364  INFO 584 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-09-17 09:34:50.379  INFO 584 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\jdk-11.0.4\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\idmu\common;C:\Program Files (x86)\Boxcryptor\bin\;C:\WINDOWS\System32\OpenSSH\;D:\nodejs\;d:\Git\cmd;C:\Users\srinivas.motaparthy.FINHQ\AppData\Local\Microsoft\WindowsApps;C:\Users\srinivas.motaparthy.FINHQ\AppData\Roaming\npm;C:\Users\srinivas.motaparthy.FINHQ\AppData\Local\Programs\Microsoft VS Code\bin;.]
+2019-09-17 09:34:50.518  INFO 584 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-17 09:34:50.525  INFO 584 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3433 ms
+2019-09-17 09:34:50.572  INFO 4664 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-17 09:34:50.692  INFO 584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-17 09:34:50.808  INFO 584 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-17 09:34:50.870  INFO 4664 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 284ms. Found 13 repository interfaces.
+2019-09-17 09:34:50.910  INFO 584 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-17 09:34:50.986  INFO 584 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-09-17 09:34:50.987  INFO 584 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-17 09:34:51.122  INFO 584 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-17 09:34:51.330  INFO 4664 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cb50b8f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-17 09:34:51.369  INFO 584 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-09-17 09:34:51.860  INFO 4664 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-09-17 09:34:51.892  INFO 4664 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-17 09:34:51.893  INFO 4664 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-09-17 09:34:51.901  INFO 4664 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\jdk-11.0.4\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\idmu\common;C:\Program Files (x86)\Boxcryptor\bin\;C:\WINDOWS\System32\OpenSSH\;D:\nodejs\;d:\Git\cmd;C:\Users\srinivas.motaparthy.FINHQ\AppData\Local\Microsoft\WindowsApps;C:\Users\srinivas.motaparthy.FINHQ\AppData\Roaming\npm;C:\Users\srinivas.motaparthy.FINHQ\AppData\Local\Programs\Microsoft VS Code\bin;.]
+2019-09-17 09:34:52.047  INFO 4664 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-17 09:34:52.047  INFO 4664 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2962 ms
+2019-09-17 09:34:52.227  INFO 4664 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-17 09:34:52.342  INFO 4664 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-17 09:34:52.454  INFO 4664 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-17 09:34:52.514  INFO 4664 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-09-17 09:34:52.516  INFO 4664 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-17 09:34:52.622  INFO 4664 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-17 09:34:52.822  INFO 4664 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-09-17 09:34:52.981  INFO 584 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-17 09:34:53.033  INFO 584 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-17 09:34:53.920  INFO 4664 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-17 09:34:53.967  WARN 4664 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-09-17 09:34:54.054  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/'], []
+2019-09-17 09:34:54.060  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.html'], []
+2019-09-17 09:34:54.079  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.js'], []
+2019-09-17 09:34:54.079  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.css'], []
+2019-09-17 09:34:54.085  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/assets/**'], []
+2019-09-17 09:34:54.085  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/pmj/upload/**'], []
+2019-09-17 09:34:54.092  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/forgotpassword/**'], []
+2019-09-17 09:34:54.092  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2019-09-17 09:34:54.138  INFO 584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44fc19f0, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d61deeb, org.springframework.security.web.header.HeaderWriterFilter@6a45c859, org.springframework.web.filter.CorsFilter@38252175, org.springframework.security.web.authentication.logout.LogoutFilter@55ec1730, com.mss.pmj.pmjmis.auth.JWTAuthenticationFilter@6e39fdd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6e879329, org.springframework.security.web.session.ConcurrentSessionFilter@5fc3896a, com.mss.pmj.pmjmis.auth.JWTAuthorizationFilter@542f4af3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@265be104, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45e071cf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70b8ea1f, org.springframework.security.web.session.SessionManagementFilter@4beefa70, org.springframework.security.web.access.ExceptionTranslationFilter@7d1a639a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@496b3033]
+2019-09-17 09:34:54.290  INFO 584 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-17 09:34:54.348  WARN 584 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-09-17 09:34:54.823  INFO 584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-17 09:34:54.829  INFO 584 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : Started PmjmisApplication in 8.175 seconds (JVM running for 9.564)
+2019-09-17 09:34:55.056  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/'], []
+2019-09-17 09:34:55.062  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.html'], []
+2019-09-17 09:34:55.062  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.js'], []
+2019-09-17 09:34:55.067  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.css'], []
+2019-09-17 09:34:55.067  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/assets/**'], []
+2019-09-17 09:34:55.072  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/pmj/upload/**'], []
+2019-09-17 09:34:55.072  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/forgotpassword/**'], []
+2019-09-17 09:34:55.072  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2019-09-17 09:34:55.106  INFO 4664 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a26e4bd, org.springframework.security.web.context.SecurityContextPersistenceFilter@732608a3, org.springframework.security.web.header.HeaderWriterFilter@61253332, org.springframework.web.filter.CorsFilter@22a15fd6, org.springframework.security.web.authentication.logout.LogoutFilter@50e762bf, com.mss.pmj.pmjmis.auth.JWTAuthenticationFilter@5e4d5ec0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@f645d2e, org.springframework.security.web.session.ConcurrentSessionFilter@4b0a3a52, com.mss.pmj.pmjmis.auth.JWTAuthorizationFilter@73edf50a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4bc79e48, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b6ed939, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7e63f4c6, org.springframework.security.web.session.SessionManagementFilter@172b7b20, org.springframework.security.web.access.ExceptionTranslationFilter@23c01595, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1e522407]
+2019-09-17 09:34:55.234  INFO 4664 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-17 09:34:55.273  WARN 4664 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-09-17 09:34:55.615 ERROR 4664 --- [restartedMain] org.apache.catalina.util.LifecycleBase   : Failed to start component [Connector[HTTP/1.1-8080]]
+
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1001) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549) ~[spring-context-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at com.mss.pmj.pmjmis.PmjmisApplication.main(PmjmisApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:461) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:453) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:227) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80) ~[na:na]
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1067) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1149) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:561) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:998) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	... 19 common frames omitted
+
+2019-09-17 09:34:55.620  INFO 4664 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-09-17 09:34:55.635  INFO 4664 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-09-17 09:34:55.640 ERROR 4664 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-09-17 09:34:55.643  INFO 4664 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-17 09:34:55.648  INFO 4664 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-09-17 09:34:55.651  INFO 4664 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-17 09:34:55.657  INFO 4664 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-17 09:35:20.345  INFO 584 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-17 09:35:20.346  INFO 584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-17 09:35:20.354  INFO 584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-09-17 09:35:20.517  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:35:20.536  INFO 584 --- [http-nio-8080-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-09-17 09:35:21.101  INFO 584 --- [http-nio-8080-exec-2] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:35:22.511  INFO 584 --- [http-nio-8080-exec-5] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:35:22.513  INFO 584 --- [http-nio-8080-exec-4] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:35:22.513  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:22.512  INFO 584 --- [http-nio-8080-exec-6] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:35:22.534  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:22.648  INFO 584 --- [http-nio-8080-exec-4] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:35:22.797  INFO 584 --- [http-nio-8080-exec-7] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:22.826  INFO 584 --- [http-nio-8080-exec-7] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:22.835  INFO 584 --- [http-nio-8080-exec-4] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:35:22.897  INFO 584 --- [http-nio-8080-exec-7] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:26.277  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:35:26.412  INFO 584 --- [http-nio-8080-exec-10] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:35:27.393  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.impl.CmdDashboardServiceImpl   : Getting kpi block values achivements,ticketsize,profit and conversion
+2019-09-17 09:35:27.402  INFO 584 --- [http-nio-8080-exec-8] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:35:27.410  INFO 584 --- [http-nio-8080-exec-8] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:35:27.463  INFO 584 --- [http-nio-8080-exec-8] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:35:27.465  INFO 584 --- [http-nio-8080-exec-5] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:27.465  INFO 584 --- [http-nio-8080-exec-10] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:35:27.465  INFO 584 --- [http-nio-8080-exec-2] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:35:27.469  INFO 584 --- [http-nio-8080-exec-5] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:27.467  INFO 584 --- [http-nio-8080-exec-1] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:35:27.467  INFO 584 --- [http-nio-8080-exec-10] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:35:27.465  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:27.494  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:27.495  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.impl.CmdDashboardServiceImpl   : Getting top 10 employess By sales
+2019-09-17 09:35:27.522  INFO 584 --- [http-nio-8080-exec-5] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:35:27.529  INFO 584 --- [http-nio-8080-exec-10] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:39:01.332  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:41:57.524  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:41:57.777  INFO 584 --- [http-nio-8080-exec-7] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:41:58.998  INFO 584 --- [http-nio-8080-exec-9] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:41:59.000  INFO 584 --- [http-nio-8080-exec-6] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:41:59.000  INFO 584 --- [http-nio-8080-exec-4] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:41:59.000  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:41:58.999  INFO 584 --- [http-nio-8080-exec-1] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:41:59.028  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:41:59.022  INFO 584 --- [http-nio-8080-exec-6] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:41:59.038  INFO 584 --- [http-nio-8080-exec-1] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:41:59.076  INFO 584 --- [http-nio-8080-exec-1] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:41:59.077  INFO 584 --- [http-nio-8080-exec-6] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:42:07.812 ERROR 2332 --- [restartedMain] o.s.b.c.l.LoggingApplicationListener     : Cannot set level 'ERROR,debug,info' for 'null'
+2019-09-17 09:42:07.882  INFO 2332 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : Starting PmjmisApplication on w1 with PID 2332 (C:\Users\srinivas.motaparthy.FINHQ\git\pmj-mis-1\pmj-mis\target\classes started by srinivas.motaparthy in C:\Users\srinivas.motaparthy.FINHQ\git\pmj-mis-1\pmj-mis)
+2019-09-17 09:42:07.883  INFO 2332 --- [restartedMain] com.mss.pmj.pmjmis.PmjmisApplication     : No active profile set, falling back to default profiles: default
+2019-09-17 09:42:07.924  INFO 2332 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-17 09:42:07.925  INFO 2332 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-17 09:42:11.867  INFO 2332 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-17 09:42:12.188  INFO 2332 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 309ms. Found 13 repository interfaces.
+2019-09-17 09:42:12.546  INFO 2332 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$57612a79] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-17 09:42:12.980  INFO 2332 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-09-17 09:42:13.010  INFO 2332 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-17 09:42:13.011  INFO 2332 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-09-17 09:42:13.019  INFO 2332 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\jdk-11.0.4\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\idmu\common;C:\Program Files (x86)\Boxcryptor\bin\;C:\WINDOWS\System32\OpenSSH\;D:\nodejs\;d:\Git\cmd;C:\Users\srinivas.motaparthy.FINHQ\AppData\Local\Microsoft\WindowsApps;C:\Users\srinivas.motaparthy.FINHQ\AppData\Roaming\npm;C:\Users\srinivas.motaparthy.FINHQ\AppData\Local\Programs\Microsoft VS Code\bin;.]
+2019-09-17 09:42:13.161  INFO 2332 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-17 09:42:13.161  INFO 2332 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5236 ms
+2019-09-17 09:42:13.309  INFO 2332 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-17 09:42:13.410  INFO 2332 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-17 09:42:13.506  INFO 2332 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-17 09:42:13.568  INFO 2332 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-09-17 09:42:13.569  INFO 2332 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-17 09:42:13.670  INFO 2332 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-17 09:42:13.883  INFO 2332 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-09-17 09:42:14.826  INFO 2332 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-17 09:42:14.871  WARN 2332 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-09-17 09:42:15.724  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/'], []
+2019-09-17 09:42:15.730  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.html'], []
+2019-09-17 09:42:15.730  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.js'], []
+2019-09-17 09:42:15.734  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.css'], []
+2019-09-17 09:42:15.734  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/assets/**'], []
+2019-09-17 09:42:15.739  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/pmj/upload/**'], []
+2019-09-17 09:42:15.739  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/forgotpassword/**'], []
+2019-09-17 09:42:15.739  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2019-09-17 09:42:15.769  INFO 2332 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72110553, org.springframework.security.web.context.SecurityContextPersistenceFilter@791d98c1, org.springframework.security.web.header.HeaderWriterFilter@536687fc, org.springframework.web.filter.CorsFilter@22838cd8, org.springframework.security.web.authentication.logout.LogoutFilter@76baf6ba, com.mss.pmj.pmjmis.auth.JWTAuthenticationFilter@3a556662, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5a649525, org.springframework.security.web.session.ConcurrentSessionFilter@64d32783, com.mss.pmj.pmjmis.auth.JWTAuthorizationFilter@44e611b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17f74f08, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f86ca3a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e27bfe2, org.springframework.security.web.session.SessionManagementFilter@5ab4a84b, org.springframework.security.web.access.ExceptionTranslationFilter@770104c7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@67b33d76]
+2019-09-17 09:42:15.884  INFO 2332 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-17 09:42:15.919  WARN 2332 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-09-17 09:42:16.286 ERROR 2332 --- [restartedMain] org.apache.catalina.util.LifecycleBase   : Failed to start component [Connector[HTTP/1.1-8080]]
+
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1001) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549) ~[spring-context-5.1.3.RELEASE.jar:5.1.3.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) ~[spring-boot-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+	at com.mss.pmj.pmjmis.PmjmisApplication.main(PmjmisApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.1.1.RELEASE.jar:2.1.1.RELEASE]
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:461) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:453) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:227) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80) ~[na:na]
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1067) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1149) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:561) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:998) ~[tomcat-embed-core-9.0.13.jar:9.0.13]
+	... 19 common frames omitted
+
+2019-09-17 09:42:16.291  INFO 2332 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-09-17 09:42:16.303  INFO 2332 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-09-17 09:42:16.307 ERROR 2332 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-09-17 09:42:16.309  INFO 2332 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-17 09:42:16.314  INFO 2332 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-09-17 09:42:16.317  INFO 2332 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-17 09:42:16.324  INFO 2332 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-17 09:43:18.113  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:43:18.114  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:01.215  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.svcs.impl.LocationServiceImpl    : Getting all d2h locations group by state
+2019-09-17 09:44:02.961  INFO 584 --- [http-nio-8080-exec-10] c.m.p.p.svcs.impl.LocationServiceImpl    : Getting all d2h locations group by state
+2019-09-17 09:44:36.967  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:44:37.218  INFO 584 --- [http-nio-8080-exec-7] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:44:38.308  INFO 584 --- [http-nio-8080-exec-1] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:44:38.309  INFO 584 --- [http-nio-8080-exec-3] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:44:38.309  INFO 584 --- [http-nio-8080-exec-4] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:38.309  INFO 584 --- [http-nio-8080-exec-6] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:44:38.308  INFO 584 --- [http-nio-8080-exec-9] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:38.332  INFO 584 --- [http-nio-8080-exec-3] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:44:38.338  INFO 584 --- [http-nio-8080-exec-4] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:38.355  INFO 584 --- [http-nio-8080-exec-9] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:38.384  INFO 584 --- [http-nio-8080-exec-9] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:38.386  INFO 584 --- [http-nio-8080-exec-3] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:44:55.410  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:55.415  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:44:57.309  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : Geeting growth calculations by showrrom locations
+2019-09-17 09:44:57.326  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:57.450  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:57.578  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:57.688  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:57.805  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:57.858  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:57.907  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:57.960  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.013  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.069  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.120  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.178  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.238  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.246  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.254  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.262  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.276  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.276  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.276  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.276  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.283  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.305  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.327  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.349  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.371  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.417  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.459  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.504  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.553  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.576  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:44:58.596  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating total diamond and gold sales by channel
+2019-09-17 09:44:58.627  INFO 584 --- [http-nio-8080-exec-8] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : calculating showroom employee targets
+2019-09-17 09:46:32.165  INFO 584 --- [http-nio-8080-exec-10] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : getting growth calculation values by total saleswise
+2019-09-17 09:46:34.601  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting ticket sizes for all showrooms
+2019-09-17 09:46:34.625  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:34.921  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.044  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.152  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.210  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.319  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.380  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.397  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.418  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.418  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.425  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.467  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.489  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.580  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:35.633  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:35.680  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:38.863  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting ticket sizes for all showrooms
+2019-09-17 09:46:38.876  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:39.090  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:39.662  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:39.758  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:40.055  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:40.168  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:40.486  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:40.506  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:40.557  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:40.563  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:40.565  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:40.606  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:40.724  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:40.809  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:46:41.053  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : Getting actual ticketsize for showroom location
+2019-09-17 09:46:41.112  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.svcs.impl.TicketSizeServiceImpl  : calculating ticketsize for showroom employee targets
+2019-09-17 09:48:10.277  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:48:10.290  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:44.419  INFO 584 --- [http-nio-8080-exec-4] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:44.429  INFO 584 --- [http-nio-8080-exec-4] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:54.284  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:51:54.536  INFO 584 --- [http-nio-8080-exec-3] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:51:55.238  INFO 584 --- [http-nio-8080-exec-6] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:55.239  INFO 584 --- [http-nio-8080-exec-8] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:51:55.239  INFO 584 --- [http-nio-8080-exec-5] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:51:55.243  INFO 584 --- [http-nio-8080-exec-6] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:55.252  INFO 584 --- [http-nio-8080-exec-5] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:51:55.280  INFO 584 --- [http-nio-8080-exec-5] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:51:55.534  INFO 584 --- [http-nio-8080-exec-10] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:51:55.534  INFO 584 --- [http-nio-8080-exec-2] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:55.543  INFO 584 --- [http-nio-8080-exec-2] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:51:55.567  INFO 584 --- [http-nio-8080-exec-2] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:52:47.319  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:52:47.330  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:52:57.113  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:52:57.126  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:25.611  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:25.624  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:33.466  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:55:33.718  INFO 584 --- [http-nio-8080-exec-8] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:55:34.480  INFO 584 --- [http-nio-8080-exec-6] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:34.482  INFO 584 --- [http-nio-8080-exec-5] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:55:34.491  INFO 584 --- [http-nio-8080-exec-6] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:34.494  INFO 584 --- [http-nio-8080-exec-5] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:55:34.564  INFO 584 --- [http-nio-8080-exec-5] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:55:34.779  INFO 584 --- [http-nio-8080-exec-2] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:55:34.783  INFO 584 --- [http-nio-8080-exec-10] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:55:34.783  INFO 584 --- [http-nio-8080-exec-7] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:34.786  INFO 584 --- [http-nio-8080-exec-7] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:55:34.813  INFO 584 --- [http-nio-8080-exec-7] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:56:35.265  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:56:35.503  INFO 584 --- [http-nio-8080-exec-4] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:56:36.444  INFO 584 --- [http-nio-8080-exec-3] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:56:36.445  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:56:36.445  INFO 584 --- [http-nio-8080-exec-6] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:56:36.444  INFO 584 --- [http-nio-8080-exec-8] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:56:36.459  INFO 584 --- [http-nio-8080-exec-3] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:56:36.455  INFO 584 --- [http-nio-8080-exec-9] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:56:36.519  INFO 584 --- [http-nio-8080-exec-3] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:56:36.742  INFO 584 --- [http-nio-8080-exec-5] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:56:36.744  INFO 584 --- [http-nio-8080-exec-5] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:56:36.764  INFO 584 --- [http-nio-8080-exec-5] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:06.763  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:06.772  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:25.320  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:25.326  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:33.647  INFO 584 --- [http-nio-8080-exec-10] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:57:33.901  INFO 584 --- [http-nio-8080-exec-1] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:57:34.608  INFO 584 --- [http-nio-8080-exec-4] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:34.609  INFO 584 --- [http-nio-8080-exec-8] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:57:34.619  INFO 584 --- [http-nio-8080-exec-4] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:34.622  INFO 584 --- [http-nio-8080-exec-8] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:57:34.670  INFO 584 --- [http-nio-8080-exec-8] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:57:34.907  INFO 584 --- [http-nio-8080-exec-9] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:57:34.908  INFO 584 --- [http-nio-8080-exec-3] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:57:34.911  INFO 584 --- [http-nio-8080-exec-6] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:34.913  INFO 584 --- [http-nio-8080-exec-6] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:34.934  INFO 584 --- [http-nio-8080-exec-6] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:40.543  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:57:40.551  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:11.540  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:11.553  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:25.539  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.auth.UserDetailsServiceImpl      : Authentication the user
+2019-09-17 09:59:25.796  INFO 584 --- [http-nio-8080-exec-10] c.m.p.pmjmis.svcs.impl.UserServiceImpl   : getting users by userName
+2019-09-17 09:59:26.486  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:26.486  INFO 584 --- [http-nio-8080-exec-4] p.s.i.PerformanceAnalysisChannelWiseImpl : performance Analysis For All Channels
+2019-09-17 09:59:26.496  INFO 584 --- [http-nio-8080-exec-1] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:26.500  INFO 584 --- [http-nio-8080-exec-4] p.s.i.PerformanceAnalysisChannelWiseImpl : actual Performance Analysis For All Channels
+2019-09-17 09:59:26.539  INFO 584 --- [http-nio-8080-exec-4] p.s.i.PerformanceAnalysisChannelWiseImpl : target Performance Analysis For All Channels
+2019-09-17 09:59:26.791  INFO 584 --- [http-nio-8080-exec-8] .i.PAClassWiseForAllLocationsServiceImpl : getting PA for All Classes
+2019-09-17 09:59:26.791  INFO 584 --- [http-nio-8080-exec-9] erformanceAnalysisAllLocationServiceImpl : getting the location Actuals Vs Targets store data
+2019-09-17 09:59:26.791  INFO 584 --- [http-nio-8080-exec-6] manceAnalysisLocationStateD2HServiceImpl : get Locations target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:26.793  INFO 584 --- [http-nio-8080-exec-6] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 09:59:26.816  INFO 584 --- [http-nio-8080-exec-6] manceAnalysisLocationStateD2HServiceImpl : get Location target vs actual sales groupby between startDate and endDate
+2019-09-17 10:00:41.375  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:00:41.387  INFO 584 --- [http-nio-8080-exec-3] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:01:01.250  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:01:01.255  INFO 584 --- [http-nio-8080-exec-5] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:05:17.590  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:05:17.602  INFO 584 --- [http-nio-8080-exec-2] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:05:38.628  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:05:38.638  INFO 584 --- [http-nio-8080-exec-7] c.m.p.p.s.i.SalesTgtVsActualServiceImpl  : get target vs actual sales groupby between startDate and endDate
+2019-09-17 10:14:35.665  INFO 584 --- [RMI TCP Connection(43)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-09-17 10:14:35.670  INFO 584 --- [RMI TCP Connection(43)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-17 10:14:35.675  INFO 584 --- [RMI TCP Connection(43)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-09-17 10:14:35.692  INFO 584 --- [RMI TCP Connection(43)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-17 10:14:35.698  INFO 584 --- [RMI TCP Connection(43)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,0 +1,102 @@
+{
+    "data": [
+        {
+            "totalReturnedInPerc": "5",
+            "totalReturnedValue": "3050.00",
+            "skuCode": "7672",
+            "soldUnitsValue": "44846.00",
+            "totalSoldUnit": "172"
+        },
+        {
+            "totalReturnedInPerc": "3",
+            "totalReturnedValue": "330.00",
+            "skuCode": "113",
+            "soldUnitsValue": "863.00",
+            "totalSoldUnit": "7"
+        },
+        {
+            "totalReturnedInPerc": "3",
+            "totalReturnedValue": "6900.00",
+            "skuCode": "4209-6727-M",
+            "soldUnitsValue": "13575.00",
+            "totalSoldUnit": "56"
+        },
+        {
+            "totalReturnedInPerc": "2",
+            "totalReturnedValue": "10500.00",
+            "skuCode": "2611",
+            "soldUnitsValue": "21000.00",
+            "totalSoldUnit": "6"
+        },
+        {
+            "totalReturnedInPerc": "2",
+            "totalReturnedValue": "400.00",
+            "skuCode": "970",
+            "soldUnitsValue": "7400.00",
+            "totalSoldUnit": "49"
+        },
+        {
+            "totalReturnedInPerc": "2",
+            "totalReturnedValue": "5500.00",
+            "skuCode": "5011-6716-M",
+            "soldUnitsValue": "48280.00",
+            "totalSoldUnit": "42"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "120.00",
+            "skuCode": "5116",
+            "soldUnitsValue": "2280.00",
+            "totalSoldUnit": "19"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "2500.00",
+            "skuCode": "181-6750-L",
+            "soldUnitsValue": "7500.00",
+            "totalSoldUnit": "3"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "27850.00",
+            "skuCode": "1971",
+            "soldUnitsValue": "286046.00",
+            "totalSoldUnit": "10"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "20000.00",
+            "skuCode": "01784",
+            "soldUnitsValue": "61500.00",
+            "totalSoldUnit": "3"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "850.00",
+            "skuCode": "5254",
+            "soldUnitsValue": "11000.00",
+            "totalSoldUnit": "13"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "600.00",
+            "skuCode": "7647",
+            "soldUnitsValue": "22686.00",
+            "totalSoldUnit": "64"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "1250.00",
+            "skuCode": "1145",
+            "soldUnitsValue": "3876.00",
+            "totalSoldUnit": "3"
+        },
+        {
+            "totalReturnedInPerc": "1",
+            "totalReturnedValue": "1700.00",
+            "skuCode": "4830",
+            "soldUnitsValue": "18914.00",
+            "totalSoldUnit": "12"
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+<div class="headerRibbon" id="ribbon">
+    <span class="ribbon-button-alignment breadcrumb">
+        <span class="btn btn-ribbon" placement="bottom">
+            <i class="fa fa-truck"></i>
+        </span> Inventory Dashboard
+    </span>
+</div>
+<div id="content" style="opacity: 1;margin:10px">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12">
+            <div class="panel panel-primary text-center" (click)="navigateToSkuAdd()">
+                <div class="panel-heading customHeading">
+                    <div class="fa fa-plus-circle" style="font-size:30px;margin:10px"></div>
+                    <h3 class="panel-title">
+                        Add SKU</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <div class="panel panel-primary text-center " (click)="OnUpdateSKu()">
+                <div class="panel-heading customHeading">
+                    <div class="fa fa-check-circle" style="font-size:30px;margin:10px"></div>
+                    <h3 class="panel-title">
+                        Update SKU</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <div class="panel panel-primary text-center " (click)="addProductViewPage()">
+                <div class="panel-heading customHeading">
+                    <div class="fa fa-plus-circle" style="font-size:30px;margin:10px"></div>
+                    <h3 class="panel-title">
+                        Add Product</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <div class="panel panel-primary text-center " (click)="OnUpdate()">
+                <div class="panel-heading customHeading">
+                    <div class="fa  fa-check-circle " style="font-size:30px;margin:10px"></div>
+                    <h3 class="panel-title">
+                        Update Product</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

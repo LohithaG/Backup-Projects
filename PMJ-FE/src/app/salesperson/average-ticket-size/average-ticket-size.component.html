@@ -1,0 +1,60 @@
+
+  <div class="row">
+    <sa-widgets-grid *ngIf="noData">
+      <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+        [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+        class="box-shadow-ui"  style="margin-top:47px;
+        padding: 14px;">
+        <header>
+          <h2>AVERAGE TICKET SIZE </h2>
+        </header>
+
+        <div class="widget-body text-center">
+          <h3>There is no data in selected time range</h3>
+        </div>
+      </div>
+    </sa-widgets-grid>
+    <div *ngIf="!noData">
+      <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12'">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+          [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+          class="box-shadow-ui">
+          <header>
+            <h2>DIAMONDS-TICKET SIZE </h2>
+            <div class="widget-toolbar inventory_status_chart" role="menu">
+
+              <on-off-switch (onoffClick)="lineChartConvertion('diamondticketsize')">
+              </on-off-switch>
+            </div>
+          </header>
+          <div>
+            <div class="widget-body">
+              <div id="diamondticketsize" style="height:250px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 even'">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+          [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+          class="box-shadow-ui">
+          <header>
+            <h2>GOLD -TICKET SIZE </h2>
+            <div class="widget-toolbar inventory_status_chart" role="menu">
+
+              <on-off-switch (onoffClick)="lineChartConvertion('goldticketsize')">
+              </on-off-switch>
+            </div>
+          </header>
+          <div>
+            <div class="widget-body">
+              <div id="goldticketsize" style="height:250px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<loader [loading]=loaderStatus></loader>

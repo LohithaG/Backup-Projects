@@ -1,0 +1,151 @@
+<date-filter (dateData)="QueryDate($event)"></date-filter>
+<sa-widgets-grid *ngIf="hideThePage">
+    <div class="row" style="padding:10px">
+        <conversion-kpi-boxes [locationSHWKpiInfo]="locationSHWKpiInfo"></conversion-kpi-boxes>
+        <div class="col-sm-12 ">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>Conversion Factors</h2>
+                </header>
+                <div class="widget-body text-center">
+                    <h3>There is no data in selected time range</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</sa-widgets-grid>
+
+<sa-widgets-grid *ngIf="!hideThePage">
+    <div class="row" style="padding:10px">
+        <conversion-kpi-boxes [locationSHWKpiInfo]="locationSHWKpiInfo"></conversion-kpi-boxes>
+        <div class="col-sm-12 col-xs-12" [hidden]="!showActuals">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>LOCATION-WISE CONVERSION </h2>
+                    <div class="widget-toolbar inventory_location_chart" role="menu" (click)="getChartData()">
+                        <a class="btn btn-primary"> Reset</a>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="ticketsizepieContainershw" style="height:250px"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" [hidden]="!showActuals">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>CONVERSION GOLD & DIAMOND</h2>
+
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="goldDiamondsStack" style="height:250px"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>DIAMONDS CONVERSION - TARGET vs ACTUAL </h2>
+
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('diamondTargetgroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_diamond" style="height:250px"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>GOLD CONVERSION - TARGET vs ACTUAL </h2>
+
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('goldTargetgroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_gold" style="height:250px"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>DIAMOND - TOTAL vs PREFERRED WALKINS </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('daimondWalkingroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="diamondWalkins" style="height:250px"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>GOLD - TOTAL vs PREFERRED WALKINS </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('goldWalkingroup')"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="goldWalkins" style="height:250px"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12" [hidden]="!salesPersonStatus">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>SALESPERSON-WISE-DIAMOND - TOTAL vs PREFERRED WALKINS </h2>
+
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('salesdiamondTargetgroup')" [status]="1">
+                        </on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_diamond_sales" style="height:250px"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-12" [hidden]="!salesPersonStatus" style="margin-top:10px">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>SALESPERSON-WISE-GOLD - TOTAL vs PREFERRED WALKINS </h2>
+                    <div class="widget-toolbar inventory_status_chart" role="menu">
+                        <on-off-switch (onoffClick)="lineChartConvertion('salesgoldTargetgroup')" [status]="1"></on-off-switch>
+                    </div>
+                </header>
+                <div class="widget-body widget-body-r">
+                    <div id="targetvsActuals_gold_sales" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</sa-widgets-grid>
+<loader [loading]=loaderStatus></loader>

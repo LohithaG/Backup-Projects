@@ -1,0 +1,107 @@
+<date-filter (dateData)="queryDate($event)"></date-filter>
+<sa-widgets-grid>
+    <div class="padding-10">
+        <div >
+            <info-boxes [marginTagToSaleSHW]="kpiBlockInfo"></info-boxes>
+        </div>
+        <sa-widgets-grid *ngIf="noData">
+            <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                <header>
+                    <h2>TOTAL SALES </h2>
+                </header>
+
+                <div class="widget-body text-center">
+                    <h3>There is no data in selected time range</h3>
+                </div>
+            </div>
+        </sa-widgets-grid>
+        <!-- </ng-template>*ngIf="noData=='false'" -->
+        <div class="row" *ngIf="!noData">
+            <div class="col-xs-12 col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>GOLD & DIAMONDS </h2>
+                    </header>
+                    <div class="row">
+                        <div class="col-sm-6 widget-body border-r-1">
+                            <div id="tagPriceGoldDiamondsContainer" style="height:400px"></div>
+                        </div>
+                        <div class="col-sm-6 widget-body">
+                            <div id="salePriceGoldDiamondsContainer" style="height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="uiLocationToggle ?'col-sm-12':'col-sm-6 col-xs-12 padding-r-0'">
+                    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                        <header>
+                            <h2>LOCATION WISE-DIAMONDS TAG PRICE vs SALE PRICE </h2>
+                            <div class="widget-toolbar inventory_status_chart" role="menu">
+                                <on-off-switch (onoffClick)="lineChartConvertion('LocWisediaTagPricevsSalePriceContainer')">
+                                </on-off-switch>
+                            </div>
+                        </header>
+    
+                        <div class="widget-body widget-body-r">
+                            <div id="LocWisediaTagPricevsSalePriceContainer" style="height:250px"></div>
+                        </div>
+    
+                    </div>
+                </div>
+                <div [ngClass]="uiLocationToggle ?'col-sm-12':'col-sm-6 col-xs-12 padding-r-10'">
+                    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                        [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                        <header>
+                            <h2>LOCATION WISE-GOLD TAG PRICE vs SALE PRICE </h2>
+                            <div class="widget-toolbar inventory_status_chart" role="menu">
+                                <on-off-switch (onoffClick)="lineChartConvertion('LocWiseGoldTagPricevsSalePriceContainer')">
+                                </on-off-switch>
+                            </div>
+                        </header>
+    
+                        <div class="widget-body widget-body-r">
+                            <div id="LocWiseGoldTagPricevsSalePriceContainer" style="height:250px"></div>
+                        </div>
+    
+                    </div>
+                </div>
+            <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 padding-r-0'">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>DIAMONDS-TAG PRICE vs SALE PRICE </h2>
+                        <div class="widget-toolbar inventory_status_chart" role="menu">
+                            <on-off-switch (onoffClick)="lineChartConvertion('diamondsTagPricevsSalePriceContainer')">
+                            </on-off-switch>
+                        </div>
+                    </header>
+
+                    <div class="widget-body widget-body-r">
+                        <div id="diamondsTagPricevsSalePriceContainer" style="height:250px"></div>
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 padding-r-10'">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+                    <header>
+                        <h2>GOLD-TAG PRICE vs SALE PRICE </h2>
+                        <div class="widget-toolbar inventory_status_chart" role="menu">
+                            <on-off-switch (onoffClick)="lineChartConvertion('goldTagPricevsSalePriceContainer')">
+                            </on-off-switch>
+                        </div>
+                    </header>
+
+                    <div class="widget-body widget-body-r">
+                        <div id="goldTagPricevsSalePriceContainer" style="height:250px"></div>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+</sa-widgets-grid>
+<loader [loading]=loaderStatus></loader>

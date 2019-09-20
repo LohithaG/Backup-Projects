@@ -1,0 +1,373 @@
+<!-- <div id="content">
+    <div style="font-weight:bold"><span routerLink="/sku" style="cursor: pointer;color: #335CA7;text-decoration: underline;">SKU
+            List</span> <span> / Add SKU</span> </div><br>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Add SKU</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+
+                                <form [formGroup]="addSKUForm">
+                                    <div formGroupName="userData">
+                                        <div class="row">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-8">
+
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="skucode"><b>SKU Code </b></label>
+                                                            <input type="text" class="form-control" placeholder="SKU Code"
+                                                                (change)="skuDetails()" formControlName="skucode" id="skucode"
+                                                                [(ngModel)]="skuObj.skuCode">
+                                                            <span *ngIf="!addSKUForm.get('skucode').valid && formValidate">
+                                                                <span class=" text-danger " *ngIf="addSKUForm.get('skucode').errors['required']">Please
+                                                                    enter SKU code</span>
+                                                                <span class=" text-danger " *ngIf="addSKUForm.get('skucode').errors['maxlength']">Please
+                                                                    enter valid SKU Code with 30 letters only</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="form-group">
+                                                            <label for="productName"><b>Product Name </b></label>
+                                                            <input [readonly]='isReadOnly' type="text" id="productName"
+                                                                placeholder="Product Name" formControlName="productName"
+                                                                class="form-control" [(ngModel)]="skuObj.productName">
+                                                            <span *ngIf="!addSKUForm.get('productName').valid && formValidate">
+                                                                <span class=" text-danger " *ngIf="addSKUForm.get('productName').errors['required']">Please
+                                                                    enter Product Name</span>
+                                                                <span class=" text-danger " *ngIf="addSKUForm.get('productName').errors['maxlength']">Please
+                                                                    enter product name less than 100 letters only</span>
+                                                            </span>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="serialNumber"><b>Serial Number </b></label>
+                                                    <input style='margin-left: 18px;' type="checkbox" id="serialNumber"
+                                                        formControlName="serialNumber" [(ngModel)]="skuObj.serialNumber">
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="threshold"><b>Threshold Level </b></label>
+                                                    <input [readonly]='isReadOnly' type="text" class="form-control" id="threshold"
+                                                        placeholder="Threshold level" formControlName="threshold"
+                                                        [(ngModel)]="skuObj.thresholdLevel">
+                                                    <span *ngIf="!addSKUForm.get('threshold').valid && formValidate">
+                                                        <span class=" text-danger " *ngIf="addSKUForm.get('threshold').errors['required']">Please
+                                                            enter
+                                                            threshold level</span>
+                                                        <span class=" text-danger " *ngIf="addSKUForm.get('threshold').errors['maxlength'] ||
+                                                                                addSKUForm.get('threshold').errors['pattern']">Please
+                                                            enter valid threshold level between 1-999 only</span>
+                                                    </span>
+                                                </div>
+                                                <div formArrayName="items" *ngFor="let item of addSKUForm.controls['items'].controls; let i = index">
+                                                    <div [formGroupName]="i">
+                                                        <div>
+                                                            {{item | json}}
+                                                            <div class="form-group" style="margin-bottom:0px">
+                                                                <label for="threshold"><b>{{item.threshold}}
+                                                                    </b></label>
+                                                                <input formControlName='threshold' class="form-control"
+                                                                    type="text" placeholder="Threshold level">
+                                                                <span *ngIf="item.get('threshold').hasError('required') && formValidate"
+                                                                    class=" text-danger ">Please
+                                                                    enter
+                                                                    threshold level</span>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for='description'><b>Description
+                                                        </b></label>
+                                                    <textarea [readonly]='isReadOnly' formControlName="description"
+                                                        rows="5" placeholder="Description" class="form-control"
+                                                        [(ngModel)]="skuObj.description"></textarea>
+                                                    <span *ngIf="!addSKUForm.get('description').valid && formValidate">
+                                                        <span class=" text-danger " *ngIf="addSKUForm.get('description').errors['required']">Please
+                                                            enter description</span>
+                                                        <span class=" text-danger " *ngIf="addSKUForm.get('description').errors['maxlength']">Please
+                                                            enter only 200 letters only</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-success" *ngIf='loc'>{{location}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-success">{{err}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-success" *ngIf='isok'>{{successMessage}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-danger" *ngIf='existSku'>{{existSKUMessage}}</div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning"
+                                                (click)="gotoPreviousPage()">Cancel</button></div>
+                                        <div class="col-sm-6"><button class="btn btn-success" type="submit" (click)="addSkuDetails()">
+                                                Submit
+                                            </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div> -->
+<!-- new -->
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/sku"
+            style="cursor: pointer;color: #335CA7;text-decoration: underline;">SKU
+            List</span> <span> / Add SKU</span> </div><br>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Add SKU</h2>
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <form [formGroup]="addSKUForm">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="skucode"><b>SKU Code </b></label>
+                                                    <input type="text" class="form-control" placeholder="SKU Code"
+                                                        (change)="skuDetails()" formControlName="skucode" id="skucode"
+                                                        [(ngModel)]="skuObj.skuCode">
+
+                                                    <span *ngIf="!addSKUForm.get('skucode').valid  && formValidate">
+                                                        <span class=" icon-color-bad "
+                                                            *ngIf="addSKUForm.get('skucode').errors['required']">Please
+                                                            enter SKU code</span>
+                                                        <span class=" icon-color-bad "
+                                                            *ngIf="addSKUForm.get('skucode').errors['maxlength']">Please
+                                                            enter valid SKU Code with 30 letters only</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="productName"><b>Product Name </b></label>
+                                                    <input [readonly]='isReadOnly' type="text" id="productName"
+                                                        placeholder="Product Name" formControlName="productName"
+                                                        class="form-control" [(ngModel)]="skuObj.productName">
+                                                    <span
+                                                        *ngIf="!addSKUForm.get('productName').valid  && formValidate && !isReadOnly">
+                                                        <span class="  icon-color-bad  "
+                                                            *ngIf="addSKUForm.get('productName').errors['required']">Please
+                                                            enter Product Name</span>
+                                                        <span class="  icon-color-bad  "
+                                                            *ngIf="addSKUForm.get('productName').errors['maxlength']">Please
+                                                            enter product name less than 100 letters only</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div *ngIf='!isReadOnly' style="margin-top:2px">
+                                            <div class="row">
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-6">
+                                                    <span style="width:20%"><b>Threshold levels (Facility
+                                                            wise)</b></span>
+                                                </div>
+                                            </div><br>
+
+                                            <div formArrayName="items"
+                                                *ngFor="let item of addSKUForm.controls['items'].controls; let i = index">
+                                                <div [formGroupName]="i">
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3"></div>
+
+                                                        <div class="col-sm-4">
+                                                            <div>
+                                                                {{addSKUForm.controls.items.controls[i].controls.facility.value}}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-2">
+                                                            <input formControlName='thresholdLevel' class="form-control"
+                                                                style='margin-left: -100px;' type="text"
+                                                                placeholder="value">
+                                                            <span style='margin-left: -237px;'
+                                                                *ngIf="item.get('thresholdLevel').hasError('required') && formValidate"
+                                                                class="  icon-color-bad ">Please
+                                                                enter
+                                                                threshold level</span>
+                                                            <span style='margin-left: -237px;' class=" icon-color-bad "
+                                                                *ngIf="item.get('thresholdLevel').hasError('pattern')">Please
+                                                                enter valid threshold level between 1-999
+                                                                only</span>
+                                                        </div>
+                                                    </div><br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for='description'><b>Description
+                                                        </b></label>
+                                                    <textarea formControlName="description" rows="5"
+                                                        placeholder="Description" class="form-control"
+                                                        [(ngModel)]="skuObj.description"></textarea>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label class="col-md-4"><b style='margin-left: -20px;'>Serial
+                                                    Number</b></label>
+                                            <div class="checkbox">
+                                                <label for="serialNumber">
+                                                    <input class="checkbox style-0" type="checkbox" id="serialNumber"
+                                                        formControlName="serialNumber"
+                                                        [(ngModel)]="skuObj.serialNumber">
+                                                    <span style='margin-left: -6px;'></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label style='margin-left: -19px;' class="col-md-4"><b>SKU
+                                                    Status</b></label>
+                                            <div class="col-md-7">
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" formControlName="notification"
+                                                        [checked]='this.yes' (click)='notificationChecked($event)'
+                                                        class="checkbox">
+                                                    <span>ACTIVE</span>
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" formControlName="notification"
+                                                        [checked]='this.no' (click)='notificationChecked1($event)'
+                                                        class="checkbox">
+                                                    <span>IN-ACTIVE</span>
+                                                </label><br>
+                                                <span *ngIf="!addSKUForm.get('notification').valid  && formValidate">
+                                                    <span class="  icon-color-bad  "
+                                                        *ngIf="addSKUForm.get('notification').errors['required']">Please
+                                                        select SKU Status</span>
+                                                </span>
+                                                <br><br>
+                                            </div>
+                                        </div><br>
+                                    </div>
+                                    <!-- <div class="row">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-5"
+                                            style='border-style: dashed; color:#ddd; margin-left:-30px'>
+                                            <img src="assets/img/upload.png" width="20%" *ngIf="!image1"
+                                                style='margin-left: 89px;'>
+                                            <div *ngIf="image1" style="text-align:right" (click)="imgDelete(1)"> <i
+                                                    class="fa fa-times"
+                                                    style="border: 1px solid black;border-bottom: none;margin-right: 1px; padding: 1px 7px;"></i>
+                                            </div>
+                                            <img [src]="image1" style="width:100%;height:100px" *ngIf="image1" />
+                                            <label *ngIf="!image1"
+                                                style='margin-left: 73px;margin-right: 112px;display:block;background-color: lightsteelblue;color: black;'
+                                                for="file-input1" class="btn">SKU Image</label>
+                                            <input formControlName="image" id="file-input1" type="file"
+                                                (change)="picked($event,1)" *ngIf="!image1"
+                                                accept="image/png, .jpeg, .jpg"
+                                                style='margin-left: 80px;display:none;' />
+                                            <br>
+                                        </div>
+                                    </div> -->
+                                    <div class="row">                                        
+                                    </div>
+
+                                    <div style="text-align:center;font-weight:bold;" class="text-danger">{{err}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-success" *ngIf='isok'>
+                                        {{successMessage}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-danger"
+                                        *ngIf='existSku'>{{existSKUMessage}}</div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button con
+                                                class="btn btn-warning" (click)="gotoPreviousPage()">Cancel</button>
+                                        </div>
+                                        <div class="col-sm-6"><button [disabled]="!validate" class="btn btn-success"
+                                                (click)="addSkus()" type="submit">
+                                                Submit <i class="fa fa-refresh fa-spin" *ngIf='spin'></i>
+                                            </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+
+        <div bsModal #lgModel="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="margin-right: 60px;">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title"><strong>Serial Number Status Not Selected!</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset>
+                            <section class='col-sm-10'>
+                                <span style="font-size:14px;">In future you don't have access to change this.</span>
+                            </section>
+                        </fieldset>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style='width: 72px' class="btn btn-default" (click)="lgModel.hide()">
+                            Back
+                        </button>
+                        <button type="button" style='width: 72px' class="btn btn-success" (click)="addSkuDetails()">
+                            Proceed
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </sa-widgets-grid>
+</div>

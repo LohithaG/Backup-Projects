@@ -1,0 +1,129 @@
+<div id="content">
+  <div style="font-weight:bold"><span style="cursor: pointer;color: #335CA7; text-decoration: underline;" routerLink="/purchaseorder">Purchase
+      Invoices</span> <span> / {{storageDetails.ponumber}} Update</span> </div>
+  <sa-widgets-grid>
+    <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- MAIN CONTENT -->
+        <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+          [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+            <h2>Edit Purchase Order</h2>
+          </header>
+          <div class="widget-body">
+            <div class="row">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <form [formGroup]="poForm" (ngSubmit)="updateVendorDetails()">
+                  <div formGroupName="poInfo">
+                    <div class="row">
+                      <div class="col-sm-3"></div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="vendorName">Vendor Name</label>
+                          <input type="text" class="form-control" id="vendorName" formControlName="vendorName">
+                          <span *ngIf="poForm.get('poInfo.vendorName').hasError('required') && submitted" class=" icon-color-bad ">Vendor
+                            Name is required</span>
+                        </div>
+                        <div class="form-group">
+                          <label for="purchageNumber">P.O Number</label>
+                          <input type="text" class="form-control" id="vendorName" formControlName="purchageNumber">
+                        </div>
+                        <div class="form-group">
+                          <label for="bDate"><b>P.O Date</b></label>
+                          <input type="text" class="form-control" [value]="selectedPODate | date: 'dd-MM-yyyy'" readonly>
+                          <!-- <my-date-picker [options]="expirydatePickerOptions" [selDate]="selectedPODate | date: 'dd-MM-yyyy'" placeholder="Select P.O date" [(ngModel)]="selectedPODate"
+                              name="mydate"  [ngModelOptions]="{standalone: true}" ></my-date-picker>
+                            <span *ngIf="this.submitted && poDate == null " class="icon-color-bad ">Please enter date</span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="table-responsive" style="margin-top:2px">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th style="width:20%">
+                            <a class="btn btn-primary" *ngIf="!addStatus" style="padding: 1px 6px" (click)="onAddItem()"><i class="fa fa-plus"></i> </a>                            &nbsp; SKU</th>
+                          <th style="width:50%">Item Name</th>
+                          <th style="width:20%">Quantity</th>
+                          <th style="width:10%" *ngIf="!addStatus">Actions</th>
+                        </tr>
+                        <tr style="padding:10px;text-align:center;background-color:white;" *ngIf="!this.poForm.get('items').length">
+                          <th style="background-color:white;border-right:none"></th>
+                          <th style="background-color:white;border-left:none;border-right:none">PLEASE ADD ITEM NAMES</th>
+                          <th style="background-color:white;border-right:none;border-left:none"></th>
+                          <th style="background-color:white;border-left:none"></th>
+                        </tr>
+                      </thead>
+                      <tbody formArrayName="items" *ngFor="let item of poForm.controls['items'].controls; let i = index">
+                        <tr [formGroupName]="i">
+                          <td>
+                            <div class="form-group" style="margin-bottom:0px" *ngIf="!addStatus">
+                              <input formControlName='skuCode' class="form-control" type="text" placeholder="SKU Code" (change)="getProductName(i)">
+                              <span *ngIf="item.get('skuCode').hasError('required') && submitted" class=" icon-color-bad ">Please
+enter SKU Code</span>
+                              <span *ngIf="item.get('skuCode').hasError('maxlength')" class=" icon-color-bad ">Please
+enter valid SKU between 2 to 32 characters only</span>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:0px" *ngIf="addStatus">
+                              <input formControlName='skuCode' class="form-control" type="text" placeholder="SKU Code" readonly (change)="getProductName(i)">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" style="margin-bottom:0px">
+                              <input formControlName='itemName' class="form-control" type="text" placeholder="Item Name" readonly>
+                              <!-- <span *ngIf="item.get('itemName').hasError('required') && submitted" class=" icon-color-bad ">Please
+                                enter valid SKU for item name</span> -->
+
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" style="margin-bottom:0px" *ngIf="!addStatus">
+                              <input formControlName='quantity' class="form-control" type="number" placeholder="Quantity">
+                              <span *ngIf="item.get('quantity').hasError('required') && submitted " class=" icon-color-bad ">Please
+enter quantity</span>
+                              <span *ngIf="item.get('quantity').hasError('pattern')" class=" icon-color-bad ">Please
+enter valid quantity below 99999</span>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:0px" *ngIf="addStatus">
+                              <input formControlName='quantity' class="form-control" type="number" placeholder="Quantity" readonly>
+                            </div>
+                          </td>
+                          <td *ngIf="!addStatus" (click)="onDeleteItem(i)" style="text-align:center;padding: 14px;">
+                            <a class="editor_remove"><i class="fa fa-trash-o"></i></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="form-group">
+                      <label for="comments"><b>Comments : </b></label>
+                      <textarea id="comments" class="form-control" rows="5" style=" resize: none;" placeholder="please enter comments" [(ngModel)]="comments"
+                        [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                  </div>
+                  <span style="text-align:center;font-weight:bold;color:red">{{errorAlertMessages}}<br></span>
+                  <span style="text-align:center;font-weight:bold;color:green">{{successAlertMessages}}</span>
+                  <div class="row">
+                    <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning" (click)="gotoHomePage()">Cancel</button></div>
+                    <div class="col-sm-6"><button class="btn btn-success" type="submit"> Submit </button></div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+          </div>
+        </sa-widget>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div>

@@ -1,0 +1,230 @@
+header {
+	width: 102%;
+	margin-top: 0px !important;
+	background-color: white;
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin: 5px 0px 0px 0px;
+}
+
+img {
+	margin: 0px 0px 0px 60px;
+}
+
+footer {
+	z-index: 10;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: gray;
+}
+
+#productchecklist-page {
+	margin-bottom: 0;
+	padding-top: 7px;
+	text-align: left;
+}
+
+th {
+	border: ridge;
+}
+
+td {
+	border: ridge;
+}
+
+body {
+	width: 98% !important;
+}
+
+.well {
+	width: 102.01%;
+}
+
+.breadcrumb {
+	width: 123%;
+}
+
+#background {
+	background-color: #d2e4d6;
+}
+
+.empty {
+	border: 2px dashed #cccccc;
+	border-radius: 0;
+	font-size: 1.2rem;
+	line-height: 2rem;
+	/* margin: 10px; */
+	min-height: 300px;
+	padding: 175px 30px;
+	text-align: center;
+}
+
+.scroll {
+	padding-left: 12%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 525px;
+}
+
+.page-header {
+	padding-top: 13px;
+	margin: -20px 0 -2px;
+	background-color: #9cb9b6;
+}
+
+.form-horizontal .control-label {
+	text-align: left !important;
+}
+
+.breadcrumb {
+	margin-right: -21%;
+	margin-bottom: 0px !important;
+}
+
+.messagebox_buttons {
+	background-color: rgb(226, 46, 33) !important;
+}
+
+.messagebox {
+	border: 1px solid #020a04 !important;
+}
+
+.modal-header {
+	background-color: #24de5e !important;
+}
+
+h4 {
+	color: green !important;
+	text-align: center !important;
+	font-size: 41px !important;
+	font-family: initial !important;
+}
+
+.btn-success {
+	margin-bottom: -120px !important;
+	margin-left: 42px !important;
+	margin-top: -67px !important;
+}
+
+.table.dataTable.no-footer {
+	margin-left: 28px !important;
+	width: 98% !important;
+}
+
+.ibox float-e-margins {
+	margin-bottom: 60px !important;
+}
+
+@media screen and (min-width: 200px) and (max-width:767px) {
+	.btn-success {
+		top: 25px !important;
+		position: relative !important;
+		background-color: green !important;
+		float: right !important;
+	}
+	h4 {
+		color: green !important;
+		text-align: left !important;
+		font-size: 30px !important;
+		font-family: initial !important;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.btn-success {
+		position: relative;
+		top: 84px !important;
+		float: right;
+		margin-left: 59px !IMPORTANT;
+		background-color: green !important;
+	}
+	h4 {
+		text-align: center !important;
+	}
+}
+
+.btn-warning {
+	text-align: left !important;
+	background-color: #26ad28 !important;
+	border-color: #26ad28 !important;
+	width: 100px !important;
+}
+
+.btn-verify {
+	text-align: left !important;
+	background-color: #26ad28 !important;
+	border-color: #26ad28 !important;
+	width: 40px !important;
+}
+
+#startDate {
+	width: 150px;
+	height: 30px;
+}
+
+#endDate {
+	width: 150px;
+	height: 30px
+}
+
+.download {
+	/* margin-bottom: -120px !important;
+		   margin-left: 42px!important;
+    margin-top: -67px!important;
+    
+    top: 25px!important;
+    position: relative!important;
+    background-color:green!important;
+    float: right!important; */
+	margin-top: 18px;
+	margin-left: 1000px;
+	background-color: green;
+	color: white;
+	width: 140px; "
+	top: 84px !important;
+	margin-left: 59px !IMPORTANT;
+	background-color: green !important;
+}
+
+@media screen and (min-width: 768px) {
+	.button {
+		float: right !important;
+		background-color: green !important;
+		border: none;
+		color: white;
+		padding: 8px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 14px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 8px;
+	}
+
+	/* .button1  {
+    top: 15px!important;
+    position: relative!important;
+    background-color:green!important;
+    float: right!important;
+    
+    color: white;
+    width:200px;
+    height:35px;
+   margin-left:5em
+}      */
+	#filter {
+		width: 150px;
+		height: 30px
+	}
+	#productName {
+		display: inline-block;
+		/* width:180px; */
+		white-space: nowrap;
+		overflow: hidden !important;
+		text-overflow: ellipsis;
+	}
+}

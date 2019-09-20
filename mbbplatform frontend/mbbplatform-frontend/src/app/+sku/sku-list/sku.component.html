@@ -1,0 +1,99 @@
+<div id="content">
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">SKU Details </h2>
+                        <div class="widget-toolbar" role="menu">
+                            <a class="btn btn-primary" routerLink="/sku/add"> Add SKU</a>
+                        </div>
+                    </header>
+                    <div class="well padding-10">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label class="control-label">Facility</label>
+                                <select [ngModelOptions]="{standalone: true}" (change)="getLocationDetails()"
+                                    class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="facilityId">
+                                    <option *ngFor="let location of locationDetails" [value]="location.id">
+                                        {{location.location_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="well padding-10">
+                        <sa-datatable id="SKUDataTable" [options]="SKUDetails"
+                            tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                            width="100%" filter="true">
+                            <thead>
+                                <!--<tr>
+                                    <th class="hasinput ">
+                                        <input type="text" class="form-control" placeholder="SKU">
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>-->
+                                <tr>
+                                    <th>SKU </th>
+                                    <th>Product Name </th>
+                                    <th>Threshold</th>
+                                    <th>Serial Number</th>
+                                    <th>Description</th>
+                                    <th>QR Code Id</th>
+                                    <th>SKU Image</th>
+                                    <th>Edit </th>
+                                </tr>
+                            </thead>
+
+                        </sa-datatable>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title"><strong>{{this.prodName}}</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+                                <div sa-widget [editbutton]="false" color="greenDark">
+                                    <div style='border: 0px solid #CCC;'>
+                                        <div class="widget-body no-padding">
+                                            <img [src]="this.skuImg" width="70%" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" (click)="lgModal.hide()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </sa-widgets-grid>
+</div>
+<loader [loading]="loading"> </loader>

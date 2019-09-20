@@ -1,0 +1,190 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/shipping" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Package Details</span>        <span> / Dispatch Package</span> </div><br>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!--DOCUMENTS UPLOAD-->
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+                        <h2>Documents Upload ( File size below 3MB)</h2>
+
+                    </header>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="assets/img/upload.png" width="50%" *ngIf="!image1">
+                                <div *ngIf="image1" style="text-align:right" (click)="imgDelete(1)"> <i class="fa fa-times" style="border: 1px solid black;border-bottom: none;margin-right: 1px; padding: 1px 7px;"></i></div>
+                                <img [src]="image1" style="width:100%;height:100px" *ngIf="image1" />
+                                <input id="file-input1" type="file" (change)="picked($event,1)" *ngIf="!image1" accept="image/png, .jpeg, .jpg" /><br>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="assets/img/upload.png" width="50%" *ngIf="!image2">
+                                <div *ngIf="image2" style="text-align:right" (click)="imgDelete(2)"> <i class="fa fa-times" style="border: 1px solid black;border-bottom: none;margin-right: 1px; padding: 1px 7px;"></i></div>
+                                <img [src]="image2" style="width:100%;height:100px" *ngIf="image2" />
+                                <input id="file-input2" type="file" (change)="picked($event,2)" *ngIf="!image2" accept="image/png, .jpeg, .jpg" /><br>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="assets/img/upload.png" width="50%" *ngIf="!image3">
+                                <div *ngIf="image3" style="text-align:right" (click)="imgDelete(3)"> <i class="fa fa-times" style="border: 1px solid black;border-bottom: none;margin-right: 1px; padding: 1px 7px;"></i></div>
+                                <img [src]="image3" style="width:100%;height:100px" *ngIf="image3" />
+                                <input id="file-input3" type="file" (change)="picked($event,3)" *ngIf="!image3" accept="image/png, .jpeg, .jpg" /><br>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <button class="btn btn-sm btn-primary" style="margin-top:50px" (click)="documentsSubmit()"> Submit</button>
+                            </div>-->
+                        </div>
+                    </div>
+                </sa-widget>
+                <br>
+                <!--TRANSPORT SELECTION-->
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+                    [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+              <i class="fa fa-table"></i>
+            </span>
+                        <h2>Transport Details</h2>
+                    </header>
+                    <div class="widget-body" *ngIf="uploadedFiles.length">
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label><b>Transport Type : </b></label>
+                                    <select class="form-control" [(ngModel)]="selectedTransportType">
+                          <option disabled [value]=null selected>Select Type</option>
+                          <option *ngFor="let transport of transportTypes" [value]="transport.id">{{transport.transportType}}</option>
+                        </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row" *ngIf="selectedTransportType==1">
+                            <div class="col-sm-12">
+                                <span style="color:green;font-weight:bold">{{selfTransportSuccessMsg}}</span>
+                                <span style="color:red;font-weight:bold">{{selfTransportErrorMsg}}</span>
+                                <form id="contact-form" class="smart-form" [formGroup]="ownTransportForm" (ngSubmit)="selfTransportDetails()">
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-3">
+                                                <label class="label"><b>Driver Name</b></label>
+
+                                                <label class="input">
+                                            <i class="icon-append fa fa-user"></i>
+                                    <input type="text"  formControlName="driverName">
+                                    <span *ngIf="ownTransportForm.get('driverName').hasError('required') && ownSubmitted" class=" icon-color-bad ">Driver name is required</span>
+                                    <span *ngIf="ownTransportForm.get('driverName').hasError('pattern')" class=" icon-color-bad ">Driver name required 3-32 characters</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label"><b>Vehicle Number</b></label>
+                                                <label class="input">
+                                            <i class="icon-append fa fa-truck"></i>
+                                    <input type="text" formControlName="vehicleNumber">
+                                    <span *ngIf="ownTransportForm.get('vehicleNumber').hasError('required') && ownSubmitted" class=" icon-color-bad ">Vehicle number is required</span>
+                                    <span *ngIf="ownTransportForm.get('vehicleNumber').hasError('pattern') " class=" icon-color-bad ">Vehicle number required 6-16 characters</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label"><b>Driver Phone Number</b></label>
+                                                <label class="input">
+                                            <i class="icon-append fa fa-phone"></i>
+                                    <input type="text" formControlName="driverNumber">
+                                    <span *ngIf="ownTransportForm.get('driverNumber').hasError('required') && ownSubmitted" class=" icon-color-bad ">Phone number is required</span>
+                                    <span *ngIf="ownTransportForm.get('driverNumber').hasError('pattern') " class=" icon-color-bad ">Please enter valid phone number</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-2">
+                                                <label class="label"><b>Alternate Number</b></label>
+                                                <label class="input">
+                                            <i class="icon-append fa fa-phone"></i>
+                                    <input type="text" formControlName="driverNumber_alter">
+                                    <span *ngIf="ownTransportForm.get('driverNumber_alter').hasError('pattern') " class=" icon-color-bad ">Please enter valid phone number</span>
+                                    <span *ngIf="ownTransportForm.hasError('SAMENUMBER')&& ownSubmitted" class=" icon-color-bad ">Alternate phone number should not be same</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-3">
+                                                <label class="label"><b>&nbsp;</b></label>
+                                                <button type="submit" title="Submit" class="btn btn-sm btn-primary">Submit</button>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="selectedTransportType==2">
+                            <div class="col-sm-12">
+                                <span style="color:green;font-weight:bold">{{transportSuccessMsg}}</span>
+                                <span style="color:red;font-weight:bold">{{transportErrorMsg}}</span>
+                                <form id="contact-form" class="smart-form" [formGroup]="privateTransportForm" (ngSubmit)="aggregatorTransportDetails()">
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-3">
+                                                <label class="label"><b>Shipping Aggregator</b></label>
+
+                                                <label class="input">
+                                            <i class="icon-append fa fa-truck"></i>
+                                    <input type="text" formControlName="shippingAggr">
+                                       <span *ngIf="privateTransportForm.get('shippingAggr').hasError('required') && submitted" class=" icon-color-bad ">Shipping aggregator is required</span>
+                                    <span *ngIf="privateTransportForm.get('shippingAggr').hasError('pattern') && submitted" class=" icon-color-bad ">Please enter atleast 3-10 characters</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-3">
+                                                <label class="label"><b>Courier Name</b></label>
+                                                <label class="input">
+                                            <i class="icon-append fa fa-truck"></i>
+                                    <input type="text" formControlName="courierName">
+                                       <span *ngIf="privateTransportForm.get('courierName').hasError('required') && submitted" class=" icon-color-bad ">Courier name is required</span>
+                                    <span *ngIf="privateTransportForm.get('courierName').hasError('pattern') && submitted" class=" icon-color-bad ">Please enter atleast 3-10 characters</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-3">
+                                                <label class="label"><b>Tracking Number</b></label>
+                                                <label class="input">
+                                            <i class="icon-append fa fa-map"></i>
+                                    <input type="text" formControlName="trackingNumber">
+                                    <span *ngIf="privateTransportForm.get('trackingNumber').hasError('required') && submitted" class=" icon-color-bad ">Tracking number is required</span>
+                                    <span *ngIf="privateTransportForm.get('trackingNumber').hasError('pattern') && submitted" class=" icon-color-bad ">Please enter atleast 2-30 characters</span>
+                                </label>
+                                            </section>
+                                            <section class="col col-3">
+                                                <label class="label"><b>&nbsp;</b></label>
+                                                <button type="submit" title="Submit" class="btn btn-sm btn-primary">Submit</button>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+
+<div *ngIf="loading">
+    <div class="ui-overlay-c">
+        <div class="loading">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <h4 style="color: #e0dcd4">{{sucessMsg}}</h4>
+        </div>
+    </div>
+</div>

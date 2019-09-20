@@ -1,0 +1,92 @@
+<div class="row">
+  <sa-widgets-grid *ngIf="noData">
+    <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+      [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark"
+      class="box-shadow-ui"  style="margin-top:47px;
+      padding: 14px;">
+      <header>
+        <h2>CONVERSIONS </h2>
+      </header>
+
+      <div class="widget-body text-center">
+        <h3>There is no data in selected time range</h3>
+      </div>
+    </div>
+  </sa-widgets-grid>
+  <div *ngIf="!noData">
+
+    <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 '">
+
+      <div sa-widget class="jarviswidget-color-blueDark jarviswidget">
+        <header>
+
+          <h2>DIAMOND-CONVERSION </h2>
+          <div class="widget-toolbar inventory_status_chart" role="menu">
+            <on-off-switch (onoffClick)="lineChartConvertion('diamond-TargetActualconversion')"></on-off-switch>
+          </div>
+        </header>
+        <div id="inventory_status_chart" class="dc-chart">
+          <div class="clearfix">
+            <div id="diamond-TargetActualconversion" style="height:250px"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 even'">
+
+      <div sa-widget class="jarviswidget-color-blueDark jarviswidget">
+        <header>
+
+          <h2>GOLD-CONVERSION</h2>
+          <div class="widget-toolbar inventory_status_chart" role="menu">
+            <on-off-switch (onoffClick)="lineChartConvertion('gold-TargetActualconversion')"></on-off-switch>
+          </div>
+        </header>
+        <div id="inventory_status_chart" class="dc-chart">
+          <div class="clearfix">
+            <div id="gold-TargetActualconversion" style="height:250px"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 align-top '">
+
+      <div sa-widget class="jarviswidget-color-blueDark jarviswidget">
+        <header>
+
+          <h2>DIAMOND - WALKINS </h2>
+          <div class="widget-toolbar inventory_status_chart" role="menu">
+            <on-off-switch (onoffClick)="lineChartConvertion('diamond-walkinconversion')"></on-off-switch>
+          </div>
+        </header>
+        <div id="inventory_status_chart" class="dc-chart">
+          <div class="clearfix">
+            <div id="diamond-walkinconversion" style="height:250px"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [ngClass]="uiClassToggle ?'col-sm-12':'col-sm-6 col-xs-12 even align-top'">
+
+      <div sa-widget class="jarviswidget-color-blueDark jarviswidget">
+        <header>
+
+          <h2>GOLD - WALKINS </h2>
+          <div class="widget-toolbar inventory_status_chart" role="menu">
+            <on-off-switch (onoffClick)="lineChartConvertion('gold-walkinconversion')"></on-off-switch>
+          </div>
+        </header>
+        <div id="inventory_status_chart" class="dc-chart">
+          <div class="clearfix">
+            <div id="gold-walkinconversion" style="height:250px"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<loader [loading]=loaderStatus></loader>

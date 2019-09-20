@@ -1,0 +1,63 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title></title>
+<style>
+table {
+	border-collapse: collapse;
+}
+
+table, td, th {
+	border: 1px solid black;
+}
+
+table th {
+	background-color: gray;
+}
+</style>
+</head>
+
+<body>
+	<table border="">
+		<tr align="center" style="font-size: medium; color: black;">
+			<th>S NO</th>
+			<th>SKU Code</th>
+			<th>QR code</th>
+			<th>Product Name</th>
+			<th>Payment Mode</th>
+			<th>Channel</th>
+			<th>Comment</th>
+		</tr>
+		<tr th:each="dispatchDetails,iterator : ${listOfDispatchDetails}">
+			<td th:text="${iterator.index+1}" align="center"
+				style="color: black;"></td>
+
+			<td th:text="${dispatchDetails.
+				skuCode}" align="center"
+				style="color: black;"></td>
+
+			<td th:text="${dispatchDetails.
+				barcode}" align="center"
+				style="color: black;"></td>
+
+
+			<td th:text="${dispatchDetails.
+				productName}" align="center"
+				style="color: black;"></td>
+			<td th:text="${dispatchDetails.
+				paymentMode}" align="center"
+				style="color: black;"></td>
+
+			<td th:text="${dispatchDetails.channel}" align="center"
+				style="color: black;"></td>
+			<td th:text="${dispatchDetails.
+				comment}" align="center"
+				style="color: black;"></td>
+
+
+		</tr>
+	</table>
+</body>
+</html>
+

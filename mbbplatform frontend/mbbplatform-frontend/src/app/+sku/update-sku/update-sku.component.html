@@ -1,0 +1,254 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/sku"
+            style="cursor: pointer;color: #335CA7;text-decoration: underline;">SKU
+            List</span> <span> / Update SKU</span> </div><br>
+    <sa-widgets-grid>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- MAIN CONTENT -->
+                <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>Update SKU</h2>
+                    </header>
+                    <div *ngIf='skuDetails' class="widget-body">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+
+                                <!-- <form [formGroup]="updateSKUForm">
+                                    <div formGroupName="userData">
+                                        <div class="row">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-8">
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="skucode"><b>SKU Code </b></label>
+                                                            <input type="text" class="form-control" readonly placeholder="SKU Code" formControlName="skucode" id="skucode" [(ngModel)]="skuObj.skuCode">
+                                                            <span *ngIf="!updateSKUForm.get('userData.skucode').valid && formValidate">
+                                                                <span class=" text-danger " *ngIf="updateSKUForm.get('userData.skucode').errors['required']">Please
+                                                                    enter SKU code</span>
+                                                            <span class=" text-danger " *ngIf="updateSKUForm.get('userData.skucode').errors['maxlength']">Please
+                                                                    enter valid SKU Code with 30 letters only</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="threshold"><b>Threshold Level </b></label>
+                                                            <input type="text" class="form-control" id="threshold" placeholder="Threshold level" formControlName="threshold" [(ngModel)]="skuObj.thresholdLevel">
+                                                            <span *ngIf="!updateSKUForm.get('userData.threshold').valid && formValidate">
+                                                                <span class=" text-danger " *ngIf="updateSKUForm.get('userData.threshold').errors['required']">Please
+                                                                    enter
+                                                                    threshold level</span>
+                                                            <span class=" text-danger " *ngIf="updateSKUForm.get('userData.threshold').errors['maxlength'] ||
+                                                                                    updateSKUForm.get('userData.threshold').errors['pattern']">Please
+                                                                    enter valid threshold level between 1-999 only</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="productName"><b>Product Name </b></label>
+                                                    <input type="text" id="productName" placeholder="Product Name" formControlName="productName" class="form-control" [(ngModel)]="skuObj.productName">
+                                                    <span *ngIf="!updateSKUForm.get('userData.productName').valid && formValidate">
+                                                        <span class=" text-danger " *ngIf="updateSKUForm.get('userData.productName').errors['required']">Please
+                                                            enter Product Name</span>
+                                                    <span class=" text-danger " *ngIf="updateSKUForm.get('userData.productName').errors['maxlength']">Please
+                                                            enter product name less than 100 letters only</span>
+                                                    </span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="purchageNumber"><b>Description </b></label>
+                                                    <textarea formControlName="description" rows="5" placeholder="Description" class="form-control" [(ngModel)]="skuObj.description"></textarea>
+                                                    <span *ngIf="!updateSKUForm.get('userData.description').valid && formValidate">
+                                                        <span class=" text-danger " *ngIf="updateSKUForm.get('userData.description').errors['required']">Please
+                                                            enter description</span>
+                                                    <span class=" text-danger " *ngIf="updateSKUForm.get('userData.description').errors['maxlength']">Please
+                                                            enter only 200 letters only</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-success" *ngIf='isok'>{{successMessage}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-danger" *ngIf='existSku'>{{existSKUMessage}}</div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning" (click)="gotoPreviousPage()">Cancel</button></div>
+                                        <div class="col-sm-6"><button class="btn btn-success" type="submit" (click)="updateSkuDetails()">
+                                                Submit
+                                            </button></div>
+                                    </div>
+                                </form> -->
+                                <form [formGroup]="updateSKUForm">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="skucode"><b>SKU Code </b></label>
+                                                    <input readonly type="text" class="form-control"
+                                                        placeholder="SKU Code" formControlName="skucode" id="skucode"
+                                                        [(ngModel)]="skuObj.inventory.skuCode">
+                                                    <span *ngIf="!updateSKUForm.get('skucode').valid  && formValidate">
+                                                        <span class="icon-color-bad "
+                                                            *ngIf="updateSKUForm.get('skucode').errors['required']">Please
+                                                            enter SKU code</span>
+                                                        <span class=" icon-color-bad "
+                                                            *ngIf="updateSKUForm.get('skucode').errors['maxlength']">Please
+                                                            enter valid SKU Code with 30 letters only</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="productName"><b>Product Name </b></label>
+                                                    <input type="text" id="productName" placeholder="Product Name"
+                                                        formControlName="productName" class="form-control"
+                                                        [(ngModel)]="skuObj.inventory.productName">
+                                                    <span
+                                                        *ngIf="!updateSKUForm.get('productName').valid  && formValidate">
+                                                        <span class="  icon-color-bad  "
+                                                            *ngIf="updateSKUForm.get('productName').errors['required']">Please
+                                                            enter Product Name</span>
+                                                        <span class="  icon-color-bad  "
+                                                            *ngIf="updateSKUForm.get('productName').errors['maxlength']">Please
+                                                            enter product name less than 100 letters only</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top:2px">
+                                            <div class="row">
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-6">
+                                                    <span style="width:20%"><b>Threshold levels (Facility
+                                                            wise)</b></span>
+                                                </div>
+                                            </div><br>
+                                            <div formArrayName="items"
+                                                *ngFor="let item of updateSKUForm.controls['items'].controls; let i = index">
+                                                <div [formGroupName]="i">
+                                                    <!-- <input formControlName='location' readonly class="form-control"
+                                                                                    type="text" placeholder="Threshold level"> -->
+                                                    <div class="row">
+                                                        <div class="col-sm-3"></div>
+                                                        <div class="col-sm-4">
+                                                            <div>
+                                                                {{updateSKUForm.controls.items.controls[i].controls.facility.value}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input formControlName='thresholdLevel' class="form-control"
+                                                                [readonly]='isReadOnly' style='margin-left: -100px;'
+                                                                type="text" placeholder="Value">
+                                                            <span style='margin-left: -237px;'
+                                                                *ngIf="item.get('thresholdLevel').hasError('required') && formValidate"
+                                                                class="  icon-color-bad ">Please
+                                                                enter
+                                                                threshold level</span>
+                                                            <span style='margin-left: -237px;' class=" icon-color-bad "
+                                                                *ngIf="item.get('thresholdLevel').hasError('pattern')">Please
+                                                                enter valid threshold level between 1-999
+                                                                only</span>
+                                                        </div>
+                                                    </div><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for='description'><b>Description
+                                                        </b></label>
+                                                    <textarea formControlName="description" rows="5"
+                                                        placeholder="Description" class="form-control"
+                                                        [(ngModel)]="skuObj.inventory.description"></textarea>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                                <label class="col-md-4"><b style='margin-left: -20px;'>Serial
+                                                        Number</b></label>
+                                            <div class="checkbox">
+                                                <label for="serialNumber">
+                                                    <input disabled class="checkbox style-0" type="checkbox"
+                                                        id="serialNumber" formControlName="serialNumber"
+                                                        [(ngModel)]="skuObj.inventory.serialNumberStatus"
+                                                        value="{{skuObj.inventory.serialNumberStatus}}" />
+                                                        <span style='margin-left: -34px;'></span><br>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label style='margin-left: -19px;' class="col-md-4"><b>SKU
+                                                    Status</b></label>
+                                            <div *ngFor="let item of details;let i=index">
+                                                <div class="col-md-4">
+                                                    <label class="checkbox-inline">
+                                                        <input id='ch' class="checkbox" formControlName="notification"
+                                                            type="checkbox" [checked]="item.check"
+                                                            (change)="onChange(i)">
+                                                        <span style='margin-left: -48px;'>{{item.name}}</span>
+
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <span *ngIf="!updateSKUForm.get('notification').valid  && formValidate">
+                                                <span class="  icon-color-bad  col-md-8"
+                                                    *ngIf="updateSKUForm.get('notification').errors['required']">Please
+                                                    select SKU Status</span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-5">
+
+                                        </div>
+                                    </div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-danger"
+                                        *ngIf='hasItem'>
+                                        {{hasItems}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-success" *ngIf='isok'>
+                                        {{successMessage}}</div>
+                                    <div style="text-align:center;font-weight:bold;" class="text-danger"
+                                        *ngIf='existSku'>{{existSKUMessage}}</div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning"
+                                                (click)="gotoPreviousPage()">Cancel</button></div>
+                                        <div class="col-sm-6"><button [disabled]="!validate" class="btn btn-success"
+                                                type="submit" (click)="updateSkuDetails()">
+                                                Submit <i class="fa fa-refresh fa-spin" *ngIf='spin'></i>
+                                            </button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </sa-widget>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

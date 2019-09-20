@@ -1,0 +1,35 @@
+.box-title_dia,.box-title_gold{
+    color:#2196F3;
+    font-size: 18px;
+    fill: #2196F3;
+}
+/* 
+.dia-tar-value,.gold-tar-value,.dia-act-value,.gold-act-value{
+font-size: 15px;
+padding-top: 1px;
+font-weight: bold
+} */
+
+.kpi-block{
+padding:0px;
+/*box-shadow:0px 0px 3px #2E5070*/
+}
+.box-title_dia_percentage{
+    font-size: 40px;
+    color: #fda706;
+    fill: #fda706
+}
+
+.kpi-block{
+border: 1px solid white !important
+}
+.kpiwithscroll{
+padding:0px 48px 5px 48px;
+margin-top: 99px;
+}
+.kpiwithscrolld2h{
+    margin-top: 169px !important;
+}
+.textcenter{
+    text-align: center;
+}

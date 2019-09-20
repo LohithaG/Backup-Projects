@@ -1,0 +1,120 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/sku" style="cursor: pointer;color: #335CA7;text-decoration: underline;">SKU
+            List</span>
+        <span> / SKU Details </span> </div>
+    <sa-widgets-grid>
+        <br>
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+            <header>
+                <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                <h2>SKU Image Details</h2>
+            </header>
+            <div class="widget-body">
+                <form class="col-sm-6" [formGroup]="addImageForm">
+                    <div class="row" *ngIf="image || imageShow">
+                        <div class="col-sm-2"></div>
+                        <img style='cursor: pointer;' class="zoom" (click)=zoom() [src]="this.productImg" width="100%"
+                            *ngIf="!imageShow" />
+                        <div class="col-sm-8" style='border-style: dashed; color:#ddd; margin-left:-30px' *ngIf="imageShow">
+                            <img src="assets/img/upload.png" width="20%" *ngIf="!image1" style='margin-left: 124px;'>
+                            <div *ngIf="image1" style="text-align:right" (click)="imgDelete(1)"> <i class="fa fa-times"
+                                    style="border: 1px solid black;border-bottom: none;margin-right: 1px; padding: 1px 7px;"></i></div>
+                            <img [src]="image1" style="width:100%;height:100px" *ngIf="image1" />
+                            <label *ngIf="!image1" style='margin-left: 115px;margin-right: 126px;display:block;background-color: lightsteelblue;color: black;'
+                                for="file-input1" class="btn">SKU Image</label>
+                            <input style="display:none" *ngIf="imageShow" id="file-input1" formControlName="images"
+                                type="file" (change)="picked($event,1)" accept="image/png, .jpeg, .jpg" />
+                            <!-- <input type="hidden" name="fileHidden" formControlName="imageInput"/>  -->
+                            <span *ngIf="!addImageForm.get('images').valid && formValidate">
+                                <span style='margin-left: 102px;' class="icon-color-bad " *ngIf="addImageForm.get('images').errors['required']">Please
+                                    Select Image</span>
+                            </span><br>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf='change'>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <button style='width: 88px;' (click)="gotoPreviousPage()" class="btn btn-warning" type="submit">
+                                    Back
+                                </button>
+                            </div>
+                            <div class="col-sm-3"><button class="btn btn-success" type="submit" (click)="changeImage()">
+                                    Update SKU Image
+                                </button></div>
+                        </div>
+                    </div>
+                    <div *ngIf='imageShow'>
+                        <div class="row">
+                            <div class="col-sm-7"></div>
+                           
+                            <div class="col-sm-2"><button class="btn btn-success" type="submit" (click)="updateImage()">
+                                    Submit  <i class="fa fa-refresh fa-spin" *ngIf='spin'></i>
+                                </button></div>
+                            <div class="col-sm-7">
+                                <div style="text-align:center;font-weight:bold;" class="text-success" *ngIf='update'>{{updateMessage}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5" *ngIf='details' sa-widget [editbutton]="false" color="blueDark">
+                    <div>
+                        <div class="widget-body no-padding">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>SKU Code</th>
+                                            <th>Product Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{skuDetails.skuCode}}</td>
+                                            <td>{{skuDetails.productName}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div *ngIf='details' class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <article class="col-sm-12 col-md-12 col-lg-12">
+                                <div sa-widget [editbutton]="false" color="greenDark">
+                                    <div>
+                                        <div class="widget-body no-padding">
+                                            <img class="zoom" [src]="this.productImg" height='60%' width="60%" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" (click)="lgModal.hide()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

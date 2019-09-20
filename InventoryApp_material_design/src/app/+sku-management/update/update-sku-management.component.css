@@ -1,0 +1,13 @@
+.mat-focused .placeholder {    
+    color: #AAAAAA;
+    }
+  .placeholder {
+     color:#AAAAAA;
+    }
+
+    .height-skus{
+      max-height: 100px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: block;
+      }

@@ -1,0 +1,90 @@
+<sa-widgets-grid>
+    <div class="row kpimarginD2H">
+        <div class="col-sm-12">
+            <sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                color="blueDark">
+                <header>
+                    <h2>Date Filters </h2>
+                </header>
+                <div class="widget-body" style="border-bottom: 6px solid #ddd !important;" >
+
+                    <form class="smart-form" (ngSubmit)="querySubmit()" id="dealer-filter-form" style="margin: 4px">
+                        <div class="row btn-toolbar" style="margin: 0 7px;">
+                            <fieldset style="padding:0px">
+
+                                <section class="form-group col-sm-2 padding-5 ">
+                                    <label class="control-label"><b>Select</b></label>
+                                    <select class="form-control" [(ngModel)]="dateRange1"
+                                        [ngModelOptions]="{standalone: true}" (change)="dataChangeRange1()">
+                                        <option *ngFor="let data of dateRangeDetails1 " [value]="data.range">
+                                            {{data.name}}</option>
+                                    </select>
+                                </section>
+
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryDateRange1">
+                                    <label class="control-label"> <b>From</b></label>
+                                    <my-date-picker [disabled]="dateRange1 !='CustomRange'" [options]="myDatePicker"
+                                        [selDate]="startDate" [(ngModel)]="QueryDateRange1.startDate" name="startDate">
+                                    </my-date-picker>
+                                </section>
+
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryDateRange1">
+                                    <label class="control-label"><b>To</b></label>
+                                    <my-date-picker [disabled]="dateRange1 !='CustomRange'" [options]="myDatePicker"
+                                        [selDate]="endDate" [(ngModel)]="QueryDateRange1.endDate" name="endDate">
+                                    </my-date-picker>
+                                    <div class="icon-color-bad">{{errorMessage1}}</div>
+                                </section>
+                                <section class="form-group col-sm-1 padding-5" *ngIf="QueryDateRange1">
+                                    <label for="location" class=" control-label "><b>State</b></label>
+                                    <select id="location" [(ngModel)]='stateId' [ngModelOptions]="{standalone: true}"
+                                        (change)="stateChange()" class="form-control input-sm">
+                                        <option *ngFor="let state of statesData" [ngValue]="state.state">{{state.state}}
+                                        </option>
+                                    </select>
+                                </section>
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryDateRange1">
+                                    <label for="classtype" class=" control-label "><b>Cluster</b></label>
+                                    <select id="classtype" [(ngModel)]='clusterId' [disabled]="stateId == 'ALL'"
+                                        [ngModelOptions]="{standalone: true}" (change)="clusterChange()"
+                                        class="form-control input-sm">
+                                        <option *ngFor="let cluster of clusterDetailsData" [ngValue]="cluster.cluster">
+                                            {{cluster.cluster}}</option>
+                                    </select>
+                                </section>
+                                <section class="form-group col-sm-2 padding-5" *ngIf="QueryDateRange1">
+                                    <label for="classtype" class=" control-label "><b>Location</b></label>
+                                    <select id="classtype" [(ngModel)]='locationId' [disabled]="clusterId == 'ALL'"
+                                        [ngModelOptions]="{standalone: true}" (change)="locationChange()"
+                                        class="form-control input-sm">
+                                        <option *ngFor="let location of locationDetailsData"
+                                            [ngValue]="location.locationCode">
+                                            {{location.locationCode}}</option>
+                                    </select>
+                                </section>
+                                <section class="form-group col-sm-1 padding-5 buttonright" >
+                                    <label class="control-label"><b>&nbsp;</b></label>
+                                    <button type="submit" class="btn btn-primary form-control" title="Submit"
+                                    [disabled]="dateRange1 !=='CustomRange'"  style="color: #fff;
+                                    background-color: #3276b1;
+                                    border-color: #2c699d;"  id="filter-reset">Submit</button>
+                                </section>
+
+                                <section class="form-group col-sm-1 padding-5 buttonright" >
+                                    <label class="control-label"><b>&nbsp;</b></label>
+                                    <button class="btn btn-default form-control" title="Reset" id="filter-reset"
+                                    [disabled]="dateRange1 !=='CustomRange'"  (click)="getDefaultDates()">Reset</button>
+                                </section>
+                            </fieldset>
+
+                        </div>
+
+                    </form>
+                </div>
+                <br>
+            </sa-widget>
+        </div>
+    </div>
+    <br>
+</sa-widgets-grid>

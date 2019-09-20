@@ -1,0 +1,93 @@
+<div class="row postion-from-filter-target" style="padding: 27px;padding-top: 0px;padding-bottom: 0px" *ngIf="infoData">
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">DIAMOND QTY</span> <span style="color:black;font-size:9px"> (CTs)</span>
+                </div>
+                <div class="col-sm-12 padding-10 box-bottom">
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty?.diamond" title="{{(goldDiaInfo?.actuals?.qty.diamond/goldDiaInfo?.target?.qty.diamond)*100}}">{{((goldDiaInfo?.actuals?.qty.diamond/goldDiaInfo?.target?.qty.diamond)*100).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty?.diamond==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 target-border">
+                    <div>Target</div>
+                    <div class="dia-tar-value" title="{{goldDiaInfo?.target?.qty.diamond}}"> {{(goldDiaInfo?.target?.qty.diamond).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 ">
+                    Actual
+                    <div class="dia-act-value">{{(goldDiaInfo?.actuals?.qty.diamond).toFixed(2)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">DIAMOND VALUE</span> <span style="color:black;font-size:9px"> (LACs)</span>
+                </div>
+                <div class="col-sm-12 padding-10 box-bottom">
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.diamond">{{((goldDiaInfo?.actuals?.value.diamond/goldDiaInfo?.target?.value.diamond)*100).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.diamond==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 target-border">
+                    <div>Target</div>
+                    <div class="dia-tar-value">{{(goldDiaInfo?.target?.value.diamond).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5">
+                    <div>Actual</div>
+                    <div class="dia-act-value">{{(goldDiaInfo?.actuals?.value.diamond).toFixed(2)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+
+            <div class="row kpi-block">
+                <div class="col-sm-12 col-xs-12 padding-5">
+                    <span class="box-title_gold">GOLD QTY</span> <span style="color:black;font-size:9px"> (KGs)</span>
+                </div>
+                <div class="col-sm-12 padding-10 box-bottom">
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty.gold">{{((goldDiaInfo?.actuals?.qty.gold/goldDiaInfo?.target?.qty.gold)*100).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.qty.gold==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 target-border">
+                    <div class="gold-act-title">Target</div>
+                    <div class="gold-tar-value">{{(goldDiaInfo?.target?.qty.gold).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5">
+                    <div class="gold-act-title">Actual</div>
+                    <div class="gold-act-value">{{(goldDiaInfo?.actuals?.qty.gold).toFixed(2)}}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align:center;padding:0px 0px 0px 0px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_gold">GOLD VALUE </span> <span style="color:black;font-size:9px"> (LACs)</span>
+                </div>
+                <div class="col-sm-12 padding-10 box-bottom">
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.gold">{{((goldDiaInfo?.actuals?.value.gold/goldDiaInfo?.target?.value.gold)*100).toFixed(2)}}</span>
+                    <span class="box-title_dia_percentage" *ngIf="goldDiaInfo?.target?.value.gold==0">0</span><span>%</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 target-border">
+                    <div class="gold-tar-title">Target</div>
+                    <div class="gold-tar-value">{{(goldDiaInfo?.target?.value.gold).toFixed(2)}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5">
+                    <div class="gold-act-title">Actual</div>
+                    <div class="gold-act-value">{{(goldDiaInfo?.actuals?.value.gold).toFixed(2)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

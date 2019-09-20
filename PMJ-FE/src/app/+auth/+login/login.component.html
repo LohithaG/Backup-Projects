@@ -1,0 +1,73 @@
+<!--<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group">
+
+    <span id="logo">
+      <img src="assets/img/medicalbulk.png" alt="MedicalBulkBuy" width="100%">  
+    </span>
+  </div>
+</header>-->
+
+
+<div id="main" role="main" class="animated fadeInDown">
+  <div id="content" class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 " style="margin-left:27%">
+        <div class="loginui well no-padding">
+          <form [formGroup]="complexForm" method="post" *ngIf="userLogin" class="smart-form client-form">
+            <header style="background-color:white;text-align:center">
+              <img src="./assets/img/pmj/pmj.png" alt="PMJ" width="40%">
+            </header>
+            <fieldset>
+              <section *ngIf="loginErrorMessage" style="color: red;"> {{loginErrorMessage}} </section>
+              <section>
+                <label class="label" for="email"><b>Username</b></label>
+                <div class="form-group form-control  input">
+                  <label class="input">
+                    <i class="icon-append fa fa-user"></i>
+                    <input type="email" name="email" [formControl]="this.email" [(ngModel)]="userLogin.username"
+                      placeholder="Username" />
+                    <span *ngIf=" this.email.hasError('required') &&submitted  " class=" text-danger ">Please enter
+                      valid username</span>
+                    <span *ngIf=" this.email.hasError('pattern') " class=" text-danger ">Please enter valid username between 3 to 32 characters only</span>
+                  </label>
+                </div>
+              </section>
+              <section>
+                <label class="label" for="password"><b>Password</b></label>
+                <div class="form-group form-control  input">
+                  <label class="input">
+                    <i class="icon-append fa fa-eye" [ngClass]="{'fa-eye-slash':!show, 'fa-eye':show}" (click)="showHidePassword()"></i>
+                    <input [type]="show ? 'text' : 'password'" name="password" [formControl]="this.password" [(ngModel)]="userLogin.password"
+                      placeholder="Password" />
+                    <span *ngIf=" this.password.hasError('required')  && submitted" class=" text-danger ">Please enter
+                      valid Password</span>
+                  </label>
+                </div>
+              </section>
+              <br>
+              <!-- <div class="show-grid">
+                <a routerLink="/auth/forgot-password">
+                  <u> <b>Forgot password ? </b></u>
+                </a>
+              </div>
+              <br>-->
+            </fieldset>
+            <footer style="background-color:white">
+              <button type='submit' [disabled]="!complexForm.valid" (click)="doLogin()" class="btn btn-primary">
+                Sign in
+                <i class="fa fa-cog fa-spin" *ngIf="loading"></i>
+                <span *ngIf="loading">loading...</span>
+              </button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <!--<ul *ngFor="let user of userRoles">
+    <li (click)="getPage(user)">{{user.role}}</li>
+  </ul>-->
+</div>

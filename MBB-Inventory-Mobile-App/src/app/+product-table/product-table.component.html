@@ -1,0 +1,54 @@
+<sa-widgets-grid>
+  <div class="row">
+    <div class="col-sm-12">
+      <sa-widget [editbutton]="false" color="blueDark">
+        <header>
+          <span class="widget-icon">
+            <i class="fa fa-table"></i>
+          </span>
+          <h2>Product Details </h2>
+          <div class="widget-toolbar">
+            <a class="btn btn-primary" (click)="addProductCheck()"> Scan Product</a>
+          </div>
+        </header>
+        <div>
+          <div class="widget-body">
+            <section *ngIf="driverDeleteSuccess" class="text-success text-center"> {{driverDeleteSuccess}} </section>
+            <section *ngIf="driverDeleteFailure" class="icon-color-bad text-center"> {{driverDeleteFailure}} </section>
+            <sa-datatable id="DataTable" [options]="options" tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+              width="100%">
+              <thead>
+                <tr>
+                  <th>Barcode</th>
+                  <th>Product Name</th>
+                  <th>Condition</th>
+                </tr>
+              </thead>
+            </sa-datatable>
+          </div>
+        </div>
+      </sa-widget>
+
+    </div>
+  </div>
+</sa-widgets-grid>
+<div class="text-center">
+  <div class="text-center btn btn-primary" (click)="saveProducts()">Save </div>
+</div>
+
+<div bsModal #ProductTableAlert="bs-modal" data-backdrop="static" class="modal fade" tabindex="-1" [config]="{'backdrop':'static', 'keyboard': false}"
+  role="dialog" aria-labelledby="myLargeModalLabel" style="top:35%">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><strong>Products</strong></h4>
+      </div>
+      <div class="modal-body ">
+        {{successStatus}}
+      </div>
+      <div class="modal-footer padding-10" style="text-align:center">
+        <button class="btn btn-primary" type="button" (click)="Okay()"> Ok </button>
+      </div>
+    </div>
+  </div>
+</div>

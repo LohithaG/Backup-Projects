@@ -1,0 +1,179 @@
+<div id="content">
+    <sa-widgets-grid>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+                    [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer
+                    color="blueDark">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </span>
+                        <h2 style="margin-right:2%;">Invoices Details </h2>
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <form class="smart-form" id="dealer-filter-form">
+                                <fieldset style="padding:0px">
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>From</b></label>
+                                        <my-date-picker [options]="myDatePickerOptions" [selDate]="startDate"
+                                            [(ngModel)]="QueryData.startDate" name="startDate"></my-date-picker>
+                                    </section>
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>To</b></label>
+                                        <my-date-picker [options]="myDatePickerOptions" [selDate]="endDate"
+                                            [(ngModel)]="QueryData.endDate" name="endDate"></my-date-picker>
+                                        <div class="icon-color-bad">{{errorMessage}}</div>
+                                    </section>
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>Payment Mode</b></label>
+                                        <select class="form-control ng-pristine ng-valid ng-touched"
+                                            [(ngModel)]="paymentType" [ngModelOptions]="{standalone: true}">
+                                            <option *ngFor="let payment of paymentMode" [value]="payment.payment_name">
+                                                {{payment.name}}</option>
+                                        </select>
+                                    </section>
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <label class="control-label">
+                                            <b>Channel</b></label>
+                                        <select class="form-control ng-pristine ng-valid ng-touched"
+                                            [(ngModel)]="channelType" [ngModelOptions]="{standalone: true}">
+                                            <option *ngFor="let channel of channelTypes" [value]="channel.channel_name">
+                                                {{channel.name}}</option>
+                                        </select>
+                                    </section>
+                                    <section class="form-group col-sm-2 padding-5" *ngIf="QueryData">
+                                        <label class="control-label"><b>Status</b></label>
+                                        <select class="form-control ng-pristine ng-valid ng-touched"
+                                            [(ngModel)]="statusType" [ngModelOptions]="{standalone: true}">
+                                            <option *ngFor="let status of statusTypes" [value]="status.status_name">
+                                                {{status.name}}</option>
+                                        </select>
+                                    </section>
+
+                                    <section style='margin-top: 20px;' class="form-group col-sm-1 padding-5"
+                                        *ngIf="QueryData">
+                                        <button type="button" title="Submit" class="btn btn-sm btn-primary"
+                                            id="filter-submit" (click)="QuerySubmit()">Submit</button>
+                                    </section>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="well padding-10">
+                        <sa-datatable id="InvoiceDataTable" [options]="InvoiceOptions"
+                            tableClass="table table-striped table-bordered table-hover" paginationLength="true"
+                            width="100%" filter="true">
+                            <thead>
+                                <tr>
+                                    <th>Order Id </th>
+                                    <th>Order Date</th>
+                                    <th>Order Total</th>
+                                    <th>Channel </th>
+                                    <th>AWB Number</th>
+                                    <th>Payment Mode</th>
+                                    <th>Status </th>
+                                </tr>
+                            </thead>
+                        </sa-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+
+
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" *ngIf="table">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"><b>Invoices Details : {{invoice}}</b></h4>
+            </div>
+            <div class="modal-body ">
+                <div class="row" style="padding:11px;padding-top:0px;">
+                    <div class="col-xs-12 col-sm-6 ">
+                        <div class="row">
+                            <div class=" col-xs-5 col-sm-5 padding-5  ">
+                                <b>Name</b>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 padding-5">:</div>
+                            <div class=" col-xs-6 col-sm-5 padding-5">
+                                {{inVoiceDetail.Name}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-xs-5 col-sm-5 padding-5  ">
+                                <b>Email</b>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 padding-5">:</div>
+                            <div class=" col-xs-6 col-sm-5 padding-5">
+                                {{inVoiceDetail.emial}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-xs-5 col-sm-5 padding-5  ">
+                                <b>Location</b>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 padding-5">:</div>
+                            <div class=" col-xs-6 col-sm-5 padding-5">
+                                {{inVoiceDetail.location}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" style="margin-top:2px">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>SKU Code </th>
+                                <th>Product name</th>
+                                <th>Quantity</th>
+                                <th>Shipping Provider</th>
+                                <th>gstTaxTypeCode</th>
+                                <th>Shipping Charges</th>
+                                <th>IGST</th>
+                                <th>SGST</th>
+                                <th>UTGST</th>
+                                <th>Total Price</th>
+                                <th>Payment Instrument</th>
+                                <th>Dispatach Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let inVoiceDetails of inVoiceDetails'>
+                                <td>{{inVoiceDetails?.skucode}}</td>
+                                <td>{{inVoiceDetails?.productName}}</td>
+                                <td>{{inVoiceDetails?.quantity}}</td>
+                                <td>{{inVoiceDetails?.shippingprovider}}</td>
+                                <td>{{inVoiceDetails?.gstTaxTypeCode}}</td>
+                                <td>{{inVoiceDetails?.shippingCharges}}</td>
+                                <td>{{inVoiceDetails?.IGST}}</td>
+                                <td>{{inVoiceDetails?.SGST}}</td>
+                                <tD>{{inVoiceDetails?.UTGST}}</tD>
+                                <td>{{inVoiceDetails?.totalPrice}}</td>
+                                <td><span
+                                        *ngIf='inVoiceDetails.paymentInstrument!=""'>{{inVoiceDetails?.paymentInstrument}}</span><span
+                                        *ngIf='inVoiceDetails.paymentInstrument==""'>-</span>
+                                </td>
+                                <td>{{inVoiceDetails?.dispatchDate|date:'dd-MM-yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="lgModal.hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<loader [loading]="loading"> </loader>

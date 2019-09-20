@@ -1,0 +1,164 @@
+<div id="content">
+    <div style="font-weight:bold"><span routerLink="/shipping" style="cursor: pointer;color: #335CA7;text-decoration: underline;">Package
+            List</span> / <span *ngIf='packageName != null'> {{packageName}} </span><span *ngIf='packageName == null'>
+            Package </span> Details </div><br>
+    <sa-widgets-grid>
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false"
+            [colorbutton]="false" [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark">
+            <header>
+
+                <h2><i class="fa fa-bar-chart-o"></i> Update Package</h2>
+            </header>
+            <div class="widget-body">
+                <section *ngIf="deleteSuccessMsg" class="text-success text-center"> {{deleteSuccessMsg}} </section>
+                <section *ngIf="deleteErrorMsg" class="icon-color-bad text-center "> {{deleteErrorMsg}} </section>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form [formGroup]="skuForm" (ngSubmit)="updatePackage()">
+                            <div class="table-responsive" style="margin-top:2px">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:10%">
+                                                <a class="btn btn-primary" style="padding: 1px 6px" (click)="onAddItem({})"><i
+                                                        class="fa fa-plus"></i> </a>&nbsp;
+                                                SKU
+                                            </th>
+                                            <th style="width:40%">Item Name</th>
+                                            <th style="width:15%">Available</th>
+                                            <th style="width:15%">QC</th>
+                                            <th style="width:15%">Bad</th>
+                                            <th style="width:5%">Actions</th>
+                                        </tr>
+                                        <tr style="padding:10px;text-align:center;background-color:white;" *ngIf="!this.skuForm.get('items').length">
+                                            <th style="background-color:white;border-right:none"></th>
+                                            <th style="background-color:white;border-left:none;border-right:none">Please
+                                                add transfered inventory SKU's</th>
+                                            <th style="background-color:white;border-left:none;border-right:none"></th>
+                                            <th style="background-color:white;border-right:none;border-left:none"></th>
+                                            <th style="background-color:white;border-right:none;border-left:none"></th>
+                                            <th style="background-color:white;border-left:none"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody formArrayName="items" *ngFor="let item of skuForm.controls['items'].controls; let i = index">
+
+                                        <tr [formGroupName]="i">
+                                            <td>
+                                                <div class="form-group" style="margin-bottom:0px">
+                                                    <input formControlName='skuCode' class="form-control" type="text"
+                                                        placeholder="SKU Code" (change)="getSKUDetails(i)"
+                                                        [attr.disabled]="skuForm.controls['items'].controls[i].controls.id.value>0 ? false : null">
+                                                    <span *ngIf="item.get('skuCode').hasError('required') && submitted"
+                                                        class=" icon-color-bad ">Please enter SKU code</span>
+                                                    <span *ngIf="item.get('skuCode').hasError('maxlength')" class=" icon-color-bad ">Please
+                                                        enter valid SKU between 2 to 30 characters only</span>
+                                                    <span *ngIf="item.hasError('EMPTYROW')&& submitted" class=" icon-color-bad ">Please
+                                                        enter atleast one quantity</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" style="margin-bottom:0px">
+                                                    <input formControlName='itemName' class="form-control" type="text"
+                                                        placeholder="Item Name" readonly>
+                                                    <span *ngIf="item.get('itemName').hasError('required') && submitted"
+                                                        class=" icon-color-bad ">Please enter valid SKU for item name</span>
+                                                </div>
+                                            </td>
+                                            <td class="row">
+                                                <div class="col-sm-6 form-group" style="margin-bottom:0px;padding-left:1px;padding-right:1px">
+                                                    <input formControlName='available' class="form-control" type="text"
+                                                        placeholder="Available Quantity" [attr.disabled]="true">
+                                                </div>
+                                                <div class="col-sm-6 form-group" style="margin-bottom:0px;padding-left:1px;padding-right:1px">
+                                                    <input formControlName='available_t' class="form-control" type="text"
+                                                        placeholder="Available Quantity" [attr.disabled]="skuForm.controls['items'].controls[i].controls.available.value>0 ? null : false"
+                                                        style="padding-left:7px">
+                                                </div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.get('available_t').hasError('required') && submitted "
+                                                        class=" icon-color-bad ">Please enter available quantity</span></div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.get('available_t').hasError('pattern')" class=" icon-color-bad ">Please
+                                                        enter only digits</span></div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.hasError('AVAILABLE')" class=" icon-color-bad ">Please
+                                                        enter below
+                                                        {{skuForm.controls['items'].controls[i].controls.available.value}}</span></div>
+
+                                            </td>
+                                            <td class="row">
+                                                <div class="col-sm-6 form-group" style="margin-bottom:0px;padding-left:1px;padding-right:1px">
+                                                    <input formControlName='qc' class="form-control" type="text"
+                                                        placeholder="QC Quantity" [attr.disabled]="true">
+                                                </div>
+                                                <div class="col-sm-6 form-group" style="margin-bottom:0px;padding-left:1px;padding-right:1px">
+                                                    <input formControlName='qc_t' class="form-control" type="text"
+                                                        placeholder="QC Quantity" [attr.disabled]="skuForm.controls['items'].controls[i].controls.qc.value>0 ? null : false"
+                                                        style="padding-left:7px">
+                                                </div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.get('qc_t').hasError('required') && submitted "
+                                                        class=" icon-color-bad ">Please enter qc quantity</span></div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.get('qc_t').hasError('pattern')" class=" icon-color-bad ">Please
+                                                        enter only digits</span></div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.hasError('QC')" class=" icon-color-bad ">Please
+                                                        enter below
+                                                        {{skuForm.controls['items'].controls[i].controls.qc.value}}</span></div>
+                                            </td>
+                                            <td class="row">
+                                                <div class="col-sm-6 form-group" style="margin-bottom:0px;padding-left:1px;padding-right:1px">
+                                                    <input formControlName='unavailble' class="form-control" type="text"
+                                                        placeholder="Unavailble Quantity" [attr.disabled]="true">
+                                                </div>
+                                                <div class="col-sm-6 form-group" style="margin-bottom:0px;padding-left:1px;padding-right:1px">
+                                                    <input formControlName='unavailble_t' class="form-control" type="text"
+                                                        placeholder="Unavailble Quantity" [attr.disabled]="skuForm.controls['items'].controls[i].controls.unavailble.value>0 ? null : false"
+                                                        style="padding-left:7px">
+                                                </div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.get('unavailble_t').hasError('required') && submitted "
+                                                        class=" icon-color-bad ">Please enter bad condition quantity</span></div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.get('unavailble_t').hasError('pattern')" class=" icon-color-bad ">Please
+                                                        enter only digits</span></div>
+                                                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;"><span
+                                                        *ngIf="item.hasError('UNAVAILABLE')" class=" icon-color-bad ">Please
+                                                        enter below
+                                                        {{skuForm.controls['items'].controls[i].controls.unavailble.value}}</span></div>
+                                            </td>
+                                            <td (click)="onDeleteItem(i)" style="text-align:center">
+                                                <a class="editor_remove"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="comments"><b>Comments : </b></label>
+                                        <textarea id="comments" class="form-control" style=" resize: none;" placeholder="please enter comments"
+                                            rows="2" [(ngModel)]="packageObj.comments" [ngModelOptions]="{standalone: true}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <span style="text-align:center;font-weight:bold;color:green">{{successAlertMessages}}</span>
+                            <span style="text-align:center;font-weight:bold;color:red">{{errorAlertMessages}}</span>
+                            <span style="text-align:center;font-weight:bold;color:red">{{skuCodeErrorMsg}}</span>
+
+                            <div class="row">
+                                <div class="col-sm-6" style="text-align: right;"><button class="btn btn-warning"
+                                        (click)="gotoHomePage()">Cancel</button></div>
+                                <div class="col-sm-6"><button class="btn btn-success" type="submit"> Submit </button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sa-widgets-grid>
+</div>

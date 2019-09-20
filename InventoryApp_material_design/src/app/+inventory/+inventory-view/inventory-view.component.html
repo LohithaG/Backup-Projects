@@ -1,0 +1,118 @@
+<div class="main-content" *ngIf="userType=='INVENTORY_MANAG'">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon" style="float:none;text-align:center;font-size:17px;margin-right:0px">INVENTORY<br>MANAGEMENT</div>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 footer-text" style="text-align:center" (click)="navigateToAddProduct()">
+                            Add
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 footer-text" style="text-align:center;border-right:1px solid #ddd;border-left:1px solid #ddd"
+                            (click)="navigateToUpdateProduct()">
+                            Update
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 footer-text" style="text-align:center" (click)="navigateToReturnProduct()">
+                            Return
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon" style="float:none;text-align:center;font-size:17px;margin-right:0px">QR CODE
+                            <br>MANAGEMENT</div>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 footer-text" style="text-align:center;" (click)="navigateToGenerateQrCodes()">
+                            Generate
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 footer-text" style="text-align:center;border-right:1px solid #ddd;border-left:1px solid #ddd"
+                            (click)="navigateToRetrieveQrCodes()">
+                            Retrieve
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4 footer-text" style="text-align:center" (click)="navigateToSearchQrCode()">
+                            Search
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon" style="float:none;text-align:center;font-size:17px;margin-right:0px">INVENTORY<br>TRANSFER</div>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 footer-text" style="text-align:center;border-right:1px solid #ddd" (click)="navigateToTransfers()">
+                            Transfers
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 footer-text" style="text-align:center" (click)="navigateToRestore()">
+                            Restore
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--<div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon" style="float:none;text-align:center;font-size:17px;margin-right:0px">SKU<br>MANAGEMENT</div>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 footer-text" style="text-align:center;border-right:1px solid #ddd"
+                            (click)="navigateToAddSKU()">
+                            Add
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 footer-text" style="text-align:center" (click)="navigateToUpdateSKU()">
+                            Update
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+</div>
+
+<div class="main-content" *ngIf="userType=='PRODUCT_VERIFIER'">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon" style="float:none;text-align:center;font-size:17px;margin-right:0px">VIEW<br>PRODUCT</div>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 footer-text" style="text-align:center;" (click)="navigateToView()">
+                            View
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="main-content" *ngIf="userType=='RETURN_MANAG'">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon" style="float:none;text-align:center;font-size:17px;margin-right:0px">RETURN<br>MANAGEMENT</div>
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 footer-text" style="text-align:center" (click)="navigateToReturn()">
+                            Return
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

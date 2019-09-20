@@ -1,0 +1,86 @@
+<div class="row postion-from-filter-target" style="padding: 27px;padding-top: 0px;padding-bottom: 0px" *ngIf="locationSHWKpiInfo">
+    <div class="col-md-3  col-xs-12" style="text-align:center;padding:0px 6px 0px 0px"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">DIAMONDS</span>
+                </div>
+                <div class="col-sm-12 padding-10 box-bottom">
+                    <span class="box-title_dia_percentage" title="{{locationSHWKpiInfo?.diamondPercentage}}">{{locationSHWKpiInfo?.diamondPercentage?.toFixed(2)}}</span><span>
+                        %</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 target-border">
+                    Total
+                    <div class="dia-act-value" title="{{locationSHWKpiInfo?.diamondTotal}}">
+                        {{locationSHWKpiInfo?.diamondTotal}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 ">
+                    <div>Preferred</div>
+                    <div class="dia-tar-value" title="{{locationSHWKpiInfo?.diamondPreferred}}">
+                        {{locationSHWKpiInfo?.diamondPreferred}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px">
+        <div sa-widget [sortable]="false" [togglebutton]="false" [editbutton]="false" [fullscreenbutton]="false" [colorbutton]="false"
+            [deletebutton]="false" saSparklineContainer saEasyPieChartContainer color="blueDark" class="box-shadow-ui">
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5">
+                    <span class="box-title_dia">GOLD</span>
+                </div>
+                <div class="col-sm-12 padding-10 box-bottom">
+                    <span class="box-title_dia_percentage" title="{{locationSHWKpiInfo?.goldPercentage}}">{{locationSHWKpiInfo?.goldPercentage?.toFixed(2)}}</span><span>
+                        %</span>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5 target-border">
+                    Total
+                    <div class="dia-act-value" title="{{locationSHWKpiInfo?.goldTotal}}">
+                        {{locationSHWKpiInfo?.goldTotal}}</div>
+                </div>
+                <div class="col-sm-6 col-xs-6 padding-5">
+                    <div>Preferred</div>
+                    <div class="dia-tar-value" title="{{locationSHWKpiInfo?.goldPreferred}}">
+                        {{locationSHWKpiInfo?.goldPreferred}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-12" style="text-align:center;padding:0px 6px 0px 0px"></div>
+</div>
+
+<!-- <div class="row" *ngIf="locationSHWKpiInfo">
+
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+        <div class="jarviswidget">
+
+            <div class="row kpi-block">
+                <div class="col-sm-12 padding-5" style="border-bottom:1px solid #ddd">
+                    <span class="box-title_dia">DIAMONDS</span> <br> <span style="color:black">Conversions</span>
+                </div>
+                <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                    <span class="box-title_dia_percentage">{{locationSHWKpiInfo.diamondPercentage.toFixed()}}%</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+        <div class="jarviswidget">
+            <div class="row kpi-block">
+                <div class="col-sm-12 col-xs-12 padding-5" style="border-bottom:1px solid #ddd;color:#2196f3">
+                    <span class="box-title_gold">GOLD</span> <br> <span style="color:black">Conversions</span>
+                </div>
+                <div class="col-sm-12 padding-10" style="border-bottom:1px solid #ddd">
+                    <span class="box-title_dia_percentage">{{locationSHWKpiInfo.goldPercentage.toFixed()}}%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,110 @@
+<div class="main-content">
+    <div class="container-fluid" style="padding-left:0px;padding-right:0px">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title" style="text-align:center">Update SKU</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form (ngSubmit)="getSkuDetails()" #updateForm="ngForm">
+
+                            <div *ngIf="!skuDetails">
+                                <div class="row">
+                                    <!-- <div class="col-md-12">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="skuValue" name="skuValue" #sku="ngModel" maxlength="30" required>
+                                            <mat-placeholder class="placeholder">SKU code</mat-placeholder>
+                                        </mat-form-field>
+                                        <div *ngIf="!submitted || sku.touched">
+                                            <span class=" text-danger" *ngIf="(sku.errors && sku.errors.required)">
+                                                Please enter SKU code </span>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="skuValue" (keyup)="getSKUSbasedonSearch()"
+                                                name="skuValue" #sku="ngModel" maxlength="30" required autocomplete="off">
+                                            <mat-placeholder class="placeholder">SKU Code</mat-placeholder>
+
+                                        </mat-form-field>
+
+                                        <div class="height-skus">
+                                            <div *ngFor="let key of filteredSkusList" (click)="selectSKU(key)" style="border-bottom:1px solid #AAAAAA;padding: 3px">{{key.skuCode}}-{{key.productName}}</div>
+                                        </div>
+                                        <span *ngIf="formValidate&&!skuSelection" class=" text-danger ">Please
+                                            enter valid SKU code</span>
+                                    </div>
+                                </div>
+                                <button mat-raised-button type="submit" class="btn btn-success pull-right">Submit</button>
+                                <button mat-raised-button class="btn btn-danger pull-right" (click)="gotoHomePage()">Cancel</button>
+                            </div>
+                        </form>
+
+
+
+                        <form [formGroup]="updateSKUForm" method="post" *ngIf="skuDetails">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="text" [formControl]="this.skucode" [(ngModel)]="skuObj.skuCode"
+                                            readonly>
+                                        <mat-placeholder class="placeholder">SKU code</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.skucode.hasError('required') &&formValidate " class="text-danger">Please
+                                        enter SKU code</span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="text" [formControl]="this.productName" [(ngModel)]="skuObj.productName">
+                                        <mat-placeholder class="placeholder">Product Name</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.productName.hasError('required') &&formValidate " class=" text-danger ">Please
+                                        enter product name</span>
+                                    <span *ngIf="this.productName.hasError('maxlength')" class="text-danger">Please
+                                        enter product name with 100 letters only</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="number" [formControl]="this.threshold" [(ngModel)]="skuObj.thresholdLevel">
+                                        <mat-placeholder class="placeholder">Threshold Level</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.threshold.hasError('required') &&formValidate " class=" text-danger ">Please
+                                        enter
+                                        threshold level</span>
+                                    <span *ngIf="this.threshold.hasError('maxlength') ||this.threshold.hasError('pattern') "
+                                        class="text-danger">Please enter valid threshold level between 1-999 only
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <textarea matInput [formControl]="this.descrption" [(ngModel)]="skuObj.description"></textarea>
+                                        <mat-placeholder class="placeholder">Description</mat-placeholder>
+                                    </mat-form-field>
+                                    <span *ngIf="this.descrption.hasError('required') &&formValidate " class="text-danger ">Please
+                                        enter description</span>
+                                    <span *ngIf="this.descrption.hasError('maxlength')" class="text-danger">Please
+                                        enter only 200 letters only</span>
+                                </div>
+                            </div>
+
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="updateSkuDetails()">Update</button>
+                            <button mat-raised-button class="btn btn-danger pull-right" (click)="gotoHomePage()">Cancel</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
